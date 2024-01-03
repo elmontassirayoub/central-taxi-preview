@@ -1,0 +1,139 @@
+export type TabListType = { name: string }
+export type RightSideTabListType = {functionlity: string, text: string}
+export type CardDataType = {icon: string, title: string, text: string}
+
+type NavbarType = {
+    tabList: TabListType[],
+    rightSideTabList: RightSideTabListType[]
+}
+
+type HomeType = {
+    cardData: CardDataType[],
+    hero: {btn: string, h2: string, h3: string},
+    yellowSection: {h2: string, btn: string},
+    reviews: {h1: string, btn: string, footer: string}
+}
+
+type FooterType = {
+    sec1: {
+        p1: string,
+        p2: string,
+        p3: string
+    },
+    btn1: string,
+    btn2: string
+}
+
+type LangType = {
+    navbar: NavbarType,
+    footer: FooterType,
+    home: HomeType
+}
+
+type DataType = {
+    fr: LangType;
+    en: LangType;
+    [key: string]: any;
+};
+
+const Data: DataType = {
+    fr: {
+        navbar: {
+            tabList: [{ name: "services" }, { name: "aeroport" }, { name: "gares" }, { name: "reserver" }, { name: "contact" }],
+            rightSideTabList: [{ functionlity: "register", text: "S'inscrire" }, { functionlity: "login", text: "Se Connecter" }]
+        },
+        home: {
+            cardData: [
+                {
+                    icon: "book",
+                    title: "Réserver un taxi en 2 minutes",
+                    text: "Réserver un chauffeur disponible en quelques clics, c'est aujourd'hui possible avec taxi strasbourg services. C'est d'autant plus simple que le module est aussi bien adapté pour les dessertes locales vers Strasbourg et son agglomération, que pour les transferts longues distances. En un seul coup de fil ou sur réservation par Internet, vous serez pris en charge dans les meilleurs délais par votre chauffeur taxi sur Strasbourg pour vos déplacements toutes distances vers toutes les villes de France."
+                },
+                {
+                    icon: "price",
+                    title: "Meilleurs Prix Taxi Strasbourg",
+                    text: "Le prix de votre taxi à Strasbourg ne sera plus un frein pour vous déplacer. En effet, nos tarifs sont réglementés, sans surprise, et surtout adaptés à vos trajets. Vous profiterez d'un véhicule spacieux à un prix juste avec un confort maximal. Pour réserver votre trajet, vous n'avez qu'à indiquer le lieu de départ, la destination et l'heure de la prise en charge. Ensuite, laissez-vous guider par le module pour concrétiser votre commande. Faites le choix de la facilité en nous contactant ! Vous n'aurez pas à vous soucier du stationnement, des heures de pointe dans les transports en commun, ou des aléas de la circulation."
+                },
+                {
+                    icon: "availability",
+                    title: "Toujours un taxi disponible",
+                    text: "Vous faites le choix de vous déplacer dans le confort ? Vous voulez gagner du temps ? Vous exigez le taxi à Strasbourg avec le meilleur rapport qualité/prix ? Alors vous êtes au bon endroit et nous mettrons tout en œuvre pour répondre à vos demandes. Nous vous transporterons aussi bien à la demande qu'en mise à disposition. Concrètement, notre chauffeur vous transportera, sur toutes distances, vers votre adresse de destination, ainsi que vers tous les Aéroports et toutes les Gares."
+                }
+            ],
+            hero: {
+                btn: "Reserver",
+                h2: "Commander un taxi sur le site taxi strasbourg services est extrêmement simple et sécurisé.",
+                h3: "À votre service 24H/24"
+            },
+            yellowSection: {
+                h2: "Estimez Le Prix Et Réservez Le Meilleur Taxi À Strasbourg",
+                btn: "Estimer le prix"
+            },
+            reviews: {
+                h1: "Ce que pensent nos utilisateurs",
+                btn: "Laisser un avis",
+                footer: "Voir Plus"
+            }
+        },
+        footer: {
+            sec1: {
+                p1: "Taxis disponibles dans toute la région d'Alsace",
+                p2: "Autorisations de stationnement TAXI C.U.S",
+                p3: "À votre service 24H/24"
+            },
+            btn1: "Laisser un avis",
+            btn2: "Reserver"
+        }
+
+    },
+    en: {
+        navbar: {
+            tabList: [{ name: "services" }, { name: "airports" }, { name: "stations" }, { name: "book" }, { name: "contact" }],
+            rightSideTabList: [{ functionlity: "register", text: "Register" }, { functionlity: "login", text: "Login" }]
+        },
+        home: {
+            cardData: [
+                {
+                    icon: "book",
+                    title: "Book a taxi in 2 minutes",
+                    text: "Booking an available driver in just a few clicks is now possible with taxi strasbourg services. It is all the simpler as the module is equally well suited for local services to Strasbourg and its surrounding area, as well as for long distance transfers. With just one phone call or by booking online, you will be picked up as quickly as possible by your taxi driver in Strasbourg for your trips of any distance to all cities in France."
+                },
+                {
+                    icon: "price",
+                    title: "Best Prices Taxi Strasbourg",
+                    text: "The price of your taxi in Strasbourg will no longer be a barrier to getting around. Indeed, our prices are regulated, without surprises, and above all adapted to your journeys. You will enjoy a spacious vehicle at a fair price with maximum comfort. To book your trip, simply indicate the departure location, destination and pick-up time. Then, let yourself be guided by the module to complete your order. Make the easy choice by contacting us! You won't have to worry about parking, rush hours on public transport, or traffic hazards."
+                },
+                {
+                    icon: "availability",
+                    title: "Always a taxi available",
+                    text: "Are you choosing to travel in comfort? Want to save time? Do you want the taxi in Strasbourg with the best quality/price ratio? Then you are in the right place and we will do everything we can to meet your requests. We will transport you both on request and on provision. Concretely, our driver will transport you, over any distance, to your destination address, as well as to all Airports and Train Stations."
+                }
+            ],
+            hero: {
+                btn: "Book",
+                h2: "Ordering a taxi on the Strasbourg Taxi Services website is extremely simple and secure.",
+                h3: "At your service 24 hours a day"
+            },
+            yellowSection: {
+                h2: "Estimate the Price and Book the Best Taxi in Strasbourg",
+                btn: "Estimate the price"
+            },
+            reviews: {
+                h1: "What our users think",
+                btn: "Leave a review",
+                footer: "See more"
+            }
+        },
+        footer: {
+            sec1: {
+                p1: "Taxis available throughout the Alsace region",
+                p2: "TAXI C.U.S parking permits",
+                p3: "At your service 24 hours a day"
+            },
+            btn1: "Leave a review",
+            btn2: "Book"
+        }
+    }
+}
+
+export default Data

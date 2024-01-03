@@ -16,6 +16,16 @@
   }
 }
 
-body {
-  margin: 0;
+.hero {
+  background-image: url("../assets/hero.png");
+  background-color: rgba(0, 0, 0, 0.39);
+}
+
+@keyframes fromTop {
+  from {top: -300px;}
+  to {top: 100%;}
+}
+
+.mobile-navtab {
+  animation: fromTop 0.25s ease-in-out;
 }
