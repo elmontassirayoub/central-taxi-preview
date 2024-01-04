@@ -4,7 +4,8 @@ export type CardDataType = {icon: string, title: string, text: string}
 
 type NavbarType = {
     tabList: TabListType[],
-    rightSideTabList: RightSideTabListType[]
+    rightSideTabList: RightSideTabListType[],
+    logout: string
 }
 
 type HomeType = {
@@ -24,9 +25,35 @@ type FooterType = {
     btn2: string
 }
 
+type LoginType = {
+    label1: string,
+    placeholder1: string,
+    label2: string,
+    placeholder2: string,
+    btn: string
+}
+
+type SignupType = {
+    label1: string,
+    placeholder1: string,
+    label2: string,
+    placeholder2: string,
+    label3: string,
+    placeholder3: string,
+    label4: string,
+    placeholder4: string,
+    label5: string,
+    placeholder5: string,
+    label6: string,
+    placeholder6: string,
+    btn: string
+}
+
 type LangType = {
     navbar: NavbarType,
     footer: FooterType,
+    login: LoginType,
+    signup: SignupType,
     home: HomeType
 }
 
@@ -40,7 +67,8 @@ const Data: DataType = {
     fr: {
         navbar: {
             tabList: [{ name: "services" }, { name: "aeroport" }, { name: "gares" }, { name: "reserver" }, { name: "contact" }],
-            rightSideTabList: [{ functionlity: "register", text: "S'inscrire" }, { functionlity: "login", text: "Se Connecter" }]
+            rightSideTabList: [{ functionlity: "register", text: "S'inscrire" }, { functionlity: "login", text: "Se Connecter" }],
+            logout: "Se déconnecter"
         },
         home: {
             cardData: [
@@ -75,6 +103,28 @@ const Data: DataType = {
                 footer: "Voir Plus"
             }
         },
+        login: {
+            label1: "Email",
+            placeholder1: "Entrez votre email",
+            label2: "Password",
+            placeholder2: "Entrez votre password",
+            btn: "Se Connecter"
+        },
+        signup: {
+            label1: "Votre Nom*",
+            placeholder1: "Entrez votre Nom",
+            label2: "Votre Prenom*",
+            placeholder2: "Entrez votre Prenom",
+            label3: "Votre Numero de telephone*",
+            placeholder3: "Entrez votre Numero de telephone",
+            label4: "Votre Adresse*",
+            placeholder4: "Entrez votre Adresse",
+            label5: "Votre Email*",
+            placeholder5: "Entrez votre Email",
+            label6: "Votre Password*",
+            placeholder6: "Entrez votre password",
+            btn: "S'inscrire"
+        },
         footer: {
             sec1: {
                 p1: "Taxis disponibles dans toute la région d'Alsace",
@@ -89,7 +139,8 @@ const Data: DataType = {
     en: {
         navbar: {
             tabList: [{ name: "services" }, { name: "airports" }, { name: "stations" }, { name: "book" }, { name: "contact" }],
-            rightSideTabList: [{ functionlity: "register", text: "Register" }, { functionlity: "login", text: "Login" }]
+            rightSideTabList: [{ functionlity: "register", text: "Register" }, { functionlity: "login", text: "Login" }],
+            logout: "Log out"
         },
         home: {
             cardData: [
@@ -123,6 +174,28 @@ const Data: DataType = {
                 btn: "Leave a review",
                 footer: "See more"
             }
+        },
+        login: {
+            label1: "Email",
+            placeholder1: "Enter your email",
+            label2: "Password",
+            placeholder2: "Enter your password",
+            btn: "Log In"
+        },
+        signup: {
+            label1: "Your First name*",
+            placeholder1: "Enter your First name",
+            label2: "Your Last name*",
+            placeholder2: "Enter your Last name",
+            label3: "Your Phone number*",
+            placeholder3: "Enter your Phone number",
+            label4: "Your Address*",
+            placeholder4: "Enter your Address",
+            label5: "Your Email*",
+            placeholder5: "Enter your Email",
+            label6: "Your Password*",
+            placeholder6: "Enter your password",
+            btn: "Register"
         },
         footer: {
             sec1: {

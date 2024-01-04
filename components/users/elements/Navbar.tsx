@@ -7,13 +7,18 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import Data, { RightSideTabListType, TabListType } from '@/assets/data'
+import Auth from "../modals/Auth";
+import { signOut, useSession } from "next-auth/react";
 
 export default function Navbar({lang, changeLanguage} : {lang: string, changeLanguage: Function}) {
 
     const [toggleMenu, setToggleMenu] = useState(false)
+    const [modalState, modalClose] = useState(false)
+    const [option, setOption] = useState({text: "", functionlity: ""})
 
     const compData = Data[lang]
 
+    const {data: session} = useSession()
 
 
     return <nav className="relative">
@@ -39,8 +44,14 @@ export default function Navbar({lang, changeLanguage} : {lang: string, changeLan
                 </div>
                 <div className="flex gap-10">
                     {
-                        compData.navbar.rightSideTabList?.map((item: RightSideTabListType, idx: number) => <p key={idx} className="hover:underline cursor-pointer">{item?.text}</p>)
+                        !session?.user?.email ?
+                            compData.navbar.rightSideTabList?.map((item: RightSideTabListType, idx: number) => <p key={idx} className="hover:underline cursor-pointer" onClick={() => {modalClose(true); setOption(item)}}>{item?.text}</p>)
+                        : <>
+                            <><p><span className="text-[#FFDC00] text-[14px]">Bienvenue</span> <span className="hover:underline cursor-pointer">{session?.user?.email}</span></p></>
+                            <p className="hover:underline cursor-pointer" onClick={() => signOut()}>{compData.navbar.logout}</p>
+                        </>
                     }
+                    
                     <select value={lang} onChange={e => changeLanguage(e.target.value)} className="bg-transparent outline-none uppercase cursor-pointer">
                         <option value="fr" className="uppercase bg-[#33475A]">fr</option>
                         <option value="en" className="uppercase bg-[#33475A]">en</option>
@@ -60,7 +71,7 @@ export default function Navbar({lang, changeLanguage} : {lang: string, changeLan
             </div>
             <div className="flex flex-col justify-center items-center gap-5 pt-4">
                 {
-                    compData.navbar.rightSideTabList?.map((item: RightSideTabListType, idx: number) => <p key={idx} className="hover:underline cursor-pointer">{item?.text}</p>)
+                    compData.navbar.rightSideTabList?.map((item: RightSideTabListType, idx: number) => <p onClick={() => {modalClose(true); setOption(item)}} key={idx} className="hover:underline cursor-pointer">{item?.text}</p>)
                 }
                 <select value={lang} onChange={e => changeLanguage(e.target.value)} className=" outline-none uppercase">
                     <option value="fr" className="uppercase">fr</option>
@@ -68,5 +79,6 @@ export default function Navbar({lang, changeLanguage} : {lang: string, changeLan
                 </select>
             </div>
         </div>
+        <Auth modalState={modalState} modalClose={modalClose} option={option} lang={lang} />
     </nav>
 }

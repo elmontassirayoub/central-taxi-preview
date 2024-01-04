@@ -1,6 +1,5 @@
 import Navbar from "@/components/users/elements/Navbar";
 import "tailwindcss/tailwind.css";
-import "@/app/globals.css"
 import BookOnlineIcon from '@mui/icons-material/BookOnline';
 import SellIcon from '@mui/icons-material/Sell';
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
