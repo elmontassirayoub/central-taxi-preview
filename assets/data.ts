@@ -30,7 +30,9 @@ type LoginType = {
     placeholder1: string,
     label2: string,
     placeholder2: string,
-    btn: string
+    btn: string,
+    success: string,
+    invalidCred: string
 }
 
 type SignupType = {
@@ -47,6 +49,9 @@ type SignupType = {
     label6: string,
     placeholder6: string,
     btn: string
+    label7: string,
+    fillAllFields: string,
+    success: string
 }
 
 type LangType = {
@@ -108,7 +113,9 @@ const Data: DataType = {
             placeholder1: "Entrez votre email",
             label2: "Password",
             placeholder2: "Entrez votre password",
-            btn: "Se Connecter"
+            btn: "Se Connecter",
+            success: "Connecté avec succès",
+            invalidCred: "Les informations d'identification invalides"
         },
         signup: {
             label1: "Votre Nom*",
@@ -123,7 +130,10 @@ const Data: DataType = {
             placeholder5: "Entrez votre Email",
             label6: "Votre Password*",
             placeholder6: "Entrez votre password",
-            btn: "S'inscrire"
+            label7: "Montrer le mot de passe",
+            btn: "S'inscrire",
+            fillAllFields: "Veuillez remplir tous les champs nécessaires",
+            success: "Compte créé avec succès, veuillez vous connecter"
         },
         footer: {
             sec1: {
@@ -180,7 +190,9 @@ const Data: DataType = {
             placeholder1: "Enter your email",
             label2: "Password",
             placeholder2: "Enter your password",
-            btn: "Log In"
+            btn: "Log In",
+            success: "Successfully logged in",
+            invalidCred: "Invalid Credentials"
         },
         signup: {
             label1: "Your First name*",
@@ -195,7 +207,10 @@ const Data: DataType = {
             placeholder5: "Enter your Email",
             label6: "Your Password*",
             placeholder6: "Enter your password",
-            btn: "Register"
+            label7: "Show Password",
+            btn: "Register",
+            fillAllFields: "Please Fill all necessary fields",
+            success: "Account successfully created, please login"
         },
         footer: {
             sec1: {

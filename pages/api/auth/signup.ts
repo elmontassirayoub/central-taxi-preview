@@ -3,7 +3,7 @@ import User from "@/models/user";
 import bcrypt from "bcryptjs"
 import { NextApiResponse } from "next";
 
-type userDataType = {
+export type userDataType = {
     firstname: string,
     lastname: string,
     phonenumber: string,

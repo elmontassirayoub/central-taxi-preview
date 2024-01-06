@@ -9,6 +9,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import Data, { RightSideTabListType, TabListType } from '@/assets/data'
 import Auth from "../modals/Auth";
 import { signOut, useSession } from "next-auth/react";
+import { signIn } from 'next-auth/react';
+import { toast } from 'react-toastify';
+import { userDataType } from "@/pages/api/auth/signup";
 
 export default function Navbar({lang, changeLanguage} : {lang: string, changeLanguage: Function}) {
 
@@ -19,6 +22,119 @@ export default function Navbar({lang, changeLanguage} : {lang: string, changeLan
     const compData = Data[lang]
 
     const {data: session} = useSession()
+
+    const handleLogIn = async (e: any, formData: {email: string, password: string}, setFormData: Function) => {
+        e.preventDefault();
+
+        // need to check if the data needed is here
+        if (formData.email === "" || formData.password === "") {
+            toast.error(compData.signup.fillAllFields, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                progress: undefined,
+            });
+            return
+        }
+
+        try {
+            const res = await signIn('credentials', { ...formData, redirect: false })
+            if (res?.error) {
+                toast.error(compData.login.invalidCred, {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    progress: undefined,
+                });
+                return
+            }
+
+            toast.success(compData.login.success, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                progress: undefined,
+            });
+            setFormData({email: "", password: ""});
+            setTimeout(() => {
+                modalClose(false)                
+            }, 1000);
+
+        } catch (e) {
+            console.log("Something bad has happend", e)
+            toast.error("Invalid credentials", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                progress: undefined,
+            });
+        }
+    }
+
+    const handleSignUp = async (e: any, formData: userDataType, setFormData: Function) => {
+        e.preventDefault();
+
+        // need to check if the data needed is here
+        if(formData.firstname === "" || formData.lastname === "" || formData.email === "" || formData.password === "" || formData.phonenumber === "" || formData.address === "") {
+            toast.error(compData.signup.fillAllFields, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                progress: undefined,
+            });
+            return
+        }
+
+        try {
+            const response = await fetch("/api/auth/signup", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            })
+
+            if (response.ok) {
+                toast.success(compData.signup.success, {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    progress: undefined,
+                });
+                setFormData({firstname: "", lastname: "", email: "", password: "", phonenumber: "", address: ""})
+                setTimeout(() => {
+                    modalClose(false)
+                }, 1000);
+            } else {
+                const result = await response.json()
+                toast.error(result.message || "Something happened", {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    progress: undefined,
+                });
+            }
+
+
+        } catch (e: any) {
+            console.log("An error has occured while signin up (front end): ", e.message)
+            toast.error(e.message || "Something happened", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                progress: undefined,
+            });
+        }
+
+    }
 
 
     return <nav className="relative">
@@ -79,6 +195,6 @@ export default function Navbar({lang, changeLanguage} : {lang: string, changeLan
                 </select>
             </div>
         </div>
-        <Auth modalState={modalState} modalClose={modalClose} option={option} lang={lang} />
+        <Auth modalState={modalState} modalClose={modalClose} option={option} lang={lang} handleLogIn={handleLogIn} handleSignUp={handleSignUp} />
     </nav>
 }
