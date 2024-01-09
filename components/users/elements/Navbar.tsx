@@ -15,9 +15,20 @@ import { userDataType } from "@/pages/api/auth/signup";
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useOutsideAlerter } from "@/components/hook";
 import EditUser from "../modals/EditUser";
-import { updateUserData } from "@/pages/api/users/editProfile";
 import EditPassword from "../modals/EditPassword";
-import { updatePasswordType } from "@/pages/api/users/editPassword";
+
+type updatePasswordType = {
+    oldPassword: string,
+    newPassword: string,
+    confirmationPassword: string
+}
+
+type updateUserData = {
+    firstname: string,
+    lastname: string,
+    phonenumber: string, 
+    address: string,
+}
 
 
 export default function Navbar({ lang, changeLanguage }: { lang: string, changeLanguage: Function }) {

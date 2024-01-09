@@ -1,16 +1,10 @@
-import { NextApiResponse } from "next"
+import { NextApiRequest, NextApiResponse } from "next"
 import { getSession } from "./editProfile"
 import { connectMongoDB } from "@/lib/mongodb"
 import User from "@/models/user"
 import bcrypt from "bcryptjs"
 
-export type updatePasswordType = {
-    oldPassword: string,
-    newPassword: string,
-    confirmationPassword: string
-}
-
-export default async function handler(req: Request & { body: updatePasswordType }, res: NextApiResponse) {
+export default async function handler(req, res) {
     const session = await getSession({ req, res })
 
     if (!session?.user?.email) {

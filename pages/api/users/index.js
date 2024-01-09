@@ -1,10 +1,9 @@
 import { connectMongoDB } from "@/lib/mongodb";
 import User from "@/models/user";
-import { NextApiResponse } from "next";
 import { getSession } from "./editProfile";
 
 
-export default async function handler(req: Request , res: NextApiResponse) {
+export default async function handler(req , res) {
     
 
     const session = await getSession({req, res})

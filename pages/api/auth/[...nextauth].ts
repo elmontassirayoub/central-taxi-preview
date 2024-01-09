@@ -4,19 +4,23 @@ import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs"
 
-const authOptions = {
+export const authOptions = {
     providers: [
         CredentialsProvider({
             name: "credentials",
-            credentials: {},
-            async authorize(credentials: { email: string, password: string }) {
-                const { email, password } = credentials;
+            credentials: {
+                email: { label: 'Email', type: 'text' },
+                password: { label: 'Password', type: 'password' },
+            },
+            async authorize(credentials): Promise<any> {
 
                 try {
                     await connectMongoDB();
-                    const user = await User.findOne({ email })
+                    const user = await User.findOne({ email: credentials?.email })
 
                     if (!user) return null
+
+                    const password = credentials?.password ?? ""
 
                     const passwordsMatch = await bcrypt.compare(password, user.password);
 
@@ -26,12 +30,13 @@ const authOptions = {
 
                 } catch (e) {
                     console.log("Error: ", e)
+                    return null
                 }
             }
         })
     ],
     callbacks: {
-        jwt: async ({ token, user, profile }) => {
+        jwt: async ({ token, user, profile }: any) => {
             if (profile) {
                 token.email = profile.email;
             } else if (user) {
@@ -39,7 +44,7 @@ const authOptions = {
             }
             return token;
         },
-        session: async ({ session, token }) => {
+        session: async ({ session, token }: any) => {
             if (token) {
                 session.user.email = token.email;
             }
@@ -52,6 +57,6 @@ const authOptions = {
 }
 
 
-export default async function auth(req, res) {
-    return await NextAuth(req, res, authOptions)
+export default async function auth(req: any, res: any) {
+    return await NextAuth(req, res, authOptions as any)
 }

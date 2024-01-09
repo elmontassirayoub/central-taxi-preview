@@ -6,7 +6,7 @@ import '@/app/globals.css'
 import 'react-toastify/dist/ReactToastify.css';
 
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: {Component: any, pageProps: any}) {
 
   return (
     <SessionProvider session={pageProps.session}>

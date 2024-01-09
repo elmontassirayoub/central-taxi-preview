@@ -1,24 +1,16 @@
 import { connectMongoDB } from "@/lib/mongodb";
 import User from "@/models/user";
-import { NextApiResponse } from "next";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 export const getSession = async (context) => {
-    const session = await getServerSession(context.req, context.res, authOptions);
-    return session;
+    const session = await getServerSession(context.req, context.res, authOptions );
+    return session ;
 };
 
-export type updateUserData = {
-    firstname: string,
-    lastname: string,
-    phonenumber: string, 
-    address: string,
-}
 
 
-
-export default async function handler (req: Request & {body: updateUserData}, res: NextApiResponse) {
+export default async function handler (req, res) {
     const session = await getSession({req, res})
 
 
