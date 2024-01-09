@@ -5,7 +5,11 @@ export type CardDataType = {icon: string, title: string, text: string}
 type NavbarType = {
     tabList: TabListType[],
     rightSideTabList: RightSideTabListType[],
-    logout: string
+    logout: string,
+    edit: string,
+    editPassword: string,
+    successEdit: string,
+    editBtn: string
 }
 
 type HomeType = {
@@ -54,12 +58,25 @@ type SignupType = {
     success: string
 }
 
+type ResetPasswordType = {
+    label1: string,
+    placeholder1: string, 
+    label2: string,
+    placeholder2: string,
+    label3: string,
+    placeholder3: string,
+    label4: string,
+    errorMessage: string,
+    success: string
+}
+
 type LangType = {
     navbar: NavbarType,
     footer: FooterType,
     login: LoginType,
     signup: SignupType,
-    home: HomeType
+    home: HomeType,
+    resetPassword: ResetPasswordType
 }
 
 type DataType = {
@@ -73,7 +90,11 @@ const Data: DataType = {
         navbar: {
             tabList: [{ name: "services" }, { name: "aeroport" }, { name: "gares" }, { name: "reserver" }, { name: "contact" }],
             rightSideTabList: [{ functionlity: "register", text: "S'inscrire" }, { functionlity: "login", text: "Se Connecter" }],
-            logout: "Se déconnecter"
+            logout: "Se déconnecter",
+            edit: "Modifier votre profil",
+            editPassword: "Modifier votre mot de passe",
+            successEdit: "Vous avez mis à jour votre profil avec succès",
+            editBtn: "Modifier"
         },
         home: {
             cardData: [
@@ -143,6 +164,17 @@ const Data: DataType = {
             },
             btn1: "Laisser un avis",
             btn2: "Reserver"
+        },
+        resetPassword: {
+            label1: "Votre ancien mot de passe",
+            placeholder1: "Entrez votre ancien mot de passe",
+            label2: "Votre nouveau mot de passe",
+            placeholder2: "Entrez votre nouveau mot de passe",
+            label3: "Saisissez à nouveau le nouveau mot de passe",
+            placeholder3: "Entrez votre nouveau mot de passe",
+            label4: "Montrer le mot de passe",
+            errorMessage: "Le nouveau mot de passe et le mot de passe de confirmation ne correspondent pas",
+            success: "Vous avez mis à jour votre mot de passe avec succès"
         }
 
     },
@@ -150,7 +182,11 @@ const Data: DataType = {
         navbar: {
             tabList: [{ name: "services" }, { name: "airports" }, { name: "stations" }, { name: "book" }, { name: "contact" }],
             rightSideTabList: [{ functionlity: "register", text: "Register" }, { functionlity: "login", text: "Login" }],
-            logout: "Log out"
+            logout: "Log out",
+            edit: "Edit your profile",
+            editPassword: "Update your password",
+            successEdit: "You have successfully upated your profile",
+            editBtn: "Edit"
         },
         home: {
             cardData: [
@@ -220,6 +256,17 @@ const Data: DataType = {
             },
             btn1: "Leave a review",
             btn2: "Book"
+        },
+        resetPassword: {
+            label1: "Your old Password",
+            placeholder1: "Enter your old password",
+            label2: "Your new password",
+            placeholder2: "Enter your new password",
+            label3: "Enter new password again",
+            placeholder3: "Enter your new password",
+            label4: "Show Password",
+            errorMessage: "The new password and the confirmation password don't match",
+            success: "You have successfully updated your password"
         }
     }
 }

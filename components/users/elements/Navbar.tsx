@@ -4,7 +4,7 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import EmailIcon from '@mui/icons-material/Email';
 import Link from "next/link";
 import MenuIcon from '@mui/icons-material/Menu';
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import Data, { RightSideTabListType, TabListType } from '@/assets/data'
 import Auth from "../modals/Auth";
@@ -12,18 +12,36 @@ import { signOut, useSession } from "next-auth/react";
 import { signIn } from 'next-auth/react';
 import { toast } from 'react-toastify';
 import { userDataType } from "@/pages/api/auth/signup";
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { useOutsideAlerter } from "@/components/hook";
+import EditUser from "../modals/EditUser";
+import { updateUserData } from "@/pages/api/users/editProfile";
+import EditPassword from "../modals/EditPassword";
+import { updatePasswordType } from "@/pages/api/users/editPassword";
 
-export default function Navbar({lang, changeLanguage} : {lang: string, changeLanguage: Function}) {
+
+export default function Navbar({ lang, changeLanguage }: { lang: string, changeLanguage: Function }) {
 
     const [toggleMenu, setToggleMenu] = useState(false)
     const [modalState, modalClose] = useState(false)
-    const [option, setOption] = useState({text: "", functionlity: ""})
+    const [userEditModal, setUserEditModal] = useState(false)
+    const [userEditPassword, setUserEditPassword] = useState(false)
+    const [dropdown, setDropdown] = useState(false)
+    const [option, setOption] = useState({ text: "", functionlity: "" })
+    const [loading, setLoading] = useState(false)
 
     const compData = Data[lang]
+    const ref: any = useRef();
 
-    const {data: session} = useSession()
+    const handleOutSideClick = () => {
+        setDropdown(false)
+    }
 
-    const handleLogIn = async (e: any, formData: {email: string, password: string}, setFormData: Function) => {
+    useOutsideAlerter(ref, handleOutSideClick)
+
+    const { data: session, status } = useSession()
+
+    const handleLogIn = async (e: any, formData: { email: string, password: string }, setFormData: Function) => {
         e.preventDefault();
 
         // need to check if the data needed is here
@@ -39,6 +57,7 @@ export default function Navbar({lang, changeLanguage} : {lang: string, changeLan
         }
 
         try {
+            setLoading(true)
             const res = await signIn('credentials', { ...formData, redirect: false })
             if (res?.error) {
                 toast.error(compData.login.invalidCred, {
@@ -58,10 +77,7 @@ export default function Navbar({lang, changeLanguage} : {lang: string, changeLan
                 closeOnClick: true,
                 progress: undefined,
             });
-            setFormData({email: "", password: ""});
-            setTimeout(() => {
-                modalClose(false)                
-            }, 1000);
+            location.reload()
 
         } catch (e) {
             console.log("Something bad has happend", e)
@@ -72,6 +88,8 @@ export default function Navbar({lang, changeLanguage} : {lang: string, changeLan
                 closeOnClick: true,
                 progress: undefined,
             });
+        } finally{
+            setLoading(false)
         }
     }
 
@@ -79,7 +97,7 @@ export default function Navbar({lang, changeLanguage} : {lang: string, changeLan
         e.preventDefault();
 
         // need to check if the data needed is here
-        if(formData.firstname === "" || formData.lastname === "" || formData.email === "" || formData.password === "" || formData.phonenumber === "" || formData.address === "") {
+        if (formData.firstname === "" || formData.lastname === "" || formData.email === "" || formData.password === "" || formData.phonenumber === "" || formData.address === "") {
             toast.error(compData.signup.fillAllFields, {
                 position: "top-right",
                 autoClose: 3000,
@@ -91,6 +109,7 @@ export default function Navbar({lang, changeLanguage} : {lang: string, changeLan
         }
 
         try {
+            setLoading(true)
             const response = await fetch("/api/auth/signup", {
                 method: "POST",
                 headers: {
@@ -107,7 +126,7 @@ export default function Navbar({lang, changeLanguage} : {lang: string, changeLan
                     closeOnClick: true,
                     progress: undefined,
                 });
-                setFormData({firstname: "", lastname: "", email: "", password: "", phonenumber: "", address: ""})
+                setFormData({ firstname: "", lastname: "", email: "", password: "", phonenumber: "", address: "" })
                 setTimeout(() => {
                     modalClose(false)
                 }, 1000);
@@ -132,8 +151,136 @@ export default function Navbar({lang, changeLanguage} : {lang: string, changeLan
                 closeOnClick: true,
                 progress: undefined,
             });
+        } finally {
+            setLoading(false)
         }
 
+    }
+
+    const updateProfile = async (userData: updateUserData) => {
+
+        // need to check if the data needed is here
+        if (userData.firstname === "" || userData.lastname === "" || userData.phonenumber === "" || userData.address === "") {
+            toast.error(compData.signup.fillAllFields, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                progress: undefined,
+            });
+            return
+        }
+        try {
+            setLoading(true)
+            const response = await fetch('/api/users/editProfile', {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(userData)
+            })
+
+            const result = await response.json()
+            if(result.message === "success") {
+                toast.success(compData.navbar.successEdit, {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    progress: undefined,
+                });
+                setTimeout(() => {
+                    setUserEditModal(false)
+                }, 1000);
+            } else {
+                toast.error(result.message || "Something happened", {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    progress: undefined,
+                });
+            }
+        } catch (e: any) {
+            toast.error(e.message || "Something happened", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                progress: undefined,
+            });
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    const updatePassword = async (passwordData: updatePasswordType) => {
+        // need to check if the data needed is here
+        if (passwordData.oldPassword === "" || passwordData.newPassword === "" || passwordData.confirmationPassword === "") {
+            toast.error(compData.signup.fillAllFields, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                progress: undefined,
+            });
+            return
+        }
+
+        // need to check if the passwords inputed match
+        if(passwordData.newPassword !== passwordData.confirmationPassword) {
+            toast.error(compData.resetPassword.errorMessage, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                progress: undefined,
+            });
+            return
+        }
+
+        try {
+            setLoading(true)
+            const response = await fetch('/api/users/editPassword', {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(passwordData)
+            })
+
+            const result = await response.json()
+            if(result.message === "success") {
+                toast.success(compData.resetPassword.success, {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    progress: undefined,
+                });
+                setTimeout(() => {
+                    setUserEditPassword(false)
+                }, 1000);
+            } else {
+                toast.error(result.message || "Something happened", {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    progress: undefined,
+                });
+            }
+        } catch (e: any) {
+            toast.error(e.message || "Something happened", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                progress: undefined,
+            });
+        } finally {
+            setLoading(false)
+        }
     }
 
 
@@ -160,14 +307,21 @@ export default function Navbar({lang, changeLanguage} : {lang: string, changeLan
                 </div>
                 <div className="flex gap-10">
                     {
-                        !session?.user?.email ?
-                            compData.navbar.rightSideTabList?.map((item: RightSideTabListType, idx: number) => <p key={idx} className="hover:underline cursor-pointer" onClick={() => {modalClose(true); setOption(item)}}>{item?.text}</p>)
-                        : <>
-                            <><p><span className="text-[#FFDC00] text-[14px]">Bienvenue</span> <span className="hover:underline cursor-pointer">{session?.user?.email}</span></p></>
-                            <p className="hover:underline cursor-pointer" onClick={() => signOut()}>{compData.navbar.logout}</p>
-                        </>
+                        status === "loading" ? <></> : !session?.user?.email ?
+                            compData.navbar.rightSideTabList?.map((item: RightSideTabListType, idx: number) => <p key={idx} className="hover:underline cursor-pointer" onClick={() => { modalClose(true); setOption(item) }}>{item?.text}</p>)
+                            : <div className="relative" ref={ref}>
+                                <div className="flex items-center gap-1 justify-center cursor-pointer" onClick={() => { setDropdown(!dropdown)  }}>
+                                    <p className="" >{session?.user?.email}</p>
+                                    <ArrowDropDownIcon className="" />
+                                </div>
+                                <div className={`absolute ${dropdown ? "flex" : "hidden"} flex-col top-[100%] bg-white right-0 w-full text-[#000] text-[14px] p-2 gap-2`}>
+                                    <p onClick={() => setUserEditModal(true)} className="hover:underline cursor-pointer" >{compData.navbar.edit}</p>
+                                    <p onClick={() => setUserEditPassword(true)} className="hover:underline cursor-pointer" >{compData.navbar.editPassword}</p>
+                                    <p className="hover:underline cursor-pointer" onClick={() => signOut()}>{compData.navbar.logout}</p>
+                                </div>
+                            </div>
                     }
-                    
+
                     <select value={lang} onChange={e => changeLanguage(e.target.value)} className="bg-transparent outline-none uppercase cursor-pointer">
                         <option value="fr" className="uppercase bg-[#33475A]">fr</option>
                         <option value="en" className="uppercase bg-[#33475A]">en</option>
@@ -187,7 +341,13 @@ export default function Navbar({lang, changeLanguage} : {lang: string, changeLan
             </div>
             <div className="flex flex-col justify-center items-center gap-5 pt-4">
                 {
-                    compData.navbar.rightSideTabList?.map((item: RightSideTabListType, idx: number) => <p onClick={() => {modalClose(true); setOption(item)}} key={idx} className="hover:underline cursor-pointer">{item?.text}</p>)
+                    status === "loading" ? <></> : !session?.user?.email ?
+                        compData.navbar.rightSideTabList?.map((item: RightSideTabListType, idx: number) => <p onClick={() => { modalClose(true); setOption(item) }} key={idx} className="hover:underline cursor-pointer">{item?.text}</p>) : <>
+                            <p className="underline">{session?.user?.email}</p>
+                            <p onClick={() => setUserEditModal(true)} className="underline cursor-pointer" >{compData.navbar.edit}</p>
+                            <p onClick={() => setUserEditPassword(true)} className="underline cursor-pointer" >{compData.navbar.editPassword}</p>
+                            <p className="underline" onClick={() => signOut()}>{compData.navbar.logout}</p>
+                        </>
                 }
                 <select value={lang} onChange={e => changeLanguage(e.target.value)} className=" outline-none uppercase">
                     <option value="fr" className="uppercase">fr</option>
@@ -195,6 +355,8 @@ export default function Navbar({lang, changeLanguage} : {lang: string, changeLan
                 </select>
             </div>
         </div>
-        <Auth modalState={modalState} modalClose={modalClose} option={option} lang={lang} handleLogIn={handleLogIn} handleSignUp={handleSignUp} />
+        <Auth loading={loading} modalState={modalState} modalClose={modalClose} option={option} lang={lang} handleLogIn={handleLogIn} handleSignUp={handleSignUp} />
+        <EditUser loading={loading} modalState={userEditModal} modalClose={setUserEditModal} text={compData.navbar.edit} lang={lang} updateProfile={updateProfile} />
+        <EditPassword loading={loading} modalState={userEditPassword} modalClose={setUserEditPassword} lang={lang} updatePassword={updatePassword} />
     </nav>
 }

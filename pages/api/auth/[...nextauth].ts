@@ -9,18 +9,18 @@ const authOptions = {
         CredentialsProvider({
             name: "credentials",
             credentials: {},
-            async authorize(credentials: {email: string, password: string}) {
-                const {email, password} = credentials;
+            async authorize(credentials: { email: string, password: string }) {
+                const { email, password } = credentials;
 
                 try {
                     await connectMongoDB();
-                    const user = await User.findOne({email})
+                    const user = await User.findOne({ email })
 
-                    if(!user) return null
+                    if (!user) return null
 
                     const passwordsMatch = await bcrypt.compare(password, user.password);
 
-                    if(!passwordsMatch) return null
+                    if (!passwordsMatch) return null
 
                     return user
 
@@ -30,16 +30,28 @@ const authOptions = {
             }
         })
     ],
-    session: {
-        strategy: "jwt"
+    callbacks: {
+        jwt: async ({ token, user, profile }) => {
+            if (profile) {
+                token.email = profile.email;
+            } else if (user) {
+                token.email = user.email;
+            }
+            return token;
+        },
+        session: async ({ session, token }) => {
+            if (token) {
+                session.user.email = token.email;
+            }
+            return session;
+        },
     },
-    secret: process.env.NEXTAUTH_SECRET,
-    pages: {
-        signIn: "/"
-    }
+    jwt: {
+        encryption: true,
+    },
 }
 
-const handler = NextAuth(authOptions);
 
-// export {handler as GET, handler as POST}
-export default handler
+export default async function auth(req, res) {
+    return await NextAuth(req, res, authOptions)
+}
