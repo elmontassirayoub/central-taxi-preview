@@ -79,7 +79,8 @@ type BookPage = {
         toPlaceholder: string,
         dateLabel: string,
         timeLabel: string,
-        btn: string
+        btn: string,
+        loadingEstimation: string
     },
     rightSide: {
         title: string,
@@ -203,7 +204,8 @@ const Data: DataType = {
                 toPlaceholder: "Adresse de destination . Veuillez saisir ici l'adresse",
                 dateLabel: "Prise en charge",
                 timeLabel: "Heure",
-                btn: "Estimation du tarif"
+                btn: "Estimation du tarif",
+                loadingEstimation: "Calculation de l'estimation du trajet"
             },
             rightSide: {
                 title: "Réserver Un Taxi À Strasbourg",
@@ -314,7 +316,8 @@ const Data: DataType = {
                 toPlaceholder: "Destination address . Please enter the address here",
                 dateLabel: "Date",
                 timeLabel: "Time",
-                btn: "Price estimate"
+                btn: "Price estimate",
+                loadingEstimation: "Calculating the ride estimate"
             },
             rightSide: {
                 title: "Book A Taxi In Strasbourg",
