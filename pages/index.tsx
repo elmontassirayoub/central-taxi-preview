@@ -52,7 +52,7 @@ export default function Home() {
 
   return (
     <main className="overflow-x-hidden">
-      <Navbar lang={lang} changeLanguage={changeLanguage} />
+      <Navbar lang={lang} changeLanguage={changeLanguage} page="/" />
       <div className="hero lg:h-[700px] h-[400px] text-white text-center relative">
         <div className="pt-[10%] text-[#000]">
           <a href="" className="flex items-center justify-center gap-5 px-7 py-2 mx-auto bg-[#FFDC00] text-[24px] font-bold rounded-[5px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] w-fit">06 47 60 01 71</a>

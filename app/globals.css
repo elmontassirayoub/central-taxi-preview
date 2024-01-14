@@ -18,7 +18,14 @@
 
 .hero {
   background-image: url("../assets/hero.png");
-  background-color: rgba(0, 0, 0, 0.39);
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.4);
+}
+
+.hero-book {
+  background-image: url("../assets/hero-book.jpg");
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.4);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 @keyframes fromTop {

@@ -1,4 +1,4 @@
-export type TabListType = { name: string }
+export type TabListType = { name: string, url: string }
 export type RightSideTabListType = {functionlity: string, text: string}
 export type CardDataType = {icon: string, title: string, text: string}
 
@@ -70,13 +70,31 @@ type ResetPasswordType = {
     success: string
 }
 
+type BookPage = {
+    form: {
+        title: string,
+        fromLabel: string,
+        fromPlaceholder: string,
+        toLabel: string,
+        toPlaceholder: string,
+        dateLabel: string,
+        timeLabel: string,
+        btn: string
+    },
+    rightSide: {
+        title: string,
+        list: string[]
+    }
+}
+
 type LangType = {
     navbar: NavbarType,
     footer: FooterType,
     login: LoginType,
     signup: SignupType,
     home: HomeType,
-    resetPassword: ResetPasswordType
+    resetPassword: ResetPasswordType,
+    book: BookPage
 }
 
 type DataType = {
@@ -88,7 +106,7 @@ type DataType = {
 const Data: DataType = {
     fr: {
         navbar: {
-            tabList: [{ name: "services" }, { name: "aeroport" }, { name: "gares" }, { name: "reserver" }, { name: "contact" }],
+            tabList: [{ name: "services", url: "" }, { name: "aeroport", url: "" }, { name: "gares", url: "" }, { name: "reserver", url: "/book" }, { name: "contact", url: "/contact" }],
             rightSideTabList: [{ functionlity: "register", text: "S'inscrire" }, { functionlity: "login", text: "Se Connecter" }],
             logout: "Se déconnecter",
             edit: "Modifier votre profil",
@@ -175,12 +193,31 @@ const Data: DataType = {
             label4: "Montrer le mot de passe",
             errorMessage: "Le nouveau mot de passe et le mot de passe de confirmation ne correspondent pas",
             success: "Vous avez mis à jour votre mot de passe avec succès"
+        },
+        book: {
+            form: {
+                title: "Estimation Du Prix En Direct",
+                fromLabel: "Adresse de prise en charge",
+                fromPlaceholder: "Adresse de départ . Veuillez saisir ici l'adresse",
+                toLabel: "Adresse de destination",
+                toPlaceholder: "Adresse de destination . Veuillez saisir ici l'adresse",
+                dateLabel: "Prise en charge",
+                timeLabel: "Heure",
+                btn: "Estimation du tarif"
+            },
+            rightSide: {
+                title: "Réserver Un Taxi À Strasbourg",
+                list: [
+                    "Estimer le prix d'un taxi à Strasbourg",
+                    "Réserver en ligne ou par téléphone"
+                ]
+            }
         }
 
     },
     en: {
         navbar: {
-            tabList: [{ name: "services" }, { name: "airports" }, { name: "stations" }, { name: "book" }, { name: "contact" }],
+            tabList: [{ name: "services", url: "" }, { name: "airports", url: "" }, { name: "stations", url: "" }, { name: "book", url: "/book" }, { name: "contact", url: "/contact" }],
             rightSideTabList: [{ functionlity: "register", text: "Register" }, { functionlity: "login", text: "Login" }],
             logout: "Log out",
             edit: "Edit your profile",
@@ -267,6 +304,25 @@ const Data: DataType = {
             label4: "Show Password",
             errorMessage: "The new password and the confirmation password don't match",
             success: "You have successfully updated your password"
+        },
+        book: {
+            form: {
+                title: "Live Price Estimate",
+                fromLabel: "Pick-up address",
+                fromPlaceholder: "Departure address. Please enter the address here",
+                toLabel: "Destination address",
+                toPlaceholder: "Destination address . Please enter the address here",
+                dateLabel: "Date",
+                timeLabel: "Time",
+                btn: "Price estimate"
+            },
+            rightSide: {
+                title: "Book A Taxi In Strasbourg",
+                list: [
+                    "Estimate the price of a taxi in Strasbourg",
+                    "Book online or by phone"
+                ]
+            }
         }
     }
 }

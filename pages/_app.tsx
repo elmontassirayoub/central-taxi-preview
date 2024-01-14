@@ -16,6 +16,7 @@ function MyApp({ Component, pageProps }: {Component: any, pageProps: any}) {
       </Head>
           <Component {...pageProps} />
           <ToastContainer />
+          <script src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}&libraries=places`}></script>
     </SessionProvider>
   )
 }
