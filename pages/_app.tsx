@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 
 import '@/app/globals.css'
 import 'react-toastify/dist/ReactToastify.css';
+import Script from "next/script";
 
 
 function MyApp({ Component, pageProps }: {Component: any, pageProps: any}) {
@@ -16,7 +17,7 @@ function MyApp({ Component, pageProps }: {Component: any, pageProps: any}) {
       </Head>
           <Component {...pageProps} />
           <ToastContainer />
-          <script src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}&libraries=places`}></script>
+          <Script src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}&libraries=places`} async />
     </SessionProvider>
   )
 }
