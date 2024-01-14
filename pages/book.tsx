@@ -160,7 +160,9 @@ export default function Book({ }) {
                 {
                     reservationDetails ? <div className="bg-white rounded-[15px] lg:p-10 py-10 px-4 flex flex-col gap-5 max-w-[500px] justify-center items-center">
                         <h1 className="font-bold">Details</h1>
-                        <DirectionMap depart={departcoordinates} arrive={arrivecoordinates} />
+                        {
+                            (departcoordinates !== null && arrivecoordinates !== null) && <DirectionMap depart={departcoordinates} arrive={arrivecoordinates} />
+                        }
                         <div className="">
                             <p><strong>Starting address: </strong>{departAddress}</p>
                             <p><strong>Arrival address: </strong>{arriveAddress}</p>
@@ -169,7 +171,7 @@ export default function Book({ }) {
                             <p><strong>Distance: </strong>{editingData ? "A calculer" : `${(reservationDetails?.distance?.value / 1000).toFixed(2)} km`}</p>
                         </div>
                         {
-                            !editingData && <p className="text-center">€${reservationDetails?.price}</p>
+                            !editingData && <p className="text-center">€{reservationDetails?.price}</p>
                         }
                     </div> : <>
                         <h1 className="uppercase lg:text-[24px] font-bold text-center">taxi strasbourg services</h1>

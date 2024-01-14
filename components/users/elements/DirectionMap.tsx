@@ -1,13 +1,15 @@
 import { useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
-import L from 'leaflet';
+import L, { LatLngExpression } from 'leaflet';
 
 type CoordinationType = {
     lat: number,
     lng: number
 }
 
-const DirectionMap = ({ depart, arrive }: { depart: CoordinationType | null, arrive: CoordinationType | null }) => {
+// LatLngExpression
+
+const DirectionMap = ({ depart, arrive }: { depart: LatLngExpression, arrive: LatLngExpression }) => {
 
     const mapRef = useRef<L.Map>(null);
 
@@ -19,9 +21,6 @@ const DirectionMap = ({ depart, arrive }: { depart: CoordinationType | null, arr
             mapRef.current?.fitBounds(bounds);
         }
     }, [markers]);
-
-
-    if (depart === null || arrive === null) return
 
     return (
         <MapContainer
