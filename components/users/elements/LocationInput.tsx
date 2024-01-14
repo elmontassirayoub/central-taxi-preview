@@ -65,12 +65,10 @@ export default function LocationInput(
                             const attrs = { ...getSuggestionItemProps(suggestion, { style }) }
                             attrs.key = idx
 
-                            console.log(attrs)
-
                             return (
                                 <div
-                                    // {...attrs}
-                                    {...getSuggestionItemProps(suggestion, { style })}
+                                    {...attrs}
+                                    // {...getSuggestionItemProps(suggestion, { style })}
                                     className="lg:w-[350px] py-2 cursor-pointer text-[14px] Rsec2__each"
                                 >
                                     <i className="fa fa-map-marker"></i> {suggestion.description}
