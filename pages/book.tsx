@@ -8,6 +8,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import Footer from "@/components/users/elements/Footer";
 import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 import { getPrice } from "@/utils/booking";
+import { useLoadScript } from "@react-google-maps/api";
 
 type ReservationDetailsType = {
     price: number,
@@ -96,7 +97,7 @@ export default function Book({ }) {
                 <div className="reserveform1_date div_container">
                     <p className="font-bold mb-2" onClick={() => inputRefDate.current?.focus()}>{dateLabel}</p>
                     <div className="flex">
-                        <div className="border-[1px] border-r-[0px] h-full h-10 rounded-l-[5px] px-2 flex items-center">
+                        <div className="border-[1px] border-r-[0px] h-10 rounded-l-[5px] px-2 flex items-center">
                             <DateRangeIcon onClick={() => inputRefDate.current?.focus()} className="" />
                         </div>
                         <input
@@ -111,7 +112,7 @@ export default function Book({ }) {
                 <div className="reserveform1_date reserveform1_time div_container">
                     <p className="font-bold mb-2" onClick={() => inputRefTime.current?.focus()}>{timeLabel}</p>
                     <div className="flex">
-                        <div className="border-[1px] border-r-[0px] h-full h-10 rounded-l-[5px] px-2 flex items-center">
+                        <div className="border-[1px] border-r-[0px] h-10 rounded-l-[5px] px-2 flex items-center">
                             <AccessTimeIcon className="" onClick={() => inputRefTime.current?.focus()} />
                         </div>
                         <input
@@ -129,6 +130,7 @@ export default function Book({ }) {
                     className="cursor-pointer flex items-center justify-center gap-5 px-7 py-2 mx-auto bg-[#FFDC00] lg:text-[18px] font-bold rounded-[5px] mt-5 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]"
                 />
             </form>
+            
             <div className="hidden lg:flex flex-col gap-3">
                 <h1 className="uppercase lg:text-[24px] font-bold text-center">taxi strasbourg services</h1>
                 <h2 className="lg:text-[30px] font-extrabold text-center">{rightSide.title}</h2>
