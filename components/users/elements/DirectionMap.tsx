@@ -9,7 +9,6 @@ type CoordinationType = {
 
 const DirectionMap = ({ depart, arrive }: { depart: CoordinationType | null, arrive: CoordinationType | null }) => {
 
-    if (depart === null || arrive === null) return
     const mapRef = useRef<L.Map>(null);
 
     const markers = [depart, arrive]
@@ -21,6 +20,8 @@ const DirectionMap = ({ depart, arrive }: { depart: CoordinationType | null, arr
         }
     }, [markers]);
 
+
+    if (depart === null || arrive === null) return
 
     return (
         <MapContainer
