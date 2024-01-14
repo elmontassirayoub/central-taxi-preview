@@ -8,7 +8,6 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import Footer from "@/components/users/elements/Footer";
 import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 import { getPrice } from "@/utils/booking";
-import { useLoadScript } from "@react-google-maps/api";
 
 type ReservationDetailsType = {
     price: number,

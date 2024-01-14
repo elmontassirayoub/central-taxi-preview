@@ -1,7 +1,6 @@
 import { MutableRefObject } from "react";
 import PlacesAutocomplete from "react-places-autocomplete";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { useLoadScript } from "@react-google-maps/api";
 
 export default function LocationInput(
     { value, setValue, handleSelect, inputRef, label, placeholder }:
@@ -14,15 +13,6 @@ export default function LocationInput(
             placeholder: string
         }
 ) {
-
-    // const {isLoaded} = useLoadScript({
-    //     id: "google-map-script",
-    //     googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY as string,
-    //     libraries: ["places"]
-    // })
-
-    // if(!isLoaded) return
-
     return <PlacesAutocomplete
         value={value}
         onChange={e => setValue(e)}
@@ -58,7 +48,6 @@ export default function LocationInput(
                         {suggestions.map((suggestion, idx) => {
                             const style = {
                                 backgroundColor: suggestion.active ? "#33475A" : "#fff",
-                                // padding: "0 8px",
                                 color: suggestion.active ? "white" : "black",
                             };
 
