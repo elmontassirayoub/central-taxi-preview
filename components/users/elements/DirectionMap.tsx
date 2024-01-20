@@ -30,7 +30,7 @@ const DirectionMap = ({ depart, arrive }: { depart: LatLngExpression, arrive: La
             bounds={[[90, 180], [-90, 180]]}
             minZoom={2}
             maxBoundsViscosity={1.0} 
-            className="w-[300px] h-[300px]">
+            className="w-[300px] h-[300px] z-[1]">
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -70,6 +70,14 @@ type ResetPasswordType = {
     success: string
 }
 
+export type BookDetails = {
+    start: string,
+    finish: string,
+    dateAndTime: string,
+    duration: string,
+    distance: string
+}
+
 type BookPage = {
     form: {
         title: string,
@@ -80,15 +88,24 @@ type BookPage = {
         dateLabel: string,
         timeLabel: string,
         btn: string,
-        loadingEstimation: string
+        showDetails: string,
+        loadingEstimation: string,
+        loadingReservation: string,
+        success: string,
+        error: string
     },
     rightSide: {
         title: string,
         list: string[]
+    },
+    details: BookDetails,
+    bookingForm: {
+        back: string,
+        btn: string
     }
 }
 
-type LangType = {
+export type LangType = {
     navbar: NavbarType,
     footer: FooterType,
     login: LoginType,
@@ -205,7 +222,11 @@ const Data: DataType = {
                 dateLabel: "Prise en charge",
                 timeLabel: "Heure",
                 btn: "Estimation du tarif",
-                loadingEstimation: "Calculation de l'estimation du trajet"
+                showDetails: "Affichage les détails de la réservation",
+                loadingEstimation: "Calculation de l'estimation du trajet",
+                loadingReservation: "Votre réservation est en cours d'enregistrement",
+                success: "Votre réservation a été enregistrée",
+                error: "Il y avait une erreur"
             },
             rightSide: {
                 title: "Réserver Un Taxi À Strasbourg",
@@ -213,6 +234,17 @@ const Data: DataType = {
                     "Estimer le prix d'un taxi à Strasbourg",
                     "Réserver en ligne ou par téléphone"
                 ]
+            },
+            details: {
+                start: "Adresse de départ",
+                finish: "Adresse d'arrivée",
+                dateAndTime: "Date et l'heure",
+                duration: "Temps de voyage",
+                distance: "Distance"
+            },
+            bookingForm: {
+                back: "Retourner",
+                btn: "confirmer la réservation"
             }
         }
 
@@ -317,7 +349,11 @@ const Data: DataType = {
                 dateLabel: "Date",
                 timeLabel: "Time",
                 btn: "Price estimate",
-                loadingEstimation: "Calculating the ride estimate"
+                showDetails: "Showing booking details",
+                loadingEstimation: "Calculating the ride estimate",
+                loadingReservation: "Your reservation is being saved",
+                success: "Your reservation has been saved",
+                error: "There was an error"
             },
             rightSide: {
                 title: "Book A Taxi In Strasbourg",
@@ -325,6 +361,17 @@ const Data: DataType = {
                     "Estimate the price of a taxi in Strasbourg",
                     "Book online or by phone"
                 ]
+            },
+            details: {
+                start: "Starting address",
+                finish: "Arrival address",
+                dateAndTime: "Date and time",
+                duration: "Travel time",
+                distance: "Distance"
+            },
+            bookingForm: {
+                back: "Go Back",
+                btn: "confirm booking"
             }
         }
     }

@@ -16,7 +16,9 @@ export default async function handler(req , res) {
 
     if(req.method === "GET") {
         const user = await User.findOne({email: session.user.email})
-        return res.status(200).json({firstname: user.firstname, lastname: user.lastname, phonenumber: user.phonenumber, address: user.address})
+        const bodyObj = {firstname: user.firstname, lastname: user.lastname, phonenumber: user.phonenumber, address: user.address}
+        const returnedObj = req?.query?.reservation === "true" ? {...bodyObj, message: "", email: user?.email} : {...bodyObj}
+        return res.status(200).json(returnedObj)
     }
 
 }

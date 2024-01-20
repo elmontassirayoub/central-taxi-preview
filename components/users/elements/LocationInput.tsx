@@ -37,7 +37,7 @@ export default function LocationInput(
                             {...getInputProps({
                                 placeholder: placeholder
                             })}
-                            className="lg:w-[350px] w-full border-[1px] h-10 rounded-[5px] rounded-l-[0px] outline-0 focus:border-[#33475A] px-1"
+                            className="w-full border-[1px] h-10 rounded-[5px] rounded-l-[0px] outline-0 focus:border-[#33475A] px-1"
                         />
                     </div>
                 </div>

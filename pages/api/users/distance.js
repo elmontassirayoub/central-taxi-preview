@@ -1,5 +1,4 @@
 export default async function handler(req, res) {
-    // 
     let { depart, arrive } = req.body
     let url = `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=place_id:${depart}&destinations=place_id:${arrive}&key=${process.env.GOOGLE_MAPS_API_KEY_DISTANCE}`
 

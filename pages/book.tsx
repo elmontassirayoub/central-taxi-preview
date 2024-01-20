@@ -10,6 +10,9 @@ import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 import { getPrice } from "@/utils/booking";
 import Loader from "@/components/common/Loader";
 import dynamic from 'next/dynamic'
+import BookingDetails from "@/components/users/modals/BookingDetails";
+import ReservationForm from "@/components/users/elements/ReservationForm";
+import { toast } from 'react-toastify';
 
 const DirectionMap = dynamic(() => import("@/components/users/elements/DirectionMap"), {
     ssr: false
@@ -21,9 +24,18 @@ type ReservationDetailsType = {
     duration: { text: string, value: number }
 }
 
-type CoordinationType = {
+export type CoordinationType = {
     lat: number,
     lng: number
+}
+
+export type ReservationData = {
+    firstname: "",
+    lastname: "",
+    phonenumber: "",
+    address: "",
+    email: "",
+    message: ""
 }
 
 export default function Book({ }) {
@@ -49,6 +61,9 @@ export default function Book({ }) {
     const [reservationDetails, setReservationDetails] = useState<ReservationDetailsType | null>(null)
     const [loading, setLoading] = useState({ show: false, message: "" })
     const [editingData, setEditingData] = useState(false)
+    const [showDetails, setShowDetails] = useState(false)
+    const [showReservationForm, setShowReservationForm] = useState(false)
+    const [reservationData, setReservationData] = useState<ReservationData>({ firstname: "", lastname: "", phonenumber: "", address: "", email: "", message: "" })
 
     useEffect(() => {
         const storedLang = localStorage.getItem("lang")
@@ -68,7 +83,7 @@ export default function Book({ }) {
 
     const handleSelect = async (address: string, placeID: string, { setValue, setPlaceId, setCoordination }: { setValue: Function, setPlaceId: Function, setCoordination: Function }) => {
 
-        if(!editingData) setEditingData(true)
+        if (!editingData) setEditingData(true)
         setPlaceId(placeID);
         setValue(address)
 
@@ -81,6 +96,16 @@ export default function Book({ }) {
     const pageData = Data[lang]
 
     const handleEstimation = async () => {
+        if(!departPlaceId || !arrivePlaceId || !date || !time) {
+            toast.error(pageData.signup.fillAllFields, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                progress: undefined,
+            }); 
+            return
+        }
         setLoading({ show: true, message: pageData.book.form.loadingEstimation })
         try {
             const response = await fetch("/api/users/distance", {
@@ -101,6 +126,65 @@ export default function Book({ }) {
         }
     }
 
+    const handleReservation = async () => {
+        if(!reservationData?.firstname || !reservationData?.lastname || !reservationData?.email || !reservationData?.phonenumber || !reservationData?.address) {
+            toast.error(pageData.signup.fillAllFields, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                progress: undefined,
+            }); 
+            return
+        }
+        setLoading({ show: true, message: pageData.book.form.loadingReservation })
+        try {
+            const response = await fetch("/api/users/book", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ ...reservationData, from: departAddress, to: arriveAddress, date, time, price: reservationDetails?.price })
+            })
+            if(response.status === 201) {
+                toast.success(pageData.book.form.success, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    progress: undefined,
+                });   
+                setTimeout(() => {
+                    location.reload()                    
+                }, 4000);
+                return
+            }
+            toast.error(pageData.book.form.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                progress: undefined,
+            });   
+        } catch (e) {
+            console.log("Error: ", e)
+            toast.error(pageData.book.form.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                progress: undefined,
+            });
+    } finally {
+            setLoading({ show: false, message: "" })
+        }
+    }
+
+    const ReservationFormHandler = async () => {
+        if (!showReservationForm) await handleEstimation()
+        else await handleReservation()
+    }
+
 
 
     const { form: { title, fromLabel, fromPlaceholder, toLabel, toPlaceholder, dateLabel, timeLabel, btn }, rightSide } = pageData.book
@@ -108,52 +192,64 @@ export default function Book({ }) {
     return <main className="">
         <Navbar lang={lang} changeLanguage={changeLanguage} page="/book" />
         <div className="w-full hero-book flex flex-col lg:flex-row lg:p-10 py-10 px-4 gap-10 lg:justify-center items-center mb-20 relative">
-            <form onSubmit={(e) => { e.preventDefault(); handleEstimation() }} className="w-full lg:w-fit bg-white rounded-[15px] lg:p-10 py-10 px-4 flex flex-col gap-5">
-                <h1 className="text-[#33475A] text-center font-bold text-[24px]">{title}</h1>
-                <LocationInput label={fromLabel} placeholder={fromPlaceholder} value={departAddress} setValue={setDepartAddress} handleSelect={(a, p) => handleSelect(a, p, { setValue: setDepartAddress, setPlaceId: setDepartPlaceId, setCoordination: setDepartCoordinates })} inputRef={departRef} />
-                <LocationInput label={toLabel} placeholder={toPlaceholder} value={arriveAddress} setValue={setArriveAddress} handleSelect={(a, p) => handleSelect(a, p, { setValue: setArriveAddress, setPlaceId: setArrivePlaceId, setCoordination: setArriveCoordinates })} inputRef={arriveRef} />
-                <div className="reserveform1_date div_container">
-                    <p className="font-bold mb-2" onClick={() => inputRefDate.current?.focus()}>{dateLabel}</p>
-                    <div className="flex">
-                        <div className="border-[1px] border-r-[0px] h-10 rounded-l-[5px] px-2 flex items-center">
-                            <DateRangeIcon onClick={() => inputRefDate.current?.focus()} className="" />
-                        </div>
-                        <input
-                            className="w-full border-[1px] h-10 rounded-[5px] rounded-l-[0px] outline-0 focus:border-[#33475A] px-1"
-                            min={date.toISOString().split('T')[0]}
-                            type="date"
-                            value={day}
-                            onChange={(e) => setDay(e.target.value)}
-                            ref={inputRefDate}
-                        />
-                    </div>
-                </div>
-                <div className="reserveform1_date reserveform1_time div_container">
-                    <p className="font-bold mb-2" onClick={() => inputRefTime.current?.focus()}>{timeLabel}</p>
-                    <div className="flex">
-                        <div className="border-[1px] border-r-[0px] h-10 rounded-l-[5px] px-2 flex items-center">
-                            <AccessTimeIcon className="" onClick={() => inputRefTime.current?.focus()} />
-                        </div>
-                        <input
-                            className="w-full border-[1px] h-10 rounded-[5px] rounded-l-[0px] outline-0 focus:border-[#33475A] px-1"
-                            type="time"
-                            value={time}
-                            onChange={(e) => setTime(e.target.value)}
-                            ref={inputRefTime}
-                        />
-                    </div>
-                </div>
-                {
-                    (reservationDetails && !editingData) ? <button className="cursor-pointer flex items-center justify-center gap-5 px-7 py-2 mx-auto bg-[#FFDC00] lg:text-[18px] font-bold rounded-[5px] mt-5 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]"
-                    >
-                        {pageData?.home?.hero?.btn}: €{reservationDetails?.price}
-                    </button> : <input
-                        type="submit"
-                        value={btn}
-                        className="cursor-pointer flex items-center justify-center gap-5 px-7 py-2 mx-auto bg-[#FFDC00] lg:text-[18px] font-bold rounded-[5px] mt-5 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]"
-                    />
-                }
+            <form onSubmit={(e) => { e.preventDefault(); ReservationFormHandler() }} className="w-full lg:w-fit bg-white rounded-[15px] lg:p-10 py-10 px-4 flex flex-col gap-5 lg:min-w-[500px] lg:min-h-[600px]">
 
+                {
+                    !showReservationForm ? <><h1 className="text-[#33475A] text-center font-bold text-[24px]">{title}</h1>
+                        <LocationInput label={fromLabel} placeholder={fromPlaceholder} value={departAddress} setValue={setDepartAddress} handleSelect={(a, p) => handleSelect(a, p, { setValue: setDepartAddress, setPlaceId: setDepartPlaceId, setCoordination: setDepartCoordinates })} inputRef={departRef} />
+                        <LocationInput label={toLabel} placeholder={toPlaceholder} value={arriveAddress} setValue={setArriveAddress} handleSelect={(a, p) => handleSelect(a, p, { setValue: setArriveAddress, setPlaceId: setArrivePlaceId, setCoordination: setArriveCoordinates })} inputRef={arriveRef} />
+                        <div className="reserveform1_date div_container">
+                            <p className="font-bold mb-2" onClick={() => inputRefDate.current?.focus()}>{dateLabel}</p>
+                            <div className="flex">
+                                <div className="border-[1px] border-r-[0px] h-10 rounded-l-[5px] px-2 flex items-center">
+                                    <DateRangeIcon onClick={() => inputRefDate.current?.focus()} className="" />
+                                </div>
+                                <input
+                                    className="w-full border-[1px] h-10 rounded-[5px] rounded-l-[0px] outline-0 focus:border-[#33475A] px-1"
+                                    min={date.toISOString().split('T')[0]}
+                                    type="date"
+                                    value={day}
+                                    onChange={(e) => setDay(e.target.value)}
+                                    ref={inputRefDate}
+                                />
+                            </div>
+                        </div>
+                        <div className="reserveform1_date reserveform1_time div_container">
+                            <p className="font-bold mb-2" onClick={() => inputRefTime.current?.focus()}>{timeLabel}</p>
+                            <div className="flex">
+                                <div className="border-[1px] border-r-[0px] h-10 rounded-l-[5px] px-2 flex items-center">
+                                    <AccessTimeIcon className="" onClick={() => inputRefTime.current?.focus()} />
+                                </div>
+                                <input
+                                    className="w-full border-[1px] h-10 rounded-[5px] rounded-l-[0px] outline-0 focus:border-[#33475A] px-1"
+                                    type="time"
+                                    value={time}
+                                    onChange={(e) => setTime(e.target.value)}
+                                    ref={inputRefTime}
+                                />
+                            </div>
+                        </div>
+                        {
+                            (reservationDetails && !editingData) ? <div>
+                                <button className="cursor-pointer flex items-center justify-center gap-5 px-7 py-2 mx-auto bg-[#FFDC00] lg:text-[18px] font-bold rounded-[5px] mt-5 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]"
+                                onClick={() => setShowReservationForm(true)}
+                                >
+                                    {pageData?.home?.hero?.btn}: €{reservationDetails?.price.toFixed(2)}
+                                </button>
+                                <button
+                                    onClick={() => setShowDetails(true)}
+                                    className="cursor-pointer lg:hidden flex items-center justify-center gap-5 px-7 py-2 mx-auto bg-[#FFDC00] lg:text-[18px] font-bold rounded-[5px] mt-5 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]"
+                                >
+                                    {pageData?.book?.form?.showDetails}
+                                </button>
+                            </div> : <input
+                                type="submit"
+                                value={btn}
+                                className="cursor-pointer flex items-center justify-center gap-5 px-7 py-2 mx-auto bg-[#FFDC00] lg:text-[18px] font-bold rounded-[5px] mt-5 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]"
+                            />
+                        }
+                        </> : <ReservationForm reservationData={reservationData} setReservationData={setReservationData} setShowReservationForm={setShowReservationForm} compData={pageData} loading={loading} setLoading={setLoading} />
+                }
             </form>
 
             <div className="hidden lg:flex flex-col gap-3">
@@ -163,15 +259,15 @@ export default function Book({ }) {
                         {
                             (departcoordinates !== null && arrivecoordinates !== null) && <DirectionMap depart={departcoordinates} arrive={arrivecoordinates} />
                         }
-                        <div className="">
-                            <p><strong>Starting address: </strong>{departAddress}</p>
-                            <p><strong>Arrival address: </strong>{arriveAddress}</p>
-                            <p><strong>Date and time: </strong>{day} {time}</p>
-                            <p><strong>Travel time: </strong>{editingData ? "A calculer" : reservationDetails?.duration?.text}</p>
-                            <p><strong>Distance: </strong>{editingData ? "A calculer" : `${(reservationDetails?.distance?.value / 1000).toFixed(2)} km`}</p>
+                        <div className="w-full">
+                            <p><strong>{pageData?.book?.details?.start}: </strong>{departAddress}</p>
+                            <p><strong>{pageData?.book?.details?.finish}: </strong>{arriveAddress}</p>
+                            <p><strong>{pageData?.book?.details?.dateAndTime}: </strong>{day} {time}</p>
+                            <p><strong>{pageData?.book?.details?.duration}: </strong>{editingData ? "A calculer" : reservationDetails?.duration?.text}</p>
+                            <p><strong>{pageData?.book?.details?.distance}: </strong>{editingData ? "A calculer" : `${(reservationDetails?.distance?.value / 1000).toFixed(2)} km`}</p>
                         </div>
                         {
-                            !editingData && <p className="text-center">€{reservationDetails?.price}</p>
+                            !editingData && <p className="text-center">€{reservationDetails?.price.toFixed(2)}</p>
                         }
                     </div> : <>
                         <h1 className="uppercase lg:text-[24px] font-bold text-center">taxi strasbourg services</h1>
@@ -191,6 +287,9 @@ export default function Book({ }) {
                 }
 
             </div>
+            {
+                (showDetails && departcoordinates !== null && arrivecoordinates !== null && reservationDetails) && <BookingDetails modalState={showDetails} modalClose={setShowDetails} data={{ departcoordinates, arrivecoordinates, departAddress, arriveAddress, day, time, editingData, duration: reservationDetails?.duration?.text, distance: reservationDetails?.distance?.value, price: reservationDetails?.price }} details={pageData.book.details} />
+            }
             {
                 loading.show && <Loader message={loading.message} />
             }
