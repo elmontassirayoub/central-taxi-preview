@@ -10,8 +10,16 @@ import RateReviewIcon from '@mui/icons-material/RateReview';
 import Footer from "@/components/users/elements/Footer";
 import Data, { CardDataType } from '@/assets/data'
 import { useEffect, useState } from "react";
+import checkAuthentication from "@/lib/middlewares/checkAuthenticated";
 
-export default function Home() {
+export const getServerSideProps = checkAuthentication(async (context: any, admin: boolean) => {
+  return {
+    props: {
+      admin
+    }
+  }
+})
+export default function Home({admin = false}: {admin: boolean}) {
 
   const [lang, setLang] = useState("fr")
 
@@ -52,7 +60,7 @@ export default function Home() {
 
   return (
     <main className="overflow-x-hidden">
-      <Navbar lang={lang} changeLanguage={changeLanguage} page="/" />
+      <Navbar lang={lang} changeLanguage={changeLanguage} page="/" admin={admin} />
       <div className="hero lg:h-[700px] h-[400px] text-white text-center relative">
         <div className="pt-[10%] text-[#000]">
           <a href="" className="flex items-center justify-center gap-5 px-7 py-2 mx-auto bg-[#FFDC00] text-[24px] font-bold rounded-[5px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] w-fit">06 47 60 01 71</a>

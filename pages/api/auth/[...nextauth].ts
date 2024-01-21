@@ -15,6 +15,11 @@ export const authOptions = {
             async authorize(credentials): Promise<any> {
 
                 try {
+                    
+                    if(credentials?.email === process.env.ADMIN_EMAIL && credentials?.password === process.env.ADMIN_PASSWORD) {
+                        return {email: credentials?.email, role: "Adminstrator"}
+                    }
+
                     await connectMongoDB();
                     const user = await User.findOne({ email: credentials?.email })
 

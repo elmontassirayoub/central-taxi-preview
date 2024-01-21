@@ -13,6 +13,7 @@ import dynamic from 'next/dynamic'
 import BookingDetails from "@/components/users/modals/BookingDetails";
 import ReservationForm from "@/components/users/elements/ReservationForm";
 import { toast } from 'react-toastify';
+import checkAuthentication from "@/lib/middlewares/checkAuthenticated";
 
 const DirectionMap = dynamic(() => import("@/components/users/elements/DirectionMap"), {
     ssr: false
@@ -38,7 +39,25 @@ export type ReservationData = {
     message: ""
 }
 
-export default function Book({ }) {
+export const getServerSideProps = checkAuthentication(async (context: any, admin: boolean) => {
+
+    if(admin) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false,
+            },
+        }
+    }
+    
+    return {
+      props: {
+        admin
+      }
+    }
+  })
+
+export default function Book({ admin = false }: {admin: boolean}) {
 
     const date = new Date();
     const mm =
@@ -190,7 +209,7 @@ export default function Book({ }) {
     const { form: { title, fromLabel, fromPlaceholder, toLabel, toPlaceholder, dateLabel, timeLabel, btn }, rightSide } = pageData.book
 
     return <main className="">
-        <Navbar lang={lang} changeLanguage={changeLanguage} page="/book" />
+        <Navbar admin={admin} lang={lang} changeLanguage={changeLanguage} page="/book" />
         <div className="w-full hero-book flex flex-col lg:flex-row lg:p-10 py-10 px-4 gap-10 lg:justify-center items-center mb-20 relative">
             <form onSubmit={(e) => { e.preventDefault(); ReservationFormHandler() }} className="w-full lg:w-fit bg-white rounded-[15px] lg:p-10 py-10 px-4 flex flex-col gap-5 lg:min-w-[500px] lg:min-h-[600px]">
 

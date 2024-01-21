@@ -26,12 +26,12 @@ type updatePasswordType = {
 type updateUserData = {
     firstname: string,
     lastname: string,
-    phonenumber: string, 
+    phonenumber: string,
     address: string,
 }
 
 
-export default function Navbar({ lang, changeLanguage, page }: { lang: string, changeLanguage: Function, page: string }) {
+export default function Navbar({ lang, changeLanguage, page, admin }: { lang: string, changeLanguage: Function, page: string, admin: boolean }) {
 
     const [toggleMenu, setToggleMenu] = useState(false)
     const [modalState, modalClose] = useState(false)
@@ -99,7 +99,7 @@ export default function Navbar({ lang, changeLanguage, page }: { lang: string, c
                 closeOnClick: true,
                 progress: undefined,
             });
-        } finally{
+        } finally {
             setLoading(false)
         }
     }
@@ -192,7 +192,7 @@ export default function Navbar({ lang, changeLanguage, page }: { lang: string, c
             })
 
             const result = await response.json()
-            if(result.message === "success") {
+            if (result.message === "success") {
                 toast.success(compData.navbar.successEdit, {
                     position: "top-right",
                     autoClose: 3000,
@@ -239,7 +239,7 @@ export default function Navbar({ lang, changeLanguage, page }: { lang: string, c
         }
 
         // need to check if the passwords inputed match
-        if(passwordData.newPassword !== passwordData.confirmationPassword) {
+        if (passwordData.newPassword !== passwordData.confirmationPassword) {
             toast.error(compData.resetPassword.errorMessage, {
                 position: "top-right",
                 autoClose: 3000,
@@ -261,7 +261,7 @@ export default function Navbar({ lang, changeLanguage, page }: { lang: string, c
             })
 
             const result = await response.json()
-            if(result.message === "success") {
+            if (result.message === "success") {
                 toast.success(compData.resetPassword.success, {
                     position: "top-right",
                     autoClose: 3000,
@@ -315,7 +315,10 @@ export default function Navbar({ lang, changeLanguage, page }: { lang: string, c
             <section className="bg-[#33475A] h-[60px] text-white items-center text-[18px] font-semibold px-10 justify-between lg:flex hidden">
                 <div className="h-full flex items-center gap-10">
                     {
-                        compData.navbar.tabList?.map((item: TabListType, key: number) => <Link className={`uppercase hover:underline h-full flex items-center justify-center px-2 ${page === item.url ? "bg-[#000]" : ""}`} href={item?.url} key={key}>{item?.name}</Link>)
+                        compData.navbar.tabList?.map((item: TabListType, key: number) => {
+                        if(item?.url === "/book" && admin) return
+                        return <Link className={`uppercase hover:underline h-full flex items-center justify-center px-2 ${page === item.url ? "bg-[#000]" : ""}`} href={item?.url} key={key}>{item?.name}</Link>
+                    })
                     }
                 </div>
                 <div className="flex gap-10">
@@ -323,13 +326,15 @@ export default function Navbar({ lang, changeLanguage, page }: { lang: string, c
                         status === "loading" ? <></> : !session?.user?.email ?
                             compData.navbar.rightSideTabList?.map((item: RightSideTabListType, idx: number) => <p key={idx} className="hover:underline cursor-pointer" onClick={() => { modalClose(true); setOption(item) }}>{item?.text}</p>)
                             : <div className="relative" ref={ref}>
-                                <div className="flex items-center gap-1 justify-center cursor-pointer" onClick={() => { setDropdown(!dropdown)  }}>
+                                <div className="flex items-center gap-1 justify-center cursor-pointer" onClick={() => { setDropdown(!dropdown) }}>
                                     <p className="" >{session?.user?.email}</p>
                                     <ArrowDropDownIcon className="" />
                                 </div>
                                 <div className={`absolute ${dropdown ? "flex" : "hidden"} flex-col top-[100%] bg-white right-0 w-full text-[#000] text-[14px] p-2 gap-2`}>
-                                    <p onClick={() => setUserEditModal(true)} className="hover:underline cursor-pointer" >{compData.navbar.edit}</p>
-                                    <p onClick={() => setUserEditPassword(true)} className="hover:underline cursor-pointer" >{compData.navbar.editPassword}</p>
+                                    {admin ? <Link href="/admin" className="hover:underline">Dashboard</Link> : <>
+                                        <p onClick={() => setUserEditModal(true)} className="hover:underline cursor-pointer" >{compData.navbar.edit}</p>
+                                        <p onClick={() => setUserEditPassword(true)} className="hover:underline cursor-pointer" >{compData.navbar.editPassword}</p>
+                                    </>}
                                     <p className="hover:underline cursor-pointer" onClick={() => signOut()}>{compData.navbar.logout}</p>
                                 </div>
                             </div>
@@ -349,7 +354,9 @@ export default function Navbar({ lang, changeLanguage, page }: { lang: string, c
         <div className={`${!toggleMenu ? "hidden" : "flex"} absolute left-0 font-semibold mobile-navtab top-[100%] z-[5] bg-[#fff] w-full py-4 flex-col`}>
             <div className="h-full flex flex-col justify-center items-center gap-5 w-full border-b-[1px] pb-4 border-[#000] text-[18px]">
                 {
-                    compData.navbar.tabList?.map((item: TabListType, key: number) => <Link className={`uppercase py-1 w-full text-center ${page === item.url ? "bg-[#000] text-white" : ""}`} href={item?.url} key={key}>{item?.name}</Link>)
+                    compData.navbar.tabList?.map((item: TabListType, key: number) => {
+                    if(item?.url === "/book" && admin) return
+                    return <Link className={`uppercase py-1 w-full text-center ${page === item.url ? "bg-[#000] text-white" : ""}`} href={item?.url} key={key}>{item?.name}</Link>})
                 }
             </div>
             <div className="flex flex-col justify-center items-center gap-5 pt-4">
@@ -357,8 +364,13 @@ export default function Navbar({ lang, changeLanguage, page }: { lang: string, c
                     status === "loading" ? <></> : !session?.user?.email ?
                         compData.navbar.rightSideTabList?.map((item: RightSideTabListType, idx: number) => <p onClick={() => { modalClose(true); setOption(item) }} key={idx} className="hover:underline cursor-pointer">{item?.text}</p>) : <>
                             <p className="underline">{session?.user?.email}</p>
-                            <p onClick={() => setUserEditModal(true)} className="underline cursor-pointer" >{compData.navbar.edit}</p>
-                            <p onClick={() => setUserEditPassword(true)} className="underline cursor-pointer" >{compData.navbar.editPassword}</p>
+                            {
+                                admin ? <Link href="/admin">Dashboard</Link> : <>
+                                    <p onClick={() => setUserEditModal(true)} className="underline cursor-pointer" >{compData.navbar.edit}</p>
+                                    <p onClick={() => setUserEditPassword(true)} className="underline cursor-pointer" >{compData.navbar.editPassword}</p>
+                                </>
+                            }
+
                             <p className="underline" onClick={() => signOut()}>{compData.navbar.logout}</p>
                         </>
                 }
@@ -368,8 +380,14 @@ export default function Navbar({ lang, changeLanguage, page }: { lang: string, c
                 </select>
             </div>
         </div>
-        <Auth loading={loading} modalState={modalState} modalClose={modalClose} option={option} lang={lang} handleLogIn={handleLogIn} handleSignUp={handleSignUp} />
-        <EditUser loading={loading} modalState={userEditModal} modalClose={setUserEditModal} text={compData.navbar.edit} lang={lang} updateProfile={updateProfile} />
-        <EditPassword loading={loading} modalState={userEditPassword} modalClose={setUserEditPassword} lang={lang} updatePassword={updatePassword} />
+        {
+            modalState && <Auth loading={loading} modalState={modalState} modalClose={modalClose} option={option} lang={lang} handleLogIn={handleLogIn} handleSignUp={handleSignUp} />
+        }
+        {
+            userEditModal && <EditUser loading={loading} modalState={userEditModal} modalClose={setUserEditModal} text={compData.navbar.edit} lang={lang} updateProfile={updateProfile} />
+        }
+        {
+            userEditPassword && <EditPassword loading={loading} modalState={userEditPassword} modalClose={setUserEditPassword} lang={lang} updatePassword={updatePassword} />
+        }
     </nav>
 }

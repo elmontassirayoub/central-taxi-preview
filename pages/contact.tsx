@@ -1,7 +1,16 @@
 import Navbar from "@/components/users/elements/Navbar";
+import checkAuthentication from "@/lib/middlewares/checkAuthenticated";
 import { useEffect, useState } from "react";
 
-export default function Contact () {
+export const getServerSideProps = checkAuthentication(async (context: any, admin: boolean) => {
+  return {
+    props: {
+      admin
+    }
+  }
+})
+
+export default function Contact ({admin = false}: {admin: boolean}) {
 
   const [lang, setLang] = useState("fr")
 
@@ -17,7 +26,7 @@ export default function Contact () {
       }
 
     return <main className="">
-      <Navbar lang={lang} changeLanguage={changeLanguage} page="/contact" />
+      <Navbar admin={admin} lang={lang} changeLanguage={changeLanguage} page="/contact" />
     Contact page
   </main>
 }
