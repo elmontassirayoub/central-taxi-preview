@@ -11,7 +11,7 @@ const rideSchema = new Schema({
     date: {type: String, required: true },
     time: {type: String, required: true },
     price: {type: String, required: true },
-    message: {type: String, required: true },
+    message: {type: String },
     status: {type: String, required: true },
     userId: {type: String, required: false }
 }, {timestamps: true})

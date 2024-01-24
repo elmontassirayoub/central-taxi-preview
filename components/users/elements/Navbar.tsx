@@ -4,7 +4,7 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import EmailIcon from '@mui/icons-material/Email';
 import Link from "next/link";
 import MenuIcon from '@mui/icons-material/Menu';
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import Data, { RightSideTabListType, TabListType } from '@/assets/data'
 import Auth from "../modals/Auth";
