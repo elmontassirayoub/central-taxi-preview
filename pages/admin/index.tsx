@@ -58,6 +58,15 @@ export default function Index({ }) {
           }
         </select>
       </div>
+      <div className="my-5 flex justify-end gap-5 items-center">
+        <button className={`p-2 ${page > 0 ? "hover:bg-[#CECECE]" : "text-[#CECECE]"}  rounded-[50%] flex justify-center items-center`} onClick={() => setPage(page - 1)} disabled={page <= 0}>
+          <ArrowBackIosIcon className="" />
+        </button>
+        <p className="">Page {page + 1}</p>
+        <button className={`p-2 ${pageInfo.more ? "hover:bg-[#CECECE]" : "text-[#CECECE]"} rounded-[50%] flex justify-center items-center`} onClick={() => setPage(page + 1)} disabled={!pageInfo.more}>
+          <ArrowForwardIosIcon className="" />
+        </button>
+      </div>
       <div className="w-full">
         <table className="mt-10 !w-full table-fixed">
           <thead className="text-white !w-full">
@@ -82,15 +91,6 @@ export default function Index({ }) {
             }
           </tbody>
         </table>
-      </div>
-      <div className="my-5 flex justify-end gap-5 items-center">
-        {
-          page > 0 && <ArrowBackIosIcon onClick={() => setPage(page - 1)} sx={{ fontSize: 35 }} className="p-2 cursor-pointer hover:bg-[#CECECE] rounded-[50%] flex justify-center items-center" />
-        }
-        <p className="">Page {page+1}</p>
-        {
-          pageInfo.more && <ArrowForwardIosIcon onClick={() => setPage(page + 1)} sx={{ fontSize: 35 }} className="p-2 cursor-pointer hover:bg-[#CECECE] rounded-[50%] flex justify-center items-center" />
-        }
       </div>
     </div>
   </AdminPageLayout>
