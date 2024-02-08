@@ -18,7 +18,7 @@ export default async function handler(req, res) {
     await connectMongoDB()
 
     const ride = await Ride.create(rideInfo)
-    await sendMail({to: process.env.ADMIN_EMAIL, admin: true, confirmation: false, reservation: {date: ride.date, time: ride.time, from: ride.from, to: ride.to, _id: ride._id}})
-    await sendMail({to: ride.email, admin: false, confirmation: false, reservation: {date: ride.date, time: ride.time, from: ride.from, to: ride.to, _id: ride._id}})
+    await sendMail({to: process.env.ADMIN_EMAIL, admin: true, confirmation: false, status: "pending", reservation: {date: ride.date, time: ride.time, from: ride.from, to: ride.to, _id: ride._id}})
+    await sendMail({to: ride.email, admin: false, confirmation: false, status: "pending", reservation: {date: ride.date, time: ride.time, from: ride.from, to: ride.to, _id: ride._id}})
     return res.status(201).json({message: "success"})
 }

@@ -21,7 +21,7 @@ export default async function handler(req, res) {
     const status = confirm ? "confirmed" : "cancelled"
 
     await Ride.findOneAndUpdate({_id}, {status})
-    await sendMail({to: ride.email, admin: false, confimation: true, reservation: ride})
+    await sendMail({to: ride.email, admin: false, confirmation: true, status, reservation: ride})
 
     return res.status(200).json({message: `Réservation a été ${status === "confirmed" ? "confirmée" : "annulée"}`})
 }
