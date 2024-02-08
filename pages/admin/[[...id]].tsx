@@ -18,31 +18,46 @@ export type RideType = {
 }
 
 export const getServerSideProps = requireAdminAuthentication((context: any) => {
+
+  if(context.params) {
+    return {
+        props: {id: context.params.id[0]}
+      }
+  }
   return {
     props: {}
   }
 })
-export default function Index({ }) {
+export default function Index({ id }: {id: string | undefined}) {
 
   const [rides, setRides] = useState([])
   const [filter, setFilter] = useState("all")
   const options = [{ value: "all", label: "tous" }, { value: "pending", label: "en attente" }, { value: "confirmed", label: "confirmé" }, { value: "cancelled", label: "annulé" }]
   const [page, setPage] = useState(0)
   const [pageInfo, setPageInfo] = useState({ more: false, length: 0 })
-  const [state, setState] = useState({ confirm: false, cancel: false, details: true })
+  const [state, setState] = useState({ confirm: false, cancel: false, details: false })
   const [selectedRide, setSelectedRide] = useState<RideType | null>(null)
+  const [firstTime, setFirstTime] = useState(true)
 
   const getRides = async () => {
 
     try {
-      const response = await fetch(`/api/admin?filter=${filter}&page=${page}`)
+      const url = (id && firstTime) ? `/api/admin?filter=${filter}&page=${page}&id=${id}` : `/api/admin?filter=${filter}&page=${page}`
+      const response = await fetch(url)
       if (response.status === 200) {
         const results = await response.json()
         setRides(results?.rides)
         setPageInfo({ more: results?.more, length: results?.length })
+        if(id && firstTime) {
+          const newSelectedRide = results.rides.find((ride: RideType) => ride._id === id)
+          setSelectedRide(newSelectedRide)
+          setState({confirm: false, cancel: false, details: true})
+        }  
       }
     } catch (e) {
       console.log(e)
+    } finally {
+      if(firstTime) setFirstTime(false)
     }
   }
 

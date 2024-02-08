@@ -1,6 +1,7 @@
 import { getSession } from "../users/editProfile";
 import Ride from "@/models/ride"
 import { connectMongoDB } from "@/lib/mongodb";
+import mongoose from "mongoose";
 
 export default async function handler (req, res) {
     const session = await getSession({ req, res })
@@ -23,8 +24,17 @@ export default async function handler (req, res) {
     if(req.query.filter !== "all") filter.status = req.query.filter
     const pageSize = 10
 
-    const rides = await Ride.find(filter).sort({createdAt: -1}).skip(parseInt(req.query.page) * pageSize).limit(pageSize)
+    let rides = await Ride.find(filter).sort({createdAt: -1}).skip(parseInt(req.query.page) * pageSize).limit(pageSize)
     const allRides = await Ride.find(filter)
+
+    if(req.query.id) {
+        const {id} = req.query
+        const isRideIncluded = rides.some(ride => ride.id.toString() === id)
+        if(!isRideIncluded) {
+            const ride = await Ride.findOne({_id: new mongoose.Types.ObjectId(id)})
+            rides = [...rides.slice(0, 9), ride]
+        }
+    }
 
     const more = allRides.length > ((parseInt(req.query.page) * pageSize) + pageSize)
 

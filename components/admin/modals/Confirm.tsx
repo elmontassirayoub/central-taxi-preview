@@ -1,5 +1,5 @@
 import CardModal from "@/components/common/CardModal";
-import { RideType } from "@/pages/admin";
+import { RideType } from "@/pages/admin/[[...id]]";
 import { toast } from 'react-toastify';
 
 export default function Confirm({ modalState, modalClose, ride, type }: { modalState: boolean, modalClose: Function, ride: RideType, type: string }) {
@@ -46,6 +46,9 @@ export default function Confirm({ modalState, modalClose, ride, type }: { modalS
             <p><strong>De: </strong>{ride.from}</p>
             <p><strong>À: </strong>{ride.to}</p>
             <p><strong>Le: </strong>{ride.date.split('T')[0]} {ride.time}</p>
+            {
+                (type === "details" && ride.status !== "pending") && <p><strong>Status: </strong>{ride.status === "confirmed" ? "Confirmé" : "Annulé"}</p>
+            }
             <p className="text-center font-bold">€{ride.price}</p>
             <div className="flex w-full justify-center">
                 {(type === "confirm" || (type === "details" && ride.status === "pending")) && <button className="px-7 py-2 mx-auto bg-[#FFDC00] text-[24px] font-bold rounded-[5px] mt-5 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]" onClick={(e) => confirmHandler(e, true)}>Confirmer</button>}
