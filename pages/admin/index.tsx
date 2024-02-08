@@ -3,8 +3,9 @@ import requireAdminAuthentication from "@/lib/middlewares/requireAdminAuthentica
 import { useEffect, useState } from "react"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import Confirm from "@/components/admin/modals/Confirm";
 
-type RideType = {
+export type RideType = {
   _id: string,
   firstname: string,
   lastname: string,
@@ -12,6 +13,8 @@ type RideType = {
   to: string,
   time: string,
   date: string,
+  price: string,
+  status: string
 }
 
 export const getServerSideProps = requireAdminAuthentication((context: any) => {
@@ -26,6 +29,8 @@ export default function Index({ }) {
   const options = [{ value: "all", label: "tous" }, { value: "pending", label: "en attente" }, { value: "confirmed", label: "confirmé" }, { value: "cancelled", label: "annulé" }]
   const [page, setPage] = useState(0)
   const [pageInfo, setPageInfo] = useState({ more: false, length: 0 })
+  const [state, setState] = useState({ confirm: false, cancel: false, details: true })
+  const [selectedRide, setSelectedRide] = useState<RideType | null>(null)
 
   const getRides = async () => {
 
@@ -72,26 +77,40 @@ export default function Index({ }) {
           <thead className="text-white !w-full">
             <tr className="max-w-full flex gap-5 bg-[#33475A] rounded-t-[5px]">
               <th className="bg-[#33475A] py-5 rounded-tl-[5px] text-left w-[125px] block truncate pl-5">Nom</th>
-              <th className="bg-[#33475A] py-5 text-left flex-1 truncate">Depart</th>
-              <th className="bg-[#33475A] py-5 text-left flex-1 truncate">Arrive</th>
-              <th className="bg-[#33475A] py-5 text-left">Date et Temps</th>
-              <th className="bg-[#33475A] py-5 rounded-tr-[5px] text-left pr-5">Actions</th>
+              <th className="bg-[#33475A] py-5 text-left flex-1 truncate lg:block hidden">Depart</th>
+              <th className="bg-[#33475A] py-5 text-left flex-1 truncate lg:block hidden">Arrive</th>
+              <th className="bg-[#33475A] py-5 text-left lg:block hidden">Date et Temps</th>
+              <th className="bg-[#33475A] py-5 rounded-tr-[5px] text-center border-l-[1px] pr-5 flex-1">Actions</th>
             </tr>
           </thead>
           <tbody className="flex !w-full flex-col gap-2 divide-y divide-x py-2">
             {
-              rides?.map((ride: RideType) => <tr key={ride?._id} className="max-w-full flex gap-5 bg-[#CECECE] overflow-hidden">
+              rides?.map((ride: RideType) => <tr key={ride?._id} className="max-w-full flex gap-5 bg-[#CECECE] overflow-hidden text-[14px]">
                 <td className="py-5 text-left w-[125px] block truncate pl-5">{ride.firstname} {ride.lastname}</td>
-                <td className="py-5 text-left flex-1 truncate break-all">{ride.from}</td>
-                <td className="py-5 text-left flex-1 truncate break-all">{ride.to}</td>
-                <td className="py-5 text-left">{ride.date.split("T")[0]} {ride.time}</td>
-                <td className="py-5 rounded-tr-[5px] text-left pr-5">Actions</td>
-
+                <td className="py-5 text-left flex-1 truncate break-all truncate lg:block hidden">{ride.from}</td>
+                <td className="py-5 text-left flex-1 truncate break-all truncate lg:block hidden">{ride.to}</td>
+                <td className="py-5 text-left truncate lg:block hidden">{ride.date.split("T")[0]} {ride.time}</td>
+                <td className="py-5 rounded-tr-[5px] text-left pr-5 lg:text-[14px] text-[12px] flex-1 flex border-l-[1px] justify-around">
+                  {
+                    ride?.status === "pending" && <><button className="underline text-[#A70000]" onClick={() => { setSelectedRide(ride); setState({ confirm: false, cancel: true, details: false }) }}><p>Annuler</p></button>
+                      <button className="underline text-[#008000]" onClick={() => { setSelectedRide(ride); setState({ confirm: true, cancel: false, details: false }) }}><p>Confirmer</p></button></>
+                  }
+                  <button className="underline" onClick={() => { setSelectedRide(ride); setState({ confirm: false, cancel: false, details: true }) }}><p>Détails</p></button>
+                </td>
               </tr>)
             }
           </tbody>
         </table>
       </div>
+      {
+        selectedRide !== null && <Confirm modalState={state.confirm} modalClose={setState} ride={selectedRide} type="confirm" />
+      }
+      {
+        selectedRide !== null && <Confirm modalState={state.cancel} modalClose={setState} ride={selectedRide} type="cancel" />
+      }
+      {
+        selectedRide !== null && <Confirm modalState={state.details} modalClose={setState} ride={selectedRide} type="details" />
+      }
     </div>
   </AdminPageLayout>
 }

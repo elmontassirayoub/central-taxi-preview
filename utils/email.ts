@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer"
 
-export default async function sendMail(to: string, admin: boolean, confirmation: boolean, reservation: {date: string, time: string, from: string, to: string, _id: string}) {
+export default async function sendMail({to, admin, confirmation, reservation}: {to: string, admin: boolean, confirmation: boolean, reservation: {date: string, time: string, from: string, to: string, _id: string}}) {
 
     const transporter = nodemailer.createTransport({
         service: 'gmail',
