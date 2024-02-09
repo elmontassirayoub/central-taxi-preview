@@ -295,7 +295,7 @@ export default function Navbar({ lang, changeLanguage, page, admin }: { lang: st
     }
 
 
-    return <nav className="relative lg:h-auto max-h-[150px] !h-[150px]">
+    return <nav className="relative lg:h-auto max-h-[150px] !h-[150px] lg:!h-auto">
         <section className="relative z-[8] flex flex-col h-full justify-between">
             <section className="flex-1 flex lg:hidden bg-white justify-between px-3 lg:px-10 pt-3 lg:py-3 pb-2 items-center">
                 <Link href="/">
