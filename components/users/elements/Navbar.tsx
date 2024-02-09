@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Logo from '@/assets/logo.svg'
+import Logo from '@/assets/logo.png'
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import EmailIcon from '@mui/icons-material/Email';
 import Link from "next/link";
@@ -295,25 +295,25 @@ export default function Navbar({ lang, changeLanguage, page, admin }: { lang: st
     }
 
 
-    return <nav className="relative">
-        <section className="relative z-[8]">
-            <section className="flex bg-white justify-between px-3 lg:px-10 pt-3 lg:pb-0 pb-2 items-center">
+    return <nav className="relative lg:h-auto max-h-[150px] !h-[150px]">
+        <section className="relative z-[8] flex flex-col h-full justify-between">
+            <section className="flex-1 flex lg:hidden bg-white justify-between px-3 lg:px-10 pt-3 lg:py-3 pb-2 items-center">
                 <Link href="/">
-                    <Image src={Logo} alt="logo" draggable={false} className="w-[125px] lg:w-[250px]" />
+                    <Image src={Logo} alt="logo" draggable={false} className="w-[150px] lg:hidden block" />
                 </Link>
-                <div className="text-[18px] lg:text-[25px] text-[#33475A] flex justify-between gap-2 lg:gap-10 h-full flex-col lg:flex-row">
+                <div className="text-[18px] lg:text-[22px] text-[#33475A] flex justify-between gap-2 lg:gap-10 h-full flex-col lg:flex-row">
                     <a href="" className="flex items-center justify-end gap-1 lg:gap-2 h-full">
                         <p>06 47 60 01 71</p>
                         <LocalPhoneIcon className="text-[#fff] bg-[#33475A] rounded-[50%] p-1" />
                     </a>
-                    <a href="" className="flex lg:text-[25px] text-[14px] items-center justify-end gap-1 lg:gap-2 h-full">
+                    <a href="" className="flex lg:text-[22px] text-[14px] items-center justify-end gap-1 lg:gap-2 h-full">
                         <p>contact.central.taxi67@gmail.com</p>
                         <EmailIcon className="text-[#fff] bg-[#33475A] rounded-[50%] p-1" />
                     </a>
                 </div>
             </section>
-            <section className="bg-[#33475A] h-[60px] text-white items-center text-[18px] font-semibold px-10 justify-between lg:flex hidden">
-                <div className="h-full flex items-center gap-10">
+            <section className="hero h-[60px] text-white items-center italic pr-10 pl-20 justify-between lg:flex hidden">
+                <div className="h-full flex items-center gap-5">
                     {
                         compData.navbar.tabList?.map((item: TabListType, key: number) => {
                         if(item?.url === "/book" && admin) return
@@ -324,9 +324,9 @@ export default function Navbar({ lang, changeLanguage, page, admin }: { lang: st
                 <div className="flex gap-10">
                     {
                         status === "loading" ? <></> : !session?.user?.email ?
-                            compData.navbar.rightSideTabList?.map((item: RightSideTabListType, idx: number) => <p key={idx} className="hover:underline cursor-pointer" onClick={() => { modalClose(true); setOption(item) }}>{item?.text}</p>)
+                            compData.navbar.rightSideTabList?.map((item: RightSideTabListType, idx: number) => <p key={idx} className="hover:underline cursor-pointer not-italic whitespace-nowrap" onClick={() => { modalClose(true); setOption(item) }}>{item?.text}</p>)
                             : <div className="relative" ref={ref}>
-                                <div className="flex items-center gap-1 justify-center cursor-pointer" onClick={() => { setDropdown(!dropdown) }}>
+                                <div className="flex items-center gap-1 justify-center cursor-pointer whitespace-nowrap" onClick={() => { setDropdown(!dropdown) }}>
                                     <p className="" >{session?.user?.email}</p>
                                     <ArrowDropDownIcon className="" />
                                 </div>

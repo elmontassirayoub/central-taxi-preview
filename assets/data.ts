@@ -124,7 +124,7 @@ type DataType = {
 const Data: DataType = {
     fr: {
         navbar: {
-            tabList: [{ name: "services", url: "" }, { name: "aeroport", url: "" }, { name: "gares", url: "" }, { name: "reserver", url: "/book" }, { name: "contact", url: "/contact" }],
+            tabList: [{ name: "acceuil", url: "/" }, { name: "services", url: "" }, { name: "aeroport", url: "" }, { name: "gares", url: "" }, { name: "reserver", url: "/book" }, { name: "contact", url: "/contact" }],
             rightSideTabList: [{ functionlity: "register", text: "S'inscrire" }, { functionlity: "login", text: "Se Connecter" }],
             logout: "Se déconnecter",
             edit: "Modifier votre profil",
@@ -251,7 +251,7 @@ const Data: DataType = {
     },
     en: {
         navbar: {
-            tabList: [{ name: "services", url: "" }, { name: "airports", url: "" }, { name: "stations", url: "" }, { name: "book", url: "/book" }, { name: "contact", url: "/contact" }],
+            tabList: [{ name: "home", url: "/" }, { name: "services", url: "" }, { name: "airports", url: "" }, { name: "stations", url: "" }, { name: "book", url: "/book" }, { name: "contact", url: "/contact" }],
             rightSideTabList: [{ functionlity: "register", text: "Register" }, { functionlity: "login", text: "Login" }],
             logout: "Log out",
             edit: "Edit your profile",

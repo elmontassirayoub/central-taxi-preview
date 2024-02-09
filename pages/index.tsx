@@ -11,6 +11,10 @@ import Footer from "@/components/users/elements/Footer";
 import Data, { CardDataType } from '@/assets/data'
 import { useEffect, useState } from "react";
 import checkAuthentication from "@/lib/middlewares/checkAuthenticated";
+import Image from "next/image";
+import Logo from '@/assets/logo.png'
+import Call from "@/components/common/Buttons/Call";
+import Book from "@/components/common/Buttons/Book";
 
 export const getServerSideProps = checkAuthentication(async (context: any, admin: boolean) => {
   return {
@@ -19,7 +23,7 @@ export const getServerSideProps = checkAuthentication(async (context: any, admin
     }
   }
 })
-export default function Home({admin = false}: {admin: boolean}) {
+export default function Home({ admin = false }: { admin: boolean }) {
 
   const [lang, setLang] = useState("fr")
 
@@ -61,18 +65,22 @@ export default function Home({admin = false}: {admin: boolean}) {
   return (
     <main className="overflow-x-hidden">
       <Navbar lang={lang} changeLanguage={changeLanguage} page="/" admin={admin} />
-      <div className="hero lg:h-[700px] h-[400px] text-white text-center relative">
-        <div className="pt-[10%] text-[#000]">
-          <a href="" className="flex items-center justify-center gap-5 px-7 py-2 mx-auto bg-[#FFDC00] text-[24px] font-bold rounded-[5px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] w-fit">06 47 60 01 71</a>
-          <button className="flex items-center justify-center gap-5 px-7 py-2 mx-auto bg-[#FFDC00] text-[24px] font-bold rounded-[5px] mt-5 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
-            <p>{pageData.home.hero.btn}</p>
-            <BookOnlineIcon sx={{ fontSize: 30, fontWeight: 700 }} className="" />
-          </button>
-        </div>
-        <div className="absolute w-full bottom-[20%] lg:px-0 px-5">
-          <h1 className="uppercase text-[20px] lg:text-[30px] font-bold">taxi strasbourg services</h1>
-          <h2 className="text-[15px] lg:text-[18px] font-bold">{pageData.home.hero.h2}</h2>
-          <h3 className="text-[15px] lg:text-[18px] font-bold mt-3">{pageData.home.hero.h3}</h3>
+      <div className="hero lg:h-[700px] h-[calc(100vh_-_150px)] text-white flex">
+        <div className="flex justify-evenly md:px-0 px-5 h-full items-center lg:items-start">
+          <div className="text-center lg:text-left lg:pl-20 pt-[10%] text-[#000] flex-1 flex flex-col gap-12">
+            <div className="w-full lg:px-0 px-5 text-white flex flex-col gap-2 lg:gap-1">
+              <h1 className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim">taxi strasbourg services</h1>
+              <h2 className="text-[#fff]/[70%] text-[18px] lg:text-[18px] italic lg:w-[75%]">{pageData.home.hero.h2}</h2>
+              <h3 className="text-[#fff]/[50%] lg:text-[18px] mt-3">{pageData.home.hero.h3}</h3>
+            </div>
+            <div className="flex flex-col lg:justify-start justify-center lg:items-start items-center gap-5">
+              <Call />
+              <Book btn={pageData.home.hero.btn} />
+            </div>
+          </div>
+          <div className="flex-1 hidden md:flex items-center justify-center overflow-hidden">
+            <Image className="lg:h-[700px] object-cover" src={Logo} alt="Logo" />
+          </div>
         </div>
       </div>
       <div className="flex lg:flex-row flex-col justify-around my-20 mx-10 gap-10 lg:gap-0">

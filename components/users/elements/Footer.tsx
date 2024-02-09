@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Logo from '@/assets/logo.svg'
+import Logo from '@/assets/logo.png'
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
@@ -11,7 +11,7 @@ export default function Footer({ lang, changeLanguage }: { lang: string, changeL
 
     const compData = Data[lang]
 
-    return <footer className="bg-[#000] p-10 flex justify-evenly text-white items-center lg:flex-row flex-col lg:gap-0 gap-10">
+    return <footer className="p-10 flex justify-evenly text-white items-center lg:flex-row flex-col lg:gap-0 gap-10">
         <section className="flex flex-col justify-center items-center gap-5">
             <select value={lang} onChange={e => changeLanguage(e.target.value)} className="bg-transparent outline-none w-fit uppercase text-white text-[18px] font-semibold">
                 <option value="fr" className="uppercase bg-[#000]">fr</option>

@@ -6,6 +6,10 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
+  --primary: #33475A;
+  --secondary: #FFDC00;
+  --secondary-100: rgba(255, 220, 0, .5);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,9 +20,14 @@
   }
 }
 
-.hero {
-  background-image: url("../assets/hero.png");
+body {
+  background: radial-gradient(circle, rgba(255,255,255, 1) 0%, rgba(51,71,90, 1) 96%);
   box-shadow: inset 0 0 0 1000px rgba(0,0,0,.4);
+}
+
+.hero {
+  /* background: radial-gradient(circle, rgba(255,255,255, 1) 0%, rgba(51,71,90, 1) 96%); */
+  /* box-shadow: inset 0 0 0 1000px rgba(0,0,0,.4); */
 }
 
 .hero-book {

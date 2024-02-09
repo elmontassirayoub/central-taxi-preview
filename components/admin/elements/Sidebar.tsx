@@ -1,5 +1,5 @@
 import Link from "next/link"
-import Logo from '@/assets/logo.svg'
+import Logo from '@/assets/logo.png'
 import Image from "next/image"
 import { signOut } from "next-auth/react";
 import MenuIcon from '@mui/icons-material/Menu';

@@ -1,10 +1,11 @@
 import Head from "next/head"
 import { SessionProvider } from 'next-auth/react';
 import { ToastContainer } from "react-toastify";
-
+import { Inter } from 'next/font/google'
 import '@/app/globals.css'
 import 'react-toastify/dist/ReactToastify.css';
 
+const inter = Inter({ subsets: ['latin'] })
 
 function MyApp({ Component, pageProps }: { Component: any, pageProps: any }) {
 
@@ -15,7 +16,9 @@ function MyApp({ Component, pageProps }: { Component: any, pageProps: any }) {
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
         <title>Taxi Strasbourg Services</title>
       </Head>
-      <Component {...pageProps} />
+      <main className={inter.className}>
+        <Component {...pageProps} />
+      </main>
       <ToastContainer />
       <script
         defer
