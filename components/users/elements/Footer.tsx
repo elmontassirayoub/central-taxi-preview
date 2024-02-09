@@ -6,39 +6,35 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import RateReviewIcon from '@mui/icons-material/RateReview';
 import BookOnlineIcon from '@mui/icons-material/BookOnline';
 import Data from '@/assets/data'
+import Review from "@/components/common/Buttons/Review";
+import Book from "@/components/common/Buttons/Book";
 
 export default function Footer({ lang, changeLanguage }: { lang: string, changeLanguage: Function }) {
 
     const compData = Data[lang]
 
-    return <footer className="p-10 flex justify-evenly text-white items-center lg:flex-row flex-col lg:gap-0 gap-10">
-        <section className="flex flex-col justify-center items-center gap-5">
-            <select value={lang} onChange={e => changeLanguage(e.target.value)} className="bg-transparent outline-none w-fit uppercase text-white text-[18px] font-semibold">
+    return <footer className="border-t-[1px] border-secondary-100 mx-10 py-10 flex justify-evenly text-white items-center lg:flex-row flex-col lg:gap-0 gap-10">
+        <section className="flex-1 flex flex-col justify-center items-center gap-5">
+            <select value={lang} onChange={e => changeLanguage(e.target.value)} className="bg-transparent outline-none w-fit uppercase text-white text-[18px]">
                 <option value="fr" className="uppercase bg-[#000]">fr</option>
                 <option value="en" className="uppercase bg-[#000]">en</option>
             </select>
-            <Image src={Logo} alt="logo" draggable={false} width={250} />
+            <Image src={Logo} alt="logo" draggable={false} className="h-[300px] object-cover" />
             <div className="flex gap-4">
                 <FacebookIcon className="" />
                 <InstagramIcon className="" />
                 <TwitterIcon className="" />
             </div>
         </section>
-        <section className="flex items-center justify-center flex-col gap-3">
-            <p className="uppercase text-[20px] lg:text-[30px] font-bold text-center">taxi strasbourg services</p>
-            <p className="lg:text-[18px] lg:font-semibold text-center">{compData.footer.sec1.p1}</p>
-            <p className="lg:text-[18px] lg:font-semibold text-center">{compData.footer.sec1.p2}</p>
-            <p className="lg:text-[18px] lg:font-semibold text-center">{compData.footer.sec1.p3}</p>
+        <section className="flex-1 flex items-center justify-center flex-col gap-3 italic">
+            <p className="uppercase text-[20px] lg:text-[36px] whitespace-nowrap not-italic font-medium text-center">taxi strasbourg services</p>
+            <p className="text-[#fff]/[70%] text-center">{compData.footer.sec1.p1}</p>
+            <p className="text-[#fff]/[70%] text-center">{compData.footer.sec1.p2}</p>
+            <p className="text-[#fff]/[70%] text-center">{compData.footer.sec1.p3}</p>
         </section>
-        <section className="text-[#000]">
-            <button className="flex items-center justify-center gap-5 px-7 py-2 mx-auto bg-[#FFDC00] text-[24px] font-bold rounded-[5px] mt-5 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
-                <p>{compData.footer.btn1}</p>
-                <RateReviewIcon sx={{ fontSize: 30, fontWeight: 700 }} className="" />
-            </button>
-            <button className="flex items-center justify-center gap-5 px-7 py-2 mx-auto bg-[#FFDC00] text-[24px] font-bold rounded-[5px] mt-5 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
-                <p>{compData.footer.btn2}</p>
-                <BookOnlineIcon sx={{ fontSize: 30, fontWeight: 700 }} className="" />
-            </button>
+        <section className="w-full flex-1 text-[#000] flex flex-col items-center gap-5 border-t-[0.5px] border-secondary-100 pt-5 lg:pt-0">
+            <Review btn={compData.footer.btn1} />
+            <Book btn={compData.footer.btn2} />
         </section>
     </footer>
 }
