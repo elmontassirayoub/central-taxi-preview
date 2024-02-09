@@ -36,7 +36,7 @@ export default function Sidebar({ page }: { page: string }) {
         </Link>
         <div className="hidden lg:flex flex-col my-10 flex-1">
             {
-                options?.map((option: { item: string, url: string }, idx) => <Link href={option?.url} className={`capitalize font-semibold lg:text-[20px] px-7 py-4 ${page === option.url ? "bg-[#FFDC00]" : "hover:text-[#FFDC00]"}`}>
+                options?.map((option: { item: string, url: string }, idx) => <Link key={idx} href={option?.url} className={`capitalize font-semibold lg:text-[20px] px-7 py-4 ${page === option.url ? "bg-[#FFDC00]" : "hover:text-[#FFDC00]"}`}>
                     {option?.item}
                 </Link>)
             }

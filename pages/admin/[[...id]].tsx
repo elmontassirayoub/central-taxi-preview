@@ -74,7 +74,7 @@ export default function Index({ id }: {id: string | undefined}) {
         </div>
         <select className="h-fit border-[1px] outline-0 p-2 rounded-[5px] text-[18px] capitalize font-semibold" value={filter} onChange={e => { setFilter(e.target.value); setPage(0) }}>
           {
-            options?.map((option) => <option value={option?.value} className="capitalize">{option?.label}</option>)
+            options?.map((option, index) => <option key={index} value={option?.value} className="capitalize">{option?.label}</option>)
           }
         </select>
       </div>
