@@ -58,7 +58,7 @@ export default function Home({ admin = false }: { admin: boolean }) {
     localStorage.setItem("lang", val)
   }
 
-  const getIcon = (label: string) => label === "book" ? <BookOnlineIcon className="text-center rounded-[50%] bg-[#FFDC00] text-[#000] p-1" sx={{ fontSize: 40 }} /> : label === "price" ? <SellIcon className="text-center rounded-[50%] bg-[#FFDC00] text-[#000] p-1" sx={{ fontSize: 40 }} /> : <EventAvailableIcon className="text-center rounded-[50%] bg-[#FFDC00] text-[#000] p-1" sx={{ fontSize: 40 }} />
+  const getIcon = (label: string) => label === "book" ? <BookOnlineIcon className="text-center" sx={{ fontSize: 30 }} /> : label === "price" ? <SellIcon className="text-center" sx={{ fontSize: 30 }} /> : <EventAvailableIcon className="text-center" sx={{ fontSize: 30 }} />
 
   const pageData = Data[lang]
 
@@ -76,7 +76,7 @@ export default function Home({ admin = false }: { admin: boolean }) {
             </div>
             <div className="flex flex-col lg:justify-start justify-center lg:items-start items-center gap-5">
               <Call />
-              <Book btn={pageData.home.hero.btn} />
+              <Book btn={pageData.home.hero.btn} primary={false} />
             </div>
           </div>
           <div className="flex-1 hidden md:flex items-center justify-center overflow-hidden">
@@ -84,29 +84,51 @@ export default function Home({ admin = false }: { admin: boolean }) {
           </div>
         </div>
       </div>
-      <div className="flex lg:flex-row flex-col justify-around my-20 mx-10 gap-10 lg:gap-0">
-        {
-          pageData.home.cardData?.map((card: CardDataType, idx: number) => <div key={idx} className="lg:w-[400px] w-fit h-fit lg:h-[400px] bg-[#33475A] text-white flex flex-col gap-3 p-3 rounded-[10px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
-            <div className="text-center">
-              {
-                getIcon(card?.icon)
-              }
-            </div>
-            <h3 className="text-[16px] lg:text-[20px] font-bold text-center">{card.title}</h3>
-            <p className="text-[13px] lg:text-[15px]">{card.text}</p>
-          </div>)
-        }
+      <div className="flex flex-col gap-10 my-[150px] mx-10">
+        <h1 className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim text-center text-white">{pageData.home.headerBeforeCards}</h1>
+        <div className="flex lg:flex-row flex-col justify-around gap-10 lg:gap-0">
+          {
+            pageData.home.cardData?.map((card: CardDataType, idx: number) => <div key={idx} className="lg:w-[400px] w-fit h-auto flex flex-col gap-3 p-5 rounded-[10px] shadow-[0px_4px_4px_4px_rgba(0,0,0,0.25)]">
+              <div className="flex items-center justify-center">
+                <div className="bg-secondary-100 w-fit p-3 rounded-[50%] text-white">
+                  {
+                    getIcon(card?.icon)
+                  }
+                </div>
+              </div>
+              <h3 className="lg:text-[18px] italic font-medium text-center">{card.title}</h3>
+              <p className="text-white/[90%] text-xs lg:text-sm">{card.text}</p>
+            </div>)
+          }
+        </div>
       </div>
+      <section className="mb-[200px]">
+        <h1 className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim text-center text-white">{pageData.home.news}</h1>
+        <div className="bg-primary-200 h-20 mx-10 lg:mx-20 my-10 rounded-2xl flex lg:flex-row flex-col h-auto lg:h-[550px]">
+          <div className="lg:flex-[0.4] news py-10 lg:py-0">
+            <Image className="lg:flex-1 object-cover" src={Logo} alt="Logo" />
+            <h1 className="text-center uppercase text-[20px] text-white lg:text-[28px] lg:[word-spacing:5px] font-meduim">{pageData.home.contact}</h1>
+            <h2 className="text-[#fff]/[90%] text-sm lg:text-[18px] italic font-medium text-center">contact.central.taxi67@gmail.com</h2>
+            <h3 className="text-[#fff]/[90%] text-sm lg:text-[18px] lg:mt-3 text-center">06 47 60 01 71</h3>
+          </div>
+          <div className="lg:flex-[0.6] flex items-center">
+            <div className="px-5 lg:px-10 flex flex-col lg:gap-10 text-white py-10 lg:py-0">
+              <h4 className="mb-2 lg:mb-0 uppercase text-[20px] text-white lg:text-[28px] lg:[word-spacing:5px] font-meduim">taxi strasbourg services</h4>
+              <p className="text-white/[80%] italic text-sm lg:text-base">{pageData.home.paragraph}</p>
+              <div className="lg:flex hidden justify-end">
+                <Call />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <div className="relative my-10 h-[300px]">
-        <div className="absolute top-0 left-[-40px] w-[120%] lg:w-[105%] h-[300px] bg-[#FFDC00] flex flex-col justify-center items-center rotate-[-1.75deg] shrink-0">
-          <div className="rotate-[1.75deg] items-center flex flex-col gap-4 lg:gap-2 justify-center">
-            <EuroIcon sx={{ fontSize: 50 }} className="rounded-[50%] bg-[#33475A] text-[#000] p-2 text-white" />
-            <p className="text-[20px] lg:text-[35px] font-bold uppercase">taxi strasbourg services</p>
-            <p className="text-[13px] lg:text-[20px] font-bold">{pageData.home.yellowSection.h2}</p>
-            <button className="flex items-center text-white gap-5 px-7 py-2 mx-auto bg-[#33475A] text-[16px] lg:text-[18px] font-bold rounded-[5px] mt-5 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
-              <p>{pageData.home.yellowSection.btn}</p>
-              <ArrowForwardIcon sx={{ fontSize: 30, fontWeight: 700 }} className="" />
-            </button>
+        <div className="absolute top-0 left-[-40px] w-[120%] lg:w-[105%] h-[300px] rotated flex flex-col justify-center items-center rotate-[-1.75deg] shrink-0">
+          <div className="rotate-[1.75deg] items-center flex flex-col gap-4 lg:gap-2 justify-center w-full">
+            <EuroIcon sx={{ fontSize: 50 }} className="rounded-[50%] bg-[#33475A] text-white p-2" />
+            <p className="text-[20px] lg:text-[35px] text-[#fff] font-medium uppercase">taxi strasbourg services</p>
+            <p className="text-[13px] lg:text-[20px] text-[#fff]/[75%] italic mb-10">{pageData.home.yellowSection.h2}</p>
+            <Book btn={pageData.home.yellowSection.btn} primary={true} />
           </div>
         </div>
       </div>

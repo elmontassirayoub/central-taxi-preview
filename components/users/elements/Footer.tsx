@@ -34,7 +34,7 @@ export default function Footer({ lang, changeLanguage }: { lang: string, changeL
         </section>
         <section className="w-full flex-1 text-[#000] flex flex-col items-center gap-5 border-t-[0.5px] border-secondary-100 pt-5 lg:pt-0 lg:border-[0px]">
             <Review btn={compData.footer.btn1} />
-            <Book btn={compData.footer.btn2} />
+            <Book btn={compData.footer.btn2} primary={false} />
         </section>
     </footer>
 }

@@ -13,6 +13,10 @@ type NavbarType = {
 }
 
 type HomeType = {
+    headerBeforeCards: string,
+    news: string,
+    contact: string,
+    paragraph: string,
     cardData: CardDataType[],
     hero: {btn: string, h2: string, h3: string},
     yellowSection: {h2: string, btn: string},
@@ -133,6 +137,10 @@ const Data: DataType = {
             editBtn: "Modifier"
         },
         home: {
+            headerBeforeCards: "Réservez un taxi facilement",
+            news: "ACTUALITÉS",
+            contact: "NOUS CONTACTER",
+            paragraph: "TAXI STRASBOURG SERVICECS vous propose un large choix de taxis pour toutes les situations, que vous ayez besoin d'un taxi pour l'Aéroport de Strasbourg ou la gare de strasbourg etc",
             cardData: [
                 {
                     icon: "book",
@@ -260,6 +268,10 @@ const Data: DataType = {
             editBtn: "Edit"
         },
         home: {
+            headerBeforeCards: "Book a taxi easily",
+            news: "NEWS",
+            contact: "CONTACT US",
+            paragraph: "TAXI STRASBOURG SERVICECS offers you a wide choice of taxis for all situations, whether you need a taxi for Strasbourg Airport or Strasbourg train station etc.",
             cardData: [
                 {
                     icon: "book",
