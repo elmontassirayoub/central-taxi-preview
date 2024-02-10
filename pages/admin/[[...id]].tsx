@@ -19,7 +19,7 @@ export type RideType = {
 
 export const getServerSideProps = requireAdminAuthentication((context: any) => {
 
-  if(context.params) {
+  if(context.params.id) {
     return {
         props: {id: context.params.id[0]}
       }
