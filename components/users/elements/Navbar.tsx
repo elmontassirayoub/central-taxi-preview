@@ -295,23 +295,8 @@ export default function Navbar({ lang, changeLanguage, page, admin }: { lang: st
     }
 
 
-    return <nav className="relative lg:h-auto max-h-[150px] !h-[150px] lg:!h-auto">
+    return <nav className="relative lg:h-auto h-15">
         <section className="relative z-[8] flex flex-col h-full justify-between">
-            <section className="flex-1 flex lg:hidden bg-white justify-between px-3 lg:px-10 pt-3 lg:py-3 pb-2 items-center">
-                <Link href="/">
-                    <Image src={Logo} alt="logo" draggable={false} className="w-[150px] lg:hidden block" />
-                </Link>
-                <div className="text-[18px] lg:text-[22px] text-[#33475A] flex justify-between gap-2 lg:gap-10 h-full flex-col lg:flex-row">
-                    <a href="" className="flex items-center justify-end gap-1 lg:gap-2 h-full">
-                        <p>06 47 60 01 71</p>
-                        <LocalPhoneIcon className="text-[#fff] bg-[#33475A] rounded-[50%] p-1" />
-                    </a>
-                    <a href="" className="flex lg:text-[22px] text-[14px] items-center justify-end gap-1 lg:gap-2 h-full">
-                        <p>contact.central.taxi67@gmail.com</p>
-                        <EmailIcon className="text-[#fff] bg-[#33475A] rounded-[50%] p-1" />
-                    </a>
-                </div>
-            </section>
             <section className="hero h-[60px] text-white items-center italic pr-10 pl-20 justify-between lg:flex hidden">
                 <div className="h-full flex items-center gap-5">
                     {
