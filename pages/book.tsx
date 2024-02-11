@@ -208,9 +208,9 @@ export default function Book({ admin = false }: {admin: boolean}) {
 
     const { form: { title, fromLabel, fromPlaceholder, toLabel, toPlaceholder, dateLabel, timeLabel, btn }, rightSide } = pageData.book
 
-    return <main className="">
+    return <main className="flex flex-col min-h-screen">
         <Navbar admin={admin} lang={lang} changeLanguage={changeLanguage} page="/book" />
-        <div className="w-full hero-book flex flex-col lg:flex-row lg:p-10 py-10 px-4 gap-10 lg:justify-center items-center mb-20 relative">
+        <div className="flex-1 w-full hero-book flex flex-col lg:flex-row lg:p-10 py-10 px-4 gap-10 lg:justify-center items-center mb-20 relative">
             <form onSubmit={(e) => { e.preventDefault(); ReservationFormHandler() }} className="w-full lg:w-fit bg-white rounded-[15px] lg:p-10 py-10 px-4 flex flex-col gap-5 lg:min-w-[500px] lg:min-h-[600px]">
 
                 {

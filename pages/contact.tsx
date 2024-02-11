@@ -1,3 +1,4 @@
+import Footer from "@/components/users/elements/Footer";
 import Navbar from "@/components/users/elements/Navbar";
 import checkAuthentication from "@/lib/middlewares/checkAuthenticated";
 import { useEffect, useState } from "react";
@@ -25,8 +26,11 @@ export default function Contact ({admin = false}: {admin: boolean}) {
         localStorage.setItem("lang", val)
       }
 
-    return <main className="">
+    return <main className="flex flex-col min-h-screen">
       <Navbar admin={admin} lang={lang} changeLanguage={changeLanguage} page="/contact" />
-    Contact page
+      <section className="flex-1">
+
+      </section>
+      <Footer lang={lang} changeLanguage={changeLanguage} />
   </main>
 }
