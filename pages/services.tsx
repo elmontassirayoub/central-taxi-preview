@@ -68,7 +68,7 @@ export default function Services({ admin = false }: { admin: boolean }) {
             </section>
             <section className="my-10 px-10 lg:px-0">
                 <h1 className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim text-center text-white">Ce que nous offrons</h1>
-                <h2 className="text-[#fff]/[70%] text-[18px] lg:text-[18px] italic text-center">Nous avons beaucoup d'offres parmi lesquelles vous pouvez choisir</h2>
+                <h2 className="text-[#fff]/[70%] text-[18px] lg:text-[18px] italic text-center">Nous avons beaucoup d&apos;offres parmi lesquelles vous pouvez choisir</h2>
                 <div className="text-white flex flex-col md:flex-row py-10 px-0 lg:p-20 gap-10">
                     {
                         services?.map((service, index) => <div key={index} className="flex-1 border-[1px] text-center p-5 rounded-xl border-secondary-1 flex flex-col gap-5 justify-start items-center">
