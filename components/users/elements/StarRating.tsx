@@ -8,8 +8,8 @@ export default function StarRating({rating}: {rating: number}) {
 
     return <div className='text-[#FFFD54]'>
         <div className='lg:block hidden'>
-            {new Array(arrLength).fill(null)?.map((_, idx) => <StarIcon sx={{fontSize: 30}} className='' key={idx} />)}
-            {reminder !== 0 && <StarHalfIcon sx={{fontSize: 30}} className='' />}
+            {new Array(arrLength).fill(null)?.map((_, idx) => <StarIcon sx={{fontSize: 20}} className='' key={idx} />)}
+            {reminder !== 0 && <StarHalfIcon sx={{fontSize: 20}} className='' />}
         </div>
         <div className='lg:hidden block'>
             {new Array(arrLength).fill(null)?.map((_, idx) => <StarIcon sx={{fontSize: 20}} className='' key={idx} />)}

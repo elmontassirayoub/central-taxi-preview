@@ -20,7 +20,7 @@ type HomeType = {
     cardData: CardDataType[],
     hero: {btn: string, h2: string, h3: string},
     yellowSection: {h2: string, btn: string},
-    reviews: {h1: string, btn: string, footer: string}
+    reviews: {h1: string, h2: string, btn: string, footer: string}
 }
 
 type FooterType = {
@@ -169,6 +169,7 @@ const Data: DataType = {
             },
             reviews: {
                 h1: "Ce que pensent nos utilisateurs",
+                h2: "Rendre nos utilisateurs heureux est notre mission première",
                 btn: "Laisser un avis",
                 footer: "Voir Plus"
             }
@@ -300,6 +301,7 @@ const Data: DataType = {
             },
             reviews: {
                 h1: "What our users think",
+                h2: "Making our users happy is our primary mission",
                 btn: "Leave a review",
                 footer: "See more"
             }

@@ -301,9 +301,9 @@ export default function Navbar({ lang, changeLanguage, page, admin }: { lang: st
                 <div className="h-full flex items-center gap-5">
                     {
                         compData.navbar.tabList?.map((item: TabListType, key: number) => {
-                        if(item?.url === "/book" && admin) return
-                        return <Link className={`uppercase hover:underline h-full flex items-center justify-center px-2 ${page === item.url ? "bg-[#000]" : ""}`} href={item?.url} key={key}>{item?.name}</Link>
-                    })
+                            if (item?.url === "/book" && admin) return
+                            return <Link className={`uppercase hover:underline h-full flex items-center justify-center px-2 ${page === item.url ? "bg-[#000]" : ""}`} href={item?.url} key={key}>{item?.name}</Link>
+                        })
                     }
                 </div>
                 <div className="flex gap-10">
@@ -332,16 +332,18 @@ export default function Navbar({ lang, changeLanguage, page, admin }: { lang: st
                 </div>
             </section>
             <section className="lg:hidden flex h-[40px] bg-[#33475A] justify-center items-center">
-                <MenuIcon onClick={() => setToggleMenu(!toggleMenu)} sx={{ fontSize: 35 }} className={`${toggleMenu ? "hidden" : "block"} rounded-[50%] bg-[#fff] text-[#000] p-2 my-2 cursor-pointer`} />
-                <CloseIcon onClick={() => setToggleMenu(!toggleMenu)} sx={{ fontSize: 35 }} className={`${!toggleMenu ? "hidden" : "block"} rounded-[50%] bg-[#fff] text-[#000] p-2 my-2 cursor-pointer`} />
+                {
+                    toggleMenu ? <CloseIcon onClick={() => setToggleMenu(!toggleMenu)} sx={{ fontSize: 35 }} className={` rounded-[50%] bg-[#fff] text-[#000] p-2 my-2 cursor-pointer`} /> : <MenuIcon onClick={() => setToggleMenu(!toggleMenu)} sx={{ fontSize: 35 }} className={`rounded-[50%] bg-[#fff] text-[#000] p-2 my-2 cursor-pointer`} />
+                }
             </section>
         </section>
         <div className={`${!toggleMenu ? "hidden" : "flex"} absolute left-0 font-semibold mobile-navtab top-[100%] z-[5] bg-[#fff] w-full py-4 flex-col`}>
             <div className="h-full flex flex-col justify-center items-center gap-5 w-full border-b-[1px] pb-4 border-[#000] text-[18px]">
                 {
                     compData.navbar.tabList?.map((item: TabListType, key: number) => {
-                    if(item?.url === "/book" && admin) return
-                    return <Link className={`uppercase py-1 w-full text-center ${page === item.url ? "bg-[#000] text-white" : ""}`} href={item?.url} key={key}>{item?.name}</Link>})
+                        if (item?.url === "/book" && admin) return
+                        return <Link className={`uppercase py-1 w-full text-center ${page === item.url ? "bg-[#000] text-white" : ""}`} href={item?.url} key={key}>{item?.name}</Link>
+                    })
                 }
             </div>
             <div className="flex flex-col justify-center items-center gap-5 pt-4">

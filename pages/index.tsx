@@ -15,6 +15,7 @@ import Image from "next/image";
 import Logo from '@/assets/logo.png'
 import Call from "@/components/common/Buttons/Call";
 import Book from "@/components/common/Buttons/Book";
+import Review from "@/components/common/Buttons/Review";
 
 export const getServerSideProps = checkAuthentication(async (context: any, admin: boolean) => {
   return {
@@ -43,13 +44,13 @@ export default function Home({ admin = false }: { admin: boolean }) {
       name: "Thorhildur Hallgrims",
       date: "Le 15 janvier 2023",
       rating: 4.5,
-      review: "Best taxi driver in town!! Was super helpfull and kind."
+      review: "Best taxi driver in town!! Was super helpfull and kind. Best taxi driver in town!! Was super helpfull and kind. Best taxi driver in town!! Was super helpfull and kind. "
     },
     {
       name: "Thorhildur Hallgrims",
       date: "Le 15 janvier 2023",
       rating: 3,
-      review: "Best taxi driver in town!! Was super helpfull and kind."
+      review: "Best taxi driver in town!! Was super helpfull and kind. Best taxi driver in town!! Was super helpfull and kind."
     }
   ]
 
@@ -133,31 +134,25 @@ export default function Home({ admin = false }: { admin: boolean }) {
         </div>
       </div>
       <section className="p-10 lg:p-20">
-        <p className="text-[24px] underline font-bold">{pageData.home.reviews.h1}</p>
-        <div className="my-5 lg:m-10 flex flex-col items-center justify-center gap-5">
+        <p className="mb-2 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim text-center text-white">{pageData.home.reviews.h1}</p>
+        <p className="text-[#fff]/[70%] text-[18px] lg:text-[18px] italic text-center">{pageData.home.reviews.h2}</p>
+        <div className="my-5 lg:m-10 flex lg:flex-row flex-col justify-center gap-5 py-10 lg:py-0">
           {
-            reviews?.map((review, idx) => <div key={idx} className="lg:w-[950px] w-fit bg-[#33475A] lg:px-5 lg:py-3 p-3 rounded-[5px] text-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
+            reviews?.map((review, idx) => <div key={idx} className="bg-[#33475A] p-5 rounded-[5px] text-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] flex-1 h-auto flex flex-col justify-between gap-10">
+              <p className="lg:text-base text-sm text-white/[85%] flex-1">"{review.review}"</p>
               <div className="flex justify-between">
                 <div>
-                  <p className="lg:text-[18px] font-semibold">{review?.name}</p>
-                  <small className="text-[12px] font-light">{review?.date}</small>
+                  <p className="lg:text-base text-sm italic">{review?.name}</p>
+                  <small className="text-xs text-white/[50%]">{review?.date}</small>
                 </div>
                 <StarRating rating={review?.rating} />
               </div>
-              <p className="lg:text-[18px] font-semibold mt-3 lg:mt-5">{review.review}</p>
             </div>)
           }
         </div>
-        <div className="flex gap-2 justify-end items-center">
-          <p className="lg:text-[20px] font-semibold underline">{pageData.home.reviews.footer}</p>
-          <ArrowForwardIcon sx={{ fontSize: 30, fontWeight: 700 }} className="lg:block hidden" />
-          <ArrowForwardIcon sx={{ fontSize: 20, fontWeight: 700 }} className="lg:hidden block" />
+        <div className="flex justify-center">
+          <Review btn={pageData.home.reviews.btn} />
         </div>
-        <button className="flex items-center justify-center gap-5 px-7 py-2 mx-auto bg-[#FFDC00] lg:text-[24px] font-bold rounded-[5px] mt-5 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
-          <p>{pageData.home.reviews.btn}</p>
-          <RateReviewIcon sx={{ fontSize: 30, fontWeight: 700 }} className="lg:block hidden" />
-          <RateReviewIcon sx={{ fontSize: 20, fontWeight: 700 }} className="lg:hidden block" />
-        </button>
       </section>
       <Footer lang={lang} changeLanguage={changeLanguage} />
     </main>
