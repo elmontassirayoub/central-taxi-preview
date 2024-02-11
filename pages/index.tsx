@@ -139,7 +139,7 @@ export default function Home({ admin = false }: { admin: boolean }) {
         <div className="my-5 lg:m-10 flex lg:flex-row flex-col justify-center gap-5 py-10 lg:py-0">
           {
             reviews?.map((review, idx) => <div key={idx} className="bg-[#33475A] p-5 rounded-[5px] text-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] flex-1 h-auto flex flex-col justify-between gap-10">
-              <p className="lg:text-base text-sm text-white/[85%] flex-1">"{review.review}"</p>
+              <p className="lg:text-base text-sm text-white/[85%] flex-1">&quot;{review.review}&quot;</p>
               <div className="flex justify-between">
                 <div>
                   <p className="lg:text-base text-sm italic">{review?.name}</p>
