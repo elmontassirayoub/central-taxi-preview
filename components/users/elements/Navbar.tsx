@@ -331,34 +331,35 @@ export default function Navbar({ lang, changeLanguage, page, admin }: { lang: st
                     </select>
                 </div>
             </section>
-            <section className="lg:hidden flex h-[40px] bg-[#33475A] justify-center items-center">
+            <section className="lg:hidden flex h-15 bg-[#33475A] justify-between items-center px-2">
+                <h1 className="text-white uppercase font-medium italic">taxi strasbourg services</h1>
                 {
                     toggleMenu ? <CloseIcon onClick={() => setToggleMenu(!toggleMenu)} sx={{ fontSize: 35 }} className={` rounded-[50%] bg-[#fff] text-[#000] p-2 my-2 cursor-pointer`} /> : <MenuIcon onClick={() => setToggleMenu(!toggleMenu)} sx={{ fontSize: 35 }} className={`rounded-[50%] bg-[#fff] text-[#000] p-2 my-2 cursor-pointer`} />
                 }
             </section>
         </section>
-        <div className={`${!toggleMenu ? "hidden" : "flex"} absolute left-0 font-semibold mobile-navtab top-[100%] z-[5] bg-[#fff] w-full py-4 flex-col`}>
-            <div className="h-full flex flex-col justify-center items-center gap-5 w-full border-b-[1px] pb-4 border-[#000] text-[18px]">
+        <div className={`${!toggleMenu ? "hidden" : "flex"} absolute left-0 font-semibold mobile-navtab top-[100%] z-[5] bg-[#fff] w-full flex-col`}>
+            <div className="h-full flex flex-col justify-center items-center w-full border-b-[1px] pb-4 border-[#000] text-[18px]">
                 {
                     compData.navbar.tabList?.map((item: TabListType, key: number) => {
                         if (item?.url === "/book" && admin) return
-                        return <Link className={`uppercase py-1 w-full text-center ${page === item.url ? "bg-[#000] text-white" : ""}`} href={item?.url} key={key}>{item?.name}</Link>
+                        return <Link className={`uppercase italic py-1 w-full px-2 py-4 ${page === item.url ? "bg-primary-100 text-white" : ""}`} href={item?.url} key={key}>{item?.name}</Link>
                     })
                 }
             </div>
-            <div className="flex flex-col justify-center items-center gap-5 pt-4">
+            <div className="flex flex-col justify-center items-center gap-5 py-4">
                 {
                     status === "loading" ? <></> : !session?.user?.email ?
-                        compData.navbar.rightSideTabList?.map((item: RightSideTabListType, idx: number) => <p onClick={() => { modalClose(true); setOption(item) }} key={idx} className="hover:underline cursor-pointer">{item?.text}</p>) : <>
-                            <p className="underline">{session?.user?.email}</p>
+                        compData.navbar.rightSideTabList?.map((item: RightSideTabListType, idx: number) => <p onClick={() => { modalClose(true); setOption(item) }} key={idx} className="border-[1px] border-secondary-100 rounded-xl w-[90%] h-10 flex items-center px-2 justify-center hover:underline cursor-pointer">{item?.text}</p>) : <>
+                            <p className="">{session?.user?.email}</p>
                             {
-                                admin ? <Link href="/admin">Dashboard</Link> : <>
-                                    <p onClick={() => setUserEditModal(true)} className="underline cursor-pointer" >{compData.navbar.edit}</p>
-                                    <p onClick={() => setUserEditPassword(true)} className="underline cursor-pointer" >{compData.navbar.editPassword}</p>
+                                admin ? <Link href="/admin" className="border-[1px] border-secondary-100 rounded-xl w-[90%] h-10 flex items-center justify-center hover:underline cursor-pointer">Dashboard</Link> : <>
+                                    <p onClick={() => setUserEditModal(true)} className="border-[1px] border-secondary-100 rounded-xl w-[90%] h-10 flex items-center justify-center hover:underline cursor-pointer underline" >{compData.navbar.edit}</p>
+                                    <p onClick={() => setUserEditPassword(true)} className="underline border-[1px] border-secondary-100 rounded-xl w-[90%] h-10 flex items-center justify-center hover:underline cursor-pointer" >{compData.navbar.editPassword}</p>
                                 </>
                             }
 
-                            <p className="underline" onClick={() => signOut()}>{compData.navbar.logout}</p>
+                            <p className="underline border-[1px] border-secondary-100 rounded-xl w-[90%] h-10 flex items-center justify-center hover:underline cursor-pointer" onClick={() => signOut()}>{compData.navbar.logout}</p>
                         </>
                 }
                 <select value={lang} onChange={e => changeLanguage(e.target.value)} className=" outline-none uppercase">
