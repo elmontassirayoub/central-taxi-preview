@@ -1,6 +1,13 @@
+import AddRoadIcon from '@mui/icons-material/AddRoad';
+import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
+import TrainIcon from '@mui/icons-material/Train';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import MapIcon from '@mui/icons-material/Map';
+
+
 export type TabListType = { name: string, url: string }
-export type RightSideTabListType = {functionlity: string, text: string}
-export type CardDataType = {icon: string, title: string, text: string}
+export type RightSideTabListType = { functionlity: string, text: string }
+export type CardDataType = { icon: string, title: string, text: string }
 
 type NavbarType = {
     tabList: TabListType[],
@@ -18,9 +25,9 @@ type HomeType = {
     contact: string,
     paragraph: string,
     cardData: CardDataType[],
-    hero: {btn: string, h2: string, h3: string},
-    yellowSection: {h2: string, btn: string},
-    reviews: {h1: string, h2: string, btn: string, footer: string}
+    hero: { btn: string, h2: string, h3: string },
+    yellowSection: { h2: string, btn: string },
+    reviews: { h1: string, h2: string, btn: string, footer: string }
 }
 
 type FooterType = {
@@ -64,7 +71,7 @@ type SignupType = {
 
 type ResetPasswordType = {
     label1: string,
-    placeholder1: string, 
+    placeholder1: string,
     label2: string,
     placeholder2: string,
     label3: string,
@@ -109,6 +116,24 @@ type BookPage = {
     }
 }
 
+export type ServiceCard = {
+    icon: any,
+    text: string
+}
+
+type ServicePage = {
+    cards: ServiceCard[],
+    header: string,
+    subHeader: string,
+    h3: string,
+    h4: string,
+}
+
+type ContactPage = {
+    header: string,
+    subHeader: string
+}
+
 export type LangType = {
     navbar: NavbarType,
     footer: FooterType,
@@ -116,7 +141,9 @@ export type LangType = {
     signup: SignupType,
     home: HomeType,
     resetPassword: ResetPasswordType,
-    book: BookPage
+    book: BookPage,
+    service: ServicePage,
+    contact: ContactPage
 }
 
 type DataType = {
@@ -255,8 +282,24 @@ const Data: DataType = {
                 back: "Retourner",
                 btn: "confirmer la réservation"
             }
+        },
+        service: {
+            header: "nos services",
+            subHeader: "Nous pouvons vous offrir une grande variété de services",
+            h3: "ce que nous offrons",
+            h4: "Nous avons beaucoup d'offres parmi lesquelles vous pouvez choisir",
+            cards: [
+                { icon: AddRoadIcon, text: "Taxi Strasbourg longue ou courte distance" },
+                { icon: AirplanemodeActiveIcon, text: "Taxi Aéroport Strasbourg Provence" },
+                { icon: TrainIcon, text: "Taxi Strasbourg gare" },
+                { icon: LocalShippingIcon, text: "Service de livraison à Strasbourg en taxi" },
+                { icon: MapIcon, text: "Chauffeur guide touristique Strasbourg" },
+            ]
+        },
+        contact: {
+            header: "Contactez-nous",
+            subHeader: "Nous vous assurons que nous vous répondrons dans les plus brefs délais"
         }
-
     },
     en: {
         navbar: {
@@ -387,6 +430,23 @@ const Data: DataType = {
                 back: "Go Back",
                 btn: "confirm booking"
             }
+        },
+        service: {
+            cards: [
+                { icon: AddRoadIcon, text: "Strasbourg long or short distance taxi" },
+                { icon: AirplanemodeActiveIcon, text: "Taxi Strasbourg Provence Airport" },
+                { icon: TrainIcon, text: "Taxi Strasbourg station" },
+                { icon: LocalShippingIcon, text: "Delivery service in Strasbourg by taxi" },
+                { icon: MapIcon, text: "Tourist guide driver Strasbourg" },
+            ],
+            header: "our services",
+            subHeader: "We can offer you a wide variety of services",
+            h3: "what we offer",
+            h4: "We have lots of offers for you to choose from",
+        },
+        contact: {
+            header: "contact us",
+            subHeader: "We assure you that we will respond to you as soon as possible"
         }
     }
 }

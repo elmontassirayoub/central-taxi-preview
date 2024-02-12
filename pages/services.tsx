@@ -5,13 +5,8 @@ import checkAuthentication from "@/lib/middlewares/checkAuthenticated";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Logo from '@/assets/logo.png'
-import Data from '@/assets/data'
+import Data, { ServiceCard } from '@/assets/data'
 import Footer from "@/components/users/elements/Footer";
-import AddRoadIcon from '@mui/icons-material/AddRoad';
-import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
-import TrainIcon from '@mui/icons-material/Train';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import MapIcon from '@mui/icons-material/Map';
 
 export const getServerSideProps = checkAuthentication(async (context: any, admin: boolean) => {
     return {
@@ -35,14 +30,6 @@ export default function Services({ admin = false }: { admin: boolean }) {
         localStorage.setItem("lang", val)
     }
 
-    const services = [
-        { icon: AddRoadIcon, text: "Taxi Strasbourg longue ou courte distance" },
-        { icon: AirplanemodeActiveIcon, text: "Taxi Aéroport Strasbourg Provence" },
-        { icon: TrainIcon, text: "Taxi Strasbourg gare" },
-        { icon: LocalShippingIcon, text: "Service de livraison à Strasbourg en taxi" },
-        { icon: MapIcon, text: "Chauffeur guide touristique Marseille" },
-    ]
-
     const pageData = Data[lang]
 
     return <main className="overflow-x-hidden flex flex-col min-h-screen">
@@ -53,8 +40,8 @@ export default function Services({ admin = false }: { admin: boolean }) {
                     <div className="text-center lg:text-left lg:pl-20 pt-[10%] text-[#000] flex-1 flex flex-col gap-12">
                         <Image className="md:hidden block flex-1 object-cover" src={Logo} alt="Logo" />
                         <div className="w-full lg:px-0 px-5 text-white flex flex-col gap-2 lg:gap-1">
-                            <h1 className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim">nos services</h1>
-                            <h2 className="text-[#fff]/[70%] text-[18px] lg:text-[18px] italic lg:w-[75%]">Nous pouvons vous offrir une grande variété de services</h2>
+                            <h1 className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim">{pageData.service.header}</h1>
+                            <h2 className="text-[#fff]/[70%] text-[18px] lg:text-[18px] italic lg:w-[75%]">{pageData.service.subHeader}</h2>
                         </div>
                         <div className="flex flex-col lg:justify-start justify-center lg:items-start items-center gap-5">
                             <Call />
@@ -67,11 +54,11 @@ export default function Services({ admin = false }: { admin: boolean }) {
                 </div>
             </section>
             <section className="my-10 px-10 lg:px-0">
-                <h1 className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim text-center text-white">Ce que nous offrons</h1>
-                <h2 className="text-[#fff]/[70%] text-[18px] lg:text-[18px] italic text-center">Nous avons beaucoup d&apos;offres parmi lesquelles vous pouvez choisir</h2>
+                <h1 className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim text-center text-white">{pageData.service.h3}</h1>
+                <h2 className="text-[#fff]/[70%] text-[18px] lg:text-[18px] italic text-center">{pageData.service.h4}</h2>
                 <div className="text-white flex flex-col md:flex-row py-10 px-0 lg:p-20 gap-10">
                     {
-                        services?.map((service, index) => <div key={index} className="flex-1 border-[1px] text-center p-5 rounded-xl border-secondary-1 flex flex-col gap-5 justify-start items-center">
+                        pageData.service.cards?.map((service: ServiceCard, index: number) => <div key={index} className="flex-1 border-[1px] text-center p-5 rounded-xl border-secondary-1 flex flex-col gap-5 justify-start items-center">
                             <div className="bg-white text-secondary-1 p-2 flex items-center justify-center rounded-[50%]">
                                 <service.icon />
                             </div>
