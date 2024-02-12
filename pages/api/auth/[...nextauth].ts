@@ -15,7 +15,6 @@ export const authOptions = {
             async authorize(credentials): Promise<any> {
 
                 try {
-                    console.log("wow: ", process.env.ADMIN_EMAIL, credentials)
                     if(credentials?.email === process.env.ADMIN_EMAIL && credentials?.password === process.env.ADMIN_PASSWORD) {
                         return {email: credentials?.email, role: "Adminstrator"}
                     }
