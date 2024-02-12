@@ -14,6 +14,8 @@ import BookingDetails from "@/components/users/modals/BookingDetails";
 import ReservationForm from "@/components/users/elements/ReservationForm";
 import { toast } from 'react-toastify';
 import checkAuthentication from "@/lib/middlewares/checkAuthenticated";
+import Call from "@/components/common/Buttons/Call";
+import Review from "@/components/common/Buttons/Review";
 
 const DirectionMap = dynamic(() => import("@/components/users/elements/DirectionMap"), {
     ssr: false
@@ -41,7 +43,7 @@ export type ReservationData = {
 
 export const getServerSideProps = checkAuthentication(async (context: any, admin: boolean) => {
 
-    if(admin) {
+    if (admin) {
         return {
             redirect: {
                 destination: '/',
@@ -49,15 +51,15 @@ export const getServerSideProps = checkAuthentication(async (context: any, admin
             },
         }
     }
-    
-    return {
-      props: {
-        admin
-      }
-    }
-  })
 
-export default function Book({ admin = false }: {admin: boolean}) {
+    return {
+        props: {
+            admin
+        }
+    }
+})
+
+export default function Book({ admin = false }: { admin: boolean }) {
 
     const date = new Date();
     const mm =
@@ -115,14 +117,14 @@ export default function Book({ admin = false }: {admin: boolean}) {
     const pageData = Data[lang]
 
     const handleEstimation = async () => {
-        if(!departPlaceId || !arrivePlaceId || !date || !time) {
+        if (!departPlaceId || !arrivePlaceId || !date || !time) {
             toast.error(pageData.signup.fillAllFields, {
                 position: "top-right",
                 autoClose: 3000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 progress: undefined,
-            }); 
+            });
             return
         }
         setLoading({ show: true, message: pageData.book.form.loadingEstimation })
@@ -146,14 +148,14 @@ export default function Book({ admin = false }: {admin: boolean}) {
     }
 
     const handleReservation = async () => {
-        if(!reservationData?.firstname || !reservationData?.lastname || !reservationData?.email || !reservationData?.phonenumber || !reservationData?.address) {
+        if (!reservationData?.firstname || !reservationData?.lastname || !reservationData?.email || !reservationData?.phonenumber || !reservationData?.address) {
             toast.error(pageData.signup.fillAllFields, {
                 position: "top-right",
                 autoClose: 3000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 progress: undefined,
-            }); 
+            });
             return
         }
         setLoading({ show: true, message: pageData.book.form.loadingReservation })
@@ -165,16 +167,16 @@ export default function Book({ admin = false }: {admin: boolean}) {
                 },
                 body: JSON.stringify({ ...reservationData, from: departAddress, to: arriveAddress, date, time, price: reservationDetails?.price })
             })
-            if(response.status === 201) {
+            if (response.status === 201) {
                 toast.success(pageData.book.form.success, {
                     position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     progress: undefined,
-                });   
+                });
                 setTimeout(() => {
-                    location.reload()                    
+                    location.reload()
                 }, 4000);
                 return
             }
@@ -184,7 +186,7 @@ export default function Book({ admin = false }: {admin: boolean}) {
                 hideProgressBar: false,
                 closeOnClick: true,
                 progress: undefined,
-            });   
+            });
         } catch (e) {
             console.log("Error: ", e)
             toast.error(pageData.book.form.error, {
@@ -194,7 +196,7 @@ export default function Book({ admin = false }: {admin: boolean}) {
                 closeOnClick: true,
                 progress: undefined,
             });
-    } finally {
+        } finally {
             setLoading({ show: false, message: "" })
         }
     }
@@ -208,17 +210,17 @@ export default function Book({ admin = false }: {admin: boolean}) {
 
     const { form: { title, fromLabel, fromPlaceholder, toLabel, toPlaceholder, dateLabel, timeLabel, btn }, rightSide } = pageData.book
 
-    return <main className="flex flex-col min-h-screen">
+    return <main className="flex flex-col min-h-screen relative">
         <Navbar admin={admin} lang={lang} changeLanguage={changeLanguage} page="/book" />
         <div className="flex-1 w-full hero-book flex flex-col lg:flex-row lg:p-10 py-10 px-4 gap-10 lg:justify-center items-center mb-20 relative">
             <form onSubmit={(e) => { e.preventDefault(); ReservationFormHandler() }} className="w-full lg:w-fit bg-white rounded-[15px] lg:p-10 py-10 px-4 flex flex-col gap-5 lg:min-w-[500px] lg:min-h-[600px]">
 
                 {
-                    !showReservationForm ? <><h1 className="text-[#33475A] text-center font-bold text-[24px]">{title}</h1>
+                    !showReservationForm ? <><h1 className="text-[#33475A] text-center font-medium text-[24px]">{title}</h1>
                         <LocationInput label={fromLabel} placeholder={fromPlaceholder} value={departAddress} setValue={setDepartAddress} handleSelect={(a, p) => handleSelect(a, p, { setValue: setDepartAddress, setPlaceId: setDepartPlaceId, setCoordination: setDepartCoordinates })} inputRef={departRef} />
                         <LocationInput label={toLabel} placeholder={toPlaceholder} value={arriveAddress} setValue={setArriveAddress} handleSelect={(a, p) => handleSelect(a, p, { setValue: setArriveAddress, setPlaceId: setArrivePlaceId, setCoordination: setArriveCoordinates })} inputRef={arriveRef} />
                         <div className="reserveform1_date div_container">
-                            <p className="font-bold mb-2" onClick={() => inputRefDate.current?.focus()}>{dateLabel}</p>
+                            <p className="font-medium mb-2" onClick={() => inputRefDate.current?.focus()}>{dateLabel}</p>
                             <div className="flex">
                                 <div className="border-[1px] border-r-[0px] h-10 rounded-l-[5px] px-2 flex items-center">
                                     <DateRangeIcon onClick={() => inputRefDate.current?.focus()} className="" />
@@ -234,7 +236,7 @@ export default function Book({ admin = false }: {admin: boolean}) {
                             </div>
                         </div>
                         <div className="reserveform1_date reserveform1_time div_container">
-                            <p className="font-bold mb-2" onClick={() => inputRefTime.current?.focus()}>{timeLabel}</p>
+                            <p className="font-medium mb-2" onClick={() => inputRefTime.current?.focus()}>{timeLabel}</p>
                             <div className="flex">
                                 <div className="border-[1px] border-r-[0px] h-10 rounded-l-[5px] px-2 flex items-center">
                                     <AccessTimeIcon className="" onClick={() => inputRefTime.current?.focus()} />
@@ -250,24 +252,24 @@ export default function Book({ admin = false }: {admin: boolean}) {
                         </div>
                         {
                             (reservationDetails && !editingData) ? <div>
-                                <button className="cursor-pointer flex items-center justify-center gap-5 px-7 py-2 mx-auto bg-[#FFDC00] lg:text-[18px] font-bold rounded-[5px] mt-5 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]"
-                                onClick={() => setShowReservationForm(true)}
+                                <button className="cursor-pointer flex items-center justify-center gap-5 px-7 py-2 mx-auto border-[1px] border-secondary-1 hover:bg-secondary-1 text-primary-1 lg:text-[18px] font-medium rounded-[5px] mt-5"
+                                    onClick={() => setShowReservationForm(true)}
                                 >
                                     {pageData?.home?.hero?.btn}: €{reservationDetails?.price.toFixed(2)}
                                 </button>
                                 <button
                                     onClick={() => setShowDetails(true)}
-                                    className="cursor-pointer lg:hidden flex items-center justify-center gap-5 px-7 py-2 mx-auto bg-[#FFDC00] lg:text-[18px] font-bold rounded-[5px] mt-5 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]"
+                                    className="cursor-pointer lg:hidden flex items-center justify-center gap-5 px-7 py-2 mx-auto border-[1px] border-secondary-1 hover:bg-secondary-1 text-primary-1 lg:text-[18px] font-medium rounded-[5px] mt-5"
                                 >
                                     {pageData?.book?.form?.showDetails}
                                 </button>
                             </div> : <input
                                 type="submit"
                                 value={btn}
-                                className="cursor-pointer flex items-center justify-center gap-5 px-7 py-2 mx-auto bg-[#FFDC00] lg:text-[18px] font-bold rounded-[5px] mt-5 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]"
+                                className="cursor-pointer flex items-center justify-center gap-5 px-7 py-2 mx-auto border-[1px] border-secondary-1 hover:bg-secondary-1 text-primary-1 lg:text-[18px] font-medium rounded-[5px] mt-5"
                             />
                         }
-                        </> : <ReservationForm reservationData={reservationData} setReservationData={setReservationData} setShowReservationForm={setShowReservationForm} compData={pageData} loading={loading} setLoading={setLoading} />
+                    </> : <ReservationForm reservationData={reservationData} setReservationData={setReservationData} setShowReservationForm={setShowReservationForm} compData={pageData} loading={loading} setLoading={setLoading} />
                 }
             </form>
 
@@ -288,31 +290,31 @@ export default function Book({ admin = false }: {admin: boolean}) {
                         {
                             !editingData && <p className="text-center">€{reservationDetails?.price.toFixed(2)}</p>
                         }
-                    </div> : <>
-                        <h1 className="uppercase lg:text-[24px] font-bold text-center">taxi strasbourg services</h1>
-                        <h2 className="lg:text-[30px] font-extrabold text-center">{rightSide.title}</h2>
-                        <ol className="list-decimal lg:text-[18px] font-semibold ml-10">
-                            {
-                                rightSide.list?.map((item: string) => <li key={item}>{item}</li>)
-                            }
-                        </ol>
-                        <a href="" className="flex items-center justify-center gap-5 px-7 py-2 mx-auto bg-[#FFDC00] text-[24px] font-bold rounded-[5px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] w-fit">06 47 60 01 71</a>
-                        <button className="flex items-center justify-center gap-5 px-7 py-2 mx-auto bg-[#FFDC00] lg:text-[24px] font-bold rounded-[5px] mt-5 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
-                            <p>{pageData.home.reviews.btn}</p>
-                            <RateReviewIcon sx={{ fontSize: 30, fontWeight: 700 }} className="lg:block hidden" />
-                            <RateReviewIcon sx={{ fontSize: 20, fontWeight: 700 }} className="lg:hidden block" />
-                        </button>
-                    </>
+                    </div> : <div className="text-white flex flex-col gap-[60px]">
+                        <h1 className="uppercase lg:text-[24px] font-medium text-center">taxi strasbourg services</h1>
+                        <div>
+                            <h2 className="lg:text-[30px] font-medium text-center">{rightSide.title}</h2>
+                            <ol className="list-decimal lg:text-[18px] font-medium ml-10">
+                                {
+                                    rightSide.list?.map((item: string) => <li key={item}>{item}</li>)
+                                }
+                            </ol>
+                        </div>
+                        <div className="flex justify-center flex-col w-full items-center gap-5">
+                            <Call />
+                            <Review btn={pageData.home.reviews.btn} />
+                        </div>
+                    </div>
                 }
 
             </div>
             {
                 (showDetails && departcoordinates !== null && arrivecoordinates !== null && reservationDetails) && <BookingDetails modalState={showDetails} modalClose={setShowDetails} data={{ departcoordinates, arrivecoordinates, departAddress, arriveAddress, day, time, editingData, duration: reservationDetails?.duration?.text, distance: reservationDetails?.distance?.value, price: reservationDetails?.price }} details={pageData.book.details} />
             }
-            {
-                loading.show && <Loader message={loading.message} />
-            }
         </div>
         <Footer lang={lang} changeLanguage={changeLanguage} />
+        {
+            loading.show && <Loader message={loading.message} />
+        }
     </main >
 }

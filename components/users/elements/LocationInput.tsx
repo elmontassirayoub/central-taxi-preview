@@ -25,7 +25,7 @@ export default function LocationInput(
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
             <div className="Reserve1__container div_container relative">
                 <div>
-                    <p className="mb-2 font-bold" onClick={() => inputRef.current?.focus()}>
+                    <p className="mb-2 font-medium" onClick={() => inputRef.current?.focus()}>
                         {label}
                     </p>
                     <div className="flex items-center">
