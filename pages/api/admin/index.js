@@ -36,6 +36,8 @@ export default async function handler (req, res) {
         }
     }
 
+    rides.sort((a, b) => b.createdAt - a.createdAt)
+
     const more = allRides.length > ((parseInt(req.query.page) * pageSize) + pageSize)
 
     return res.status(200).json({rides, more, length: allRides.length })

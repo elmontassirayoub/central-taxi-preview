@@ -12,14 +12,6 @@ const options = [
         url: "/admin"
     },
     {
-        item: "utilisateurs",
-        url: "/admin/users"
-    },
-    {
-        item: "Avis",
-        url: "/admin/reviews"
-    },
-    {
         item: "Siteweb",
         url: "/"
     }

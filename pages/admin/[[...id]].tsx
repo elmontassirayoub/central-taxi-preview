@@ -4,17 +4,23 @@ import { useEffect, useState } from "react"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Confirm from "@/components/admin/modals/Confirm";
+import moment from "moment";
 
 export type RideType = {
   _id: string,
   firstname: string,
   lastname: string,
+  phonenumber: string,
+  email: string,
+  address: string,
+  message: string,
   from: string,
   to: string,
   time: string,
   date: string,
   price: string,
-  status: string
+  status: string,
+  createdAt: string
 }
 
 export const getServerSideProps = requireAdminAuthentication((context: any) => {
@@ -91,7 +97,8 @@ export default function Index({ id }: {id: string | undefined}) {
         <table className="mt-10 !w-full table-fixed">
           <thead className="text-white !w-full">
             <tr className="max-w-full flex gap-5 bg-[#33475A] rounded-t-[5px]">
-              <th className="bg-[#33475A] py-5 rounded-tl-[5px] text-left w-[125px] block truncate pl-5">Nom</th>
+              <th className="bg-[#33475A] py-5 rounded-tl-[5px] text-left w-[90px] lg:w-[125px] block truncate pl-5">Nom</th>
+              <th className="bg-[#33475A] py-5 rounded-tl-[5px] text-left w-[90px] lg:w-[125px] block truncate pl-5">Créé il y a</th>
               <th className="bg-[#33475A] py-5 text-left flex-1 truncate lg:block hidden">Depart</th>
               <th className="bg-[#33475A] py-5 text-left flex-1 truncate lg:block hidden">Arrive</th>
               <th className="bg-[#33475A] py-5 text-left lg:block hidden">Date et Temps</th>
@@ -101,7 +108,8 @@ export default function Index({ id }: {id: string | undefined}) {
           <tbody className="flex !w-full flex-col gap-2 divide-y divide-x py-2">
             {
               rides?.map((ride: RideType) => <tr key={ride?._id} className="max-w-full flex gap-5 bg-[#CECECE] overflow-hidden text-[14px]">
-                <td className="py-5 text-left w-[125px] block truncate pl-5">{ride.firstname} {ride.lastname}</td>
+                <td className="py-5 text-left w-[90px] lg:w-[125px] block truncate pl-5">{ride.firstname} {ride.lastname}</td>
+                <th className="py-5 rounded-tl-[5px] text-left w-[90px] lg:w-[125px] block truncate pl-5 font-normal">{moment(ride.createdAt).fromNow()}</th>
                 <td className="py-5 text-left flex-1 truncate break-all truncate lg:block hidden">{ride.from}</td>
                 <td className="py-5 text-left flex-1 truncate break-all truncate lg:block hidden">{ride.to}</td>
                 <td className="py-5 text-left truncate lg:block hidden">{ride.date.split("T")[0]} {ride.time}</td>
