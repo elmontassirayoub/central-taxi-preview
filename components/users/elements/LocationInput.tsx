@@ -17,10 +17,10 @@ export default function LocationInput(
         value={value}
         onChange={e => setValue(e)}
         onSelect={handleSelect}
-        // searchOptions={{
-        //     types: [],
-        //     componentRestrictions: { country: "fr" },
-        // }}
+        searchOptions={{
+            types: [],
+            componentRestrictions: { country: "fr" },
+        }}
     >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
             <div className="Reserve1__container div_container relative">
