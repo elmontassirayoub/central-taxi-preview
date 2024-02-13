@@ -216,7 +216,7 @@ export default function Book({ admin = false }: { admin: boolean }) {
             <form onSubmit={(e) => { e.preventDefault(); ReservationFormHandler() }} className="w-full lg:w-fit bg-white rounded-[15px] lg:p-10 py-10 px-4 flex flex-col gap-5 lg:min-w-[500px] lg:min-h-[600px]">
 
                 {
-                    !showReservationForm ? <><h1 className="text-[#33475A] text-center font-medium text-[24px]">{title}</h1>
+                    !showReservationForm ? <><p className="text-[#33475A] text-center font-medium text-[24px]">{title}</p>
                         <LocationInput label={fromLabel} placeholder={fromPlaceholder} value={departAddress} setValue={setDepartAddress} handleSelect={(a, p) => handleSelect(a, p, { setValue: setDepartAddress, setPlaceId: setDepartPlaceId, setCoordination: setDepartCoordinates })} inputRef={departRef} />
                         <LocationInput label={toLabel} placeholder={toPlaceholder} value={arriveAddress} setValue={setArriveAddress} handleSelect={(a, p) => handleSelect(a, p, { setValue: setArriveAddress, setPlaceId: setArrivePlaceId, setCoordination: setArriveCoordinates })} inputRef={arriveRef} />
                         <div className="reserveform1_date div_container">
@@ -276,7 +276,7 @@ export default function Book({ admin = false }: { admin: boolean }) {
             <div className="hidden lg:flex flex-col gap-3">
                 {
                     reservationDetails ? <div className="bg-white rounded-[15px] lg:p-10 py-10 px-4 flex flex-col gap-5 max-w-[500px] justify-center items-center">
-                        <h1 className="font-bold">Details</h1>
+                        <p className="font-bold">Details</p>
                         {
                             (departcoordinates !== null && arrivecoordinates !== null) && <DirectionMap depart={departcoordinates} arrive={arrivecoordinates} />
                         }
@@ -291,7 +291,7 @@ export default function Book({ admin = false }: { admin: boolean }) {
                             !editingData && <p className="text-center">€{reservationDetails?.price.toFixed(2)}</p>
                         }
                     </div> : <div className="text-white flex flex-col gap-[60px]">
-                        <h1 className="uppercase lg:text-[24px] font-medium text-center">taxi strasbourg services</h1>
+                        <p className="uppercase lg:text-[24px] font-medium text-center">taxi strasbourg services</p>
                         <div>
                             <h2 className="lg:text-[30px] font-medium text-center">{rightSide.title}</h2>
                             <ol className="list-decimal lg:text-[18px] font-medium ml-10">

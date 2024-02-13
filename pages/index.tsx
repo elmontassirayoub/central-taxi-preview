@@ -87,7 +87,7 @@ export default function Home({ admin = false }: { admin: boolean }) {
           </div>
         </div>
         <div className="flex flex-col gap-10 my-[150px] mx-10">
-          <h1 className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim text-center text-white">{pageData.home.headerBeforeCards}</h1>
+          <p className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim text-center text-white">{pageData.home.headerBeforeCards}</p>
           <div className="flex lg:flex-row flex-col justify-around gap-10 lg:gap-0">
             {
               pageData.home.cardData?.map((card: CardDataType, idx: number) => <div key={idx} className="lg:w-[400px] w-fit h-auto flex flex-col gap-3 p-5 rounded-[10px] shadow-[0px_4px_4px_4px_rgba(0,0,0,0.25)]">
@@ -105,11 +105,11 @@ export default function Home({ admin = false }: { admin: boolean }) {
           </div>
         </div>
         <section className="mb-[200px]">
-          <h1 className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim text-center text-white">{pageData.home.news}</h1>
+          <p className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim text-center text-white">{pageData.home.news}</p>
           <div className="bg-primary-200 h-20 mx-10 lg:mx-20 my-10 rounded-2xl flex lg:flex-row flex-col h-auto lg:h-[550px]">
             <div className="lg:flex-[0.4] news py-10 lg:py-[2rem] overflow-hidden">
               <Image className="lg:flex-1 max-h-[80%] object-contain" src={Logo} alt="Logo" />
-              <h1 className="text-center uppercase text-[20px] text-white lg:text-[28px] lg:[word-spacing:5px] font-meduim">{pageData.home.contact}</h1>
+              <p className="text-center uppercase text-[20px] text-white lg:text-[28px] lg:[word-spacing:5px] font-meduim">{pageData.home.contact}</p>
               <h2 className="text-[#fff]/[90%] text-sm lg:text-[18px] italic font-medium text-center">contact.central.taxi67@gmail.com</h2>
               <h3 className="text-[#fff]/[90%] text-sm lg:text-[18px] lg:mt-3 text-center">06 47 60 01 71</h3>
             </div>

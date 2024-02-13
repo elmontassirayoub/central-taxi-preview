@@ -332,7 +332,7 @@ export default function Navbar({ lang, changeLanguage, page, admin }: { lang: st
                 </div>
             </section>
             <section className="lg:hidden flex h-15 bg-[#33475A] justify-between items-center px-2">
-                <h1 className="text-white uppercase font-medium italic">taxi strasbourg services</h1>
+                <p className="text-white uppercase font-medium italic">taxi strasbourg services</p>
                 {
                     toggleMenu ? <CloseIcon onClick={() => setToggleMenu(!toggleMenu)} sx={{ fontSize: 35 }} className={` rounded-[50%] bg-[#fff] text-[#000] p-2 my-2 cursor-pointer`} /> : <MenuIcon onClick={() => setToggleMenu(!toggleMenu)} sx={{ fontSize: 35 }} className={`rounded-[50%] bg-[#fff] text-[#000] p-2 my-2 cursor-pointer`} />
                 }

@@ -26,7 +26,7 @@ export default function ReservationForm({ setShowReservationForm, reservationDat
     return <>
         <div className="w-full flex justify-between font-medium">
             <button onClick={() => setShowReservationForm(false)} className="underline">{compData.book.bookingForm.back}</button>
-            <h1 className="">Reservation</h1>
+            <p className="">Reservation</p>
         </div>
         <div className="flex flex-col gap-3 w-full">
             <div className="flex flex-col gap-1 w-full">
