@@ -90,6 +90,8 @@ export type BookDetails = {
 }
 
 type BookPage = {
+    personalData: string,
+    personaDataError: string,
     form: {
         title: string,
         fromLabel: string,
@@ -281,7 +283,9 @@ const Data: DataType = {
             bookingForm: {
                 back: "Retourner",
                 btn: "confirmer la réservation"
-            }
+            },
+            personalData: "J'accepte d'utiliser mes données personnelles pour réserver un taxi",
+            personaDataError: "Veuillez cocher la case pour accepter l'utilisation des données personnelles"
         },
         service: {
             header: "nos services",
@@ -299,7 +303,7 @@ const Data: DataType = {
         contact: {
             header: "Contactez-nous",
             subHeader: "Nous vous assurons que nous vous répondrons dans les plus brefs délais"
-        }
+        },
     },
     en: {
         navbar: {
@@ -429,7 +433,9 @@ const Data: DataType = {
             bookingForm: {
                 back: "Go Back",
                 btn: "confirm booking"
-            }
+            },
+            personalData: "I agree to use my personal data for booking a taxi",
+            personaDataError: "Please check the box to agree to use personal data"
         },
         service: {
             cards: [

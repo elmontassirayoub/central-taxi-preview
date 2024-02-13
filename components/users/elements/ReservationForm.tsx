@@ -2,19 +2,19 @@ import { LangType } from "@/assets/data"
 import { ReservationData } from "@/pages/book"
 import { useEffect, useState } from "react"
 
-export default function ReservationForm({ setShowReservationForm, reservationData, setReservationData, compData, loading, setLoading }: { setShowReservationForm: Function, reservationData: ReservationData, setReservationData: Function, compData: LangType, loading: {show: boolean, message: string}, setLoading: Function }) {
+export default function ReservationForm({ personalData, setPersonalData, setShowReservationForm, reservationData, setReservationData, compData, loading, setLoading }: { setShowReservationForm: Function, reservationData: ReservationData, setReservationData: Function, compData: LangType, loading: { show: boolean, message: string }, setLoading: Function, setPersonalData: Function, personalData: boolean }) {
 
 
     const getData = async () => {
-        setLoading({show: true, message: "Loading Data"})
+        setLoading({ show: true, message: "Loading Data" })
         try {
             const response = await fetch("/api/users?reservation=true")
             const results = await response.json()
-            if(response.status === 200) setReservationData(results)
+            if (response.status === 200) setReservationData(results)
         } catch (e) {
             console.log(e)
         } finally {
-            setLoading({show: false, message: ""})
+            setLoading({ show: false, message: "" })
         }
     }
 
@@ -52,6 +52,10 @@ export default function ReservationForm({ setShowReservationForm, reservationDat
             <div className="flex flex-col gap-1 w-full">
                 <label className="font-medium text-[14px]">Message</label>
                 <textarea className="border-[1px] focus:border-[#33475A] outline-0 w-full px-2 rounded-[3px]" value={reservationData?.message} placeholder="Un message pour nous" onChange={(e) => setReservationData({ ...reservationData, message: e.target.value })} rows={6} />
+            </div>
+            <div className="flex gap-1 items-center">
+                <input type="checkbox" checked={personalData} onChange={e => setPersonalData(!personalData)} />
+                <label className="lg:text-[16px] text-[12px] lg:font-meduim">{compData.book.personalData}</label>
             </div>
         </div>
         <input type="submit" value={compData.book.bookingForm.btn} className="cursor-pointer flex items-center justify-center gap-5 px-7 py-2 mx-auto lg:text-[18px] font-medium rounded-[5px] mt-5 border-[1px] border-secondary-1 hover:bg-secondary-1 text-primary-1" />

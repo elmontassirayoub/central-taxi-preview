@@ -85,6 +85,7 @@ export default function Book({ admin = false }: { admin: boolean }) {
     const [showDetails, setShowDetails] = useState(false)
     const [showReservationForm, setShowReservationForm] = useState(false)
     const [reservationData, setReservationData] = useState<ReservationData>({ firstname: "", lastname: "", phonenumber: "", address: "", email: "", message: "" })
+    const [personalData, setPersonalData] = useState(false)
 
     useEffect(() => {
         const storedLang = localStorage.getItem("lang")
@@ -148,6 +149,18 @@ export default function Book({ admin = false }: { admin: boolean }) {
     }
 
     const handleReservation = async () => {
+
+        if(!personalData) {
+            toast.error(pageData.book.personaDataError, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                progress: undefined,
+            });
+            return
+        }
+
         if (!reservationData?.firstname || !reservationData?.lastname || !reservationData?.email || !reservationData?.phonenumber || !reservationData?.address) {
             toast.error(pageData.signup.fillAllFields, {
                 position: "top-right",
@@ -269,7 +282,7 @@ export default function Book({ admin = false }: { admin: boolean }) {
                                 className="cursor-pointer flex items-center justify-center gap-5 px-7 py-2 mx-auto border-[1px] border-secondary-1 hover:bg-secondary-1 text-primary-1 lg:text-[18px] font-medium rounded-[5px] mt-5"
                             />
                         }
-                    </> : <ReservationForm reservationData={reservationData} setReservationData={setReservationData} setShowReservationForm={setShowReservationForm} compData={pageData} loading={loading} setLoading={setLoading} />
+                    </> : <ReservationForm personalData={personalData} setPersonalData={setPersonalData} reservationData={reservationData} setReservationData={setReservationData} setShowReservationForm={setShowReservationForm} compData={pageData} loading={loading} setLoading={setLoading} />
                 }
             </form>
 
