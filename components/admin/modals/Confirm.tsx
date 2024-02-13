@@ -49,7 +49,7 @@ export default function Confirm({ modalState, modalClose, ride, type }: { modalS
             <p><span className="font-medium">À: </span>{ride.to}</p>
             <p><span className="font-medium">Le: </span>{ride.date.split('T')[0]} {ride.time}</p>
             <p><span className="font-medium">Créé il y a: </span>{moment(ride.createdAt).fromNow()}</p>
-            <h2 className="mt-2 font-semibold text-2xl underline">Sur l&apos;utilisateur</h2>
+            <p className="mt-2 font-semibold text-2xl underline">Sur l&apos;utilisateur</p>
             <p><span className="font-medium">Nom: </span>{ride.firstname} {ride.lastname}</p>
             <p><span className="font-medium">Phonenumber: </span>{ride.phonenumber}</p>
             <p><span className="font-medium">Email: </span>{ride.email}</p>

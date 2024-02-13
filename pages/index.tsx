@@ -12,7 +12,6 @@ import Data, { CardDataType } from '@/assets/data'
 import { useEffect, useState } from "react";
 import checkAuthentication from "@/lib/middlewares/checkAuthenticated";
 import Image from "next/image";
-import Logo from '@/assets/logo.png'
 import Call from "@/components/common/Buttons/Call";
 import Book from "@/components/common/Buttons/Book";
 import Review from "@/components/common/Buttons/Review";
@@ -70,7 +69,7 @@ export default function Home({ admin = false }: { admin: boolean }) {
         <div className="hero lg:h-[700px] h-[calc(100vh_-_60px)] text-white flex">
           <div className="flex justify-evenly md:px-0 px-5 h-full pt-5 lg:pt-0 items-center lg:items-start">
             <div className="text-center lg:text-left lg:pl-20 pt-[10%] text-[#000] flex-1 flex flex-col gap-12">
-              <Image className="md:hidden block flex-1 object-cover" src={Logo} alt="Logo" />
+              <Image width={1000} height={1000} className="md:hidden block flex-1 object-cover" src="/logo.png" alt="Logo" />
               <div className="w-full lg:px-0 px-5 text-white flex flex-col gap-2 lg:gap-1">
                 <h1 className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim">taxi strasbourg services</h1>
                 <h2 className="text-[#fff]/[70%] text-[18px] lg:text-[18px] italic lg:w-[75%]">{pageData.home.hero.h2}</h2>
@@ -82,7 +81,7 @@ export default function Home({ admin = false }: { admin: boolean }) {
               </div>
             </div>
             <div className="flex-1 hidden md:flex items-center justify-center overflow-hidden">
-              <Image className="lg:h-[700px] object-cover" src={Logo} alt="Logo" />
+              <Image height={1000} width={1000} className="lg:h-[700px] object-cover" src="/logo.png" alt="Logo" />
             </div>
           </div>
         </div>
@@ -98,7 +97,7 @@ export default function Home({ admin = false }: { admin: boolean }) {
                     }
                   </div>
                 </div>
-                <h3 className="lg:text-[18px] italic font-medium text-center">{card.title}</h3>
+                <p className="lg:text-[18px] italic font-medium text-center">{card.title}</p>
                 <p className="text-white/[90%] text-xs lg:text-sm">{card.text}</p>
               </div>)
             }
@@ -108,10 +107,10 @@ export default function Home({ admin = false }: { admin: boolean }) {
           <p className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim text-center text-white">{pageData.home.news}</p>
           <div className="bg-primary-200 h-20 mx-10 lg:mx-20 my-10 rounded-2xl flex lg:flex-row flex-col h-auto lg:h-[550px]">
             <div className="lg:flex-[0.4] news py-10 lg:py-[2rem] overflow-hidden">
-              <Image className="lg:flex-1 max-h-[80%] object-contain" src={Logo} alt="Logo" />
+              <Image width={1000} height={1000} className="lg:flex-1 max-h-[80%] object-contain" src="/logo.png" alt="Logo" />
               <p className="text-center uppercase text-[20px] text-white lg:text-[28px] lg:[word-spacing:5px] font-meduim">{pageData.home.contact}</p>
-              <h2 className="text-[#fff]/[90%] text-sm lg:text-[18px] italic font-medium text-center">contact.central.taxi67@gmail.com</h2>
-              <h3 className="text-[#fff]/[90%] text-sm lg:text-[18px] lg:mt-3 text-center">06 47 60 01 71</h3>
+              <p className="text-[#fff]/[90%] text-sm lg:text-[18px] italic font-medium text-center">contact.central.taxi67@gmail.com</p>
+              <p className="text-[#fff]/[90%] text-sm lg:text-[18px] lg:mt-3 text-center">06 47 60 01 71</p>
             </div>
             <div className="lg:flex-[0.6] flex items-center">
               <div className="w-full px-5 lg:px-10 flex flex-col lg:gap-10 text-white py-10 lg:py-0">

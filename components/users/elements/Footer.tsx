@@ -1,10 +1,7 @@
 import Image from "next/image";
-import Logo from '@/assets/logo.png'
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import RateReviewIcon from '@mui/icons-material/RateReview';
-import BookOnlineIcon from '@mui/icons-material/BookOnline';
 import Data from '@/assets/data'
 import Review from "@/components/common/Buttons/Review";
 import Book from "@/components/common/Buttons/Book";
@@ -19,7 +16,7 @@ export default function Footer({ lang, changeLanguage }: { lang: string, changeL
                 <option value="fr" className="uppercase bg-[#000]">fr</option>
                 <option value="en" className="uppercase bg-[#000]">en</option>
             </select>
-            <Image src={Logo} alt="logo" draggable={false} className="h-[300px] object-cover" />
+            <Image width={1000} height={1000} src="/logo.png" alt="logo" draggable={false} className="h-[300px] object-cover" />
             <div className="flex gap-4">
                 <FacebookIcon className="" />
                 <InstagramIcon className="" />

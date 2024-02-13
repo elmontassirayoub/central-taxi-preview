@@ -24,7 +24,7 @@ export default function Sidebar({ page }: { page: string }) {
 
     return <section className="h-full bg-[#33475A] text-white lg:pt-5 lg:pb-1 flex flex-col relative">
         <Link className="lg:block hidden" href="/" >
-            <Image src={Logo} alt="logo" draggable={false} className="w-[125px] lg:w-[200px] lg:px-5" />
+            <Image height={1000} width={1000} src="/logo.png" alt="logo" draggable={false} className="w-[125px] lg:w-[200px] lg:px-5" />
         </Link>
         <div className="hidden lg:flex flex-col my-10 flex-1">
             {

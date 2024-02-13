@@ -1,7 +1,3 @@
-import Image from "next/image";
-import Logo from '@/assets/logo.png'
-import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import EmailIcon from '@mui/icons-material/Email';
 import Link from "next/link";
 import MenuIcon from '@mui/icons-material/Menu';
 import { useRef, useState } from "react";
