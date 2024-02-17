@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import Data, { ServiceCard } from '@/assets/data'
 import Footer from "@/components/users/elements/Footer";
+import GRPD from "@/components/common/GRPD";
 
 export const getServerSideProps = checkAuthentication(async (context: any, admin: boolean) => {
     return {
@@ -18,10 +19,16 @@ export const getServerSideProps = checkAuthentication(async (context: any, admin
 export default function Services({ admin = false }: { admin: boolean }) {
 
     const [lang, setLang] = useState("fr")
+    const [showGrpd, setShowGrpd] = useState(false)
 
     useEffect(() => {
         const storedLang = localStorage.getItem("lang")
+        const isNew = localStorage.getItem("isNew")
         if (storedLang && storedLang !== lang) setLang(storedLang)
+        if (isNew !== "false") {
+            setShowGrpd(true)
+            localStorage.setItem("isNew", "false")
+        }
     }, [])
 
     const changeLanguage = (val: string) => {
@@ -31,7 +38,12 @@ export default function Services({ admin = false }: { admin: boolean }) {
 
     const pageData = Data[lang]
 
-    return <main className="overflow-x-hidden flex flex-col min-h-screen">
+    return <main className="overflow-x-hidden flex flex-col min-h-screen relative">
+        {
+            showGrpd && <section className="fixed top-0 left-0 w-screen h-screen z-[99] flex items-center justify-center">
+                <GRPD setShowGrpd={setShowGrpd} />
+            </section>
+        }
         <Navbar lang={lang} changeLanguage={changeLanguage} page="/services" admin={admin} />
         <section className="flex-1">
             <section className="lg:h-[700px] h-[calc(100vh_-_60px)] text-white flex">

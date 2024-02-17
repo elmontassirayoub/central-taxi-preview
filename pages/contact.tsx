@@ -7,6 +7,7 @@ import Call from "@/components/common/Buttons/Call";
 import Book from "@/components/common/Buttons/Book";
 import Data from "@/assets/data";
 import Email from "@/components/common/Buttons/Email";
+import GRPD from "@/components/common/GRPD";
 
 export const getServerSideProps = checkAuthentication(async (context: any, admin: boolean) => {
   return {
@@ -19,10 +20,16 @@ export const getServerSideProps = checkAuthentication(async (context: any, admin
 export default function Contact({ admin = false }: { admin: boolean }) {
 
   const [lang, setLang] = useState("fr")
+  const [showGrpd, setShowGrpd] = useState(false)
 
   useEffect(() => {
     const storedLang = localStorage.getItem("lang")
+    const isNew = localStorage.getItem("isNew")
     if (storedLang && storedLang !== lang) setLang(storedLang)
+    if (isNew !== "false") {
+      setShowGrpd(true)
+      localStorage.setItem("isNew", "false")
+    }
   }, [])
 
 
@@ -33,7 +40,12 @@ export default function Contact({ admin = false }: { admin: boolean }) {
 
   const pageData = Data[lang]
 
-  return <main className="flex flex-col min-h-screen">
+  return <main className="overflow-x-hidden flex flex-col min-h-screen relative">
+    {
+      showGrpd && <section className="fixed top-0 left-0 w-screen h-screen z-[99] flex items-center justify-center">
+        <GRPD setShowGrpd={setShowGrpd} />
+      </section>
+    }
     <Navbar admin={admin} lang={lang} changeLanguage={changeLanguage} page="/contact" />
     <section className="flex-1">
       <section className="lg:h-[700px] min-h-[calc(100vh_-_60px)] text-white flex">
@@ -51,7 +63,7 @@ export default function Contact({ admin = false }: { admin: boolean }) {
             </div>
           </div>
           <div className="flex-1 hidden md:flex items-center justify-center overflow-hidden">
-            <Image width={1000} height={1000} className="lg:h-[700px] object-cover" src="/logo.png"alt="Logo" />
+            <Image width={1000} height={1000} className="lg:h-[700px] object-cover" src="/logo.png" alt="Logo" />
           </div>
         </div>
       </section>
