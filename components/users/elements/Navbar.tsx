@@ -12,6 +12,9 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useOutsideAlerter } from "@/components/hook";
 import EditUser from "../modals/EditUser";
 import EditPassword from "../modals/EditPassword";
+import Image from "next/image";
+import UK from "@/assets/uk.png"
+import France from "@/assets/france.png"
 
 type updatePasswordType = {
     oldPassword: string,
@@ -302,6 +305,10 @@ export default function Navbar({ lang, changeLanguage, page, admin }: { lang: st
                         })
                     }
                 </div>
+                <div className="flex items-center gap-5">
+                    <Image alt="UK" onClick={() => changeLanguage("en")} className={`cursor-pointer border-b-[1px]  pb-1 box-border box-content w-6 h-6 ${lang === "en" ? "" : "border-transparent"}`} src={UK} />
+                    <Image alt="France" onClick={() => changeLanguage("fr")} className={`cursor-pointer border-b-[1px]  pb-1 box-border box-content w-6 h-6 ${lang === "fr" ? "" : "border-transparent"}`} src={France} />
+                </div>
                 <div className="flex gap-10">
                     {
                         status === "loading" ? <></> : !session?.user?.email ?
@@ -320,15 +327,14 @@ export default function Navbar({ lang, changeLanguage, page, admin }: { lang: st
                                 </div>
                             </div>
                     }
-
-                    <select value={lang} onChange={e => changeLanguage(e.target.value)} className="bg-transparent outline-none uppercase cursor-pointer">
-                        <option value="fr" className="uppercase bg-[#33475A]">fr</option>
-                        <option value="en" className="uppercase bg-[#33475A]">en</option>
-                    </select>
                 </div>
             </section>
             <section className="lg:hidden flex h-15 bg-[#33475A] justify-between items-center px-2">
                 <p className="text-white uppercase font-medium italic">taxi strasbourg services</p>
+                <div className="flex items-center gap-5">
+                    <Image alt="UK" onClick={() => changeLanguage("en")} className={`cursor-pointer border-b-[1px]  pb-1 box-border box-content w-6 h-6 ${lang === "en" ? "" : "border-transparent"}`} src={UK} />
+                    <Image alt="France" onClick={() => changeLanguage("fr")} className={`cursor-pointer border-b-[1px]  pb-1 box-border box-content w-6 h-6 ${lang === "fr" ? "" : "border-transparent"}`} src={France} />
+                </div>
                 {
                     toggleMenu ? <CloseIcon onClick={() => setToggleMenu(!toggleMenu)} sx={{ fontSize: 35 }} className={` rounded-[50%] bg-[#fff] text-[#000] p-2 my-2 cursor-pointer`} /> : <MenuIcon onClick={() => setToggleMenu(!toggleMenu)} sx={{ fontSize: 35 }} className={`rounded-[50%] bg-[#fff] text-[#000] p-2 my-2 cursor-pointer`} />
                 }
@@ -358,10 +364,6 @@ export default function Navbar({ lang, changeLanguage, page, admin }: { lang: st
                             <p className="underline border-[1px] border-secondary-100 rounded-xl w-[90%] h-10 flex items-center justify-center hover:underline cursor-pointer" onClick={() => signOut()}>{compData.navbar.logout}</p>
                         </>
                 }
-                <select value={lang} onChange={e => changeLanguage(e.target.value)} className=" outline-none uppercase">
-                    <option value="fr" className="uppercase">fr</option>
-                    <option value="en" className="uppercase">en</option>
-                </select>
             </div>
         </div>
         {
