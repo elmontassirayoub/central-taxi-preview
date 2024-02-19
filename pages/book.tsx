@@ -1,6 +1,5 @@
 import Navbar from "@/components/users/elements/Navbar";
 import { useEffect, useRef, useState } from "react";
-import RateReviewIcon from '@mui/icons-material/RateReview';
 import Data from "@/assets/data";
 import LocationInput from "@/components/users/elements/LocationInput";
 import DateRangeIcon from '@mui/icons-material/DateRange';
@@ -16,7 +15,7 @@ import { toast } from 'react-toastify';
 import checkAuthentication from "@/lib/middlewares/checkAuthenticated";
 import Call from "@/components/common/Buttons/Call";
 import Review from "@/components/common/Buttons/Review";
-import GRPD from "@/components/common/GRPD";
+// import GRPD from "@/components/common/GRPD";
 
 const DirectionMap = dynamic(() => import("@/components/users/elements/DirectionMap"), {
     ssr: false
@@ -87,16 +86,16 @@ export default function Book({ admin = false }: { admin: boolean }) {
     const [showReservationForm, setShowReservationForm] = useState(false)
     const [reservationData, setReservationData] = useState<ReservationData>({ firstname: "", lastname: "", phonenumber: "", address: "", email: "", message: "" })
     const [personalData, setPersonalData] = useState(false)
-    const [showGrpd, setShowGrpd] = useState(false)
+    // const [showGrpd, setShowGrpd] = useState(false)
 
     useEffect(() => {
         const storedLang = localStorage.getItem("lang")
-        const isNew = localStorage.getItem("isNew")
+        // const isNew = localStorage.getItem("isNew")
         if (storedLang && storedLang !== lang) setLang(storedLang)
-        if (isNew !== "false") {
+        /*if (isNew !== "false") {
             setShowGrpd(true)
             localStorage.setItem("isNew", "false")
-        }
+        }*/
     }, [])
 
 
@@ -231,11 +230,11 @@ export default function Book({ admin = false }: { admin: boolean }) {
     const { form: { title, fromLabel, fromPlaceholder, toLabel, toPlaceholder, dateLabel, timeLabel, btn }, rightSide } = pageData.book
 
     return <main className="overflow-x-hidden flex flex-col min-h-screen relative">
-        {
+        {/* {
             showGrpd && <section className="fixed top-0 left-0 w-screen h-screen z-[99] flex items-center justify-center">
                 <GRPD setShowGrpd={setShowGrpd} />
             </section>
-        }
+        } */}
         <Navbar admin={admin} lang={lang} changeLanguage={changeLanguage} page="/book" />
         <div className="flex-1 w-full hero-book flex flex-col lg:flex-row lg:p-10 py-10 px-4 gap-10 lg:justify-center items-center mb-20 relative">
             <form onSubmit={(e) => { e.preventDefault(); ReservationFormHandler() }} className="w-full lg:w-fit bg-white rounded-[15px] lg:p-10 py-10 px-4 flex flex-col gap-5 lg:min-w-[500px] lg:min-h-[600px]">

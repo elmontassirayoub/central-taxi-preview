@@ -4,9 +4,7 @@ import BookOnlineIcon from '@mui/icons-material/BookOnline';
 import SellIcon from '@mui/icons-material/Sell';
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import EuroIcon from '@mui/icons-material/Euro';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import StarRating from "@/components/users/elements/StarRating";
-import RateReviewIcon from '@mui/icons-material/RateReview';
 import Footer from "@/components/users/elements/Footer";
 import Data, { CardDataType } from '@/assets/data'
 import { useEffect, useState } from "react";
@@ -15,7 +13,7 @@ import Image from "next/image";
 import Call from "@/components/common/Buttons/Call";
 import Book from "@/components/common/Buttons/Book";
 import Review from "@/components/common/Buttons/Review";
-import GRPD from "@/components/common/GRPD"
+// import GRPD from "@/components/common/GRPD"
 
 export const getServerSideProps = checkAuthentication(async (context: any, admin: boolean) => {
   return {
@@ -27,36 +25,36 @@ export const getServerSideProps = checkAuthentication(async (context: any, admin
 export default function Home({ admin = false }: { admin: boolean }) {
 
   const [lang, setLang] = useState("fr")
-  const [showGrpd, setShowGrpd] = useState(false)
+  // const [showGrpd, setShowGrpd] = useState(false)
 
   useEffect(() => {
     const storedLang = localStorage.getItem("lang")
-    const isNew = localStorage.getItem("isNew")
+    // const isNew = localStorage.getItem("isNew")
     if (storedLang && storedLang !== lang) setLang(storedLang)
-    if(isNew !== "false") {
+    /*if(isNew !== "false") {
       setShowGrpd(true)
       localStorage.setItem("isNew", "false")
-    }
+    }*/
   }, [])
 
   const reviews = [
     {
       name: "Thorhildur Hallgrims",
-      date: "Le 15 janvier 2023",
+      date: "Le 15 Novembre 2023",
       rating: 5,
       review: "Best taxi driver in town!! Was super helpfull and kind."
     },
     {
-      name: "Thorhildur Hallgrims",
-      date: "Le 15 janvier 2023",
-      rating: 4.5,
-      review: "Best taxi driver in town!! Was super helpfull and kind. Best taxi driver in town!! Was super helpfull and kind. Best taxi driver in town!! Was super helpfull and kind. "
+      name: "Leila Bellam",
+      date: "Le 16 fevrier 2024",
+      rating: 5,
+      review: "Taxi poli, ponctuel et très sympathique. Il a appelé 5 mns avant l’heure de rendez-vous comme prévu. Voiture nickel au niveau propreté."
     },
     {
-      name: "Thorhildur Hallgrims",
-      date: "Le 15 janvier 2023",
-      rating: 3,
-      review: "Best taxi driver in town!! Was super helpfull and kind. Best taxi driver in town!! Was super helpfull and kind."
+      name: "D B",
+      date: "Le 16 fevrier 2024",
+      rating: 5,
+      review: "Je tenais à déposer un avis pour le professionnalisme et la gentillesse du chauffeur. Nous avons pris le taxi avec ma maman et la course s’est très bien déroulée. Chauffeur très poli ,  avec de la discussion et le trajet est passé rapidement . Nous le recommandons et nous referons appel à ses services de chauffeur en cas de besoin . Merci à vous !"
     }
   ]
 
@@ -71,17 +69,17 @@ export default function Home({ admin = false }: { admin: boolean }) {
 
   return (
     <main className="overflow-x-hidden flex flex-col min-h-screen relative">
-      {
+      {/* {
         showGrpd && <section className="fixed top-0 left-0 w-screen h-screen z-[99] flex items-center justify-center">
           <GRPD setShowGrpd={setShowGrpd} />
         </section>
-      }
+      } */}
       <Navbar lang={lang} changeLanguage={changeLanguage} page="/" admin={admin} />
       <section className="flex-1">
         <div className="hero lg:h-[700px] h-[calc(100vh_-_60px)] text-white flex">
           <div className="flex justify-evenly md:px-0 px-5 h-full pt-5 lg:pt-0 items-center lg:items-start">
             <div className="text-center lg:text-left lg:pl-20 pt-[10%] text-[#000] flex-1 flex flex-col gap-12">
-              <Image width={1000} height={1000} className="md:hidden block flex-1 object-cover" src="/logo.png" alt="Logo" />
+              <Image draggable={false} width={1000} height={1000} className="md:hidden block flex-1 object-cover" src="/logo.png" alt="Logo" />
               <div className="w-full lg:px-0 px-5 text-white flex flex-col gap-2 lg:gap-1">
                 <h1 className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim">taxi strasbourg services</h1>
                 <h2 className="text-[#fff]/[70%] text-[18px] lg:text-[18px] italic lg:w-[75%]">{pageData.home.hero.h2}</h2>
@@ -93,7 +91,7 @@ export default function Home({ admin = false }: { admin: boolean }) {
               </div>
             </div>
             <div className="flex-1 hidden md:flex items-center justify-center overflow-hidden">
-              <Image height={1000} width={1000} className="lg:h-[700px] object-cover" src="/logo.png" alt="Logo" />
+              <Image draggable={false} height={1000} width={1000} className="lg:h-[700px] object-cover" src="/logo.png" alt="Logo" />
             </div>
           </div>
         </div>
@@ -121,7 +119,7 @@ export default function Home({ admin = false }: { admin: boolean }) {
             <div className="lg:flex-[0.4] news py-10 lg:py-[2rem] overflow-hidden">
               <Image width={1000} height={1000} className="lg:flex-1 max-h-[80%] object-contain" src="/logo.png" alt="Logo" />
               <p className="text-center uppercase text-[20px] text-white lg:text-[28px] lg:[word-spacing:5px] font-meduim">{pageData.home.contact}</p>
-              <p className="text-[#fff]/[90%] text-sm lg:text-[18px] italic font-medium text-center">contact.central.taxi67@gmail.com</p>
+              <p className="text-[#fff]/[90%] text-sm lg:text-[18px] italic font-medium text-center">contact@strasbourgtaxi.fr</p>
               <p className="text-[#fff]/[90%] text-sm lg:text-[18px] lg:mt-3 text-center">06 47 60 01 71</p>
             </div>
             <div className="lg:flex-[0.6] flex items-center">
