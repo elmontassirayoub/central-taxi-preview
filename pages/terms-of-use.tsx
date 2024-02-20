@@ -38,7 +38,7 @@ export default function TermsOfUse({ admin = false }: { admin: boolean }) {
                 </section>
             } */}
             <Navbar lang={lang} changeLanguage={changeLanguage} page="/" admin={admin} />
-            <section className="text-white p-20">
+            <section className="text-white p-5 lg:p-20">
                 <h1 className="lg:text-4xl text-2xl pb-10">Conditions générales</h1>
                 <div className="p-10 flex flex-col gap-5">
                     <p>Conditions générales de commande en ligne par l’intermédiaire du site web appartenant à Taxi à Strasbourg Service.</p>

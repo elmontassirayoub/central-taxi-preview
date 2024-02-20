@@ -51,21 +51,7 @@ export default function Footer({ lang, changeLanguage }: { lang: string, changeL
                 <Book btn={compData.footer.btn2} primary={false} />
                 <p className="text-[#fff]/[70%] text-center text-xs">La Grille tarifaire préfecture.</p>
                 <p className="text-[#fff]/[70%] text-center text-xs">Nous sommes équipés de TPE pour le paiement par Carte bancaire.</p>
-                <p className="text-[#fff]/[70%] text-center text-xs">Forfait pour aéroport de Francfort 280C 350D, basel Mulhouse 235D 180C.Aéroport Strasbourg35c45D. </p>
-                <p className="text-[#fff]/[70%] text-center text-xs">Gare Strasbourg - Strasbourg. 14c16D.</p>
             </div>
-        </section>
-        <section className="text-white/[70%] lg:px-[150px]">
-            <p className="font-semibold text-white text-4xl">Mentions Légales</p>
-            <p className="undedrline text-white/[90%] pb-3 pt-10">Hébergeur :</p>
-            <p>NAMECHEAP, Inc.</p>
-            <p>4600 East Washington Street</p>
-            <p>Suite 305, Phoenix</p>
-            <p>AZ 85034, USA</p>
-            <p className="undedrline text-white/[90%] pb-3 pt-10">Loi CNIL informatique et libertés:</p>
-            <p>Conformément à la loi «Informatique et Libertés » du 6 janvier 1978, les personnes ayant fourni des informations personnelles peuvent exercer leurs droits d’accès et de modification sur ces données, en envoyant un courrier électronique à l’adresse suivante : contact@strasbourgtaxi.fr. De plus, aucune information personnelle n’est collectée à l’insu des utilisateurs du site, ni cédée à des tiers, ni utilisée à des fins personnelles sans votre accord.</p>
-            <p className="undedrline text-white/[90%] pb-3 pt-10">Propriété intellectuelle :</p>
-            <p>Tout le contenu du présent site incluant, de façon non limitative, les graphismes, images, textes, vidéos, animations, sons, logos, gifs et icônes ainsi que leur mise en forme sont la propriété exclusive de la société Taxi Strasbourg Service. Toute reproduction, distribution, modification, adaptation, retransmission ou publication, même partielle, de ces différents éléments est strictement interdite sans l’accord exprès par écrit de Taxi Strasbourg Service. Cette représentation ou reproduction, par quelque procédé que ce soit, constitue une contrefaçon sanctionnée par les articles L.335-2 et suivants du Code de la propriété intellectuelle. Le non-respect de cette interdiction constitue une contrefaçon pouvant engager la responsabilité civile et pénale du contrefacteur. En outre, les propriétaires des Contenus copiés pourraient intenter une action en justice à leur encontre.</p>
         </section>
     </footer>
 }
