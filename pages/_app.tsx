@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }: { Component: any, pageProps: any }) {
   return (
     <SessionProvider session={pageProps.session}>
       <Head>
-        <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="89cdc959-8976-49aa-83b5-e44ba77088f1"   data-blockingmode="auto" type="text/javascript"></script>
+        <Script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/f631425ca93aa1e9f8d06035/script.js"></Script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
         <meta name="description" content="Taxi Strasbourg Service" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
