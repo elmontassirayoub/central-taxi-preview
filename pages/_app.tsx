@@ -13,6 +13,7 @@ function MyApp({ Component, pageProps }: { Component: any, pageProps: any }) {
   return (
     <SessionProvider session={pageProps.session}>
       <Head>
+        <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="89cdc959-8976-49aa-83b5-e44ba77088f1"   data-blockingmode="auto" type="text/javascript"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
         <meta name="description" content="Taxi Strasbourg Service" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -22,11 +23,9 @@ function MyApp({ Component, pageProps }: { Component: any, pageProps: any }) {
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff"></meta>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
-        <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="89cdc959-8976-49aa-83b5-e44ba77088f1" data-blockingmode="auto" type="text/javascript"></script>
         <title>Taxi Strasbourg Service</title>
       </Head>
       <main className={inter.className}>
-      <script id="CookieDeclaration" src="https://consent.cookiebot.com/89cdc959-8976-49aa-83b5-e44ba77088f1/cd.js" type="text/javascript" async></script>
         <Component {...pageProps} />
       </main>
       <ToastContainer />
