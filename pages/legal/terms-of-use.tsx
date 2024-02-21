@@ -1,3 +1,4 @@
+import PageLayout from "@/components/common/PageLayout"
 import Footer from "@/components/users/elements/Footer"
 import Navbar from "@/components/users/elements/Navbar"
 import checkAuthentication from "@/lib/middlewares/checkAuthenticated"
@@ -24,8 +25,7 @@ export default function TermsOfUse({ admin = false }: { admin: boolean }) {
     }
 
     return (
-        <main className="overflow-x-hidden flex flex-col min-h-screen relative">
-            <Navbar lang={lang} changeLanguage={changeLanguage} page="/terms-of-use" admin={admin} />
+        <PageLayout lang={lang} changeLanguage={changeLanguage} page="/terms-of-use" admin={admin}>
             <section className="text-white py-5 px-2 lg:p-20">
                 <h1 className="lg:text-4xl text-2xl pb-10">Conditions générales</h1>
                 <div className="lg:p-10 px-3 flex flex-col gap-5">
@@ -74,7 +74,6 @@ export default function TermsOfUse({ admin = false }: { admin: boolean }) {
                     <p>Le prix de la course taxi se calculant sur la base d’un compteur horokilométrique préfectoral et réglementaire.</p>
                 </div>
             </section>
-            <Footer lang={lang} changeLanguage={changeLanguage} />
-        </main>
+        </PageLayout>
     )
 }

@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import Data, { ServiceCard } from '@/assets/data'
 import Footer from "@/components/users/elements/Footer";
 import GRPD from "@/components/common/GRPD";
+import PageLayout from "@/components/common/PageLayout";
 
 export const getServerSideProps = checkAuthentication(async (context: any, admin: boolean) => {
     return {
@@ -38,13 +39,7 @@ export default function Services({ admin = false }: { admin: boolean }) {
 
     const pageData = Data[lang]
 
-    return <main className="overflow-x-hidden flex flex-col min-h-screen relative">
-        {
-            showGrpd && <section className="fixed top-0 left-0 w-screen h-screen z-[99] flex items-center justify-center">
-                <GRPD setShowGrpd={setShowGrpd} />
-            </section>
-        }
-        <Navbar lang={lang} changeLanguage={changeLanguage} page="/services" admin={admin} />
+    return <PageLayout lang={lang} changeLanguage={changeLanguage} page="/services" admin={admin}>
         <section className="flex-1">
             <section className="lg:h-[700px] h-[calc(100vh_-_60px)] text-white flex">
                 <div className="flex justify-evenly md:px-0 px-5 h-full pt-5 lg:pt-0 items-center lg:items-start">
@@ -82,6 +77,5 @@ export default function Services({ admin = false }: { admin: boolean }) {
                 </div>
             </section>
         </section>
-        <Footer lang={lang} changeLanguage={changeLanguage} />
-    </main>
+    </PageLayout>
 }

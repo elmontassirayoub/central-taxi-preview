@@ -14,6 +14,7 @@ import Call from "@/components/common/Buttons/Call";
 import Book from "@/components/common/Buttons/Book";
 import Review from "@/components/common/Buttons/Review";
 import GRPD from "@/components/common/GRPD"
+import PageLayout from "@/components/common/PageLayout";
 
 export const getServerSideProps = checkAuthentication(async (context: any, admin: boolean) => {
   return {
@@ -68,13 +69,7 @@ export default function Home({ admin = false }: { admin: boolean }) {
   const pageData = Data[lang]
 
   return (
-    <main className="overflow-x-hidden flex flex-col min-h-screen relative">
-      {
-        showGrpd && <section className="fixed top-0 left-0 w-screen h-screen z-[99] flex items-center justify-center">
-          <GRPD setShowGrpd={setShowGrpd} />
-        </section>
-      }
-      <Navbar lang={lang} changeLanguage={changeLanguage} page="/" admin={admin} />
+    <PageLayout lang={lang} changeLanguage={changeLanguage} page="/" admin={admin} >
       <section className="flex-1">
         <div className="hero lg:h-[700px] h-[calc(100vh_-_60px)] text-white flex">
           <div className="flex justify-evenly md:px-0 px-5 h-full pt-5 lg:pt-0 items-center lg:items-start">
@@ -165,7 +160,6 @@ export default function Home({ admin = false }: { admin: boolean }) {
           </div>
         </section>
       </section>
-      <Footer lang={lang} changeLanguage={changeLanguage} />
-    </main>
+    </PageLayout>
   )
 }

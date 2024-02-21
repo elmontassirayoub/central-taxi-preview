@@ -8,6 +8,7 @@ import Book from "@/components/common/Buttons/Book";
 import Data from "@/assets/data";
 import Email from "@/components/common/Buttons/Email";
 import GRPD from "@/components/common/GRPD";
+import PageLayout from "@/components/common/PageLayout";
 
 export const getServerSideProps = checkAuthentication(async (context: any, admin: boolean) => {
   return {
@@ -40,13 +41,7 @@ export default function Contact({ admin = false }: { admin: boolean }) {
 
   const pageData = Data[lang]
 
-  return <main className="overflow-x-hidden flex flex-col min-h-screen relative">
-    {
-      showGrpd && <section className="fixed top-0 left-0 w-screen h-screen z-[99] flex items-center justify-center">
-        <GRPD setShowGrpd={setShowGrpd} />
-      </section>
-    }
-    <Navbar admin={admin} lang={lang} changeLanguage={changeLanguage} page="/contact" />
+  return <PageLayout admin={admin} lang={lang} changeLanguage={changeLanguage} page="/contact">
     <section className="flex-1">
       <section className="lg:h-[700px] min-h-[calc(100vh_-_60px)] text-white flex">
         <div className="flex justify-evenly md:px-0 px-5 h-full pt-5 lg:pt-0 items-center lg:items-start">
@@ -68,6 +63,5 @@ export default function Contact({ admin = false }: { admin: boolean }) {
         </div>
       </section>
     </section>
-    <Footer lang={lang} changeLanguage={changeLanguage} />
-  </main>
+  </PageLayout>
 }
