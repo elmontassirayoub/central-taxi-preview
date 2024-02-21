@@ -315,7 +315,7 @@ export default function Book({ admin = false }: { admin: boolean }) {
                             !editingData && <p className="text-center">€{reservationDetails?.price.toFixed(2)}</p>
                         }
                     </div> : <div className="text-white flex flex-col gap-[60px]">
-                        <p className="uppercase lg:text-[24px] font-medium text-center">taxi strasbourg services</p>
+                        <p className="uppercase lg:text-[24px] font-medium text-center">taxi strasbourg service</p>
                         <div>
                             <h2 className="lg:text-[30px] font-medium text-center">{rightSide.title}</h2>
                             <ol className="list-decimal lg:text-[18px] font-medium ml-10">

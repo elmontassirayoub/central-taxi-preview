@@ -42,7 +42,7 @@ export default function Footer({ lang, changeLanguage }: { lang: string, changeL
                 </div>
             </div>
             <div className="flex-1 flex lg:items-center justify-center flex-col gap-3 italic">
-                <p className="uppercase text-[20px] lg:text-[36px] whitespace-nowrap not-italic font-medium text-center">taxi strasbourg services</p>
+                <p className="uppercase text-[20px] lg:text-[36px] whitespace-nowrap not-italic font-medium text-center">taxi strasbourg service</p>
                 <p className="text-[#fff]/[70%] lg:text-center">{compData.footer.sec1.p1}</p>
                 <p className="text-[#fff]/[70%] lg:text-center">{compData.footer.sec1.p2}</p>
                 <p className="text-[#fff]/[70%] lg:text-center text-left">{compData.footer.sec1.p3}</p>
@@ -58,7 +58,7 @@ export default function Footer({ lang, changeLanguage }: { lang: string, changeL
         </section>
         <section className="min-h-10 bg-[#000] px-10 py-2 lg:py-0    flex lg:items-center flex-col lg:flex-row gap-2 lg:gap-5">
             <p className="text-[#fff]/[70%] text-sm">©Taxi Strasbourg Service. Tous droit réservés.</p>
-            <Link href="/terms-of-use" className="underline lg:text-sm text-xs">Conditions général de vente.</Link>
+            <Link href="/legal/terms-of-use" className="underline lg:text-sm text-xs">Conditions général de vente.</Link>
         </section>
     </footer>
 }

@@ -189,7 +189,7 @@ const Data: DataType = {
             ],
             hero: {
                 btn: "Reserver",
-                h2: "Commander un taxi sur le site taxi strasbourg services est extrêmement simple et sécurisé.",
+                h2: "Commander un taxi sur le site taxi strasbourg service est extrêmement simple et sécurisé.",
                 h3: "À votre service 24H/24"
             },
             yellowSection: {
@@ -339,7 +339,7 @@ const Data: DataType = {
             ],
             hero: {
                 btn: "Book",
-                h2: "Ordering a taxi on the Strasbourg Taxi Services website is extremely simple and secure.",
+                h2: "Ordering a taxi on the Strasbourg Taxi Service website is extremely simple and secure.",
                 h3: "At your service 24 hours a day"
             },
             yellowSection: {

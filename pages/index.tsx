@@ -81,7 +81,7 @@ export default function Home({ admin = false }: { admin: boolean }) {
             <div className="text-center lg:text-left lg:pl-20 pt-[10%] text-[#000] flex-1 flex flex-col gap-12">
               <Image draggable={false} width={1000} height={1000} className="md:hidden block flex-1 object-cover" src="/logo.png" alt="Logo" />
               <div className="w-full lg:px-0 px-5 text-white flex flex-col gap-2 lg:gap-1">
-                <h1 className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim">taxi strasbourg services</h1>
+                <h1 className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim">taxi strasbourg service</h1>
                 <h2 className="text-[#fff]/[70%] text-[18px] lg:text-[18px] italic lg:w-[75%]">{pageData.home.hero.h2}</h2>
                 <h3 className="text-[#fff]/[50%] lg:text-[18px] mt-3">{pageData.home.hero.h3}</h3>
               </div>
@@ -95,7 +95,7 @@ export default function Home({ admin = false }: { admin: boolean }) {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-10 my-[150px] mx-10">
+        <div className="flex flex-col gap-10 py-[150px] px-10 bg-[#000]/[20%]">
           <p className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim text-center text-white">{pageData.home.headerBeforeCards}</p>
           <div className="flex lg:flex-row flex-col justify-around gap-10 lg:gap-0">
             {
@@ -113,7 +113,7 @@ export default function Home({ admin = false }: { admin: boolean }) {
             }
           </div>
         </div>
-        <section className="mb-[200px]">
+        <section className="pb-[200px] bg-[#000]/[20%]">
           <p className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim text-center text-white">{pageData.home.news}</p>
           <div className="bg-primary-200 h-20 mx-10 lg:mx-20 my-10 rounded-2xl flex lg:flex-row flex-col h-auto lg:h-[550px]">
             <div className="lg:flex-[0.4] news py-10 lg:py-[2rem] overflow-hidden">
@@ -124,7 +124,7 @@ export default function Home({ admin = false }: { admin: boolean }) {
             </div>
             <div className="lg:flex-[0.6] flex items-center">
               <div className="w-full px-5 lg:px-10 flex flex-col lg:gap-10 text-white py-10 lg:py-0">
-                <h4 className="mb-2 lg:mb-0 uppercase text-[20px] text-white lg:text-[28px] lg:[word-spacing:5px] font-meduim">taxi strasbourg services</h4>
+                <h4 className="mb-2 lg:mb-0 uppercase text-[20px] text-white lg:text-[28px] lg:[word-spacing:5px] font-meduim">taxi strasbourg service</h4>
                 <p className="text-white/[80%] italic text-sm lg:text-base">{pageData.home.paragraph}</p>
                 <div className="lg:flex hidden justify-end">
                   <Call />
@@ -133,17 +133,17 @@ export default function Home({ admin = false }: { admin: boolean }) {
             </div>
           </div>
         </section>
-        <div className="relative my-10 h-[300px]">
+        <div className="relative bg-[#000]/[20%]  h-[300px]">
           <div className="absolute top-0 left-[-40px] w-[120%] lg:w-[105%] h-[300px] rotated flex flex-col justify-center items-center rotate-[-1.75deg] shrink-0">
             <div className="rotate-[1.75deg] items-center flex flex-col gap-4 lg:gap-2 justify-center w-full">
               <EuroIcon sx={{ fontSize: 50 }} className="rounded-[50%] bg-[#33475A] text-white p-2" />
-              <p className="text-[20px] lg:text-[35px] text-[#fff] font-medium uppercase">taxi strasbourg services</p>
+              <p className="text-[20px] lg:text-[35px] text-[#fff] font-medium uppercase">taxi strasbourg service</p>
               <p className="text-[13px] lg:text-[20px] text-[#fff]/[75%] italic mb-10">{pageData.home.yellowSection.h2}</p>
               <Book btn={pageData.home.yellowSection.btn} primary={true} />
             </div>
           </div>
         </div>
-        <section className="p-10 lg:p-20">
+        <section className="py-20 px-10 lg:px-20 lg:py-[100px] bg-[#000]/[20%]">
           <p className="mb-2 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim text-center text-white">{pageData.home.reviews.h1}</p>
           <p className="text-[#fff]/[70%] text-[18px] lg:text-[18px] italic text-center">{pageData.home.reviews.h2}</p>
           <div className="my-5 lg:m-10 flex lg:flex-row flex-col justify-center gap-5 py-10 lg:py-0">
