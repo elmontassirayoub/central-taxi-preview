@@ -1,4 +1,3 @@
-// import GRPD from "@/components/common/GRPD"
 import Footer from "@/components/users/elements/Footer"
 import Navbar from "@/components/users/elements/Navbar"
 import checkAuthentication from "@/lib/middlewares/checkAuthenticated"
@@ -13,16 +12,10 @@ export const getServerSideProps = checkAuthentication(async (context: any, admin
 })
 export default function TermsOfUse({ admin = false }: { admin: boolean }) {
     const [lang, setLang] = useState("fr")
-    // const [showGrpd, setShowGrpd] = useState(false)
 
     useEffect(() => {
         const storedLang = localStorage.getItem("lang")
-        // const isNew = localStorage.getItem("isNew")
         if (storedLang && storedLang !== lang) setLang(storedLang)
-        /*if (isNew !== "false") {
-            setShowGrpd(true)
-            localStorage.setItem("isNew", "false")
-        }*/
     }, [])
 
     const changeLanguage = (val: string) => {
@@ -32,15 +25,10 @@ export default function TermsOfUse({ admin = false }: { admin: boolean }) {
 
     return (
         <main className="overflow-x-hidden flex flex-col min-h-screen relative">
-            {/* {
-                showGrpd && <section className="fixed top-0 left-0 w-screen h-screen z-[99] flex items-center justify-center">
-                    <GRPD setShowGrpd={setShowGrpd} />
-                </section>
-            } */}
-            <Navbar lang={lang} changeLanguage={changeLanguage} page="/" admin={admin} />
-            <section className="text-white p-5 lg:p-20">
+            <Navbar lang={lang} changeLanguage={changeLanguage} page="/terms-of-use" admin={admin} />
+            <section className="text-white py-5 px-2 lg:p-20">
                 <h1 className="lg:text-4xl text-2xl pb-10">Conditions générales</h1>
-                <div className="p-10 flex flex-col gap-5">
+                <div className="lg:p-10 px-3 flex flex-col gap-5">
                     <p>Conditions générales de commande en ligne par l’intermédiaire du site web appartenant à Taxi à Strasbourg Service.</p>
                     <p>Ci-après « TAXI STRASBOURG SERVICE », SASU, dont le siège social est 5 rue de la Moselle 67300 SCHILTIGHEIM immatriculée sous le numéro SIRET 83825994300010.</p>
                     <p>La société met en relation le client par l ́intermédiaire de son portail de réservation mobile et web  avec des chauffeurs de TAXI STRASBOURG SERVICE ou le cas échéant avec des taxis collaborateurs lesquels réalisent, pour leur propre compte et sous leur propre responsabilité, les prestations de transport demandées par le client.</p>
