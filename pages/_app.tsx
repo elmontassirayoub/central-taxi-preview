@@ -32,6 +32,7 @@ function MyApp({ Component, pageProps }: { Component: any, pageProps: any }) {
       <script
         defer
         src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}&libraries=places`}></script>
+      <script id="CookieDeclaration" src="https://consent.cookiebot.com/89cdc959-8976-49aa-83b5-e44ba77088f1/cd.js" type="text/javascript" async></script>
     </SessionProvider>
   )
 }
