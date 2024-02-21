@@ -112,7 +112,7 @@ export default function Home({ admin = false }: { admin: boolean }) {
           <p className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim text-center text-white">{pageData.home.news}</p>
           <div className="bg-primary-200 h-20 mx-10 lg:mx-20 my-10 rounded-2xl flex lg:flex-row flex-col h-auto lg:h-[550px]">
             <div className="lg:flex-[0.4] news py-10 lg:py-[2rem] overflow-hidden">
-              <Image width={1000} height={1000} className="lg:flex-1 max-h-[80%] object-contain" src="/logo.png" alt="Logo" />
+              <Image draggable={false} width={1000} height={1000} className="lg:flex-1 max-h-[80%] object-contain" src="/logo.png" alt="Logo" />
               <p className="text-center uppercase text-[20px] text-white lg:text-[28px] lg:[word-spacing:5px] font-meduim">{pageData.home.contact}</p>
               <p className="text-[#fff]/[90%] text-sm lg:text-[18px] italic font-medium text-center">contact@strasbourgtaxi.fr</p>
               <p className="text-[#fff]/[90%] text-sm lg:text-[18px] lg:mt-3 text-center">06 47 60 01 71</p>
