@@ -60,8 +60,8 @@ export default function Footer({ lang, changeLanguage }: { lang: string, changeL
             </div>
         </section>
         <section className="min-h-10 bg-[#000] px-10 py-2 lg:py-0 flex lg:items-center flex-col lg:flex-row gap-2 lg:gap-5 justify-end">
-            <p className="text-[#fff]/[70%] text-sm">©Taxi Strasbourg Service. Tous droit réservés.</p>
-            <Link href="/legal/terms-of-use" className="underline lg:text-sm text-xs">Conditions général de vente.</Link>
+            <p className="text-[#fff]/[70%] text-sm text-right">©Taxi Strasbourg Service. Tous droit réservés.</p>
+            <Link href="/legal/terms-of-use" className="underline lg:text-sm text-xs text-right">Conditions général de vente.</Link>
         </section>
     </footer>
 }
