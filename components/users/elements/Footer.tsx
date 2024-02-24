@@ -27,10 +27,10 @@ export default function Footer({ lang, changeLanguage }: { lang: string, changeL
                 <div className="flex flex-col gap-4 items-start lg:w-fit w-full">
                     <div className="flex gap-4 items-center">
                         <a href="https://www.facebook.com/profile.php?id=61555122177541" target="_blank">
-                            <FacebookIcon className="" />
+                            <FacebookIcon className="text-[#316FF6]" />
                         </a>
                         <a href="https://www.instagram.com/contact.central.taxi67/?igsh=a3JhbGRremdvcXhr&utm_source=qr" target="_blank">
-                            <InstagramIcon className="" />
+                            <InstagramIcon className="instagram" />
                         </a>
                         <a href="https://www.pagesjaunes.fr/pros/58802089" target="_blank">
                             <Image src={PageJaune} alt="" width={20} height={20} className="" />
