@@ -46,17 +46,17 @@ export default function Footer({ lang, changeLanguage }: { lang: string, changeL
             </div>
             <div className="flex-1 flex lg:items-center justify-center flex-col gap-3 italic">
                 <p className="uppercase text-base lg:text-[24px] whitespace-nowrap not-italic font-medium text-center">taxi strasbourg service</p>
-                <p className="text-[#fff]/[70%] lg:text-center text-xs lg:text-sm">{compData.footer.sec1.p1}</p>
+                {/* <p className="text-[#fff]/[70%] lg:text-center text-xs lg:text-sm">{compData.footer.sec1.p1}</p>
                 <p className="text-[#fff]/[70%] lg:text-center text-xs lg:text-sm">{compData.footer.sec1.p2}</p>
                 <p className="text-[#fff]/[70%] lg:text-center text-left text-xs lg:text-sm">{compData.footer.sec1.p3}</p>
                 <p className="text-[#fff]/[70%] lg:text-center text-xs lg:text-sm">Licence artisanale taxi rattaché à la Communauté Urbaine de Strasbourg</p>
-                <p className="text-[#fff]/[70%] lg:text-center text-xs lg:text-sm">Sous le numéro de siret numéro - 83825994300010 et TVA  FR36838259943</p>
+                <p className="text-[#fff]/[70%] lg:text-center text-xs lg:text-sm">Sous le numéro de siret numéro - 83825994300010 et TVA  FR36838259943</p> */}
             </div>
             <div className="w-full flex-1 text-[#000] flex flex-col lg:items-center gap-5 border-t-[0.5px] border-secondary-100 pt-5 lg:pt-0 lg:border-[0px]">
                 <Review btn={compData.footer.btn1} />
                 <Book btn={compData.footer.btn2} primary={false} />
-                <p className="text-[#fff]/[70%] lg:text-center text-xs">La Grille tarifaire préfecture.</p>
-                <p className="text-[#fff]/[70%] lg:text-center text-xs">Nous sommes équipés de TPE pour le paiement par Carte bancaire.</p>
+                {/* <p className="text-[#fff]/[70%] lg:text-center text-xs">La Grille tarifaire préfecture.</p>
+                <p className="text-[#fff]/[70%] lg:text-center text-xs">Nous sommes équipés de TPE pour le paiement par Carte bancaire.</p> */}
             </div>
         </section>
         <section className="min-h-10 bg-[#000] px-10 py-2 lg:py-0 flex lg:items-center flex-col lg:flex-row gap-2 lg:gap-5 justify-end">
