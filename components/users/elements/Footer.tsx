@@ -25,20 +25,23 @@ export default function Footer({ lang, changeLanguage }: { lang: string, changeL
                 </div>
                 <Image width={1000} height={1000} src="/logo.png" alt="logo" draggable={false} className="h-[300px] object-cover hidden lg:block" />
                 <div className="flex flex-col gap-4 items-start lg:w-fit w-full">
-                <div className="flex gap-4 items-center">
-                    <a href="https://www.facebook.com/profile.php?id=61555122177541" target="_blank">
-                        <FacebookIcon className="" />
-                    </a>
-                    <a href="https://www.instagram.com/contact.central.taxi67/?igsh=a3JhbGRremdvcXhr&utm_source=qr" target="_blank">
-                        <InstagramIcon className="" />
-                    </a>
-                    <a href="https://www.pagesjaunes.fr/pros/58802089" target="_blank">
-                        <Image src={PageJaune} alt="" width={20} height={20} className="" />
-                    </a>
-                </div>
+                    <div className="flex gap-4 items-center">
+                        <a href="https://www.facebook.com/profile.php?id=61555122177541" target="_blank">
+                            <FacebookIcon className="" />
+                        </a>
+                        <a href="https://www.instagram.com/contact.central.taxi67/?igsh=a3JhbGRremdvcXhr&utm_source=qr" target="_blank">
+                            <InstagramIcon className="" />
+                        </a>
+                        <a href="https://www.pagesjaunes.fr/pros/58802089" target="_blank">
+                            <Image src={PageJaune} alt="" width={20} height={20} className="" />
+                        </a>
+                    </div>
                     <p className="text-center text-white/[75%] flex items-center gap-1"><strong className="text-white text-sm lg:text-base"><Image src={Fix} alt="Fix" className="w-6 h-6 text-white" /></strong> <a href="tel:0388835633">038883563</a></p>
                     <p className="text-center text-white/[75%] flex items-center gap-1"><strong className="text-white text-sm lg:text-base"><PhoneAndroidIcon /></strong> <a href="tel:0647600171">0647600171</a></p>
                     <p className="text-center text-white/[75%]"><strong className="text-white text-sm lg:text-base"><AlternateEmailIcon /></strong> <a href="mailto:contact@strasbourgtaxi.fr">contact@strasbourgtaxi.fr</a></p>
+                    <a href="https://www.gralon.net/annuaire/commerce-et-societe/industrie/transport.htm" target="_blank">
+                        <Image src="https://logo.gralon.net/plogo-gralon-204445.gif" className="border-none" alt="Transport" width={100} height={100} />
+                    </a>
                 </div>
             </div>
             <div className="flex-1 flex lg:items-center justify-center flex-col gap-3 italic">
