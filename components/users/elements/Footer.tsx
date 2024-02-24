@@ -16,7 +16,7 @@ export default function Footer({ lang, changeLanguage }: { lang: string, changeL
 
     const compData = Data[lang]
 
-    return <footer className="bg-secondary-100 pt-10 text-white flex flex-col gap-20">
+    return <footer className="bg-black pt-10 text-white flex flex-col gap-20">
         <section className="flex justify-evenly px-10 lg:flex-row flex-col items-center lg:gap-0 gap-10">
             <div className="flex-1 flex flex-col justify-center items-center gap-5 lg:w-fit w-full">
                 <div className="hidden lg:flex items-center gap-5">
@@ -36,18 +36,18 @@ export default function Footer({ lang, changeLanguage }: { lang: string, changeL
                         <Image src={PageJaune} alt="" width={20} height={20} className="" />
                     </a>
                 </div>
-                    <p className="text-center text-white/[75%] flex items-center gap-1"><strong className="text-white"><Image src={Fix} alt="Fix" className="w-6 h-6 text-white" /></strong> <a href="tel:0388835633">038883563</a></p>
-                    <p className="text-center text-white/[75%] flex items-center gap-1"><strong className="text-white"><PhoneAndroidIcon /></strong> <a href="tel:0647600171">0647600171</a></p>
-                    <p className="text-center text-white/[75%]"><strong className="text-white"><AlternateEmailIcon /></strong> <a href="mailto:contact@strasbourgtaxi.fr">contact@strasbourgtaxi.fr</a></p>
+                    <p className="text-center text-white/[75%] flex items-center gap-1"><strong className="text-white text-sm lg:text-base"><Image src={Fix} alt="Fix" className="w-6 h-6 text-white" /></strong> <a href="tel:0388835633">038883563</a></p>
+                    <p className="text-center text-white/[75%] flex items-center gap-1"><strong className="text-white text-sm lg:text-base"><PhoneAndroidIcon /></strong> <a href="tel:0647600171">0647600171</a></p>
+                    <p className="text-center text-white/[75%]"><strong className="text-white text-sm lg:text-base"><AlternateEmailIcon /></strong> <a href="mailto:contact@strasbourgtaxi.fr">contact@strasbourgtaxi.fr</a></p>
                 </div>
             </div>
             <div className="flex-1 flex lg:items-center justify-center flex-col gap-3 italic">
-                <p className="uppercase text-[20px] lg:text-[36px] whitespace-nowrap not-italic font-medium text-center">taxi strasbourg service</p>
-                <p className="text-[#fff]/[70%] lg:text-center">{compData.footer.sec1.p1}</p>
-                <p className="text-[#fff]/[70%] lg:text-center">{compData.footer.sec1.p2}</p>
-                <p className="text-[#fff]/[70%] lg:text-center text-left">{compData.footer.sec1.p3}</p>
-                <p className="text-[#fff]/[70%] lg:text-center text-sm">Licence artisanale taxi rattaché à la Communauté Urbaine de Strasbourg</p>
-                <p className="text-[#fff]/[70%] lg:text-center text-sm">Sous le numéro de siret numéro - 83825994300010 et TVA  FR36838259943</p>
+                <p className="uppercase text-base lg:text-[24px] whitespace-nowrap not-italic font-medium text-center">taxi strasbourg service</p>
+                <p className="text-[#fff]/[70%] lg:text-center text-xs lg:text-sm">{compData.footer.sec1.p1}</p>
+                <p className="text-[#fff]/[70%] lg:text-center text-xs lg:text-sm">{compData.footer.sec1.p2}</p>
+                <p className="text-[#fff]/[70%] lg:text-center text-left text-xs lg:text-sm">{compData.footer.sec1.p3}</p>
+                <p className="text-[#fff]/[70%] lg:text-center text-xs lg:text-sm">Licence artisanale taxi rattaché à la Communauté Urbaine de Strasbourg</p>
+                <p className="text-[#fff]/[70%] lg:text-center text-xs lg:text-sm">Sous le numéro de siret numéro - 83825994300010 et TVA  FR36838259943</p>
             </div>
             <div className="w-full flex-1 text-[#000] flex flex-col lg:items-center gap-5 border-t-[0.5px] border-secondary-100 pt-5 lg:pt-0 lg:border-[0px]">
                 <Review btn={compData.footer.btn1} />
