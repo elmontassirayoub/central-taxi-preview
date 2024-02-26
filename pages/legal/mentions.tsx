@@ -41,6 +41,10 @@ export default function Mentions({ admin = false }: { admin: boolean }) {
                     <p className="lg:text-2xl text-xl pb-2">Propriété intellectuelle :</p>
                     <p className="">Tout le contenu du présent site incluant, de façon non limitative, les graphismes, images, textes, vidéos, animations, sons, logos, gifs et icônes ainsi que leur mise en forme sont la propriété exclusive de la société Taxi Strasbourg Service. Toute reproduction, distribution, modification, adaptation, retransmission ou publication, même partielle, de ces différents éléments est strictement interdite sans l’accord exprès par écrit de Taxi Strasbourg Service. Cette représentation ou reproduction, par quelque procédé que ce soit, constitue une contrefaçon sanctionnée par les articles L.335-2 et suivants du Code de la propriété intellectuelle. Le non-respect de cette interdiction constitue une contrefaçon pouvant engager la responsabilité civile et pénale du contrefacteur. En outre, les propriétaires des Contenus copiés pourraient intenter une action en justice à leur encontre.</p>
                 </div>
+                <div>
+                    <p className="">Licence artisanale taxi rattaché à la Communauté Urbaine de Strasbourg</p>
+                    <p className="">Sous le numéro de siret numéro - 83825994300010 et TVA FR36838259943</p>
+                </div>
             </div>
         </section>
     </PageLayout>
