@@ -20,6 +20,7 @@ export default function Footer({ lang, changeLanguage }: { lang: string, changeL
         <section className="flex justify-evenly px-10 lg:flex-row flex-col items-center lg:gap-0 gap-10">
             <div className="flex-1 flex flex-col justify-center items-center gap-5 lg:w-fit w-full">
                 <div className="flex flex-col gap-4 items-start lg:w-fit w-full">
+                    <p className="uppercase text-[18px] pb-5 lg:pb-10 lg:text-[28px] whitespace-nowrap not-italic font-medium text-center">taxi strasbourg service</p>
                     <div className="hidden lg:flex items-center gap-5">
                         <Image draggable={false} alt="UK" onClick={() => changeLanguage("en")} className={`cursor-pointer border-b-[1px]  pb-1 box-border box-content w-6 h-6 ${lang === "en" ? "" : "border-transparent"}`} src={UK} />
                         <Image draggable={false} alt="France" onClick={() => changeLanguage("fr")} className={`cursor-pointer border-b-[1px]  pb-1 box-border box-content w-6 h-6 ${lang === "fr" ? "" : "border-transparent"}`} src={France} />
@@ -34,7 +35,7 @@ export default function Footer({ lang, changeLanguage }: { lang: string, changeL
                             <Image src={PageJaune} alt="" width={20} height={20} className="" />
                         </a>
                     </div>
-                    <p className="text-center text-white/[75%] flex items-center gap-1"><strong className="text-white text-sm lg:text-base"><Image src={Fix} alt="Fix" className="w-6 h-6 text-white" /></strong> <a href="tel:0388835633">038883563</a></p>
+                    {/* <p className="text-center text-white/[75%] flex items-center gap-1"><strong className="text-white text-sm lg:text-base"><Image src={Fix} alt="Fix" className="w-6 h-6 text-white" /></strong> <a href="tel:0388835633">038883563</a></p> */}
                     <p className="text-center text-white/[75%] flex items-center gap-1"><strong className="text-white text-sm lg:text-base"><PhoneAndroidIcon /></strong> <a href="tel:0647600171">0647600171</a></p>
                     <p className="text-center text-white/[75%]"><strong className="text-white text-sm lg:text-base"><AlternateEmailIcon /></strong> <a href="mailto:contact@strasbourgtaxi.fr">contact@strasbourgtaxi.fr</a></p>
                     <a href="https://www.gralon.net/annuaire/commerce-et-societe/industrie/transport.htm" target="_blank">
@@ -43,8 +44,7 @@ export default function Footer({ lang, changeLanguage }: { lang: string, changeL
                 </div>
             </div>
             <div className="flex-1 flex lg:items-center justify-center flex-col gap-3 italic">
-                <p className="uppercase text-base lg:text-[24px] whitespace-nowrap not-italic font-medium text-center">taxi strasbourg service</p>
-                <Image width={1000} height={1000} src="/logo.png" alt="logo" draggable={false} className="lg:h-[600px] h-[300px] object-cover" />
+                <Image width={1000} height={1000} src="/logo.png" alt="logo" draggable={false} className="lg:h-[600px] h-[500px] object-cover" />
             </div>
             <div className="w-full flex-1 text-[#000] flex flex-col lg:items-center gap-5 border-t-[0.5px] border-secondary-100 pt-5 lg:pt-0 lg:border-[0px]">
                 <Review btn={compData.footer.btn1} />
