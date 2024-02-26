@@ -16,10 +16,10 @@ export default function Footer({ lang, changeLanguage }: { lang: string, changeL
 
     const compData = Data[lang]
 
-    return <footer className="bg-black pt-10 text-white flex flex-col gap-10 lg:gap-20">
-        <section className="flex justify-evenly px-10 lg:flex-row flex-col items-center lg:gap-0 gap-10">
-            <div className="flex-1 flex flex-col justify-center items-center gap-5 lg:w-fit w-full">
-                <div className="flex flex-col gap-4 items-start lg:w-fit w-full">
+    return <footer className="bg-black pt-10 text-white flex flex-col gap-10 lg:gap-0">
+        <section className="flex justify-evenly px-10 lg:flex-row flex-col lg:gap-0 gap-10">
+            <div className="flex-1 flex flex-col  items-center gap-5 lg:w-fit w-full">
+                <div className="flex flex-col gap-4 items-start lg:w-fit w-full pt-[75px]">
                     <p className="uppercase text-[18px] pb-5 lg:pb-10 lg:text-[28px] whitespace-nowrap not-italic font-medium text-center">taxi strasbourg service</p>
                     <div className="hidden lg:flex items-center gap-5">
                         <Image draggable={false} alt="UK" onClick={() => changeLanguage("en")} className={`cursor-pointer border-b-[1px]  pb-1 box-border box-content w-6 h-6 ${lang === "en" ? "" : "border-transparent"}`} src={UK} />
@@ -46,7 +46,7 @@ export default function Footer({ lang, changeLanguage }: { lang: string, changeL
             <div className="flex-1 flex lg:items-center justify-center flex-col gap-3 italic">
                 <Image width={1000} height={1000} src="/logo.png" alt="logo" draggable={false} className="lg:h-[600px] h-[500px] object-cover" />
             </div>
-            <div className="w-full flex-1 text-[#000] flex flex-col lg:items-center gap-5 border-t-[0.5px] border-secondary-100 pt-5 lg:pt-0 lg:border-[0px]">
+            <div className="w-full flex-1 text-[#000] flex flex-col lg:items-center gap-5 border-t-[0.5px] border-secondary-100 pt-[80px] lg:border-[0px]">
                 <Review btn={compData.footer.btn1} />
                 <Book btn={compData.footer.btn2} primary={false} />
                 <p className="text-[#fff]/[70%] lg:text-center text-xs">Nous sommes équipés de TPE pour le paiement par Carte bancaire.</p>
