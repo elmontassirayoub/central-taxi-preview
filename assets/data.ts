@@ -157,7 +157,7 @@ type DataType = {
 const Data: DataType = {
     fr: {
         navbar: {
-            tabList: [{ name: "acceuil", url: "/" }, { name: "services", url: "/services" }, { name: "reserver", url: "/book" }, { name: "contact", url: "/contact" }],
+            tabList: [{ name: "accueil", url: "/" }, { name: "services", url: "/services" }, { name: "reserver", url: "/book" }, { name: "contact", url: "/contact" }],
             rightSideTabList: [{ functionlity: "register", text: "S'inscrire" }, { functionlity: "login", text: "Se Connecter" }],
             logout: "Se déconnecter",
             edit: "Modifier votre profil",
