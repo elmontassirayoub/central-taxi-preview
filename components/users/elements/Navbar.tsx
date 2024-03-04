@@ -295,13 +295,13 @@ export default function Navbar({ lang, changeLanguage, page, admin }: { lang: st
 
 
     return <nav className="relative lg:h-auto h-15">
-        <section className="relative z-[8] flex flex-col h-full justify-between">
-            <section className="hero h-[60px] text-white items-center italic pr-10 pl-20 justify-between lg:flex hidden">
+        <section className="relative z-[8] flex border-b flex-col h-full justify-between section">
+            <section className="hero h-[60px] items-center italic pr-10 pl-20 justify-between lg:flex hidden">
                 <div className="h-full flex items-center gap-5">
                     {
                         compData.navbar.tabList?.map((item: TabListType, key: number) => {
                             if (item?.url === "/book" && admin) return
-                            return <Link className={`uppercase hover:underline h-full flex items-center justify-center px-2 ${page === item.url ? "bg-[#000]" : ""}`} href={item?.url} key={key}>{item?.name}</Link>
+                            return <Link className={`uppercase hover:underline h-full flex items-center justify-center px-2 ${page === item.url ? "bg-[#000] text-white" : ""}`} href={item?.url} key={key}>{item?.name}</Link>
                         })
                     }
                 </div>
@@ -318,7 +318,7 @@ export default function Navbar({ lang, changeLanguage, page, admin }: { lang: st
                                     <p className="" >{session?.user?.email}</p>
                                     <ArrowDropDownIcon className="" />
                                 </div>
-                                <div className={`absolute ${dropdown ? "flex" : "hidden"} flex-col top-[100%] bg-white right-0 w-full text-[#000] text-[14px] p-2 gap-2`}>
+                                <div className={`absolute ${dropdown ? "flex" : "hidden"} flex-col top-[100%] bg-[#33475A] text-white right-0 w-full text-[14px] p-2 gap-2`}>
                                     {admin ? <Link href="/admin" className="hover:underline">Dashboard</Link> : <>
                                         <p onClick={() => setUserEditModal(true)} className="hover:underline cursor-pointer" >{compData.navbar.edit}</p>
                                         <p onClick={() => setUserEditPassword(true)} className="hover:underline cursor-pointer" >{compData.navbar.editPassword}</p>
@@ -330,7 +330,7 @@ export default function Navbar({ lang, changeLanguage, page, admin }: { lang: st
                 </div>
             </section>
             <section className="lg:hidden flex h-15 bg-[#33475A] justify-between items-center px-2">
-                <p className="text-white uppercase font-medium italic">taxi strasbourg service</p>
+                <p className="text-white uppercase font-medium italic text-sm">taxi strasbourg service</p>
                 <div className="flex items-center gap-5">
                     <Image draggable={false} alt="UK" onClick={() => changeLanguage("en")} className={`cursor-pointer border-b-[1px]  pb-1 box-border box-content w-6 h-6 ${lang === "en" ? "" : "border-transparent"}`} src={UK} />
                     <Image draggable={false} alt="France" onClick={() => changeLanguage("fr")} className={`cursor-pointer border-b-[1px]  pb-1 box-border box-content w-6 h-6 ${lang === "fr" ? "" : "border-transparent"}`} src={France} />
@@ -340,12 +340,12 @@ export default function Navbar({ lang, changeLanguage, page, admin }: { lang: st
                 }
             </section>
         </section>
-        <div className={`${!toggleMenu ? "hidden" : "flex"} absolute left-0 font-semibold mobile-navtab top-[100%] z-[5] bg-[#fff] w-full flex-col`}>
+        <div className={`${!toggleMenu ? "hidden" : "flex"} absolute left-0 font-semibold mobile-navtab pb-10 top-[100%] z-[5] bg-[#33475A] w-full flex-col`}>
             <div className="h-full flex flex-col justify-center items-center w-full border-b-[1px] pb-4 border-[#000] text-[18px]">
                 {
                     compData.navbar.tabList?.map((item: TabListType, key: number) => {
                         if (item?.url === "/book" && admin) return
-                        return <Link className={`uppercase italic py-1 w-full px-2 py-4 ${page === item.url ? "bg-primary-100 text-white" : ""}`} href={item?.url} key={key}>{item?.name}</Link>
+                        return <Link className={`uppercase italic py-1 w-full px-2 py-4 text-sm ${page === item.url ? "bg-primary-100 text-white" : "text-secondary-100"}`} href={item?.url} key={key}>{item?.name}</Link>
                     })
                 }
             </div>

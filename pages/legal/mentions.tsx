@@ -23,7 +23,7 @@ export default function Mentions({ admin = false }: { admin: boolean }) {
     }
 
     return <PageLayout lang={lang} changeLanguage={changeLanguage} page="/mentions" admin={admin}>
-        <section className="text-white py-10 px-2 lg:p-20">
+        <section className="py-10 px-2 lg:p-20">
             <h1 className="lg:text-4xl text-2xl pb-10">Mention légales</h1>
             <div className="lg:p-10 px-3 flex flex-col gap-8">
                 <div>

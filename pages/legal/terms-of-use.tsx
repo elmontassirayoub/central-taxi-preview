@@ -26,7 +26,7 @@ export default function TermsOfUse({ admin = false }: { admin: boolean }) {
 
     return (
         <PageLayout lang={lang} changeLanguage={changeLanguage} page="/terms-of-use" admin={admin}>
-            <section className="text-white py-5 px-2 lg:p-20">
+            <section className="py-5 px-2 lg:p-20">
                 <h1 className="lg:text-4xl text-2xl pb-10">Conditions générales</h1>
                 <div className="lg:p-10 px-3 flex flex-col gap-5">
                     <p>Conditions générales de commande en ligne par l’intermédiaire du site web appartenant à Taxi à Strasbourg Service.</p>
