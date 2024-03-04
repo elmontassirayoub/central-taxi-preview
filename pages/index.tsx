@@ -1,11 +1,9 @@
-import Navbar from "@/components/users/elements/Navbar";
 import "tailwindcss/tailwind.css";
 import BookOnlineIcon from '@mui/icons-material/BookOnline';
 import SellIcon from '@mui/icons-material/Sell';
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import EuroIcon from '@mui/icons-material/Euro';
 import StarRating from "@/components/users/elements/StarRating";
-import Footer from "@/components/users/elements/Footer";
 import Data, { CardDataType } from '@/assets/data'
 import { useEffect, useState } from "react";
 import checkAuthentication from "@/lib/middlewares/checkAuthenticated";
@@ -13,8 +11,8 @@ import Image from "next/image";
 import Call from "@/components/common/Buttons/Call";
 import Book from "@/components/common/Buttons/Book";
 import Review from "@/components/common/Buttons/Review";
-import GRPD from "@/components/common/GRPD"
 import PageLayout from "@/components/common/PageLayout";
+import BookLayout from "@/layouts/book";
 
 export const getServerSideProps = checkAuthentication(async (context: any, admin: boolean) => {
   return {
@@ -70,7 +68,7 @@ export default function Home({ admin = false }: { admin: boolean }) {
 
   return (
     <PageLayout lang={lang} changeLanguage={changeLanguage} page="/" admin={admin} >
-      <section className="flex-1 section">
+      <section className="flex-1 section z-1">
         <div className="hero lg:h-[700px] h-[calc(100vh_-_60px)] flex">
           <div className="flex justify-evenly md:px-0 px-5 h-full pt-5 lg:pt-0 items-center lg:items-start">
             <div className="text-center lg:text-left lg:pl-20 pt-[10%] text-[#000] flex-1 flex flex-col gap-12">
@@ -81,8 +79,8 @@ export default function Home({ admin = false }: { admin: boolean }) {
                 <h3 className="lg:text-[18px] mt-3">{pageData.home.hero.h3}</h3>
               </div>
               <div className="flex flex-col lg:justify-start justify-center lg:items-start items-center gap-5">
-                <Call />
-                <Book btn={pageData.home.hero.btn} primary={true} />
+                <Call bounce={false} />
+                <Book btn={pageData.home.hero.btn} primary={true} bounce={false} />
               </div>
             </div>
             <div className="flex-1 hidden md:flex items-center justify-center overflow-hidden">
@@ -90,6 +88,7 @@ export default function Home({ admin = false }: { admin: boolean }) {
             </div>
           </div>
         </div>
+        <BookLayout pageData={pageData} />
         <div className="flex flex-col gap-10 py-[150px] px-10">
           <p className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim text-center">{pageData.home.headerBeforeCards}</p>
           <div className="flex lg:flex-row flex-col justify-around gap-10 lg:gap-0">
@@ -122,7 +121,7 @@ export default function Home({ admin = false }: { admin: boolean }) {
                 <h4 className="mb-2 lg:mb-0 uppercase text-[20px] text-white lg:text-[28px] lg:[word-spacing:5px] font-meduim">taxi strasbourg service</h4>
                 <p className="text-white/[80%] italic text-sm lg:text-base">{pageData.home.paragraph}</p>
                 <div className="lg:flex hidden justify-end">
-                  <Call />
+                  <Call bounce={true} />
                 </div>
               </div>
             </div>
@@ -135,7 +134,7 @@ export default function Home({ admin = false }: { admin: boolean }) {
             <EuroIcon sx={{ fontSize: 50 }} className="rounded-[50%] bg-[#33475A] text-white p-2" />
             <p className="text-[20px] lg:text-[35px] text-[#fff] font-medium uppercase">taxi strasbourg service</p>
             <p className="text-[13px] lg:text-[20px] text-[#fff]/[75%] italic mb-10">{pageData.home.yellowSection.h2}</p>
-            <Book btn={pageData.home.yellowSection.btn} primary={true} />
+            <Book bounce={true} btn={pageData.home.yellowSection.btn} primary={true} />
           </div>
         </div>
       </div>

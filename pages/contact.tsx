@@ -52,8 +52,8 @@ export default function Contact({ admin = false }: { admin: boolean }) {
               <h2 className="text-[#000]/[70%] text-[18px] lg:text-[18px] italic lg:w-[75%]">{pageData.contact.subHeader}</h2>
             </div>
             <div className="flex flex-col lg:justify-start justify-center lg:items-start items-center gap-5">
-              <Call />
-              <Book btn={pageData.home.hero.btn} primary={true} />
+              <Call bounce={false} />
+              <Book btn={pageData.home.hero.btn} primary={true} bounce={false} />
               <Email primary={true} />
             </div>
           </div>

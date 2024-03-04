@@ -50,8 +50,8 @@ export default function Services({ admin = false }: { admin: boolean }) {
                             <h2 className="text-[#000]/[70%] text-[18px] lg:text-[18px] italic lg:w-[75%]">{pageData.service.subHeader}</h2>
                         </div>
                         <div className="flex flex-col lg:justify-start justify-center lg:items-start items-center gap-5">
-                            <Call />
-                            <Book btn={pageData.home.hero.btn} primary={true} />
+                            <Call bounce={false} />
+                            <Book bounce={false} btn={pageData.home.hero.btn} primary={true} />
                         </div>
                     </div>
                     <div className="flex-1 hidden md:flex items-center justify-center overflow-hidden">
@@ -73,7 +73,7 @@ export default function Services({ admin = false }: { admin: boolean }) {
                     }
                 </div>
                 <div className="flex justify-center py-10">
-                    <Call />
+                    <Call bounce={true} />
                 </div>
             </section>
         </section>

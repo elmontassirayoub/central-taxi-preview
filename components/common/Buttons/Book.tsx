@@ -1,8 +1,8 @@
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import Link from 'next/link';
 
-export default function Book({btn, primary} : {btn: string, primary: boolean}) {
-    return <Link href="/book" className={`flex items-start justify-center gap-2 px-7 py-2 lg:bg-transparent text-[18px] rounded-[5px] h-12 italic !w-[250px] font-medium text-white ${primary ? "!bg-[#33475A] animate-bounce hover:pause" : "hover:bg-secondary-100 hover:shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] !whitespace-nowrap bg-secondary-100"}`}>
+export default function Book({btn, primary, bounce = true} : {btn: string, primary: boolean, bounce: boolean}) {
+    return <Link href="/book" className={`flex items-start justify-center gap-2 px-7 py-2 lg:bg-transparent text-[18px] rounded-[5px] h-12 italic !w-[250px] font-medium text-white ${bounce ? "animate-bounce hover:pause" : ""} ${primary ? "!bg-[#33475A]" : "hover:bg-secondary-100 hover:shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] !whitespace-nowrap bg-secondary-100"}`}>
     <p className="!whitespace-nowrap">{btn}</p>
     <KeyboardArrowRightIcon sx={{ fontSize: 30 }} className="" />
   </Link>
