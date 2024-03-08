@@ -1,9 +1,5 @@
 import "tailwindcss/tailwind.css";
-import BookOnlineIcon from '@mui/icons-material/BookOnline';
-import SellIcon from '@mui/icons-material/Sell';
-import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import EuroIcon from '@mui/icons-material/Euro';
-import StarRating from "@/components/users/elements/StarRating";
 import Data, { CardDataType } from '@/assets/data'
 import { useEffect, useState } from "react";
 import checkAuthentication from "@/lib/middlewares/checkAuthenticated";
@@ -13,6 +9,8 @@ import Book from "@/components/common/Buttons/Book";
 import Review from "@/components/common/Buttons/Review";
 import PageLayout from "@/components/common/PageLayout";
 import BookLayout from "@/layouts/book";
+import ReviewCard from "@/components/users/elements/ReviewCard";
+import InfoCard from "@/components/users/elements/InfoCard";
 
 export const getServerSideProps = checkAuthentication(async (context: any, admin: boolean) => {
   return {
@@ -62,19 +60,17 @@ export default function Home({ admin = false }: { admin: boolean }) {
     localStorage.setItem("lang", val)
   }
 
-  const getIcon = (label: string) => label === "book" ? <BookOnlineIcon className="text-center" sx={{ fontSize: 30 }} /> : label === "price" ? <SellIcon className="text-center" sx={{ fontSize: 30 }} /> : <EventAvailableIcon className="text-center" sx={{ fontSize: 30 }} />
-
   const pageData = Data[lang]
 
   return (
     <PageLayout lang={lang} changeLanguage={changeLanguage} page="/" admin={admin} >
       <section className="flex-1 section z-1">
-        <div className="hero lg:h-[700px] h-[calc(100vh_-_60px)] flex">
+        <div className="hero lg:h-[700px] min-h-[calc(100vh_-_60px)] lg:mb-0 mb-10 flex">
           <div className="flex justify-evenly md:px-0 px-5 h-full pt-5 lg:pt-0 items-center lg:items-start">
             <div className="text-center lg:text-left lg:pl-20 pt-[10%] text-[#000] flex-1 flex flex-col gap-12">
-              <Image draggable={false} width={1000} height={1000} className="md:hidden block flex-1 object-cover" src="/logo.png" alt="Logo" />
+              <Image draggable={false} width={1000} height={1000} className="md:hidden block !h-[500px]  object-cover" src="/logo.png" alt="Logo" />
               <div className="w-full lg:px-0 px-5 flex flex-col gap-2 lg:gap-1">
-                <h1 className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim">taxi strasbourg service</h1>
+                <h1 className="mb-10 lg:mb-0 uppercase text-[36px] lg:text-[40px] lg:[word-spacing:5px] font-meduim">taxi strasbourg service</h1>
                 <h2 className="text-[18px] lg:text-[18px] italic lg:w-[75%]">{pageData.home.hero.h2}</h2>
                 <h3 className="lg:text-[18px] mt-3">{pageData.home.hero.h3}</h3>
               </div>
@@ -93,17 +89,7 @@ export default function Home({ admin = false }: { admin: boolean }) {
           <p className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim text-center">{pageData.home.headerBeforeCards}</p>
           <div className="flex lg:flex-row flex-col justify-around gap-10 lg:gap-0">
             {
-              pageData.home.cardData?.map((card: CardDataType, idx: number) => <div key={idx} className="lg:w-[400px] w-fit h-auto flex flex-col gap-3 p-5 rounded-[10px] shadow-[0px_4px_4px_4px_rgba(0,0,0,0.25)]">
-                <div className="flex items-center justify-center">
-                  <div className="text-secondary-1 bg-[#000] w-fit p-3 rounded-[50%]">
-                    {
-                      getIcon(card?.icon)
-                    }
-                  </div>
-                </div>
-                <p className="lg:text-[18px] italic font-medium text-center">{card.title}</p>
-                <p className="text-[#000]/[90%] text-xs lg:text-sm">{card.text}</p>
-              </div>)
+              pageData.home.cardData?.map((card: CardDataType, idx: number) => <InfoCard key={idx} idx={idx} {...card} />)
             }
           </div>
         </div>
@@ -143,16 +129,7 @@ export default function Home({ admin = false }: { admin: boolean }) {
         <p className="text-[#000]/85%] text-[18px] lg:text-[18px] italic text-center">{pageData.home.reviews.h2}</p>
         <div className="my-5 lg:m-10 flex lg:flex-row flex-col justify-center gap-5 py-10 lg:py-0">
           {
-            reviews?.map((review, idx) => <div key={idx} className="bg-[#33475A] p-5 rounded-[5px] text-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] flex-1 h-auto flex flex-col justify-between gap-10">
-              <p className="lg:text-base text-sm text-white/[85%] flex-1">&quot;{review.review}&quot;</p>
-              <div className="flex justify-between">
-                <div>
-                  <p className="lg:text-base text-sm italic">{review?.name}</p>
-                  <small className="text-xs text-white/[50%]">{review?.date}</small>
-                </div>
-                <StarRating rating={review?.rating} />
-              </div>
-            </div>)
+            reviews?.map((review, idx) => <ReviewCard idx={idx} {...review} />)
           }
         </div>
         <div className="flex justify-center">

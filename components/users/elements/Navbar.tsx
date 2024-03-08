@@ -329,15 +329,17 @@ export default function Navbar({ lang, changeLanguage, page, admin }: { lang: st
                     }
                 </div>
             </section>
-            <section className="lg:hidden flex h-15 bg-[#33475A] justify-between items-center px-2">
-                <p className="text-white uppercase font-medium italic text-sm">taxi strasbourg service</p>
-                <div className="flex items-center gap-5">
+            <section className="lg:hidden flex h-15 bg-[#33475A] justify-evenly items-center px-2">
+                <p className="text-white uppercase font-medium italic flex-1 text-sm">taxi strasbourg service</p>
+                <div className="flex items-center gap-5 flex-1">
                     <Image draggable={false} alt="UK" onClick={() => changeLanguage("en")} className={`cursor-pointer border-b-[1px]  pb-1 box-border box-content w-6 h-6 ${lang === "en" ? "" : "border-transparent"}`} src={UK} />
                     <Image draggable={false} alt="France" onClick={() => changeLanguage("fr")} className={`cursor-pointer border-b-[1px]  pb-1 box-border box-content w-6 h-6 ${lang === "fr" ? "" : "border-transparent"}`} src={France} />
                 </div>
+                <div className="">
                 {
-                    toggleMenu ? <CloseIcon onClick={() => setToggleMenu(!toggleMenu)} sx={{ fontSize: 35 }} className={` rounded-[50%] bg-[#fff] text-[#000] p-2 my-2 cursor-pointer`} /> : <MenuIcon onClick={() => setToggleMenu(!toggleMenu)} sx={{ fontSize: 35 }} className={`rounded-[50%] bg-[#fff] text-[#000] p-2 my-2 cursor-pointer`} />
+                    toggleMenu ? <CloseIcon onClick={() => setToggleMenu(!toggleMenu)} sx={{ fontSize: 35 }} className={`rounded-[50%] bg-[#fff] text-[#000] p-2 my-2 cursor-pointer`} /> : <MenuIcon onClick={() => setToggleMenu(!toggleMenu)} sx={{ fontSize: 35 }} className={`rounded-[50%] bg-[#fff] text-[#000] p-2 my-2 cursor-pointer`} />
                 }
+                </div>
             </section>
         </section>
         <div className={`${!toggleMenu ? "hidden" : "flex"} absolute left-0 font-semibold mobile-navtab pb-10 top-[100%] z-[5] bg-[#33475A] w-full flex-col`}>

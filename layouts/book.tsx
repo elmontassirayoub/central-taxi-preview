@@ -173,7 +173,7 @@ export default function BookLayout({pageData}: {pageData: any}) {
     const { form: { title, fromLabel, fromPlaceholder, toLabel, toPlaceholder, dateLabel, timeLabel, btn }, rightSide } = pageData.book
 
     return <div className="hero-book w-full flex flex-col items-center justify-center">
-    <div className="flex-1 flex flex-col lg:flex-row lg:p-10 py-10 px-4 gap-10 lg:justify-center items-center mb-20 relative">
+    <div className="flex-1 flex flex-col lg:flex-row lg:p-10 py-10 px-4 gap-10 lg:justify-center items-center relative lg:w-fit w-full">
             <form onSubmit={(e) => { e.preventDefault(); ReservationFormHandler() }} className="w-full lg:w-fit bg-white rounded-[15px] lg:p-10 py-10 px-4 flex flex-col gap-5 lg:min-w-[500px] lg:min-h-[600px]">
 
                 {
