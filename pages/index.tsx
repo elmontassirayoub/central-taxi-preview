@@ -129,7 +129,7 @@ export default function Home({ admin = false }: { admin: boolean }) {
         <p className="text-[#000]/85%] text-[18px] lg:text-[18px] italic text-center">{pageData.home.reviews.h2}</p>
         <div className="my-5 lg:m-10 flex lg:flex-row flex-col justify-center gap-5 py-10 lg:py-0">
           {
-            reviews?.map((review, idx) => <ReviewCard idx={idx} {...review} />)
+            reviews?.map((review, idx) => <ReviewCard key={idx} idx={idx} {...review} />)
           }
         </div>
         <div className="flex justify-center">
