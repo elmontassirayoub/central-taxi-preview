@@ -53,7 +53,6 @@ export default function Footer({ lang, changeLanguage }: { lang: string, changeL
         </section>
         <section className="min-h-10 bg-[#000] px-10 py-2 lg:py-0 flex lg:items-center flex-col lg:flex-row gap-2 lg:gap-5 justify-end">
             <p className="text-[#fff]/[70%] text-sm lg:text-right lg:whitespace-normal whitespace-nowrap">©Taxi Strasbourg Service. Tous droit réservés.</p>
-            <Link href="/legal/terms-of-use" className="underline lg:text-sm text-xs lg:text-right">Conditions général de vente.</Link>
             <Link href="/legal/mentions" className="underline lg:text-sm text-xs lg:text-right">Mention légales</Link>
         </section>
     </footer>
