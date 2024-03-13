@@ -44,7 +44,7 @@ export default function Footer({ lang, changeLanguage }: { lang: string, changeL
                 </div>
             </div>
             <div className="flex-1 flex lg:items-center justify-center flex-col gap-3 italic">
-                <Image width={1000} height={1000} src="/logo.png" alt="logo" draggable={false} className="lg:h-[600px] h-[500px] object-cover" />
+                <Image width={1000} height={1000} src="/logo.png" alt="logo" draggable={false} className="lg:h-[600px] h-[500px] object-contain" />
             </div>
             <div className="w-full flex-1 text-[#000] flex flex-col lg:items-center gap-5 border-t-[0.5px] border-secondary-100 pt-[80px] lg:border-[0px]">
                 <Review btn={compData.footer.btn1} />
