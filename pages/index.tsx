@@ -65,10 +65,10 @@ export default function Home({ admin = false }: { admin: boolean }) {
   return (
     <PageLayout lang={lang} changeLanguage={changeLanguage} page="/" admin={admin} >
       <section className="flex-1 section z-1">
+      <BookLayout pageData={pageData} />
         <div className="hero lg:h-[700px] min-h-[calc(100vh_-_60px)] lg:mb-0 mb-10 flex">
-          <div className="flex justify-evenly md:px-0 px-5 h-full pt-5 lg:pt-0 items-center lg:items-start">
+          <div className="flex justify-evenly md:px-0 px-5 h-full pt-5 lg:pt-0 items-center lg:items-start my-auto">
             <div className="text-center lg:text-left lg:pl-20 pt-[10%] text-[#000] flex-1 flex flex-col gap-12">
-              <Image draggable={false} width={1000} height={1000} className="md:hidden block !h-[500px]  object-contain" src="/logo.png" alt="Logo" />
               <div className="w-full lg:px-0 px-5 flex flex-col gap-2 lg:gap-1">
                 <h1 className="mb-10 lg:mb-0 uppercase text-[36px] lg:text-[40px] lg:[word-spacing:5px] font-meduim">taxi strasbourg service</h1>
                 <h2 className="text-[18px] lg:text-[18px] italic lg:w-[75%]">{pageData.home.hero.h2}</h2>
@@ -84,7 +84,6 @@ export default function Home({ admin = false }: { admin: boolean }) {
             </div>
           </div>
         </div>
-        <BookLayout pageData={pageData} />
         <div className="flex flex-col gap-10 py-[150px] px-10">
           <p className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim text-center">{pageData.home.headerBeforeCards}</p>
           <div className="flex lg:flex-row flex-col justify-around gap-10 lg:gap-0">

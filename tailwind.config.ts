@@ -23,6 +23,9 @@ const config: Config = {
         secondary: {
           1: "var(--secondary)",
           100: "var(--secondary-100)",
+        },
+        red: {
+          1: "var(--red)"
         }
       }
     },

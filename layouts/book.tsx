@@ -22,7 +22,7 @@ type ReservationDetailsType = {
     distance: { text: string, value: number },
     duration: { text: string, value: number }
 }
-export default function BookLayout({pageData}: {pageData: any}) {
+export default function BookLayout({ pageData }: { pageData: any }) {
 
     const date = new Date();
     const mm =
@@ -172,9 +172,20 @@ export default function BookLayout({pageData}: {pageData: any}) {
 
     const { form: { title, fromLabel, fromPlaceholder, toLabel, toPlaceholder, dateLabel, timeLabel, btn }, rightSide } = pageData.book
 
-    return <div className="hero-book w-full flex flex-col items-center justify-center">
-    <div className="flex-1 flex flex-col lg:flex-row lg:p-10 py-10 px-4 gap-10 lg:justify-center items-center relative lg:w-fit w-full">
-            <form onSubmit={(e) => { e.preventDefault(); ReservationFormHandler() }} className="w-full lg:w-fit bg-white rounded-[15px] lg:p-10 py-10 px-4 flex flex-col gap-5 lg:min-w-[500px] lg:min-h-[600px]">
+    // return <div className="hero-book w-full flex flex-col items-center justify-center">
+    return <div className="w-full flex flex-col items-center justify-center">
+        <div className="flex-1 flex flex-col lg:flex-row lg:pr-4 lg:pl-0 lg:py-0 py-10 px-4 lg:justify-center items-center relative lg:w-fit w-full bg-[#000] my-5 rounded-[16px] gap-10 h-auto lg:h-[660px]">
+            <div className="md:hidden text-white w-full">
+                <div className="flex flex-col gap-5">
+                    <h2 className="lg:text-[24px] text-center">{rightSide.title}</h2>
+                    <ol className="list-decimal ml-10 text-left">
+                        {
+                            rightSide.list?.map((item: string) => <li key={item}>{item}</li>)
+                        }
+                    </ol>
+                </div>
+            </div>
+            <form onSubmit={(e) => { e.preventDefault(); ReservationFormHandler() }} className="w-full lg:w-fit bg-white border-r-[0px] lg:border-[3px] border-red-1 rounded-[16px] lg:rounded-r-[0px] lg:rounded-l-[16px] lg:p-10 py-10 px-4 flex flex-col gap-5 lg:min-w-[500px] lg:min-h-[600px] !min-h-[660px]">
 
                 {
                     !showReservationForm ? <><p className="text-[#33475A] text-center font-medium text-[24px]">{title}</p>
@@ -183,11 +194,11 @@ export default function BookLayout({pageData}: {pageData: any}) {
                         <div className="reserveform1_date div_container">
                             <p className="font-medium mb-2" onClick={() => inputRefDate.current?.focus()}>{dateLabel}</p>
                             <div className="flex">
-                                <div className="border-[1px] border-r-[0px] h-10 rounded-l-[5px] px-2 flex items-center">
+                                <div className="border-[2px] border-secondary-1 border-r-[0px] h-10 rounded-l-[5px] px-2 flex items-center">
                                     <DateRangeIcon onClick={() => inputRefDate.current?.focus()} className="" />
                                 </div>
                                 <input
-                                    className="w-full border-[1px] h-10 rounded-[5px] rounded-l-[0px] outline-0 focus:border-[#33475A] px-1"
+                                    className="w-full border-[2px] border-secondary-1 h-10 rounded-[5px] rounded-l-[0px] outline-0 px-1"
                                     min={date.toISOString().split('T')[0]}
                                     type="date"
                                     value={day}
@@ -199,11 +210,11 @@ export default function BookLayout({pageData}: {pageData: any}) {
                         <div className="reserveform1_date reserveform1_time div_container">
                             <p className="font-medium mb-2" onClick={() => inputRefTime.current?.focus()}>{timeLabel}</p>
                             <div className="flex">
-                                <div className="border-[1px] border-r-[0px] h-10 rounded-l-[5px] px-2 flex items-center">
+                                <div className="border-[2px] border-secondary-1 border-r-[0px] h-10 rounded-l-[5px] px-2 flex items-center">
                                     <AccessTimeIcon className="" onClick={() => inputRefTime.current?.focus()} />
                                 </div>
                                 <input
-                                    className="w-full border-[1px] h-10 rounded-[5px] rounded-l-[0px] outline-0 focus:border-[#33475A] px-1"
+                                    className="w-full border-[2px] border-secondary-1 h-10 rounded-[5px] rounded-l-[0px] outline-0 px-1"
                                     type="time"
                                     value={time}
                                     onChange={(e) => setTime(e.target.value)}
@@ -213,7 +224,7 @@ export default function BookLayout({pageData}: {pageData: any}) {
                         </div>
                         {
                             (reservationDetails && !editingData) ? <div>
-                                <button className="cursor-pointer flex items-center justify-center gap-5 px-7 py-2 mx-auto border-[1px] border-secondary-1 hover:bg-secondary-1 text-primary-1 lg:text-[18px] font-medium rounded-[5px] mt-5"
+                                <button className="cursor-pointer flex items-center justify-center gap-5 px-7 py-2 mx-auto border-[2px] border-secondary-1 hover:bg-secondary-1 text-primary-1 lg:text-[18px] font-medium rounded-[5px] mt-5"
                                     onClick={() => setShowReservationForm(true)}
                                 >
                                     {pageData?.home?.hero?.btn}: €{reservationDetails?.price.toFixed(2)}
@@ -242,8 +253,8 @@ export default function BookLayout({pageData}: {pageData: any}) {
                             (departcoordinates !== null && arrivecoordinates !== null) && <DirectionMap depart={departcoordinates} arrive={arrivecoordinates} />
                         }
                         <div className="w-full">
-                            <p><strong>{pageData?.book?.details?.start}: </strong>{departAddress}</p>
-                            <p><strong>{pageData?.book?.details?.finish}: </strong>{arriveAddress}</p>
+                            <p className="truncate"><strong>{pageData?.book?.details?.start}: </strong>{departAddress}</p>
+                            <p className="truncate"><strong>{pageData?.book?.details?.finish}: </strong>{arriveAddress}</p>
                             <p><strong>{pageData?.book?.details?.dateAndTime}: </strong>{day} {time}</p>
                             <p><strong>{pageData?.book?.details?.duration}: </strong>{editingData ? "A calculer" : reservationDetails?.duration?.text}</p>
                             <p><strong>{pageData?.book?.details?.distance}: </strong>{editingData ? "A calculer" : `${(reservationDetails?.distance?.value / 1000).toFixed(2)} km`}</p>
