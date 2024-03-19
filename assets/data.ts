@@ -169,7 +169,7 @@ const Data: DataType = {
             headerBeforeCards: "Réservez un taxi facilement",
             news: "ACTUALITÉS",
             contact: "NOUS CONTACTER",
-            paragraph: "TAXI STRASBOURG SERVICECS vous propose un large choix de taxis pour toutes les situations, que vous ayez besoin d'un taxi pour l'Aéroport de Strasbourg ou la gare de strasbourg etc",
+            paragraph: "TAXI STRASBOURG SERVICE vous propose un large choix de taxis pour toutes les situations, que vous ayez besoin d'un taxi pour l'Aéroport de Strasbourg ou la gare de strasbourg etc",
             cardData: [
                 {
                     icon: "book",

@@ -29,7 +29,7 @@ export default function LocationInput(
                         {label}
                     </p>
                     <div className="flex items-center">
-                        <div onClick={() => inputRef.current?.focus()} className="border-[2px] border-r-[0px] h-10 rounded-l-[5px] px-2 flex items-center border-secondary-1">
+                        <div onClick={() => inputRef.current?.focus()} className="border-[3px] border-primary-100 border-r-[0px] h-10 rounded-l-[5px] px-2 flex items-center">
                             <LocationOnIcon className="" />
                         </div>
                         <input
@@ -37,12 +37,12 @@ export default function LocationInput(
                             {...getInputProps({
                                 placeholder: placeholder
                             })}
-                            className="w-full border-[2px] h-10 rounded-[5px] rounded-l-[0px] outline-0 px-1 border-secondary-1"
+                            className="w-full border-[3px] border-primary-100 h-10 rounded-[5px] rounded-l-[0px] outline-0 px-1"
                         />
                     </div>
                 </div>
                 {getInputProps()["aria-expanded"] && (
-                    <div className="Rsec2__place1 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] border-[1px] max-h-[250px] p-2 lg:!pr-0 overflow-y-scroll border-secondary-1 absolute w-full top-[100%] z-[9] bg-white">
+                    <div className="Rsec2__place1 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] max-h-[250px] p-2 lg:!pr-0 overflow-y-scroll border-[3px] border-primary-100 absolute w-full top-[calc(100%_+_5px)] z-[9] bg-white rounded-[5px]">
                         {loading ? <div>...loading</div> : null}
 
                         {suggestions.map((suggestion, idx) => {
@@ -57,7 +57,7 @@ export default function LocationInput(
                                 <div
                                     {...attrs}
                                     key={idx}
-                                    className="lg:w-[350px] py-2 cursor-pointer text-[14px] Rsec2__each"
+                                    className="py-2 cursor-pointer text-[14px] Rsec2__each"
                                 >
                                     <i className="fa fa-map-marker"></i> {suggestion.description}
                                 </div>

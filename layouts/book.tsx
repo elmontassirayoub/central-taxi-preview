@@ -12,6 +12,7 @@ import { toast } from 'react-toastify';
 import Call from "@/components/common/Buttons/Call";
 import Review from "@/components/common/Buttons/Review";
 import { CoordinationType, ReservationData } from "@/pages/book";
+import Image from "next/image";
 
 const DirectionMap = dynamic(() => import("@/components/users/elements/DirectionMap"), {
     ssr: false
@@ -174,7 +175,7 @@ export default function BookLayout({ pageData }: { pageData: any }) {
 
     // return <div className="hero-book w-full flex flex-col items-center justify-center">
     return <div className="w-full flex flex-col items-center justify-center">
-        <div className="flex-1 flex flex-col lg:flex-row lg:pr-4 lg:pl-0 lg:py-0 py-10 px-4 lg:justify-center items-center relative lg:w-fit w-full bg-[#000] my-5 rounded-[16px] gap-10 h-auto lg:h-[660px]">
+        <div className="flex-1 flex flex-col lg:flex-row lg:pr-4 lg:pl-0 lg:py-0 py-10 px-4 lg:justify-center items-center relative lg:w-fit w-full bg-primary-1 my-5 rounded-[16px] gap-10 h-auto lg:h-[660px] lg:min-w-[80%]">
             <div className="md:hidden text-white w-full">
                 <div className="flex flex-col gap-5">
                     <h2 className="lg:text-[24px] text-center">{rightSide.title}</h2>
@@ -185,7 +186,7 @@ export default function BookLayout({ pageData }: { pageData: any }) {
                     </ol>
                 </div>
             </div>
-            <form onSubmit={(e) => { e.preventDefault(); ReservationFormHandler() }} className="w-full lg:w-fit bg-white border-r-[0px] lg:border-[3px] border-red-1 rounded-[16px] lg:rounded-r-[0px] lg:rounded-l-[16px] lg:p-10 py-10 px-4 flex flex-col gap-5 lg:min-w-[500px] lg:min-h-[600px] !min-h-[660px]">
+            <form onSubmit={(e) => { e.preventDefault(); ReservationFormHandler() }} className="w-full lg:w-fit bg-white lg:border-r-[0px] lg:border-[3px] border-secondary-1 rounded-[16px] lg:rounded-r-[0px] lg:rounded-l-[16px] lg:p-10 py-10 px-4 flex flex-col gap-5 lg:min-w-[500px] lg:min-h-[600px] !min-h-[660px] lg:flex-1 justify-center">
 
                 {
                     !showReservationForm ? <><p className="text-[#33475A] text-center font-medium text-[24px]">{title}</p>
@@ -194,11 +195,11 @@ export default function BookLayout({ pageData }: { pageData: any }) {
                         <div className="reserveform1_date div_container">
                             <p className="font-medium mb-2" onClick={() => inputRefDate.current?.focus()}>{dateLabel}</p>
                             <div className="flex">
-                                <div className="border-[2px] border-secondary-1 border-r-[0px] h-10 rounded-l-[5px] px-2 flex items-center">
+                                <div className="border-[3px] border-primary-100 border-r-[0px] h-10 rounded-l-[5px] px-2 flex items-center">
                                     <DateRangeIcon onClick={() => inputRefDate.current?.focus()} className="" />
                                 </div>
                                 <input
-                                    className="w-full border-[2px] border-secondary-1 h-10 rounded-[5px] rounded-l-[0px] outline-0 px-1"
+                                    className="w-full border-[3px] border-primary-100 h-10 rounded-[5px] rounded-l-[0px] outline-0 px-1"
                                     min={date.toISOString().split('T')[0]}
                                     type="date"
                                     value={day}
@@ -210,11 +211,11 @@ export default function BookLayout({ pageData }: { pageData: any }) {
                         <div className="reserveform1_date reserveform1_time div_container">
                             <p className="font-medium mb-2" onClick={() => inputRefTime.current?.focus()}>{timeLabel}</p>
                             <div className="flex">
-                                <div className="border-[2px] border-secondary-1 border-r-[0px] h-10 rounded-l-[5px] px-2 flex items-center">
+                                <div className="border-[3px] border-primary-100 border-r-[0px] h-10 rounded-l-[5px] px-2 flex items-center">
                                     <AccessTimeIcon className="" onClick={() => inputRefTime.current?.focus()} />
                                 </div>
                                 <input
-                                    className="w-full border-[2px] border-secondary-1 h-10 rounded-[5px] rounded-l-[0px] outline-0 px-1"
+                                    className="w-full border-[3px] border-primary-100 h-10 rounded-[5px] rounded-l-[0px] outline-0 px-1"
                                     type="time"
                                     value={time}
                                     onChange={(e) => setTime(e.target.value)}
@@ -238,7 +239,7 @@ export default function BookLayout({ pageData }: { pageData: any }) {
                             </div> : <input
                                 type="submit"
                                 value={btn}
-                                className="cursor-pointer flex items-center justify-center gap-5 px-7 py-2 mx-auto border-[1px] border-secondary-1 hover:bg-secondary-1 text-primary-1 lg:text-[18px] font-medium rounded-[5px] mt-5"
+                                className="cursor-pointer flex items-center justify-center gap-5 px-7 py-2 mx-auto border-[3px] border-primary-100 hover:bg-primary-1 hover:text-white text-primary-1 lg:text-[18px] font-medium rounded-[5px] mt-5"
                             />
                         }
                     </> : <ReservationForm personalData={personalData} setPersonalData={setPersonalData} reservationData={reservationData} setReservationData={setReservationData} setShowReservationForm={setShowReservationForm} compData={pageData} loading={loading} setLoading={setLoading} />
@@ -263,6 +264,7 @@ export default function BookLayout({ pageData }: { pageData: any }) {
                             !editingData && <p className="text-center">€{reservationDetails?.price.toFixed(2)}</p>
                         }
                     </div> : <div className="text-white flex flex-col gap-10 h-full">
+                    <Image src="/logo_2.jpg" alt="Second logo" className="mx-auto rounded-[50%] lg:w-[150px] w-[100px] lg:h-[150px] h-[150px]" width={100} height={100} />
                         <p className="uppercase text-[24px] font-medium text-center">taxi strasbourg service</p>
                         <div>
                             <h2 className="lg:text-[30px] font-medium text-center">{rightSide.title}</h2>
