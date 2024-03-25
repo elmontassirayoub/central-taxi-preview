@@ -301,7 +301,7 @@ export default function Navbar({ lang, changeLanguage, page, admin }: { lang: st
                     {
                         compData.navbar.tabList?.map((item: TabListType, key: number) => {
                             if (item?.url === "/book" && admin) return
-                            return <Link className={`uppercase hover:underline h-full flex items-center justify-center px-2 ${page === item.url ? "bg-[#000] text-white" : ""}`} href={item?.url} key={key}>{item?.name}</Link>
+                            return <Link prefetch={false} className={`uppercase hover:underline h-full flex items-center justify-center px-2 ${page === item.url ? "bg-[#000] text-white" : ""}`} href={item?.url} key={key}>{item?.name}</Link>
                         })
                     }
                 </div>
@@ -319,7 +319,7 @@ export default function Navbar({ lang, changeLanguage, page, admin }: { lang: st
                                     <ArrowDropDownIcon className="" />
                                 </div>
                                 <div className={`absolute ${dropdown ? "flex" : "hidden"} flex-col top-[100%] bg-[#33475A] text-white right-0 w-full text-[14px] p-2 gap-2`}>
-                                    {admin ? <Link href="/admin" className="hover:underline">Dashboard</Link> : <>
+                                    {admin ? <Link prefetch={false} href="/admin" className="hover:underline">Dashboard</Link> : <>
                                         <p onClick={() => setUserEditModal(true)} className="hover:underline cursor-pointer" >{compData.navbar.edit}</p>
                                         <p onClick={() => setUserEditPassword(true)} className="hover:underline cursor-pointer" >{compData.navbar.editPassword}</p>
                                     </>}
@@ -347,7 +347,7 @@ export default function Navbar({ lang, changeLanguage, page, admin }: { lang: st
                 {
                     compData.navbar.tabList?.map((item: TabListType, key: number) => {
                         if (item?.url === "/book" && admin) return
-                        return <Link className={`uppercase italic py-1 w-full px-2 py-4 text-sm ${page === item.url ? "bg-primary-100 text-white" : "text-secondary-100"}`} href={item?.url} key={key}>{item?.name}</Link>
+                        return <Link prefetch={false} className={`uppercase italic py-1 w-full px-2 py-4 text-sm ${page === item.url ? "bg-primary-100 text-white" : "text-secondary-100"}`} href={item?.url} key={key}>{item?.name}</Link>
                     })
                 }
             </div>
@@ -357,7 +357,7 @@ export default function Navbar({ lang, changeLanguage, page, admin }: { lang: st
                         compData.navbar.rightSideTabList?.map((item: RightSideTabListType, idx: number) => <p onClick={() => { modalClose(true); setOption(item) }} key={idx} className="border-[1px] border-secondary-100 rounded-xl w-[90%] h-10 flex items-center px-2 justify-center hover:underline cursor-pointer">{item?.text}</p>) : <>
                             <p className="">{session?.user?.email}</p>
                             {
-                                admin ? <Link href="/admin" className="border-[1px] border-secondary-100 rounded-xl w-[90%] h-10 flex items-center justify-center hover:underline cursor-pointer">Dashboard</Link> : <>
+                                admin ? <Link prefetch={false} href="/admin" className="border-[1px] border-secondary-100 rounded-xl w-[90%] h-10 flex items-center justify-center hover:underline cursor-pointer">Dashboard</Link> : <>
                                     <p onClick={() => setUserEditModal(true)} className="border-[1px] border-secondary-100 rounded-xl w-[90%] h-10 flex items-center justify-center hover:underline cursor-pointer underline" >{compData.navbar.edit}</p>
                                     <p onClick={() => setUserEditPassword(true)} className="underline border-[1px] border-secondary-100 rounded-xl w-[90%] h-10 flex items-center justify-center hover:underline cursor-pointer" >{compData.navbar.editPassword}</p>
                                 </>

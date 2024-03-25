@@ -178,7 +178,7 @@ export default function BookLayout({ pageData }: { pageData: any }) {
         <div className="flex-1 flex flex-col lg:flex-row lg:pr-4 lg:pl-0 lg:py-0 py-10 px-4 lg:justify-center items-center relative lg:w-fit w-full bg-primary-1 my-5 rounded-[16px] gap-10 h-auto lg:h-[660px] lg:min-w-[80%]">
             <div className="md:hidden text-white w-full">
                 <div className="flex flex-col gap-5">
-                    <h2 className="lg:text-[24px] text-center">{rightSide.title}</h2>
+                    <p className="lg:text-[24px] text-center">{rightSide.title}</p>
                     <ol className="list-decimal ml-10 text-left">
                         {
                             rightSide.list?.map((item: string) => <li key={item}>{item}</li>)

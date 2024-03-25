@@ -19,6 +19,30 @@ type NavbarType = {
     editBtn: string
 }
 
+export type Home_section1 = {
+    title: string,
+    description: string
+}
+
+
+type Home_Services = {
+    title: string,
+    description: string,
+    features: Home_section1[]
+}
+
+export type Vehicule_Type = {
+    title: string,
+    capacity: string,
+    space: string,
+    vsl: boolean
+}
+
+type Home_Vehicules = {
+    title: string,
+    types: Vehicule_Type[]
+}
+
 type HomeType = {
     headerBeforeCards: string,
     news: string,
@@ -27,7 +51,10 @@ type HomeType = {
     cardData: CardDataType[],
     hero: { btn: string, h2: string, h3: string },
     yellowSection: { h2: string, btn: string },
-    reviews: { h1: string, h2: string, btn: string, footer: string }
+    reviews: { h1: string, h2: string, btn: string, footer: string },
+    section1: Home_section1,
+    services: Home_Services,
+    vehicules: Home_Vehicules
 }
 
 type FooterType = {
@@ -169,7 +196,7 @@ const Data: DataType = {
             headerBeforeCards: "Réservez un taxi facilement",
             news: "ACTUALITÉS",
             contact: "NOUS CONTACTER",
-            paragraph: "TAXI STRASBOURG SERVICE vous propose un large choix de taxis pour toutes les situations, que vous ayez besoin d'un taxi pour l'Aéroport de Strasbourg ou la gare de strasbourg etc",
+            paragraph: "TAXI STRASBOURG vous propose un large choix de taxis pour toutes les situations, que vous ayez besoin d'un taxi pour l'Aéroport de Strasbourg ou la gare de strasbourg etc",
             cardData: [
                 {
                     icon: "book",
@@ -189,8 +216,32 @@ const Data: DataType = {
             ],
             hero: {
                 btn: "Reserver",
-                h2: "Commander un taxi sur le site taxi strasbourg service est extrêmement simple et sécurisé.",
+                h2: "Central Taxi 67, votre choix numéro 1 pour vos courses à Strasbourg - Alsace",
                 h3: "À votre service 24H/24"
+            },
+            section1: {
+                title: "NOTRE MISSION",
+                description: "À la recherche d’une prestation de service taxi haute gamme à Strasbourg ? Notre mission sera d’arriver à votre destination avec pleine satisfaction! Laissez-nous vous transporter pour vos trajets privés ou professionnels dans l’Eurométropole de Strasbourg et dans toute la région. Des chauffeurs de taxis, fins connaissant parfaitement la région n’attendent que vous, 24/7, derrière notre centre d’appel. Notre société de transport de personnes dessert toutes les villes Alsaciennes, mais aussi ses aéroports, gares TGV et routières."
+            },
+            services: {
+                title: "NOS SERVICES",
+                description: "Déplacez-vous sans stress et au meilleur prix avec notre flotte de taxis à Strasbourg et dans toute l'Alsace.",
+                features: [
+                    {title: "Transferts aéroport Strasbourg", description: "Simplifiez vos déplacements vers et depuis les aéroports d’Alsace grâce à l'un des meilleurs services de transfert-aéroport en taxi de la région."},
+                    {title: "Transferts Gare Strasbourg", description: "Notre chauffeur privé vous attend dès votre descente du train ou TGV pour vous emmener où vous le souhaitez dans la région d’Alsace."},
+                    {title: "Taxi tourisme", description: "Programmez une excursion à Strasbourg avec un chauffeur de taxi professionnel, explorez tous les sites touristiques et monuments historiques en bonne compagnie."},
+                    {title: "Taxi pour professionnels", description: "Faites appel au meilleur chauffeur de taxis à Strasbourg pour assurer vos déplacements lors de réunions ou rendez-vous d'affaires en centre-ville ou en périphérie."},
+                    {title: "Taxi pour particuliers", description: "Profitez d’un service de transport personnalisé et sécurisé pour vos courses en ville, soirées entre amis ou sorties en famille."},
+                    {title: "Course longue distance", description: "Vous voyagez pour affaires ou pour le plaisir ? Notre service de taxi strasbourgeois vous garantit un voyage agréable partout en Alsace."},
+                ]
+            },
+            vehicules: {
+                title: "NOS VEHICULES",
+                types: [
+                    {title: "Monospaces", capacity: "1 à 5 passagers", space: "4 petits bagages ou 2 grands bagages", vsl: false},
+                    {title: "Van", capacity: "7 à 8 passagers", space: "7 bagages", vsl: false},
+                    {title: "Taxi conventionné VSL", capacity: "Pour les consultations, examens médicaux, traitements, sorties d’hôpital, etc.", space: "Agréé par la CPAM, conforme aux normes et réglementations en vigueur", vsl: true}
+                ]
             },
             yellowSection: {
                 h2: "Estimez Le Prix Et Réservez Le Meilleur Taxi À Strasbourg",
@@ -319,7 +370,7 @@ const Data: DataType = {
             headerBeforeCards: "Book a taxi easily",
             news: "NEWS",
             contact: "CONTACT US",
-            paragraph: "TAXI STRASBOURG SERVICECS offers you a wide choice of taxis for all situations, whether you need a taxi for Strasbourg Airport or Strasbourg train station etc.",
+            paragraph: "TAXI STRASBOURG offers you a wide choice of taxis for all situations, whether you need a taxi for Strasbourg Airport or Strasbourg train station etc.",
             cardData: [
                 {
                     icon: "book",
@@ -339,8 +390,32 @@ const Data: DataType = {
             ],
             hero: {
                 btn: "Book",
-                h2: "Ordering a taxi on the Strasbourg Taxi Service website is extremely simple and secure.",
+                h2: "Central Taxi 67, your number 1 choice for your rides in Strasbourg - Alsace",
                 h3: "At your service 24 hours a day"
+            },
+            section1: {
+                title: "OUR MISSION",
+                description: "Looking for a high-end taxi service in Strasbourg? Our mission will be to arrive at your destination with full satisfaction! Let us transport you for your private or professional journeys in the Strasbourg Eurometropolis and throughout the region. Taxi drivers who know the region perfectly are waiting for you, 24/7, behind our call center. Our passenger transport company serves all Alsatian towns, but also its airports, TGV and bus stations."
+            },
+            services: {
+                title: "Our Services",
+                description: "Travel stress-free and at the best price with our fleet of taxis in Strasbourg and throughout Alsace.",
+                features: [
+                    {title: "Strasbourg airport transfers", description: "Simplify your travel to and from Alsace airports with one of the best airport taxi transfer services in the region."},
+                    {title: "Strasbourg Train Station Transfers", description: "Our private driver is waiting for you as soon as you get off the train or TGV to take you wherever you want in the Alsace region."},
+                    {title: "Tourist taxi", description: "Schedule an excursion to Strasbourg with a professional taxi driver, explore all the tourist sites and historical monuments in good company."},
+                    {title: "Taxi for professionals", description: "Call the best taxi driver in Strasbourg to ensure your travel during meetings or business appointments in the city center or the outskirts."},
+                    {title: "Taxi for individuals", description: "Take advantage of a personalized and secure transport service for your shopping in town, evenings with friends or family outings."},
+                    {title: "Long distance running", description: "Are you traveling for business or pleasure? Our Strasbourg taxi service guarantees you a pleasant trip throughout Alsace."},
+                ]
+            },
+            vehicules: {
+                title: "OUR VEHICLES",
+                types: [
+                    {title: "Minivans", capacity: "1 to 5 passengers", space: "4 small bags or 2 large bags", vsl: false},
+                    {title: "Van", capacity: "7 to 8 passengers", space: "7 bags", vsl: false},
+                    {title: "VSL approved taxi", capacity: "For consultations, medical examinations, treatments, hospital discharges, etc.", space: "Approved by the CPAM, compliant with current standards and regulations", vsl: true}
+                ]
             },
             yellowSection: {
                 h2: "Estimate the Price and Book the Best Taxi in Strasbourg",

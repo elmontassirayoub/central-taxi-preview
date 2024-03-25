@@ -114,3 +114,7 @@ body {
   0%   {left: 100%;}
   100% {left: 0%;}
 }
+
+.title {
+  @apply text-[24px] lg:text-[40px] lg:[word-spacing:5px] text-center;
+}
