@@ -11,8 +11,11 @@ import France from "@/assets/france.png"
 import Fix from "@/assets/home-telephone.png"
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import { useAppContext } from "@/context/appContext";
 
-export default function Footer({ lang, changeLanguage }: { lang: string, changeLanguage: Function }) {
+export default function Footer() {
+
+    const {lang, changeLanguage} = useAppContext()
 
     const compData = Data[lang]
 

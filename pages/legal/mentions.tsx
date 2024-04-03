@@ -1,6 +1,5 @@
-import PageLayout from "@/components/common/PageLayout"
-import checkAuthentication from "@/lib/middlewares/checkAuthenticated"
-import { useEffect, useState } from "react"
+import checkAuthentication from "@/lib/middlewares/checkAuthenticated";
+import PageLayout from "@/components/common/PageLayout";
 
 export const getServerSideProps = checkAuthentication(async (context: any, admin: boolean) => {
     return {
@@ -9,20 +8,10 @@ export const getServerSideProps = checkAuthentication(async (context: any, admin
         }
     }
 })
-export default function Mentions({ admin = false }: { admin: boolean }) {
-    const [lang, setLang] = useState("fr")
 
-    useEffect(() => {
-        const storedLang = localStorage.getItem("lang")
-        if (storedLang && storedLang !== lang) setLang(storedLang)
-    }, [])
+export default function Contact({ admin = false }: { admin: boolean }) {
 
-    const changeLanguage = (val: string) => {
-        setLang(val);
-        localStorage.setItem("lang", val)
-    }
-
-    return <PageLayout lang={lang} changeLanguage={changeLanguage} page="/mentions" admin={admin}>
+    return <PageLayout admin={admin} page="/mentions">
         <section className="py-10 px-2 lg:p-20">
             <h1 className="lg:text-4xl text-2xl pb-10">Mention légales</h1>
             <div className="lg:p-10 px-3 flex flex-col gap-8">
@@ -39,13 +28,16 @@ export default function Mentions({ admin = false }: { admin: boolean }) {
                 </div>
                 <div>
                     <p className="lg:text-2xl text-xl pb-2">Propriété intellectuelle :</p>
-                    <p className="">Tout le contenu du présent site incluant, de façon non limitative, les graphismes, images, textes, vidéos, animations, sons, logos, gifs et icônes ainsi que leur mise en forme sont la propriété exclusive de la société Taxi Strasbourg Service. Toute reproduction, distribution, modification, adaptation, retransmission ou publication, même partielle, de ces différents éléments est strictement interdite sans l’accord exprès par écrit de Taxi Strasbourg Service. Cette représentation ou reproduction, par quelque procédé que ce soit, constitue une contrefaçon sanctionnée par les articles L.335-2 et suivants du Code de la propriété intellectuelle. Le non-respect de cette interdiction constitue une contrefaçon pouvant engager la responsabilité civile et pénale du contrefacteur. En outre, les propriétaires des Contenus copiés pourraient intenter une action en justice à leur encontre.</p>
+                    <p className="">Tout le contenu du présent site incluant, de façon non limitative, les graphismes, images, textes, vidéos, animations, sons, logos, gifs et icônes ainsi que leur mise en forme sont la propriété exclusive de la société central taxi 67. Toute reproduction, distribution, modification, adaptation, retransmission ou publication, même partielle, de ces différents éléments est strictement interdite sans l’accord exprès par écrit de Taxi Strasbourg Service. Cette représentation ou reproduction, par quelque procédé que ce soit, constitue une contrefaçon sanctionnée par les articles L.335-2 et suivants du Code de la propriété intellectuelle. Le non-respect de cette interdiction constitue une contrefaçon pouvant engager la responsabilité civile et pénale du contrefacteur. En outre, les propriétaires des Contenus copiés pourraient intenter une action en justice à leur encontre.</p>
                 </div>
                 <div>
+                    <p className="">Central Taxi 67</p>
+                    <p className="">5 rue de la Moselle</p>
+                    <p className="">67300 Schiltigheim</p>
                     <p className="">Licence artisanale taxi rattaché à la Communauté Urbaine de Strasbourg</p>
                     <p className="">Sous le numéro de siret numéro - 83825994300010 et TVA FR36838259943</p>
                 </div>
             </div>
         </section>
-    </PageLayout>
+  </PageLayout>
 }

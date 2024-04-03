@@ -13,6 +13,8 @@ import Call from "@/components/common/Buttons/Call";
 import Review from "@/components/common/Buttons/Review";
 import { CoordinationType, ReservationData } from "@/pages/book";
 import Image from "next/image";
+import { useAppContext } from "@/context/appContext";
+import Data from "@/assets/data";
 
 const DirectionMap = dynamic(() => import("@/components/users/elements/DirectionMap"), {
     ssr: false
@@ -23,7 +25,10 @@ type ReservationDetailsType = {
     distance: { text: string, value: number },
     duration: { text: string, value: number }
 }
-export default function BookLayout({ pageData }: { pageData: any }) {
+export default function BookLayout() {
+
+    const {lang} = useAppContext()
+    const pageData =Data[lang]
 
     const date = new Date();
     const mm =
@@ -175,7 +180,7 @@ export default function BookLayout({ pageData }: { pageData: any }) {
 
     // return <div className="hero-book w-full flex flex-col items-center justify-center">
     return <div className="w-full flex flex-col items-center justify-center">
-        <div className="flex-1 flex flex-col lg:flex-row lg:pr-4 lg:pl-0 lg:py-0 py-10 px-4 lg:justify-center items-center relative lg:w-fit w-full bg-primary-1 my-5 rounded-[16px] gap-10 h-auto lg:h-[660px] lg:min-w-[80%]">
+        <div className="flex-1 flex flex-col lg:flex-row lg:pr-4 lg:pl-0 lg:py-0 py-10 px-4 lg:justify-center items-center relative lg:w-fit w-full bg-primary-1 rounded-[16px] gap-10 h-auto lg:h-[660px] lg:min-w-[80%]">
             <div className="md:hidden text-white w-full">
                 <div className="flex flex-col gap-5">
                     <p className="lg:text-[24px] text-center">{rightSide.title}</p>
@@ -246,7 +251,7 @@ export default function BookLayout({ pageData }: { pageData: any }) {
                 }
             </form>
 
-            <div className="hidden lg:flex flex-col gap-3">
+            <div className="hidden lg:flex flex-col gap-3 flex-[0.7]">
                 {
                     reservationDetails ? <div className="bg-white rounded-[15px] lg:p-10 py-10 px-4 flex flex-col gap-5 max-w-[500px] justify-center items-center">
                         <p className="font-bold">Details</p>
@@ -267,8 +272,8 @@ export default function BookLayout({ pageData }: { pageData: any }) {
                     <Image src="/logo_2.jpg" alt="Second logo" className="mx-auto rounded-[50%] lg:w-[150px] w-[100px] lg:h-[150px] h-[150px]" width={100} height={100} />
                         <p className="uppercase text-[24px] font-medium text-center">taxi strasbourg service</p>
                         <div>
-                            <h2 className="lg:text-[30px] font-medium text-center">{rightSide.title}</h2>
-                            <ol className="list-decimal lg:text-[18px] font-medium ml-10">
+                            <h2 className="lg:text-[20px] font-medium text-center">{rightSide.title}</h2>
+                            <ol className="list-decimal text-sm font-medium ml-10">
                                 {
                                     rightSide.list?.map((item: string) => <li key={item}>{item}</li>)
                                 }

@@ -15,6 +15,7 @@ import EditPassword from "../modals/EditPassword";
 import Image from "next/image";
 import UK from "@/assets/uk.png"
 import France from "@/assets/france.png"
+import { useAppContext } from "@/context/appContext";
 
 type updatePasswordType = {
     oldPassword: string,
@@ -30,7 +31,9 @@ type updateUserData = {
 }
 
 
-export default function Navbar({ lang, changeLanguage, page, admin }: { lang: string, changeLanguage: Function, page: string, admin: boolean }) {
+export default function Navbar({ page, admin }: { page: string, admin: boolean }) {
+
+    const {lang, changeLanguage} = useAppContext()
 
     const [toggleMenu, setToggleMenu] = useState(false)
     const [modalState, modalClose] = useState(false)

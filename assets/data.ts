@@ -54,7 +54,11 @@ type HomeType = {
     reviews: { h1: string, h2: string, btn: string, footer: string },
     section1: Home_section1,
     services: Home_Services,
-    vehicules: Home_Vehicules
+    vehicules: Home_Vehicules,
+    values: {
+        title: string,
+        features: Home_section1[]
+    }
 }
 
 type FooterType = {
@@ -243,6 +247,17 @@ const Data: DataType = {
                     {title: "Taxi conventionné VSL", capacity: "Pour les consultations, examens médicaux, traitements, sorties d’hôpital, etc.", space: "Agréé par la CPAM, conforme aux normes et réglementations en vigueur", vsl: true}
                 ]
             },
+            values: {
+                title: "NOS VALEURS",
+                features: [
+                    {title: "Disponibilité", description: "Notre centre d’appel taxi est joignable 24/7. Nos chauffeurs strasbourgeois peuvent assurer vos déplacements, de jour comme de nuit."},
+                    {title: "Ponctualité", description: "Notre compagnie de transport compte parmi son équipe les chauffeurs les plus ponctuels de la région alsacienne. Ils arriveront à l'heure convenue lors de la réservation de taxi. "},
+                    {title: "Qualité", description: "Courte ou longue distance? Nous mettons tout en oeuvre  pour offrir à nos passagers un service de transport de haut niveau"},
+                    {title: "Rapidité", description: "Contrairement aux conducteurs VTC ou Uber, nos chauffeurs taxis ont le privilège d’utiliser les voies réservées au bus pour vous faire gagner énormément de temps. Ils choisissent également les meilleurs itinéraires pour n’importe quel trajet afin d’être le plus direct et rapide possible."},
+                    {title: "Sécurité", description: "Central Taxi 67 met un point d'honneur à votre sécurité et votre bien-être dès l’instant où vous montez à bord de ses véhicules jusqu’à votre arrivée à destination."},
+                    {title: "Transparence", description: "Notre entreprise de taxi applique des tarifs clairs et sans surprises. Le conducteur vous indiquera le montant exact que vous aurez à payer à l’arrivée  dès que vous serez installé dans nos véhicules."},
+                ]
+            },
             yellowSection: {
                 h2: "Estimez Le Prix Et Réservez Le Meilleur Taxi À Strasbourg",
                 btn: "Estimer le prix"
@@ -318,10 +333,10 @@ const Data: DataType = {
                 error: "Il y avait une erreur"
             },
             rightSide: {
-                title: "Réserver Un Taxi À Strasbourg",
+                title: "Vous pouvez effectuer votre réservation de taxi à Strasbourg de deux manière:",
                 list: [
-                    "Estimer le prix d'un taxi à Strasbourg",
-                    "Réserver en ligne ou par téléphone"
+                    "Contact direct par téléphone au numéro",
+                    "Formulaire de réservation de taxi en ligne à remplir"
                 ]
             },
             details: {
@@ -417,6 +432,17 @@ const Data: DataType = {
                     {title: "VSL approved taxi", capacity: "For consultations, medical examinations, treatments, hospital discharges, etc.", space: "Approved by the CPAM, compliant with current standards and regulations", vsl: true}
                 ]
             },
+            values: {
+                title: "OUR VALUES",
+                features: [
+                    {title: "Availability", description: "Our taxi call center is available 24/7. Our Strasbourg drivers can ensure your travel, day or night."},
+                    {title: "Punctuality", description: "Our transport company counts among its team the most punctual drivers in the Alsatian region. They will arrive at the time agreed upon when booking the taxi."},
+                    {title: "Quality", description: "Short or long distance? We do everything we can to offer our passengers a high level of transport service"},
+                    {title: "Speed", description: "Unlike VTC or Uber drivers, our taxi drivers have the privilege of using bus lanes to save you a lot of time. They also choose the best routes for any journey to be as direct and quick as possible."},
+                    {title: "Security", description: "Central Taxi 67 makes a point of honoring your safety and well-being from the moment you board its vehicles until you arrive at your destination."},
+                    {title: "Transparency", description: "Our taxi company applies clear prices with no surprises. The driver will tell you the exact amount you will have to pay upon arrival as soon as you are seated in our vehicles."},
+                ]
+            },
             yellowSection: {
                 h2: "Estimate the Price and Book the Best Taxi in Strasbourg",
                 btn: "Estimate the price"
@@ -492,10 +518,10 @@ const Data: DataType = {
                 error: "There was an error"
             },
             rightSide: {
-                title: "Book A Taxi In Strasbourg",
+                title: "You can make your taxi reservation in Strasbourg in two ways:",
                 list: [
-                    "Estimate the price of a taxi in Strasbourg",
-                    "Book online or by phone"
+                    "Direct contact by telephone at the number",
+                    "Online taxi reservation form to fill out"
                 ]
             },
             details: {

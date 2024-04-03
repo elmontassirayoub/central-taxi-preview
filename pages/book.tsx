@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import Data from "@/assets/data";
 import checkAuthentication from "@/lib/middlewares/checkAuthenticated";
 import PageLayout from "@/components/common/PageLayout";
 import BookLayout from "@/layouts/book";
@@ -40,25 +38,9 @@ export const getServerSideProps = checkAuthentication(async (context: any, admin
 
 export default function Book({ admin = false }: { admin: boolean }) {
 
-    const [lang, setLang] = useState("fr")
-
-
-    useEffect(() => {
-        const storedLang = localStorage.getItem("lang")
-        if (storedLang && storedLang !== lang) setLang(storedLang)
-    }, [])
-
-
-    const changeLanguage = (val: string) => {
-        setLang(val);
-        localStorage.setItem("lang", val)
-    }
-
-
-    const pageData = Data[lang]
-
-
-    return <PageLayout admin={admin} lang={lang} changeLanguage={changeLanguage} page="/book">
-        <BookLayout pageData={pageData} />
+    return <PageLayout admin={admin} page="/book">
+        <div className="my-10">
+            <BookLayout />
+        </div>
     </PageLayout>
 }
