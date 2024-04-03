@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }: { Component: any, pageProps: any }) {
   return (
     <SessionProvider session={pageProps.session}>
       <Head>
-        <title>Taxi Strasbourg Service</title>
+        <title>Taxi Strasbourg</title>
       </Head>
       <main className={inter.className}>
         <Component {...pageProps} />
