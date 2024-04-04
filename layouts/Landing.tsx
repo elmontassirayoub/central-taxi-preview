@@ -58,7 +58,7 @@ const Landing = () => {
           </div>
           <div className="px-[10%]">
             <p className="font-bold title">{pageData.home.headerBeforeCards}</p>
-            {/* <BookLayout /> */}
+            <BookLayout />
           </div>
           <div className="px-[10%] text-center">
             <p className="font-bold title">{pageData.home.section1.title}</p>
