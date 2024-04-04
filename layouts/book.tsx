@@ -277,10 +277,10 @@ export default function BookLayout() {
                             <h2 className="lg:text-[20px] font-medium text-center">{rightSide.title}</h2>
                             <ol className="list-decimal text-sm font-medium ml-10">
                                 {
-                                    rightSide.list?.map((item: BookPageRightSideListType) => <li className="flex items-center gap-1" key={item.item}>
+                                    rightSide.list?.map((item: BookPageRightSideListType) => <li className="" key={item.item}>
                                         <span>{item?.item}</span>
                                         {
-                                            item?.phone && <a className="underline" href="tel:0647600171">06 47 60 01 71</a>
+                                            item?.phone && <a className="underline pl-1" href="tel:0647600171">06 47 60 01 71</a>
                                         }
                                     </li>)
                                 }
