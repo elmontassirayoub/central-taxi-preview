@@ -120,6 +120,11 @@ export type BookDetails = {
     distance: string
 }
 
+export type BookPageRightSideListType = {
+    item: string,
+    phone?: boolean
+}
+
 type BookPage = {
     personalData: string,
     personaDataError: string,
@@ -140,7 +145,7 @@ type BookPage = {
     },
     rightSide: {
         title: string,
-        list: string[]
+        list: BookPageRightSideListType[]
     },
     details: BookDetails,
     bookingForm: {
@@ -335,8 +340,13 @@ const Data: DataType = {
             rightSide: {
                 title: "Vous pouvez effectuer votre réservation de taxi à Strasbourg de deux manière:",
                 list: [
-                    "Contact direct par téléphone au numéro",
-                    "Formulaire de réservation de taxi en ligne à remplir"
+                    {
+                        item: "Contact direct par téléphone au numéro",
+                        phone: true
+                    },
+                    {
+                        item: "Formulaire de réservation de taxi en ligne à remplir"
+                    }
                 ]
             },
             details: {
@@ -520,8 +530,14 @@ const Data: DataType = {
             rightSide: {
                 title: "You can make your taxi reservation in Strasbourg in two ways:",
                 list: [
-                    "Direct contact by telephone at the number",
-                    "Online taxi reservation form to fill out"
+                    {
+                        item: "Direct contact by telephone at the number",
+                        phone: true
+                    },
+                    {
+                        item: "Online taxi reservation form to fill out",
+                    }
+                    
                 ]
             },
             details: {

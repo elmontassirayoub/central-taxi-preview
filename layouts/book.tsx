@@ -13,7 +13,7 @@ import Review from "@/components/common/Buttons/Review";
 import { CoordinationType, ReservationData } from "@/pages/book";
 import Image from "next/image";
 import { useAppContext } from "@/context/appContext";
-import Data from "@/assets/data";
+import Data, { BookPageRightSideListType } from "@/assets/data";
 import DirectionMap from "@/components/users/elements/DirectionMap"
 
 type ReservationDetailsType = {
@@ -23,8 +23,8 @@ type ReservationDetailsType = {
 }
 export default function BookLayout() {
 
-    const {lang} = useAppContext()
-    const pageData =Data[lang]
+    const { lang } = useAppContext()
+    const pageData = Data[lang]
 
     const date = new Date();
     const mm =
@@ -182,7 +182,13 @@ export default function BookLayout() {
                     <p className="lg:text-[24px] text-center">{rightSide.title}</p>
                     <ol className="list-decimal ml-10 text-left">
                         {
-                            rightSide.list?.map((item: string) => <li key={item}>{item}</li>)
+                            rightSide.list?.map((item: BookPageRightSideListType) => <li className="" key={item.item}>
+                                <span>{item.item}</span>
+                                {
+                                    item?.phone && <a className="underline pl-1" href="tel:0647600171">06 47 60 01 71</a>
+                                }
+
+                            </li>)
                         }
                     </ol>
                 </div>
@@ -265,13 +271,18 @@ export default function BookLayout() {
                             !editingData && <p className="text-center">€{reservationDetails?.price.toFixed(2)}</p>
                         }
                     </div> : <div className="text-white flex flex-col gap-10 h-full">
-                    <Image src="/logo_2.jpg" alt="Second logo" className="mx-auto rounded-[50%] lg:w-[150px] w-[100px] lg:h-[150px] h-[150px]" width={100} height={100} />
+                        <Image src="/logo_2.jpg" alt="Second logo" className="mx-auto rounded-[50%] lg:w-[150px] w-[100px] lg:h-[150px] h-[150px]" width={100} height={100} />
                         <p className="uppercase text-[24px] font-medium text-center">taxi strasbourg service</p>
                         <div>
                             <h2 className="lg:text-[20px] font-medium text-center">{rightSide.title}</h2>
                             <ol className="list-decimal text-sm font-medium ml-10">
                                 {
-                                    rightSide.list?.map((item: string) => <li key={item}>{item}</li>)
+                                    rightSide.list?.map((item: BookPageRightSideListType) => <li className="flex items-center gap-1" key={item.item}>
+                                        <span>{item?.item}</span>
+                                        {
+                                            item?.phone && <a className="underline" href="tel:0647600171">06 47 60 01 71</a>
+                                        }
+                                    </li>)
                                 }
                             </ol>
                         </div>
