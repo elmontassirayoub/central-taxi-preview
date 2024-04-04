@@ -5,7 +5,6 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 import { getPrice } from "@/utils/booking";
 import Loader from "@/components/common/Loader";
-import dynamic from 'next/dynamic'
 import BookingDetails from "@/components/users/modals/BookingDetails";
 import ReservationForm from "@/components/users/elements/ReservationForm";
 import { toast } from 'react-toastify';
@@ -15,10 +14,7 @@ import { CoordinationType, ReservationData } from "@/pages/book";
 import Image from "next/image";
 import { useAppContext } from "@/context/appContext";
 import Data from "@/assets/data";
-
-const DirectionMap = dynamic(() => import("@/components/users/elements/DirectionMap"), {
-    ssr: false
-})
+import DirectionMap from "@/components/users/elements/DirectionMap"
 
 type ReservationDetailsType = {
     price: number,

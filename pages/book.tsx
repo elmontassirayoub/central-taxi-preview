@@ -1,8 +1,10 @@
 import checkAuthentication from "@/lib/middlewares/checkAuthenticated";
 import PageLayout from "@/components/common/PageLayout";
-import BookLayout from "@/layouts/book";
+import dynamic from 'next/dynamic'
 
-
+const BookLayout = dynamic(() => import("@/layouts/book"), {
+  ssr: false
+})
 
 export type CoordinationType = {
     lat: number,

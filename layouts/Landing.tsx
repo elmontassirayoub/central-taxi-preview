@@ -2,12 +2,16 @@ import Data, { CardDataType, Home_section1, Vehicule_Type } from "@/assets/data"
 import Book from "@/components/common/Buttons/Book"
 import Call from "@/components/common/Buttons/Call"
 import { useAppContext } from "@/context/appContext"
-import BookLayout from "./book"
 import Image from "next/image"
 import InfoCard from "@/components/users/elements/InfoCard"
 import EuroIcon from '@mui/icons-material/Euro';
 import ReviewCard from "@/components/users/elements/ReviewCard"
 import Review from "@/components/common/Buttons/Review"
+import dynamic from 'next/dynamic'
+
+const BookLayout = dynamic(() => import("./book"), {
+  ssr: false
+})
 
 const Landing = () => {
 
