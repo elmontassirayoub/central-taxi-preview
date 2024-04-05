@@ -9,6 +9,7 @@ export default async function sendMail({to, admin, confirmation, status , reserv
         pass: process.env.PASSWORD
         }
     });
+    
 
     const subject = admin ? "Nouvelle Reservation" : status === "confirmed" ? "Confirmation de réservation Taxi" : status === "cancelled" ? "Annulation de réservation Taxi" : "Votre réservation a été reçue"
 
