@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }: { Component: any, pageProps: any }) {
       <ToastContainer />
       <Script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/f631425ca93aa1e9f8d06035/script.js"></Script>
       <script
-        defer
+        async
         src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}&libraries=places`}></script>
     </SessionProvider>
   )
