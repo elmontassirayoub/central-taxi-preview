@@ -7,11 +7,7 @@ import InfoCard from "@/components/users/elements/InfoCard"
 import EuroIcon from '@mui/icons-material/Euro';
 import ReviewCard from "@/components/users/elements/ReviewCard"
 import Review from "@/components/common/Buttons/Review"
-import dynamic from 'next/dynamic'
-
-const BookLayout = dynamic(() => import("./book"), {
-  ssr: false
-})
+import BookLayout  from "./book"
 
 const Landing = () => {
 
@@ -140,7 +136,7 @@ const Landing = () => {
           <div className="absolute top-0 left-[-40px] w-[120%] lg:w-[105%] h-[300px] rotated flex flex-col justify-center items-center rotate-[-1.75deg] shrink-0">
             <div className="rotate-[1.75deg] items-center flex flex-col gap-4 lg:gap-2 justify-center w-full">
               <EuroIcon sx={{ fontSize: 50 }} className="rounded-[50%] bg-[#33475A] text-white p-2" />
-              <p className="text-[20px] lg:text-[35px] text-[#fff] font-medium uppercase">taxi strasbourg service</p>
+              <p className="text-[20px] lg:text-[35px] text-[#fff] font-medium uppercase">Taxi Strasbourg</p>
               <p className="text-[13px] lg:text-[20px] text-[#fff]/[75%] italic mb-10">{pageData.home.yellowSection.h2}</p>
               <Book bounce={true} btn={pageData.home.yellowSection.btn} primary={true} />
             </div>

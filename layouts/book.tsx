@@ -14,7 +14,10 @@ import { CoordinationType, ReservationData } from "@/pages/book";
 import Image from "next/image";
 import { useAppContext } from "@/context/appContext";
 import Data, { BookPageRightSideListType } from "@/assets/data";
-import DirectionMap from "@/components/users/elements/DirectionMap"
+import dynamic from "next/dynamic";
+const DirectionMap = dynamic(() => import("@/components/users/elements/DirectionMap"), {
+    ssr: false
+})
 
 type ReservationDetailsType = {
     price: number,
@@ -272,7 +275,7 @@ export default function BookLayout() {
                         }
                     </div> : <div className="text-white flex flex-col gap-10 h-full">
                         <Image src="/logo_2.jpg" alt="Second logo" className="mx-auto rounded-[50%] lg:w-[150px] w-[100px] lg:h-[150px] h-[150px]" width={100} height={100} />
-                        <p className="uppercase text-[24px] font-medium text-center">taxi strasbourg service</p>
+                        <p className="uppercase text-[24px] font-medium text-center">Taxi Strasbourg</p>
                         <div>
                             <h2 className="lg:text-[20px] font-medium text-center">{rightSide.title}</h2>
                             <ol className="list-decimal text-sm font-medium ml-10">

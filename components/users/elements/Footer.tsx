@@ -23,7 +23,7 @@ export default function Footer() {
         <section className="flex justify-evenly px-10 lg:flex-row flex-col lg:gap-0 gap-10">
             <div className="flex-1 flex flex-col  items-center gap-5 lg:w-fit w-full">
                 <div className="flex flex-col gap-4 items-start lg:w-fit w-full pt-[75px]">
-                    <p className="uppercase text-[18px] pb-5 lg:pb-10 lg:text-[28px] whitespace-nowrap not-italic font-medium text-center">taxi strasbourg service</p>
+                    <p className="uppercase text-[18px] pb-5 lg:pb-10 lg:text-[28px] whitespace-nowrap not-italic font-medium text-center">Taxi Strasbourg</p>
                     <div className="hidden lg:flex items-center gap-5">
                         <Image draggable={false} alt="UK" onClick={() => changeLanguage("en")} className={`cursor-pointer border-b-[1px]  pb-1 box-border box-content w-6 h-6 ${lang === "en" ? "" : "border-transparent"}`} src={UK} />
                         <Image draggable={false} alt="France" onClick={() => changeLanguage("fr")} className={`cursor-pointer border-b-[1px]  pb-1 box-border box-content w-6 h-6 ${lang === "fr" ? "" : "border-transparent"}`} src={France} />
@@ -55,7 +55,7 @@ export default function Footer() {
             </div>
         </section>
         <section className="min-h-10 bg-[#000] px-10 py-2 lg:py-0 flex lg:items-center flex-col lg:flex-row gap-2 lg:gap-5 justify-end">
-            <p className="text-[#fff]/[70%] text-sm lg:text-right lg:whitespace-normal whitespace-nowrap">©Taxi Strasbourg Service. Tous droit réservés.</p>
+            <p className="text-[#fff]/[70%] text-sm lg:text-right lg:whitespace-normal whitespace-nowrap">©Taxi Strasbourg. Tous droit réservés.</p>
             <Link href="/legal/mentions" className="underline lg:text-sm text-xs lg:text-right">Mention légales</Link>
         </section>
     </footer>

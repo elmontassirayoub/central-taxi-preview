@@ -15,7 +15,7 @@ export default function Home({ admin = false }: { admin: boolean }) {
 
   return (
     <PageLayout page="/" admin={admin} >
-      <SEO title="Taxi Strasbourg Service : faites confiance à Central Taxi 67" description="Central Taxi 67 offre un service de transport en taxi de haute qualité sur Strasbourg. Chauffeurs courtois et professionnels, véhicules confortables et sécurisés à votre disposition." />
+      <SEO title="Taxi Strasbourg : faites confiance à Central Taxi 67" description="Central Taxi 67 offre un service de transport en taxi de haute qualité sur Strasbourg. Chauffeurs courtois et professionnels, véhicules confortables et sécurisés à votre disposition." />
       <Landing />
     </PageLayout>
   )

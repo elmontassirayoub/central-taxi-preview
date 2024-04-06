@@ -1,6 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import L, { LatLngExpression } from 'leaflet';
+import 'leaflet/dist/leaflet.css'
+import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css';
+import 'leaflet-defaulticon-compatibility';
 
 type CoordinationType = {
     lat: number,
@@ -26,7 +29,7 @@ const DirectionMap = ({ depart, arrive }: { depart: LatLngExpression, arrive: La
         <MapContainer
             ref={mapRef}
             center={depart}
-            zoom={6}
+            zoom={4}
             bounds={[[90, 180], [-90, 180]]}
             minZoom={2}
             maxBoundsViscosity={1.0} 

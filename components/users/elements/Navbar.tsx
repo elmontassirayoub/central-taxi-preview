@@ -333,7 +333,7 @@ export default function Navbar({ page, admin }: { page: string, admin: boolean }
                 </div>
             </section>
             <section className="lg:hidden flex h-15 bg-[#33475A] justify-evenly items-center px-2">
-                <p className="text-white uppercase font-medium italic flex-1 text-sm">taxi strasbourg service</p>
+                <p className="text-white uppercase font-medium italic flex-1 text-sm">Taxi Strasbourg</p>
                 <div className="flex items-center gap-5 flex-1">
                     <Image draggable={false} alt="UK" onClick={() => changeLanguage("en")} className={`cursor-pointer border-b-[1px]  pb-1 box-border box-content w-6 h-6 ${lang === "en" ? "" : "border-transparent"}`} src={UK} />
                     <Image draggable={false} alt="France" onClick={() => changeLanguage("fr")} className={`cursor-pointer border-b-[1px]  pb-1 box-border box-content w-6 h-6 ${lang === "fr" ? "" : "border-transparent"}`} src={France} />
