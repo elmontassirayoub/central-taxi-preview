@@ -9,7 +9,7 @@ import ReviewCard from "@/components/users/elements/ReviewCard"
 import Review from "@/components/common/Buttons/Review"
 import BookLayout  from "./book"
 
-const Landing = () => {
+const Landing = ({ admin = false }: { admin: boolean }) => {
 
     const { lang } = useAppContext()
 
@@ -56,10 +56,12 @@ const Landing = () => {
               </div>
             </div>
           </div>
-          <div className="px-[10%]">
+          {
+            !admin && <div className="px-[10%]">
             <p className="font-bold title">{pageData.home.headerBeforeCards}</p>
             <BookLayout />
           </div>
+          }
           <div className="px-[10%] text-center">
             <p className="font-bold title">{pageData.home.section1.title}</p>
             <p className="text-sm lg:text-base lg:leading-[30px]">À la recherche d’une prestation de service taxi haute gamme  à Strasbourg ? Notre mission sera d’arriver à votre destination avec pleine satisfaction! Laissez-nous vous transporter pour vos trajets privés ou professionnels dans l’Eurométropole de Strasbourg et dans toute la région. Des chauffeurs de taxis, fins connaissant parfaitement la région n’attendent que vous, 24/7, derrière notre centre d’appel. Notre société de transport de personnes dessert toutes les villes Alsaciennes, mais aussi ses aéroports, gares TGV et routières.</p>
