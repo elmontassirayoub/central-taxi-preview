@@ -1,9 +1,8 @@
-import AddRoadIcon from '@mui/icons-material/AddRoad';
 import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
 import TrainIcon from '@mui/icons-material/Train';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import MapIcon from '@mui/icons-material/Map';
-
+import LocalTaxiIcon from '@mui/icons-material/LocalTaxi';
 
 export type TabListType = { name: string, url: string }
 export type RightSideTabListType = { functionlity: string, text: string }
@@ -156,7 +155,8 @@ type BookPage = {
 
 export type ServiceCard = {
     icon: any,
-    text: string
+    title: string,
+    features: string[]
 }
 
 type ServicePage = {
@@ -165,6 +165,7 @@ type ServicePage = {
     subHeader: string,
     h3: string,
     h4: string,
+    h5: string
 }
 
 type ContactPage = {
@@ -236,31 +237,31 @@ const Data: DataType = {
                 title: "NOS SERVICES",
                 description: "Déplacez-vous sans stress et au meilleur prix avec notre flotte de taxis à Strasbourg et dans toute l'Alsace.",
                 features: [
-                    {title: "Transferts aéroport Strasbourg", description: "Simplifiez vos déplacements vers et depuis les aéroports d’Alsace grâce à l'un des meilleurs services de transfert-aéroport en taxi de la région."},
-                    {title: "Transferts Gare Strasbourg", description: "Notre chauffeur privé vous attend dès votre descente du train ou TGV pour vous emmener où vous le souhaitez dans la région d’Alsace."},
-                    {title: "Taxi tourisme", description: "Programmez une excursion à Strasbourg avec un chauffeur de taxi professionnel, explorez tous les sites touristiques et monuments historiques en bonne compagnie."},
-                    {title: "Taxi pour professionnels", description: "Faites appel au meilleur chauffeur de taxis à Strasbourg pour assurer vos déplacements lors de réunions ou rendez-vous d'affaires en centre-ville ou en périphérie."},
-                    {title: "Taxi pour particuliers", description: "Profitez d’un service de transport personnalisé et sécurisé pour vos courses en ville, soirées entre amis ou sorties en famille."},
-                    {title: "Course longue distance", description: "Vous voyagez pour affaires ou pour le plaisir ? Notre service de taxi strasbourgeois vous garantit un voyage agréable partout en Alsace."},
+                    { title: "Transferts aéroport Strasbourg", description: "Simplifiez vos déplacements vers et depuis les aéroports d’Alsace grâce à l'un des meilleurs services de transfert-aéroport en taxi de la région." },
+                    { title: "Transferts Gare Strasbourg", description: "Notre chauffeur privé vous attend dès votre descente du train ou TGV pour vous emmener où vous le souhaitez dans la région d’Alsace." },
+                    { title: "Taxi tourisme", description: "Programmez une excursion à Strasbourg avec un chauffeur de taxi professionnel, explorez tous les sites touristiques et monuments historiques en bonne compagnie." },
+                    { title: "Taxi pour professionnels", description: "Faites appel au meilleur chauffeur de taxis à Strasbourg pour assurer vos déplacements lors de réunions ou rendez-vous d'affaires en centre-ville ou en périphérie." },
+                    { title: "Taxi pour particuliers", description: "Profitez d’un service de transport personnalisé et sécurisé pour vos courses en ville, soirées entre amis ou sorties en famille." },
+                    { title: "Course longue distance", description: "Vous voyagez pour affaires ou pour le plaisir ? Notre service de taxi strasbourgeois vous garantit un voyage agréable partout en Alsace." },
                 ]
             },
             vehicules: {
                 title: "NOS VEHICULES",
                 types: [
-                    {title: "Monospaces", capacity: "1 à 5 passagers", space: "4 petits bagages ou 2 grands bagages", vsl: false},
-                    {title: "Van", capacity: "7 à 8 passagers", space: "7 bagages", vsl: false},
-                    {title: "Taxi conventionné VSL", capacity: "Pour les consultations, examens médicaux, traitements, sorties d’hôpital, etc.", space: "Agréé par la CPAM, conforme aux normes et réglementations en vigueur", vsl: true}
+                    { title: "Monospaces", capacity: "1 à 5 passagers", space: "4 petits bagages ou 2 grands bagages", vsl: false },
+                    { title: "Van", capacity: "7 à 8 passagers", space: "7 bagages", vsl: false },
+                    { title: "Taxi conventionné VSL", capacity: "Pour les consultations, examens médicaux, traitements, sorties d’hôpital, etc.", space: "Agréé par la CPAM, conforme aux normes et réglementations en vigueur", vsl: true }
                 ]
             },
             values: {
                 title: "NOS VALEURS",
                 features: [
-                    {title: "Disponibilité", description: "Notre centre d’appel taxi est joignable 24/7. Nos chauffeurs strasbourgeois peuvent assurer vos déplacements, de jour comme de nuit."},
-                    {title: "Ponctualité", description: "Notre compagnie de transport compte parmi son équipe les chauffeurs les plus ponctuels de la région alsacienne. Ils arriveront à l'heure convenue lors de la réservation de taxi. "},
-                    {title: "Qualité", description: "Courte ou longue distance? Nous mettons tout en oeuvre  pour offrir à nos passagers un service de transport de haut niveau"},
-                    {title: "Rapidité", description: "Contrairement aux conducteurs VTC ou Uber, nos chauffeurs taxis ont le privilège d’utiliser les voies réservées au bus pour vous faire gagner énormément de temps. Ils choisissent également les meilleurs itinéraires pour n’importe quel trajet afin d’être le plus direct et rapide possible."},
-                    {title: "Sécurité", description: "Central Taxi 67 met un point d'honneur à votre sécurité et votre bien-être dès l’instant où vous montez à bord de ses véhicules jusqu’à votre arrivée à destination."},
-                    {title: "Transparence", description: "Notre entreprise de taxi applique des tarifs clairs et sans surprises. Le conducteur vous indiquera le montant exact que vous aurez à payer à l’arrivée  dès que vous serez installé dans nos véhicules."},
+                    { title: "Disponibilité", description: "Notre centre d’appel taxi est joignable 24/7. Nos chauffeurs strasbourgeois peuvent assurer vos déplacements, de jour comme de nuit." },
+                    { title: "Ponctualité", description: "Notre compagnie de transport compte parmi son équipe les chauffeurs les plus ponctuels de la région alsacienne. Ils arriveront à l'heure convenue lors de la réservation de taxi. " },
+                    { title: "Qualité", description: "Courte ou longue distance? Nous mettons tout en oeuvre  pour offrir à nos passagers un service de transport de haut niveau" },
+                    { title: "Rapidité", description: "Contrairement aux conducteurs VTC ou Uber, nos chauffeurs taxis ont le privilège d’utiliser les voies réservées au bus pour vous faire gagner énormément de temps. Ils choisissent également les meilleurs itinéraires pour n’importe quel trajet afin d’être le plus direct et rapide possible." },
+                    { title: "Sécurité", description: "Central Taxi 67 met un point d'honneur à votre sécurité et votre bien-être dès l’instant où vous montez à bord de ses véhicules jusqu’à votre arrivée à destination." },
+                    { title: "Transparence", description: "Notre entreprise de taxi applique des tarifs clairs et sans surprises. Le conducteur vous indiquera le montant exact que vous aurez à payer à l’arrivée  dès que vous serez installé dans nos véhicules." },
                 ]
             },
             yellowSection: {
@@ -365,16 +366,46 @@ const Data: DataType = {
         },
         service: {
             header: "nos services",
-            subHeader: "Nous pouvons vous offrir une grande variété de services",
+            subHeader: "Nos services de taxi à Strasbourg - Alsace",
             h3: "ce que nous offrons",
-            h4: "Nous avons beaucoup d'offres parmi lesquelles vous pouvez choisir",
+            h4: "Professionnels, touristes et habitants de l’Eurométropole, bénéficiez de nos services de transport en taxi pas cher pour vos trajets ! Nos chauffeurs peuvent desservir toutes les destinations d’Alsace. Réservez votre berline taxi via notre centre d’appel accessible 24h/24 et 7/7.",
             cards: [
-                { icon: AddRoadIcon, text: "Taxi Strasbourg longue ou courte distance" },
-                { icon: AirplanemodeActiveIcon, text: "Taxi Aéroport Strasbourg Provence" },
-                { icon: TrainIcon, text: "Taxi Strasbourg gare" },
-                { icon: LocalShippingIcon, text: "Service de livraison à Strasbourg en taxi" },
-                { icon: MapIcon, text: "Chauffeur guide touristique Strasbourg" },
-            ]
+                {
+                    icon: LocalTaxiIcon, title: "Transport privé en taxi à Strasbourg ", features: ["Chauffeur expérimenté pour vos déplacements en ville ou aux alentours",
+                        " Réservation en ligne rapide et facile ",
+                        " Prise en charge immédiate ou programmée à votre adresse ou autre lieu de votre choix",
+                        "Idéal pour les rendez-vous d’affaires, les sorties en ville, les occasions spéciales"]
+                },
+                {
+                    icon: AirplanemodeActiveIcon, title: "Transfert aéroport en Alsace", features: ["Service ponctuel pour tous vos déplacements depuis et vers les aéroports",
+                        "Accueil personnalisé avec pancarte à l'arrivée",
+                        "Assistance avec les bagages",
+                        "Suivi de vol en temps réel pour adapter le service aux éventuels changements d'horaire"]
+                },
+                {
+                    icon: TrainIcon, title: "Transfert gare", features: ["Prise en charge et dépose en tout confort à la gare SNCF TGV de votre choix",
+                        "Coordination avec les horaires de train pour assurer une transition sans souci",
+                        "Un voyage sans stress avec un service de porte-à-porte",
+                        "Aide pour les bagages "]
+                },
+                {
+                    icon: MapIcon, title: "Taxi tourisme en Alsace", features: [
+                        "Prise en charge par un chauffeur de taxi expérimenté dans le tourisme",
+                        "Visites personnalisées à travers la ville de Strasbourg et les alentours",
+                        "Découverte des meilleurs itinéraires touristiques",
+                        "Conseils d'experts pour une expérience touristique enrichissante"
+                    ]
+                },
+                {
+                    icon: LocalHospitalIcon, title: "Taxi conventionné à Schiltigheim - Strasbourg - Alsace", features: [
+                        "Transport de malade assis accrédité par la CPAM",
+                        "Transport médicalisé pour vos rendez-vous, entrées et sorties d'hôpital",
+                        "Prise en charge des formalités liées à l'assurance maladie",
+                        "Déplacements médicaux en tout confort et discrétion",
+                    ]
+                },
+            ],
+            h5: "Besoin d’un taxi pour un court ou long trajet vers Strasbourg Eurométropole ? Commandez un taxi chez Central Taxi 67. Nous vous offrons une solution de transport pratique et flexible pour vos déplacements de jour ou de nuit. De plus, le prix de la course est connu à l’avance."
         },
         contact: {
             header: "Contactez-nous",
@@ -426,31 +457,31 @@ const Data: DataType = {
                 title: "Our Services",
                 description: "Travel stress-free and at the best price with our fleet of taxis in Strasbourg and throughout Alsace.",
                 features: [
-                    {title: "Strasbourg airport transfers", description: "Simplify your travel to and from Alsace airports with one of the best airport taxi transfer services in the region."},
-                    {title: "Strasbourg Train Station Transfers", description: "Our private driver is waiting for you as soon as you get off the train or TGV to take you wherever you want in the Alsace region."},
-                    {title: "Tourist taxi", description: "Schedule an excursion to Strasbourg with a professional taxi driver, explore all the tourist sites and historical monuments in good company."},
-                    {title: "Taxi for professionals", description: "Call the best taxi driver in Strasbourg to ensure your travel during meetings or business appointments in the city center or the outskirts."},
-                    {title: "Taxi for individuals", description: "Take advantage of a personalized and secure transport service for your shopping in town, evenings with friends or family outings."},
-                    {title: "Long distance running", description: "Are you traveling for business or pleasure? Our Strasbourg taxi service guarantees you a pleasant trip throughout Alsace."},
+                    { title: "Strasbourg airport transfers", description: "Simplify your travel to and from Alsace airports with one of the best airport taxi transfer services in the region." },
+                    { title: "Strasbourg Train Station Transfers", description: "Our private driver is waiting for you as soon as you get off the train or TGV to take you wherever you want in the Alsace region." },
+                    { title: "Tourist taxi", description: "Schedule an excursion to Strasbourg with a professional taxi driver, explore all the tourist sites and historical monuments in good company." },
+                    { title: "Taxi for professionals", description: "Call the best taxi driver in Strasbourg to ensure your travel during meetings or business appointments in the city center or the outskirts." },
+                    { title: "Taxi for individuals", description: "Take advantage of a personalized and secure transport service for your shopping in town, evenings with friends or family outings." },
+                    { title: "Long distance running", description: "Are you traveling for business or pleasure? Our Strasbourg taxi service guarantees you a pleasant trip throughout Alsace." },
                 ]
             },
             vehicules: {
                 title: "OUR VEHICLES",
                 types: [
-                    {title: "Minivans", capacity: "1 to 5 passengers", space: "4 small bags or 2 large bags", vsl: false},
-                    {title: "Van", capacity: "7 to 8 passengers", space: "7 bags", vsl: false},
-                    {title: "VSL approved taxi", capacity: "For consultations, medical examinations, treatments, hospital discharges, etc.", space: "Approved by the CPAM, compliant with current standards and regulations", vsl: true}
+                    { title: "Minivans", capacity: "1 to 5 passengers", space: "4 small bags or 2 large bags", vsl: false },
+                    { title: "Van", capacity: "7 to 8 passengers", space: "7 bags", vsl: false },
+                    { title: "VSL approved taxi", capacity: "For consultations, medical examinations, treatments, hospital discharges, etc.", space: "Approved by the CPAM, compliant with current standards and regulations", vsl: true }
                 ]
             },
             values: {
                 title: "OUR VALUES",
                 features: [
-                    {title: "Availability", description: "Our taxi call center is available 24/7. Our Strasbourg drivers can ensure your travel, day or night."},
-                    {title: "Punctuality", description: "Our transport company counts among its team the most punctual drivers in the Alsatian region. They will arrive at the time agreed upon when booking the taxi."},
-                    {title: "Quality", description: "Short or long distance? We do everything we can to offer our passengers a high level of transport service"},
-                    {title: "Speed", description: "Unlike VTC or Uber drivers, our taxi drivers have the privilege of using bus lanes to save you a lot of time. They also choose the best routes for any journey to be as direct and quick as possible."},
-                    {title: "Security", description: "Central Taxi 67 makes a point of honoring your safety and well-being from the moment you board its vehicles until you arrive at your destination."},
-                    {title: "Transparency", description: "Our taxi company applies clear prices with no surprises. The driver will tell you the exact amount you will have to pay upon arrival as soon as you are seated in our vehicles."},
+                    { title: "Availability", description: "Our taxi call center is available 24/7. Our Strasbourg drivers can ensure your travel, day or night." },
+                    { title: "Punctuality", description: "Our transport company counts among its team the most punctual drivers in the Alsatian region. They will arrive at the time agreed upon when booking the taxi." },
+                    { title: "Quality", description: "Short or long distance? We do everything we can to offer our passengers a high level of transport service" },
+                    { title: "Speed", description: "Unlike VTC or Uber drivers, our taxi drivers have the privilege of using bus lanes to save you a lot of time. They also choose the best routes for any journey to be as direct and quick as possible." },
+                    { title: "Security", description: "Central Taxi 67 makes a point of honoring your safety and well-being from the moment you board its vehicles until you arrive at your destination." },
+                    { title: "Transparency", description: "Our taxi company applies clear prices with no surprises. The driver will tell you the exact amount you will have to pay upon arrival as soon as you are seated in our vehicles." },
                 ]
             },
             yellowSection: {
@@ -537,7 +568,7 @@ const Data: DataType = {
                     {
                         item: "Online taxi reservation form to fill out",
                     }
-                    
+
                 ]
             },
             details: {
@@ -556,16 +587,52 @@ const Data: DataType = {
         },
         service: {
             cards: [
-                { icon: AddRoadIcon, text: "Strasbourg long or short distance taxi" },
-                { icon: AirplanemodeActiveIcon, text: "Taxi Strasbourg Provence Airport" },
-                { icon: TrainIcon, text: "Taxi Strasbourg station" },
-                { icon: LocalShippingIcon, text: "Delivery service in Strasbourg by taxi" },
-                { icon: MapIcon, text: "Tourist guide driver Strasbourg" },
+                {
+                    icon: LocalTaxiIcon, title: "Private taxi transport in Strasbourg", features: [
+                        "Experienced driver for your trips in town or surrounding areas",
+                        "Quick and easy online booking",
+                        "Immediate or scheduled pick-up at your address or other location of your choice",
+                        "Ideal for business meetings, outings on the town, special occasions"
+                    ]
+                },
+                {
+                    icon: AirplanemodeActiveIcon, title: "Airport transfer in Alsace", features: [
+                        "Punctual service for all your trips to and from airports",
+                        "Personalized welcome with sign on arrival",
+                        "Assistance with baggage",
+                        "Real-time flight tracking to adapt the service to possible schedule changes"
+                    ]
+                },
+                {
+                    icon: TrainIcon, title: "Station transfer", features: [
+                        "Comfortable pick-up and drop-off at the SNCF TGV station of your choice",
+                        "Coordination with train schedules to ensure a hassle-free transition",
+                        "A stress-free trip with door-to-door service",
+                        "Help with luggage"
+                    ]
+                },
+                {
+                    icon: MapIcon, title: "Tourist taxi in Alsace", features: [
+                        "Supported by a taxi driver experienced in tourism",
+                        "Personalized tours through the city of Strasbourg and the surrounding area",
+                        "Discovery of the best tourist routes",
+                        "Expert tips for an enriching tourism experience"
+                    ]
+                },
+                {
+                    icon: LocalHospitalIcon, title: "Approved taxi in Schiltigheim - Strasbourg - Alsace", features: [
+                        "Seated patient transport accredited by the CPAM",
+                        "Medical transport for your appointments, hospital entrances and exits",
+                        "Taking charge of formalities related to health insurance",
+                        "Medical travel in complete comfort and discretion",
+                    ]
+                },
             ],
+            h5: "Need a taxi for a short or long trip to Strasbourg Eurométropole? Order a taxi from Central Taxi 67. We offer you a practical and flexible transport solution for your day or night trips. In addition, the price of the ride is known in advance.",
             header: "our services",
-            subHeader: "We can offer you a wide variety of services",
+            subHeader: "Our taxi services in Strasbourg - Alsace",
             h3: "what we offer",
-            h4: "We have lots of offers for you to choose from",
+            h4: "Professionals, tourists and residents of the Eurometropolis, benefit from our inexpensive taxi transport services for your journeys! Our drivers can serve all destinations in Alsace. Book your sedan taxi via our call center accessible 24/7.",
         },
         contact: {
             header: "contact us",

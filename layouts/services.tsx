@@ -3,6 +3,7 @@ import Book from "@/components/common/Buttons/Book"
 import Call from "@/components/common/Buttons/Call"
 import { useAppContext } from "@/context/appContext"
 import Image from "next/image"
+import DoneIcon from '@mui/icons-material/Done';
 
 export default function ServicesLayout({ }) {
 
@@ -33,18 +34,27 @@ export default function ServicesLayout({ }) {
                 </div>
             </section>
             <section className="my-10 px-10 lg:px-0">
-                <p className="mb-10 lg:mb-0 uppercase text-[24px] lg:text-[40px] lg:[word-spacing:5px] font-meduim text-center">{pageData.service.h3}</p>
-                <p className="text-[#000]/[70%] text-[18px] lg:text-[18px] italic text-center">{pageData.service.h4}</p>
-                <div className="flex flex-col md:flex-row py-10 px-0 lg:p-20 gap-10">
+                <p className="text-[#000]/[70%] text-[18px] lg:px-[10%] lg:text-[18px] italic text-center">{pageData.service.h4}</p>
+                <div className="grid lg:grid-cols-3 gris-cols-1 py-10 px-0 lg:p-20 gap-10">
                     {
                         pageData.service.cards?.map((service: ServiceCard, index: number) => <div key={index} className="flex-1 border-[1px] text-center p-5 rounded-xl border-secondary-1 flex flex-col gap-5 justify-start items-center hover:md:-translate-y-3 md:ease-in-out transition">
                             <div className="bg-[#000] text-secondary-1 p-2 flex items-center justify-center rounded-[50%]">
                                 <service.icon />
                             </div>
-                            <p>{service.text}</p>
+                            <p>{service.title}</p>
+                            <div className="flex flex-col gap-2">
+                                {
+                                    service?.features?.map((feature, idx) => <div className="text-left flex gap-2" key={idx}>
+                                        <DoneIcon className="!text-[24px] p-1 rounded-[50%] text-[#fff] bg-[#008000]" />
+                                        <p className="text-sm text-[#000]/[80%]">{feature}</p>
+                                    </div>
+                                    )
+                                }
+                            </div>
                         </div>)
                     }
                 </div>
+                <p className="text-[#000]/[70%] text-[18px] lg:px-[10%] lg:text-[18px] italic text-center">{pageData.service.h5}</p>
                 <div className="flex justify-center py-10">
                     <Call bounce={false} />
                 </div>
