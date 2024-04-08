@@ -196,7 +196,7 @@ return <div className="w-full flex flex-col items-center justify-center relative
                     </ol>
                 </div>
             </div>
-            <form onSubmit={(e) => { e.preventDefault(); ReservationFormHandler() }} className="w-full lg:w-fit bg-white lg:border-r-[0px] lg:border-[3px] border-secondary-1 rounded-[16px] lg:rounded-r-[0px] lg:rounded-l-[16px] lg:p-10 py-10 px-4 flex flex-col gap-5 lg:min-w-[500px] lg:min-h-[600px] !min-h-[660px] lg:flex-1 justify-center">
+            <form onSubmit={(e) => { e.preventDefault(); ReservationFormHandler() }} className="w-full lg:w-fit bg-white lg:border-r-[0px] lg:border-[3px] border-secondary-1 rounded-[16px] lg:rounded-r-[0px] lg:rounded-l-[16px] lg:p-10 py-0 px-2 flex flex-col gap-5 lg:min-w-[500px] lg:min-h-[600px] !min-h-[660px] lg:flex-1 justify-center">
 
                 {
                     !showReservationForm ? <><p className="text-[#33475A] text-center font-medium text-[24px]">{title}</p>

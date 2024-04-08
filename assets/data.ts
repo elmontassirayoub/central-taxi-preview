@@ -125,6 +125,13 @@ export type BookPageRightSideListType = {
 }
 
 type BookPage = {
+    h1: string,
+    desc: string,
+    cards: Home_section1[],
+    question: string,
+    answer: string,
+    options: string[],
+    footer: string,
     personalData: string,
     personaDataError: string,
     form: {
@@ -323,6 +330,26 @@ const Data: DataType = {
             success: "Vous avez mis à jour votre mot de passe avec succès"
         },
         book: {
+            h1: "Reserver",
+            desc: "Réservez facilement avec Central taxi",
+            cards: [
+                { title: "Commander un taxi à Strasbourg avec Central Taxi 67", description: "Évitez le stress d’attendre un taxi disponible et voyagez avec plus de confort et de style ! Notre centrale de réservation de taxis à Strasbourg vous offre la possibilité d’organiser au mieux votre emploi du temps. Commandez notre service de transport de personnes à toute heure de la nuit et de la journée. Choisissez aussi le véhicule taxi qui convient à votre effectif. " },
+                { title: "Réservez un taxi pour 1 à 5 passagers à Strasbourg", description: "Des déplacements personnels ou professionnels en petit comité en vue, petite course en centre-ville, visite touristique dans l’Eurométropole ou un trajet longue-distance en Alsace ? Faites la réservation d'un monospace. Nous pouvons accueillir 1 à 5 passagers avec leurs bagages à bord de nos véhicules. " },
+                { title: "Commandez un taxi pour 7 à 8 passagers à Strasbourg", description: "Si vous voyagez avec un groupe plus important, réservez chez nous le taxi adapté pour voyager en toute convivialité dans la ville de Strasbourg et toute l’Alsace. Notre van possède une capacité d’accueil de jusqu'à 8 passagers adultes. Faites votre réservation au meilleur prix pour les voyages en famille, les excursions entre amis ou les transferts aéroportuaires ou Gare Centrale de Strasbourg." }
+            ],
+            question: "Comment réserver votre taxi à Strasbourg chez Central Taxi 67 ?  ",
+            answer: "Bénéficiez d’un service de transport de personnes fiable et agréable avec notre compagnie de taxi strasbourgeoise peu importe votre effectif, la distance ou le motif de votre voyage. Réservez votre chauffeur privé en toute simplicité en remplissant le formulaire en ligne avec votre : ",
+            options: [
+                "Nom et prénom",
+                "E-mail",
+                "Numéro de téléphone",
+                "Lieu de départ ",
+                "Lieu d’arrivée",
+                "Jour et heure de la réservation",
+                "Nombre de passagers",
+                "Nombre de bagages",
+            ],
+            footer: "Nous  garantissons la confidentialité de toutes les données que vous entrez via notre formulaire de réservation de taxi en ligne.",
             form: {
                 title: "Estimation Du Prix En Direct",
                 fromLabel: "Adresse de prise en charge",
@@ -543,6 +570,26 @@ const Data: DataType = {
             success: "You have successfully updated your password"
         },
         book: {
+            h1: "Book",
+            desc: "Book Easily with Central Taxi",
+            cards: [
+                { title: "Order a taxi in Strasbourg with Central Taxi 67", description: "Avoid the stress of waiting for an available taxi and travel with more comfort and style! Our taxi reservation center in Strasbourg offers you the opportunity to organize your schedule as best as possible. Order our passenger transport service at any time of the night or day. Also choose the taxi vehicle that suits your workforce." },
+                { title: "Book a taxi for 1 to 5 passengers in Strasbourg", description: "Planning personal or professional trips in a small group, a short errand in the city center, a tourist visit to the Eurometropolis or a long-distance trip to Alsace? Make a reservation for a minivan. We can accommodate 1 to 5 passengers with their luggage on board our vehicles." },
+                { title: "Order a taxi for 7 to 8 passengers in Strasbourg", description: "If you are traveling with a larger group, book the right taxi with us to travel comfortably in the city of Strasbourg and throughout Alsace. Our van can accommodate up to 8 adult passengers. Make your reservation at the best price for family trips, excursions with friends or airport transfers or Strasbourg Central Station." }
+            ],
+            question: "How to book your taxi in Strasbourg with Central Taxi 67?",
+            answer: "Benefit from a reliable and pleasant passenger transport service with our Strasbourg taxi company regardless of your number, the distance or the reason for your trip. Book your private driver easily by filling out the online form with your:",
+            options: [
+                "First and last name",
+                "E-mail",
+                "Phone number",
+                "Place of departure ",
+                "Arrival point",
+                "Day and time of reservation",
+                "Number of passengers",
+                "Number of luggage",
+            ],
+            footer: "We guarantee the confidentiality of all data you enter via our online taxi booking form.",
             form: {
                 title: "Live Price Estimate",
                 fromLabel: "Pick-up address",

@@ -1,6 +1,7 @@
 import checkAuthentication from "@/lib/middlewares/checkAuthenticated";
 import PageLayout from "@/components/common/PageLayout";
-import BookLayout from "@/layouts/book";
+import BookLayout from "@/layouts/BookPageLayout";
+import SEO from "@/components/SEO";
 
 export type CoordinationType = {
     lat: number,
@@ -37,8 +38,7 @@ export const getServerSideProps = checkAuthentication(async (context: any, admin
 export default function Book({ admin = false }: { admin: boolean }) {
 
     return <PageLayout admin={admin} page="/book">
-        <div className="my-10">
-            <BookLayout />
-        </div>
+        <SEO title="Réservation Taxi Strasbourg Service – Central Taxi 67" description="Trajet planifié ou dans l’immédiat ? Réserver un taxi Strasbourg depuis notre centre d’appel joignable 24h/24 et 7/7 ou en ligne.  Service de transport de qualité au meilleur prix." />
+        <BookLayout />
     </PageLayout>
 }
