@@ -177,8 +177,8 @@ export default function BookLayout() {
 
     const { form: { title, fromLabel, fromPlaceholder, toLabel, toPlaceholder, dateLabel, timeLabel, btn }, rightSide } = pageData.book
 
-    // return <div className="hero-book w-full flex flex-col items-center justify-center">
-    return <div className="w-full flex flex-col items-center justify-center relative">
+
+return <div className="w-full flex flex-col items-center justify-center relative">
         <div className="flex-1 flex flex-col lg:flex-row lg:pr-4 lg:pl-0 lg:py-0 py-10 px-4 lg:justify-center items-center relative lg:w-fit w-full bg-primary-1 rounded-[16px] gap-10 h-auto lg:h-[660px] lg:min-w-[80%]">
             <div className="md:hidden text-white w-full">
                 <div className="flex flex-col gap-5">
@@ -188,7 +188,7 @@ export default function BookLayout() {
                             rightSide.list?.map((item: BookPageRightSideListType) => <li className="" key={item.item}>
                                 <span>{item.item}</span>
                                 {
-                                    item?.phone && <a className="underline pl-1" href="tel:0647600171">06 47 60 01 71</a>
+                                    item?.phone && <a className="underline pl-2" href="tel:0647600171">06 47 60 01 71</a>
                                 }
 
                             </li>)
@@ -283,7 +283,7 @@ export default function BookLayout() {
                                     rightSide.list?.map((item: BookPageRightSideListType) => <li className="" key={item.item}>
                                         <span>{item?.item}</span>
                                         {
-                                            item?.phone && <a className="underline pl-1" href="tel:0647600171">06 47 60 01 71</a>
+                                            item?.phone && <a className="underline pl-2" href="tel:0647600171">06 47 60 01 71</a>
                                         }
                                     </li>)
                                 }
