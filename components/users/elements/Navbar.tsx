@@ -16,6 +16,8 @@ import Image from "next/image";
 import UK from "@/assets/uk.png"
 import France from "@/assets/france.png"
 import { useAppContext } from "@/context/appContext";
+import NavBarDesktopItem from "./NavbarDesktopItem";
+import NavBarMobileItem from "./NavbarMobileItem";
 
 type updatePasswordType = {
     oldPassword: string,
@@ -33,7 +35,7 @@ type updateUserData = {
 
 export default function Navbar({ page, admin }: { page: string, admin: boolean }) {
 
-    const {lang, changeLanguage} = useAppContext()
+    const { lang, changeLanguage } = useAppContext()
 
     const [toggleMenu, setToggleMenu] = useState(false)
     const [modalState, modalClose] = useState(false)
@@ -304,7 +306,9 @@ export default function Navbar({ page, admin }: { page: string, admin: boolean }
                     {
                         compData.navbar.tabList?.map((item: TabListType, key: number) => {
                             if (item?.url === "/book" && admin) return
-                            return <Link prefetch={false} className={`uppercase hover:underline h-full flex items-center justify-center px-2 ${page === item.url ? "bg-[#000] text-white" : ""}`} href={item?.url} key={key}>{item?.name}</Link>
+                            return (
+                                <NavBarDesktopItem key={key} page={page} item={item} />
+                            )
                         })
                     }
                 </div>
@@ -339,19 +343,16 @@ export default function Navbar({ page, admin }: { page: string, admin: boolean }
                     <Image draggable={false} alt="France" onClick={() => changeLanguage("fr")} className={`cursor-pointer border-b-[1px]  pb-1 box-border box-content w-6 h-6 ${lang === "fr" ? "" : "border-transparent"}`} src={France} />
                 </div>
                 <div className="">
-                {
-                    toggleMenu ? <CloseIcon onClick={() => setToggleMenu(!toggleMenu)} sx={{ fontSize: 35 }} className={`rounded-[50%] bg-[#fff] text-[#000] p-2 my-2 cursor-pointer`} /> : <MenuIcon onClick={() => setToggleMenu(!toggleMenu)} sx={{ fontSize: 35 }} className={`rounded-[50%] bg-[#fff] text-[#000] p-2 my-2 cursor-pointer`} />
-                }
+                    {
+                        toggleMenu ? <CloseIcon onClick={() => setToggleMenu(!toggleMenu)} sx={{ fontSize: 35 }} className={`rounded-[50%] bg-[#fff] text-[#000] p-2 my-2 cursor-pointer`} /> : <MenuIcon onClick={() => setToggleMenu(!toggleMenu)} sx={{ fontSize: 35 }} className={`rounded-[50%] bg-[#fff] text-[#000] p-2 my-2 cursor-pointer`} />
+                    }
                 </div>
             </section>
         </section>
         <div className={`${!toggleMenu ? "hidden" : "flex"} absolute left-0 font-semibold mobile-navtab pb-10 top-[100%] z-[5] bg-[#33475A] w-full flex-col`}>
             <div className="h-full flex flex-col justify-center items-center w-full border-b-[1px] pb-4 border-[#000] text-[18px]">
                 {
-                    compData.navbar.tabList?.map((item: TabListType, key: number) => {
-                        if (item?.url === "/book" && admin) return
-                        return <Link prefetch={false} className={`uppercase italic py-1 w-full px-2 py-4 text-sm ${page === item.url ? "bg-primary-100 text-white" : "text-secondary-100"}`} href={item?.url} key={key}>{item?.name}</Link>
-                    })
+                    compData.navbar.tabList?.map((item: TabListType, key: number) => <NavBarMobileItem key={key} item={item} page={page} admin={admin} />)
                 }
             </div>
             <div className="flex flex-col justify-center items-center gap-5 py-4">

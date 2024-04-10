@@ -4,7 +4,16 @@ import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import MapIcon from '@mui/icons-material/Map';
 import LocalTaxiIcon from '@mui/icons-material/LocalTaxi';
 
-export type TabListType = { name: string, url: string }
+type TabType = {
+    name: string,
+    url: string
+}
+
+export type TabListType = {
+    name: string,
+    url: string,
+    items?: TabType[]
+}
 export type RightSideTabListType = { functionlity: string, text: string }
 export type CardDataType = { icon: string, title: string, text: string }
 
@@ -212,7 +221,20 @@ type DataType = {
 const Data: DataType = {
     fr: {
         navbar: {
-            tabList: [{ name: "accueil", url: "/" }, { name: "services", url: "/services" }, { name: "reserver", url: "/book" }, { name: "contact", url: "/contact" }],
+            tabList: [
+                { name: "accueil", url: "/" },
+                {
+                    name: "services", url: "/services",
+                    items: [
+                        {
+                            name: "tarifs",
+                            url: "/tarifs"
+                        }
+                    ]
+                },
+                { name: "reserver", url: "/book" },
+                { name: "contact", url: "/contact" }
+            ],
             rightSideTabList: [{ functionlity: "register", text: "S'inscrire" }, { functionlity: "login", text: "Se Connecter" }],
             logout: "Se déconnecter",
             edit: "Modifier votre profil",
@@ -479,7 +501,19 @@ const Data: DataType = {
     },
     en: {
         navbar: {
-            tabList: [{ name: "home", url: "/" }, { name: "services", url: "/services" }, { name: "book", url: "/book" }, { name: "contact", url: "/contact" }],
+            tabList: [
+                { name: "home", url: "/" },
+                {
+                    name: "services", url: "/services",
+                    items: [
+                        {
+                            name: "prices",
+                            url: "/tarifs"
+                        }
+                    ]
+                },
+                { name: "book", url: "/book" },
+                { name: "contact", url: "/contact" }],
             rightSideTabList: [{ functionlity: "register", text: "Register" }, { functionlity: "login", text: "Login" }],
             logout: "Log out",
             edit: "Edit your profile",

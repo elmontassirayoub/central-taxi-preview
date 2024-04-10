@@ -10,7 +10,7 @@ export const getServerSideProps = checkAuthentication(async (context: any, admin
 })
 
 export default function Tarifs({admin}: {admin: boolean}) {
-    return <PageLayout page="/terms-of-use" admin={admin}>
+    return <PageLayout page="/tarifs" admin={admin}>
         Tarifs
     </PageLayout>
 }
