@@ -28,7 +28,7 @@ const NavBarDesktopItem: React.FC<NavBarDesktopItemType> = ({ page, item }) => {
                     <ul className="absolute top-[100%] w-full py-2 left-0 bg-primary-1 text-white rounded-b-[8px]">
                         {
                             item?.items?.map((item, idx) => <li key={idx} className="py-2">
-                                <Link prefetch={false} className={`uppercase hover:underline h-full flex items-center justify-center px-2 ${page === item.url ? "bg-[#000] text-white" : ""}`} href={item?.url}>
+                                <Link prefetch={false} className={`uppercase hover:underline h-full px-2 ${page === item.url ? "bg-[#000] text-white" : ""}`} href={item?.url}>
                                     {item?.name}
                                 </Link>
                             </li>)

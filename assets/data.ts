@@ -228,7 +228,11 @@ const Data: DataType = {
                     items: [
                         {
                             name: "tarifs",
-                            url: "/tarifs"
+                            url: "/services/tarifs"
+                        },
+                        {
+                            name: "forfait",
+                            url: "/services/forfait"
                         }
                     ]
                 },
@@ -508,7 +512,11 @@ const Data: DataType = {
                     items: [
                         {
                             name: "prices",
-                            url: "/tarifs"
+                            url: "/services/tarifs"
+                        },
+                        {
+                            name: "forfait",
+                            url: "/services/forfait"
                         }
                     ]
                 },
