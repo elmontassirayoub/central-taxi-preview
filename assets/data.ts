@@ -177,7 +177,18 @@ type ServicePage = {
 
 type ContactPage = {
     header: string,
-    subHeader: string
+    subHeader: string,
+    h1: string,
+    h2: string,
+    list: string[],
+    sectionFooter: string,
+    h1_2: string,
+    p1: string,
+    p2: string,
+    p3: string,
+    list2Header: string,
+    list2: string[],
+    footer: string
 }
 
 export type LangType = {
@@ -436,7 +447,34 @@ const Data: DataType = {
         },
         contact: {
             header: "Contactez-nous",
-            subHeader: "Nous vous assurons que nous vous répondrons dans les plus brefs délais"
+            h1: "Contactez le meilleur Taxi à Strasbourg  pour tous vos besoins de transport privé",
+            subHeader: "Contactez-nous si vous voulez faire une réservation de taxi dans le département 67",
+            h2: "Nous avons toujours un chauffeur sérieux et discret à mettre à votre disposition pour tout type de déplacement à Strasbourg Eurométropole :",
+            list: [
+                "Transfert vers et depuis l’aéroport de Strasbourg-Entzheim / Baden-Baden / Bâle Mulhouse /  Stuttgart",
+                "Transfert vers les gares SNCF et gares routières ",
+                "Déplacements professionnels en limousine taxi (conférences, réunions, séminaires, rendez-vous d’affaires...)",
+                "Trajets et sorties nocturnes en van ou monospace",
+                "Visites touristiques (centre-ville et dans l’Alsace)",
+                "Déplacements médicaux (hôpitaux, cliniques, cabinet médical…)",
+                "Événements spéciaux (réceptions, anniversaire, mariage…)",
+            ],
+            sectionFooter: "Ne tardez pas à nous rejoindre par téléphone ou via notre formulaire de réservation en ligne pour planifier rapidement votre prochain trajet à Strasbourg !",
+            h1_2: "Contactez notre société de taxi pour une réclamation ",
+            p1: "En cas de désagrément ou de mécontentement suite à une course taxi 67 antérieure, nous vous encourageons vivement à contacter notre compagnie de taxis. Vos remarques et vos feedbacks nous aident à améliorer nos services.",
+            p2: "Faites-nous part de vos préoccupations ! Notre société de taxi se charge d’y remédier de la meilleure manière possible !",
+            p3: "Contactez-nous pour toute demande d’informations sur notre service de transport de personnes ",
+            list2Header: "Peu importe l'heure du jour ou de la nuit, obtenez des réponses à toutes vos questions en rapport avec nos :",
+            list2: [
+                "Services de transport de personnes à Strasbourg",
+                "Véhicules à disposition de nos clients",
+                "Tarifs pour trajet courte et longue-distance",
+                "Forfaits de transport et transferts aéroports / gares",
+                "Services de transport pour particuliers à Strasbourg",
+                "Offres de transport pour professionnels dans l’Eurométropole",
+                "Services de transport spécifiques en taxi",
+            ],
+            footer: "Chez Central Taxi 67, profitez d’un service clientèle aimable et professionnel joignable à tout moment par téléphone ou en remplissant le formulaire en ligne !"
         },
     },
     en: {
@@ -683,7 +721,34 @@ const Data: DataType = {
         },
         contact: {
             header: "contact us",
-            subHeader: "We assure you that we will respond to you as soon as possible"
+            h1: "Contact the best Taxi in Strasbourg for all your private transportation needs",
+            subHeader: "Contact us if you want to make a taxi reservation in department 67",
+            h2: "We always have a serious and discreet driver to put at your disposal for any type of trip in Strasbourg Eurométropole:",
+            list: [
+                "Transfer to and from Strasbourg-Entzheim / Baden-Baden / Basel Mulhouse / Stuttgart airport",
+                "Transfer to SNCF stations and bus stations",
+                "Business trips by limousine taxi (conferences, meetings, seminars, business meetings, etc.)",
+                "Travels and night outings in a van or minivan",
+                "Tourist visits (city center and in Alsace)",
+                "Medical travel (hospitals, clinics, medical offices, etc.)",
+                "Special events (receptions, birthdays, weddings, etc.)",
+            ],
+            sectionFooter: "Don't delay in contacting us by telephone or via our online reservation form to quickly plan your next trip to Strasbourg!",
+            h1_2: "Contact our taxi company for a claim",
+            p1: "In the event of inconvenience or dissatisfaction following a previous taxi journey, we strongly encourage you to contact our taxi company. Your comments and feedback help us improve our services.",
+            p2: "Let us know your concerns! Our taxi company will take care of this in the best possible way!",
+            p3: "Contact us for any request for information on our passenger transport service",
+            list2Header: "No matter the time of day or night, get answers to all your questions related to our:",
+            list2: [
+                "Passenger transport services in Strasbourg",
+                "Vehicles available to our customers",
+                "Fares for short and long distance journeys",
+                "Transport packages and airport/station transfers",
+                "Transport services for individuals in Strasbourg",
+                "Transport offers for professionals in the Eurometropolis",
+                "Specific taxi transport services",
+            ],
+            footer: "At Central Taxi 67, benefit from friendly and professional customer service that can be reached at any time by telephone or by filling out the online form!"
         }
     }
 }
