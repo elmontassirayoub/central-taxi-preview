@@ -20,7 +20,7 @@ const InfoCard: React.FC<InfoCardProps> = ({ idx, icon, title, text }) => {
       });
 
     return (
-        <div ref={ref} key={idx} className={`lg:w-[400px] w-fit h-auto flex flex-col gap-3 p-5 rounded-[10px] shadow-[0px_4px_4px_4px_rgba(0,0,0,0.25)] hover:md:-translate-y-3 md:ease-in-out transition ${inView ? idx % 2 === 0 ? 'slide_in_left' : "slide_in_right" : 'invisible'}`}>
+        <div ref={ref} key={idx} className={`lg:w-[400px] w-fit h-auto flex flex-col gap-3 p-5 pr-2 rounded-[10px] shadow-[0px_4px_4px_4px_rgba(0,0,0,0.25)] hover:md:-translate-y-3 md:ease-in-out transition ${inView ? idx % 2 === 0 ? 'slide_in_left' : "slide_in_right" : 'invisible'}`}>
             <div className="flex items-center justify-center">
                 <div className="text-secondary-1 bg-[#000] w-fit p-3 rounded-[50%]">
                     {

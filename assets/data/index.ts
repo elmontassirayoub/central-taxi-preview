@@ -284,7 +284,7 @@ const Data: DataType = {
                 {
                     icon: "book",
                     title: "Réserver un taxi en 2 minutes",
-                    text: "Réserver un chauffeur disponible en quelques clics, c'est aujourd'hui possible avec Taxi Strasbourgs. C'est d'autant plus simple que le module est aussi bien adapté pour les dessertes locales vers Strasbourg et son agglomération, que pour les transferts longues distances. En un seul coup de fil ou sur réservation par Internet, vous serez pris en charge dans les meilleurs délais par votre chauffeur taxi sur Strasbourg pour vos déplacements toutes distances vers toutes les villes de France."
+                    text: "Réserver un chauffeur disponible en quelques clics, c'est aujourd'hui possible avec Taxi Strasbourg. C'est d'autant plus simple que le module est aussi bien adapté pour les dessertes locales vers Strasbourg et son agglomération, que pour les transferts longues distances. En un seul coup de fil ou sur réservation par Internet, vous serez pris en charge dans les meilleurs délais par votre chauffeur taxi sur Strasbourg pour vos déplacements toutes distances vers toutes les villes de France."
                 },
                 {
                     icon: "price",

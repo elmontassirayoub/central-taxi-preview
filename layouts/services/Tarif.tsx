@@ -39,10 +39,15 @@ const Tarif = () => {
                 <div className="grid lg:grid-cols-2 gap-3 my-3">
                     {
                         pageData.tarif.options?.map((option: TarifOptions, idx: number) => <div key={idx} className="p-2 border-[1px] border-[#000]/[20%] flex flex-col gap-2 rounded-[8px]">
-                            <p>{option.title}</p>
-                            <ul className="text-[#000]/[85%] list-disc ml-5 text-sm">
-                                {option?.feautures?.map((op: string, idx: number) => <li key={idx}>{op}</li>)}
+                            <p className="text-center">{option.title}</p>
+                            <ul className="text-[#000]/[85%] ml-5 text-sm">
+                                {option?.feautures?.map((op: string, idx: number) => <li className="border-b-[1px] py-5 text-center border-[#000]/[12%]" key={idx}>
+                                <span className="">{op}</span>
+                                </li>)}
                             </ul>
+                            <div className="mx-auto py-5">
+                                <Book bounce={false} btn={pageData.home.hero.btn} primary={true} />
+                            </div>
                         </div>)
                     }
                 </div>
