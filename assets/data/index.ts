@@ -256,29 +256,31 @@ const Data: DataType = {
                             url: "/services/forfait"
                         },
                         {
-                            name: "particulier",
-                            url: "/services/particuliers"
-                        },
-                        {
                             name: "plan",
                             url: "/services/plan"
+                        },
+                        {
+                            name: "supplementaire",
+                            url: "/services/supplementaire"
+                        },
+                    ]
+                },
+                {
+                    name: "reserver", url: "/book",
+                    items: [
+                        {
+                            name: "particulier",
+                            url: "/services/particuliers"
                         },
                         {
                             name: "entreprise",
                             url: "/services/entreprise"
                         },
                         {
-                            name: "supplementaire",
-                            url: "/services/supplementaire"
-                        },
-                        {
                             name: "conventionné",
                             url: "/services/conventionne"
                         }
                     ]
-                },
-                {
-                    name: "reserver", url: "/book",
                 },
                 { name: "contact", url: "/contact" }
             ],
@@ -619,29 +621,31 @@ const Data: DataType = {
                             url: "/services/forfait"
                         },
                         {
-                            name: "particulier",
-                            url: "/services/particuliers"
-                        },
-                        {
                             name: "plan",
                             url: "/services/plan"
+                        },
+                        {
+                            name: "additional",
+                            url: "/services/supplementaire"
+                        },
+                    ]
+                },
+                {
+                    name: "book", url: "/book",
+                    items: [
+                        {
+                            name: "particulier",
+                            url: "/services/particuliers"
                         },
                         {
                             name: "business",
                             url: "/services/entreprise"
                         },
                         {
-                            name: "additional",
-                            url: "/services/supplementaire"
-                        },
-                        {
                             name: "conventionné",
                             url: "/services/conventionne"
                         }
                     ]
-                },
-                {
-                    name: "book", url: "/book",
                 },
                 { name: "contact", url: "/contact" }],
             rightSideTabList: [{ functionlity: "register", text: "Register" }, { functionlity: "login", text: "Login" }],
