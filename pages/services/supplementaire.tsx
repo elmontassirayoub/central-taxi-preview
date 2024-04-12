@@ -14,7 +14,7 @@ export const getServerSideProps = checkAuthentication(async (context: any, admin
 
 const Supplementaire = ({ admin }: { admin: boolean }) => {
     return (
-        <PageLayout page="/book/supplementaire" admin={admin}>
+        <PageLayout page="/services/supplementaire" admin={admin}>
             <SEO title="Taxi Strasbourg Services supplémentaires – Central Taxi 67" description="Besoin d’un taxi Strasbourg confortable, bien équipé et connecté pour un long ou court trajet ? Faites votre réservation chez Central Taxi 67. " />
             <SupplementaireLayout />
         </PageLayout>
