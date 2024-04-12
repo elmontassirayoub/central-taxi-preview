@@ -31,16 +31,11 @@ const Tarif = () => {
                 </div>
             </div>
             <div className="lg:mx-[15%] mx-5 flex flex-col gap-1">
-                <p className="text-center lg:text-[24px] text-[18px] font-medium">{pageData.tarif.h2}</p>
-                <p className="text-center text-[#000]/[80%]">{pageData.tarif.h3}</p>
-                <p className="text-center text-xs text-[#000]/[80%]">{pageData.tarif.p1}</p>
-                <p className="text-center text-sm text-[#000]/[80%]">{pageData.tarif.p2}</p>
-                <p className="text-center mt-5 font-medium">{pageData.tarif.h4}</p>
                 <div className="grid lg:grid-cols-2 gap-3 my-3">
                     {
                         pageData.tarif.options?.map((option: TarifOptions, idx: number) => <div key={idx} className="p-2 border-[1px] border-[#000]/[20%] flex flex-col gap-2 rounded-[8px]">
                             <p className="text-center">{option.title}</p>
-                            <ul className="text-[#000]/[85%] ml-5 text-sm">
+                            <ul className="text-[#000]/[85%] ml-5 text-sm flex-1">
                                 {option?.feautures?.map((op: string, idx: number) => <li className="border-b-[1px] py-5 text-center border-[#000]/[12%]" key={idx}>
                                 <span className="">{op}</span>
                                 </li>)}
@@ -51,7 +46,11 @@ const Tarif = () => {
                         </div>)
                     }
                 </div>
-                <p className="text-center mt-5 font-medium">{pageData.tarif.h5}</p>
+                <p className="text-center lg:text-[24px] text-[18px] font-medium">{pageData.tarif.h2}</p>
+                <p className="text-center text-[#000]/[80%]">{pageData.tarif.h3}</p>
+                <p className="text-center text-xs text-[#000]/[80%]">{pageData.tarif.p1}</p>
+                <p className="text-center text-sm text-[#000]/[80%]">{pageData.tarif.p2}</p>
+                <p className="text-center mt-5 font-medium">{pageData.tarif.h4}</p>                <p className="text-center mt-5 font-medium">{pageData.tarif.h5}</p>
                 <div className="my-10 flex flex-col gap-2">
                     <p>{pageData.tarif.option2?.title}</p>
                     <ul className="grid lg:grid-cols-2 gap-3">

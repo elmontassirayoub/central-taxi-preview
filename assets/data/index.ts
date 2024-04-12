@@ -262,6 +262,10 @@ const Data: DataType = {
                         {
                             name: "plan",
                             url: "/services/plan"
+                        },
+                        {
+                            name: "entreprise",
+                            url: "/services/entreprise"
                         }
                     ]
                 },
@@ -611,6 +615,10 @@ const Data: DataType = {
                         {
                             name: "plan",
                             url: "/services/plan"
+                        },
+                        {
+                            name: "business",
+                            url: "/services/entreprise"
                         }
                     ]
                 },
