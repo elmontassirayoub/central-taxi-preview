@@ -269,7 +269,7 @@ const Data: DataType = {
                         },
                         {
                             name: "supplementaire",
-                            url: "/book/supplementaire"
+                            url: "/services/supplementaire"
                         }
                     ]
                 },
@@ -628,7 +628,7 @@ const Data: DataType = {
                         },
                         {
                             name: "additional",
-                            url: "/book/supplementaire"
+                            url: "/services/supplementaire"
                         }
                     ]
                 },

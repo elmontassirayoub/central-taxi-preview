@@ -1,6 +1,6 @@
 import SEO from "@/components/SEO"
 import PageLayout from "@/components/common/PageLayout"
-import SupplementaireLayout from "@/layouts/Supplementaire"
+import SupplementaireLayout from "@/layouts/services/Supplementaire"
 import checkAuthentication from "@/lib/middlewares/checkAuthenticated"
 
 export const getServerSideProps = checkAuthentication(async (context: any, admin: boolean) => {
