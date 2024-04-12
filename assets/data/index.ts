@@ -258,6 +258,10 @@ const Data: DataType = {
                         {
                             name: "particulier",
                             url: "/services/particuliers"
+                        },
+                        {
+                            name: "plan",
+                            url: "/services/plan"
                         }
                     ]
                 },
@@ -603,6 +607,10 @@ const Data: DataType = {
                         {
                             name: "particulier",
                             url: "/services/particuliers"
+                        },
+                        {
+                            name: "plan",
+                            url: "/services/plan"
                         }
                     ]
                 },
