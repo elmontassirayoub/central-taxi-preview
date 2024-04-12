@@ -12,7 +12,7 @@ export const getServerSideProps = checkAuthentication(async (context: any, admin
 })
 
 export default function Tarifs({ admin }: { admin: boolean }) {
-    return <PageLayout page="/tarifs" admin={admin}>
+    return <PageLayout page="/services/tarifs" admin={admin}>
         <SEO title="Tarifs Taxi Strasbourg – Central Taxi 67" description="Combien coûte une course chez Central Taxi 67 ? Découvrez tous nos tarifs au km, tarif de jour et tarif de nuit, tarif de prise en charge et suppléments." />
         <Tarif />
     </PageLayout>

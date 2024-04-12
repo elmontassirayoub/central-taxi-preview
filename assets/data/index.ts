@@ -254,6 +254,10 @@ const Data: DataType = {
                         {
                             name: "forfait",
                             url: "/services/forfait"
+                        },
+                        {
+                            name: "particulier",
+                            url: "/services/particuliers"
                         }
                     ]
                 },
@@ -593,8 +597,12 @@ const Data: DataType = {
                             url: "/services/tarifs"
                         },
                         {
-                            name: "forfait",
+                            name: "package",
                             url: "/services/forfait"
+                        },
+                        {
+                            name: "particulier",
+                            url: "/services/particuliers"
                         }
                     ]
                 },

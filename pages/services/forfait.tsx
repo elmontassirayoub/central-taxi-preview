@@ -12,7 +12,7 @@ export const getServerSideProps = checkAuthentication(async (context: any, admin
 })
 
 export default function Frofait({ admin }: { admin: boolean }) {
-    return <PageLayout page="/forfait" admin={admin}>
+    return <PageLayout page="/services/forfait" admin={admin}>
         <SEO title="Forfait – Central Taxi 67" description="Découvrez nos forfaits taxi du moment pour les transferts aéroportuaires, mise à disposition et voyage sur mesure avec nos chauffeurs professionnels à Strasbourg – Alsace." />
         <ForfaitLayout /> 
     </PageLayout>
