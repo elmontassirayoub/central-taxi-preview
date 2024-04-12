@@ -55,6 +55,10 @@ const ContactLayout = () => {
           </ul>
           <span className="text-sm text-center">{pageData?.contact?.sectionFooter}</span>
         </div>
+        <div className="flex items-center justify-around mb-5 lg:flex-row flex-col gap-5">
+                <Call bounce={false} />
+                <Book bounce={false} btn={pageData.footer.btn2} primary={true} />
+            </div>
       </div>
     </section>
   )

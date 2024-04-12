@@ -200,6 +200,26 @@ type ContactPage = {
     footer: string
 }
 
+export type TarifOptions = {
+    title: string,
+    feautures: string[]
+}
+
+type Tarif = {
+    h1: string,
+    h2: string,
+    h3: string,
+    p1: string,
+    p2: string,
+    h4: string,
+    options: TarifOptions[],
+    h5: string,
+    option2: TarifOptions,
+    h6: string,
+    option3: TarifOptions,
+    p3: string,
+}
+
 export type LangType = {
     navbar: NavbarType,
     footer: FooterType,
@@ -209,7 +229,8 @@ export type LangType = {
     resetPassword: ResetPasswordType,
     book: BookPage,
     service: ServicePage,
-    contact: ContactPage
+    contact: ContactPage,
+    tarif: Tarif
 }
 
 type DataType = {
@@ -275,7 +296,7 @@ const Data: DataType = {
             },
             section1: {
                 title: "NOTRE MISSION",
-                description: "À la recherche d’une prestation de service taxi haute gamme à Strasbourg ? Notre mission sera d’arriver à votre destination avec pleine satisfaction! Laissez-nous vous transporter pour vos trajets privés ou professionnels dans l’Eurométropole de Strasbourg et dans toute la région. Des chauffeurs de taxis, fins connaissant parfaitement la région n’attendent que vous, 24/7, derrière notre centre d’appel. Notre société de transport de personnes dessert toutes les villes Alsaciennes, mais aussi ses aéroports, gares TGV et routières."
+                description: "À la recherche d’un service de taxi haut de gamme à Strasbourg ? Votre satisfaction est garantie en nous confiant vos trajets privés ou professionnels dans l’Eurométropole et aux alentours. Des chauffeurs de taxis, fins connaisseurs de la région n’attendent que vous, 24/7, derrière notre centre d’appel. Notre société de transport de personnes dessert toutes les villes d’Alsace, mais aussi ses aéroports, gares TGV et routières."
             },
             services: {
                 title: "NOS SERVICES",
@@ -305,7 +326,7 @@ const Data: DataType = {
                     { title: "Qualité", description: "Courte ou longue distance? Nous mettons tout en oeuvre  pour offrir à nos passagers un service de transport de haut niveau" },
                     { title: "Rapidité", description: "Contrairement aux conducteurs VTC ou Uber, nos chauffeurs taxis ont le privilège d’utiliser les voies réservées au bus pour vous faire gagner énormément de temps. Ils choisissent également les meilleurs itinéraires pour n’importe quel trajet afin d’être le plus direct et rapide possible." },
                     { title: "Sécurité", description: "Central Taxi 67 met un point d'honneur à votre sécurité et votre bien-être dès l’instant où vous montez à bord de ses véhicules jusqu’à votre arrivée à destination." },
-                    { title: "Transparence", description: "Notre entreprise de taxi applique des tarifs clairs et sans surprises. Le conducteur vous indiquera le montant exact que vous aurez à payer à l’arrivée  dès que vous serez installé dans nos véhicules." },
+                    { title: "Transparence", description: "Notre entreprise de taxi applique des tarifs clairs et sans surprises. Dès le début de votre trajet, vous êtes informé du montant exact que vous aurez à régler à l’arrivée." },
                 ]
             },
             yellowSection: {
@@ -368,11 +389,11 @@ const Data: DataType = {
         },
         book: {
             h1: "Reserver",
-            desc: "Réservez facilement avec Central taxi",
+            desc: "Réservez facilement avec Central taxi 67",
             cards: [
                 { title: "Commander un taxi à Strasbourg avec Central Taxi 67", description: "Évitez le stress d’attendre un taxi disponible et voyagez avec plus de confort et de style ! Notre centrale de réservation de taxis à Strasbourg vous offre la possibilité d’organiser au mieux votre emploi du temps. Commandez notre service de transport de personnes à toute heure de la nuit et de la journée. Choisissez aussi le véhicule taxi qui convient à votre effectif. " },
                 { title: "Réservez un taxi pour 1 à 5 passagers à Strasbourg", description: "Des déplacements personnels ou professionnels en petit comité en vue, petite course en centre-ville, visite touristique dans l’Eurométropole ou un trajet longue-distance en Alsace ? Faites la réservation d'un monospace. Nous pouvons accueillir 1 à 5 passagers avec leurs bagages à bord de nos véhicules. " },
-                { title: "Commandez un taxi pour 7 à 8 passagers à Strasbourg", description: "Si vous voyagez avec un groupe plus important, réservez chez nous le taxi adapté pour voyager en toute convivialité dans la ville de Strasbourg et toute l’Alsace. Notre van possède une capacité d’accueil de jusqu'à 8 passagers adultes. Faites votre réservation au meilleur prix pour les voyages en famille, les excursions entre amis ou les transferts aéroportuaires ou Gare Centrale de Strasbourg." }
+                { title: "Commandez un taxi pour 7 à 8 passagers à Strasbourg", description: "Si vous voyagez avec un groupe plus important, réservez chez nous le taxi adapté pour voyager en toute convivialité dans la ville de Strasbourg et toute l’ Alsace. Notre van possède une capacité d’accueil jusqu'à 8 passagers adultes. Faites votre réservation au meilleur prix pour les voyages en famille, les excursions entre amis ou les transferts aéroportuaires ou Gare Centrale de Strasbourg." }
             ],
             question: "Comment réserver votre taxi à Strasbourg chez Central Taxi 67 ?  ",
             answer: "Bénéficiez d’un service de transport de personnes fiable et agréable avec notre compagnie de taxi strasbourgeoise peu importe votre effectif, la distance ou le motif de votre voyage. Réservez votre chauffeur privé en toute simplicité en remplissant le formulaire en ligne avec votre : ",
@@ -403,7 +424,7 @@ const Data: DataType = {
                 error: "Il y avait une erreur"
             },
             rightSide: {
-                title: "Vous pouvez effectuer votre réservation de taxi à Strasbourg de deux manière:",
+                title: "Vous pouvez effectuer votre réservation de taxi à Strasbourg de deux manières:",
                 list: [
                     {
                         item: "Contact direct par téléphone au numéro",
@@ -432,7 +453,7 @@ const Data: DataType = {
             header: "nos services",
             subHeader: "Nos services de taxi à Strasbourg - Alsace",
             h3: "ce que nous offrons",
-            h4: "Professionnels, touristes et habitants de l’Eurométropole, bénéficiez de nos services de transport en taxi pas cher pour vos trajets ! Nos chauffeurs peuvent desservir toutes les destinations d’Alsace. Réservez votre berline taxi via notre centre d’appel accessible 24h/24 et 7/7.",
+            h4: "Professionnels, touristes et habitants de l’Eurométropole, bénéficiez de nos services de transport en taxi pas cher pour vos trajets ! Nos chauffeurs peuvent desservir toutes les destinations d’Alsace. Réservez votre limousine taxi via notre centre d’appel accessible 24h/24 et 7/7.",
             cards: [
                 {
                     icon: LocalTaxiIcon, title: "Transport privé en taxi à Strasbourg ", features: ["Chauffeur expérimenté pour vos déplacements en ville ou aux alentours",
@@ -469,7 +490,7 @@ const Data: DataType = {
                     ]
                 },
             ],
-            h5: "Besoin d’un taxi pour un court ou long trajet vers Strasbourg Eurométropole ? Commandez un taxi chez Central Taxi 67. Nous vous offrons une solution de transport pratique et flexible pour vos déplacements de jour ou de nuit. De plus, le prix de la course est connu à l’avance."
+            h5: "Besoin d’un taxi pour un court ou long trajet dans Strasbourg Eurométropole ? Commandez un taxi chez Central Taxi 67. Nous vous offrons une solution de transport pratique et flexible pour vos déplacements de jour ou de nuit. De plus, le prix de la course est connu à l’avance."
         },
         contact: {
             header: "Contactez-nous",
@@ -481,13 +502,13 @@ const Data: DataType = {
                 "Transfert vers les gares SNCF et gares routières ",
                 "Déplacements professionnels en limousine taxi (conférences, réunions, séminaires, rendez-vous d’affaires...)",
                 "Trajets et sorties nocturnes en van ou monospace",
-                "Visites touristiques (centre-ville et dans l’Alsace)",
+                "Visites touristiques (centre ville et toute la région Alsacienne)",
                 "Déplacements médicaux (hôpitaux, cliniques, cabinet médical…)",
                 "Événements spéciaux (réceptions, anniversaire, mariage…)",
             ],
             sectionFooter: "Ne tardez pas à nous rejoindre par téléphone ou via notre formulaire de réservation en ligne pour planifier rapidement votre prochain trajet à Strasbourg !",
             h1_2: "Contactez notre société de taxi pour une réclamation ",
-            p1: "En cas de désagrément ou de mécontentement suite à une course taxi 67 antérieure, nous vous encourageons vivement à contacter notre compagnie de taxis. Vos remarques et vos feedbacks nous aident à améliorer nos services.",
+            p1: "En cas de désagrément ou de mécontentement suite à une course taxi antérieure, nous vous encourageons vivement à contacter notre compagnie de taxis. Vos remarques et vos feedbacks nous aident à améliorer nos services.",
             p2: "Faites-nous part de vos préoccupations ! Notre société de taxi se charge d’y remédier de la meilleure manière possible !",
             p3: "Contactez-nous pour toute demande d’informations sur notre service de transport de personnes ",
             list2Header: "Peu importe l'heure du jour ou de la nuit, obtenez des réponses à toutes vos questions en rapport avec nos :",
@@ -502,6 +523,63 @@ const Data: DataType = {
             ],
             footer: "Chez Central Taxi 67, profitez d’un service clientèle aimable et professionnel joignable à tout moment par téléphone ou en remplissant le formulaire en ligne !"
         },
+        tarif: {
+            h1: "Tarif Taxis Strasbourg Service avec Central Taxi 67",
+            h2: "Déplacement de nuit avec retour en charge à la station",
+            h3: "Les tarifs de nuit B et D sont en vigueur pour les trajets réalisés :",
+            p1: "entre 19h et 7h du matin, Voulez-vous commander un taxi et vous voulez connaître le prix d’une course de jour ou de nuit avec notre compagnie de taxi ? Retrouvez ici tous nos tarifs.",
+            p2: "Notez qu’ils n’incluent pas le tarif d’approche. Celui-ci est défini selon la distance entre le lieu de prise en charge et le lieu de départ du chauffeur.",
+            h4: "La prise en charge = 3€",
+            options: [
+                {
+                    title: "Des tarifs taxi sans surprise pour vos trajets à Strasbourg et en Alsace",
+                    feautures: [
+                        "Tarif A au km : 0,97€"
+                    ]
+                },
+                {
+                    title: "Course effectuée pendant la journée et en semaine avec retour en charge à la station ",
+                    feautures: [
+                        "Tarif B au km : 1,38€"
+                    ]
+                },
+                {
+                    title: "Course effectuée de nuit avec retour en charge à la station",
+                    feautures: [
+                        "Tarif C au km : 1,94€"
+                    ]
+                },
+                {
+                    title: "Déplacement diurne et en semaine avec retour à vide à la station",
+                    feautures: [
+                        "Tarif D au km : 2,76€",
+                        "Les dimanches",
+                        "Les jours fériés",
+                        "Sur les routes rendues difficiles par la neige ou le verglas, avec un véhicule muni d'équipements spéciaux ou de pneus hiver."
+                    ]
+                }
+            ],
+            h5: "Tarifs taxi Strasbourg : les suppléments",
+            option2: {
+                title: "Des frais supplémentaires sont facturés pour :",
+                feautures: [
+                    "Excès de bagages au-delà de trois bagages par passager 2€",
+                    "À partir du  cinquième passager 3€"
+                ]
+            },
+            h6: "Comment calculer les tarifs des courses en taxi à Strasbourg avec Central Taxi 67 ?",
+            option3: {
+                title: "Les tarifs des taxis à Strasbourg sont réglementés par la préfecture. Le calcul du prix d’une course dépend de :",
+                feautures: [
+                    "Frais de prise en charge (tarif fixe)",
+                    "Nombre de kilomètres ",
+                    "Tarif par kilomètres (variable selon la spécification de la course)",
+                    "Supplément",
+                    "Le prix d’un taxi à Strasbourg est calculé selon le schéma suivant : \n\nFrais de prise en charge + (Tarif par kilomètre A, B, C ou D x Nombre de kilomètres) + Supplément"
+                ]
+            },
+            p3: "Utilisez notre formulaire de réservation pour obtenir une estimation rapide et plus précise du prix de votre course en taxi à Strasbourg."
+        }
     },
     en: {
         navbar: {
@@ -651,7 +729,7 @@ const Data: DataType = {
         },
         book: {
             h1: "Book",
-            desc: "Book Easily with Central Taxi",
+            desc: "Book Easily with Central Taxi 67",
             cards: [
                 { title: "Order a taxi in Strasbourg with Central Taxi 67", description: "Avoid the stress of waiting for an available taxi and travel with more comfort and style! Our taxi reservation center in Strasbourg offers you the opportunity to organize your schedule as best as possible. Order our passenger transport service at any time of the night or day. Also choose the taxi vehicle that suits your workforce." },
                 { title: "Book a taxi for 1 to 5 passengers in Strasbourg", description: "Planning personal or professional trips in a small group, a short errand in the city center, a tourist visit to the Eurometropolis or a long-distance trip to Alsace? Make a reservation for a minivan. We can accommodate 1 to 5 passengers with their luggage on board our vehicles." },
@@ -791,6 +869,63 @@ const Data: DataType = {
                 "Specific taxi transport services",
             ],
             footer: "At Central Taxi 67, benefit from friendly and professional customer service that can be reached at any time by telephone or by filling out the online form!"
+        },
+        tarif: {
+            h1: "Strasbourg Taxi Rates Service with Central Taxi 67",
+            h2: "Night travel with return to the station",
+            h3: "Night rates B and D are in effect for journeys made:",
+            p1: "between 7 p.m. and 7 a.m., Do you want to order a taxi and want to know the price of a day or night trip with our taxi company? Find all our prices here.",
+            p2: "Note that they do not include the approach price. This is defined according to the distance between the pick-up location and the driver's departure location.",
+            h4: "Support = 3€",
+            options: [
+                {
+                    title: "Taxi prices with no surprises for your trips to Strasbourg and Alsace",
+                    feautures: [
+                        "Rate A per km: €0.97"
+                    ]
+                },
+                {
+                    title: "Race carried out during the day and on weekdays with return to the station",
+                    feautures: [
+                        "Rate B per km: €1.38"
+                    ]
+                },
+                {
+                    title: "Race carried out at night with return to the station",
+                    feautures: [
+                        "Rate C per km: €1.94"
+                    ]
+                },
+                {
+                    title: "Daytime and weekday travel with empty return to the station",
+                    feautures: [
+                        "Rate D per km: €2.76",
+                        "Sundays",
+                        "Holidays",
+                        "On roads made difficult by snow or ice, with a vehicle equipped with special equipment or winter tires."
+                    ]
+                }
+            ],
+            h5: "Strasbourg taxi prices: supplements",
+            option2: {
+                title: "Additional fees are charged for:",
+                feautures: [
+                    "Excess baggage beyond three bags per passenger €2",
+                    "From the fifth passenger €3"
+                ]
+            },
+            h6: "How to calculate taxi fares in Strasbourg with Central Taxi 67?",
+            option3: {
+                title: "Taxi prices in Strasbourg are regulated by the prefecture. The calculation of the price of a trip depends on:",
+                feautures: [
+                    "Support costs (fixed rate)",
+                    "Number of kilometers",
+                    "Rate per kilometer (variable depending on the specification of the trip)",
+                    "Extra charge",
+                    "The price of a taxi in Strasbourg is calculated according to the following scheme: \n\nTake-up costs + (Rate per kilometer A, B, C or D x Number of kilometers) + Supplement"
+                ]
+            },
+            p3: "Use our reservation form to get a quick and more accurate estimate of the price of your taxi ride in Strasbourg."
         }
     }
 }

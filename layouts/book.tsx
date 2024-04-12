@@ -188,7 +188,7 @@ return <div className="w-full flex flex-col items-center justify-center relative
                             rightSide.list?.map((item: BookPageRightSideListType) => <li className="" key={item.item}>
                                 <span>{item.item}</span>
                                 {
-                                    item?.phone && <a className="underline pl-2" href="tel:0647600171">06 47 60 01 71</a>
+                                    item?.phone && <a className="underline pl-4" href="tel:0647600171">06 47 60 01 71</a>
                                 }
 
                             </li>)
@@ -283,7 +283,7 @@ return <div className="w-full flex flex-col items-center justify-center relative
                                     rightSide.list?.map((item: BookPageRightSideListType) => <li className="" key={item.item}>
                                         <span>{item?.item}</span>
                                         {
-                                            item?.phone && <a className="underline pl-2" href="tel:0647600171">06 47 60 01 71</a>
+                                            item?.phone && <a className="underline pl-4" href="tel:0647600171">06 47 60 01 71</a>
                                         }
                                     </li>)
                                 }

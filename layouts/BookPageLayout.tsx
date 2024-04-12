@@ -4,6 +4,7 @@ import BookLayout from "@/layouts/book";
 import Call from "@/components/common/Buttons/Call";
 import Image from "next/image";
 import { Home_section1 } from "@/assets/data";
+import Book from "@/components/common/Buttons/Book";
 
 const BookPageLayout = () => {
 
@@ -51,6 +52,9 @@ const BookPageLayout = () => {
                         pageData?.book?.options?.map((option: string, idx: number) => <li className="list-disc" key={idx}>{option}</li>)
                     }
                 </ul>
+            </div>
+            <div className="mx-auto">
+                <Book bounce={false} btn={pageData.footer.btn2} primary={true} />
             </div>
             <p className="text-center">{pageData?.book?.footer}</p>
         </section>
