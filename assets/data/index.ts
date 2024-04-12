@@ -263,6 +263,10 @@ const Data: DataType = {
                             name: "supplementaire",
                             url: "/services/supplementaire"
                         },
+                        {
+                            name: "tourisme",
+                            url: "/services/tourisme"
+                        }
                     ]
                 },
                 {
@@ -627,6 +631,10 @@ const Data: DataType = {
                         {
                             name: "additional",
                             url: "/services/supplementaire"
+                        },
+                        {
+                            name: "tourism",
+                            url: "/services/tourisme"
                         },
                     ]
                 },
