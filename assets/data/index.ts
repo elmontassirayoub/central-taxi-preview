@@ -266,10 +266,16 @@ const Data: DataType = {
                         {
                             name: "entreprise",
                             url: "/services/entreprise"
+                        },
+                        {
+                            name: "supplementaire",
+                            url: "/book/supplementaire"
                         }
                     ]
                 },
-                { name: "reserver", url: "/book" },
+                {
+                    name: "reserver", url: "/book",
+                },
                 { name: "contact", url: "/contact" }
             ],
             rightSideTabList: [{ functionlity: "register", text: "S'inscrire" }, { functionlity: "login", text: "Se Connecter" }],
@@ -619,10 +625,16 @@ const Data: DataType = {
                         {
                             name: "business",
                             url: "/services/entreprise"
+                        },
+                        {
+                            name: "additional",
+                            url: "/book/supplementaire"
                         }
                     ]
                 },
-                { name: "book", url: "/book" },
+                {
+                    name: "book", url: "/book",
+                },
                 { name: "contact", url: "/contact" }],
             rightSideTabList: [{ functionlity: "register", text: "Register" }, { functionlity: "login", text: "Login" }],
             logout: "Log out",

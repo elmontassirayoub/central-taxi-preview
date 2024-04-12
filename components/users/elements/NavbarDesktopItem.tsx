@@ -25,7 +25,7 @@ const NavBarDesktopItem: React.FC<NavBarDesktopItemType> = ({ page, item }) => {
             }
             {
                 expand && (
-                    <ul className="absolute top-[100%] w-full py-2 left-0 bg-primary-1 text-white rounded-b-[8px]">
+                    <ul className="absolute top-[100%] min-w-full py-2 left-0 bg-primary-1 text-white rounded-b-[8px]">
                         {
                             item?.items?.map((item, idx) => <li key={idx} className={`uppercase hover:underline w-full h-full p-2 ${page === item.url ? "bg-[#000] text-white" : ""}`}>
                                 <Link prefetch={false} href={item?.url}>
