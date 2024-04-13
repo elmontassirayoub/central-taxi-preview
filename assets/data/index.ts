@@ -266,6 +266,10 @@ const Data: DataType = {
                         {
                             name: "tourisme",
                             url: "/services/tourisme"
+                        },
+                        {
+                            name: "avis",
+                            url: "/services/avis"
                         }
                     ]
                 },
@@ -636,6 +640,10 @@ const Data: DataType = {
                             name: "tourism",
                             url: "/services/tourisme"
                         },
+                        {
+                            name: "feedback",
+                            url: "/services/avis"
+                        }
                     ]
                 },
                 {
