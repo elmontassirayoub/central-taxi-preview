@@ -274,7 +274,7 @@ const Data: DataType = {
                     ]
                 },
                 {
-                    name: "reserver", url: "/book",
+                    name: "réserver", url: "/book",
                     items: [
                         {
                             name: "particulier",
@@ -322,7 +322,7 @@ const Data: DataType = {
                 }
             ],
             hero: {
-                btn: "Reserver",
+                btn: "réserver",
                 h2: "Central Taxi 67, votre choix numéro 1 pour vos courses à Strasbourg - Alsace",
                 h3: "À votre service 24H/24"
             },
@@ -406,7 +406,7 @@ const Data: DataType = {
                 p3: "À votre service 24H/24"
             },
             btn1: "Laisser un avis",
-            btn2: "Reserver"
+            btn2: "réserver"
         },
         resetPassword: {
             label1: "Votre ancien mot de passe",
@@ -420,7 +420,7 @@ const Data: DataType = {
             success: "Vous avez mis à jour votre mot de passe avec succès"
         },
         book: {
-            h1: "Reserver",
+            h1: "réserver",
             desc: "Réservez facilement avec Central taxi 67",
             cards: [
                 { title: "Commander un taxi à Strasbourg avec Central Taxi 67", description: "Évitez le stress d’attendre un taxi disponible et voyagez avec plus de confort et de style ! Notre centrale de réservation de taxis à Strasbourg vous offre la possibilité d’organiser au mieux votre emploi du temps. Commandez notre service de transport de personnes à toute heure de la nuit et de la journée. Choisissez aussi le véhicule taxi qui convient à votre effectif. " },

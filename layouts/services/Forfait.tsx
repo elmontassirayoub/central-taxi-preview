@@ -21,7 +21,7 @@ const ForfaitLayout = () => {
                             </div>
                             <div className="flex flex-col lg:justify-start justify-center lg:items-start items-center gap-5">
                                 <Call bounce={false} />
-                                <Book bounce={false} btn={lang === "fr" ? "Reserver" : "Book"} primary={true} />
+                                <Book bounce={false} btn={lang === "fr" ? "réserver" : "Book"} primary={true} />
                             </div>
                         </div>
                         <div className="flex-1 hidden md:flex items-center justify-center overflow-hidden">
@@ -40,7 +40,7 @@ const ForfaitLayout = () => {
                     </li>)}
                 </ul>
                 <div className="mx-auto my-3">
-                    <Book bounce={false} btn={lang === "fr" ? "Reserver" : "Book"} primary={true} />
+                    <Book bounce={false} btn={lang === "fr" ? "réserver" : "Book"} primary={true} />
                 </div>
                 <span className="text-center text-sm">{pageData?.footer}</span>
                 <p className="text-center font-semibold">{pageData?.title1}</p>

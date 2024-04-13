@@ -22,7 +22,7 @@ const ConventionneLayout = () => {
                             </div>
                             <div className="flex flex-col lg:justify-start justify-center lg:items-start items-center gap-5">
                                 <Call bounce={false} />
-                                <Book bounce={false} btn={lang === "fr" ? "Reserver" : "Book"} primary={true} />
+                                <Book bounce={false} btn={lang === "fr" ? "réserver" : "Book"} primary={true} />
                             </div>
                         </div>
                         <div className="flex-1 hidden md:flex items-center justify-center overflow-hidden">
@@ -46,7 +46,7 @@ const ConventionneLayout = () => {
                     </ul>
                 </div>
                 <div className="mx-auto">
-                    <Book bounce={false} btn={lang === "fr" ? "Reserver" : "Book"} primary={true} />
+                    <Book bounce={false} btn={lang === "fr" ? "réserver" : "Book"} primary={true} />
                 </div>
                 <p className="text-sm text-[#000]/[90%]">{pageData?.p3}</p>
                 <div className="flex flex-col gap-2">

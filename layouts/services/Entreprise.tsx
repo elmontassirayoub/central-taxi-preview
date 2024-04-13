@@ -22,7 +22,7 @@ const EntrepriseLayout = () => {
                             </div>
                             <div className="flex flex-col lg:justify-start justify-center lg:items-start items-center gap-5">
                                 <Call bounce={false} />
-                                <Book bounce={false} btn={lang === "fr" ? "Reserver" : "Book"} primary={true} />
+                                <Book bounce={false} btn={lang === "fr" ? "réserver" : "Book"} primary={true} />
                             </div>
                         </div>
                         <div className="flex-1 hidden md:flex items-center justify-center overflow-hidden">
@@ -47,7 +47,7 @@ const EntrepriseLayout = () => {
                         </ul>
                         <hr />
                         <div className="mx-auto py-5">
-                            <Book bounce={false} btn={lang === "fr" ? "Reserver" : "Book"} primary={true} />
+                            <Book bounce={false} btn={lang === "fr" ? "réserver" : "Book"} primary={true} />
                         </div>
                     </div>)}
                 </div>
