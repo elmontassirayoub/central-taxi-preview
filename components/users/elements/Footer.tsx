@@ -38,9 +38,8 @@ export default function Footer() {
                             <Image src={PageJaune} alt="" width={20} height={20} className="" />
                         </a>
                     </div>
-                    {/* <p className="text-center text-white/[75%] flex items-center gap-1"><strong className="text-white text-sm lg:text-base"><Image src={Fix} alt="Fix" className="w-6 h-6 text-white" /></strong> <a href="tel:0388835633">038883563</a></p> */}
-                    <p className="text-center text-white/[75%] flex items-center gap-1"><strong className="text-white text-sm lg:text-base"><PhoneAndroidIcon /></strong> <a href="tel:0647600171">0647600171</a></p>
-                    <p className="text-center text-white/[75%]"><strong className="text-white text-sm lg:text-base"><AlternateEmailIcon /></strong> <a href="mailto:contact@strasbourgtaxi.fr">contact@strasbourgtaxi.fr</a></p>
+                    <p className="text-center text-white/[75%] flex items-center gap-1"><PhoneAndroidIcon /> <a href="tel:0647600171">0647600171</a></p>
+                    <p className="text-center text-white/[75%]"><AlternateEmailIcon /> <a href="mailto:contact@strasbourgtaxi.fr">contact@strasbourgtaxi.fr</a></p>
                     <a href="https://www.gralon.net/annuaire/commerce-et-societe/industrie/transport.htm" target="_blank">
                         <Image src="https://logo.gralon.net/plogo-gralon-204445.gif" className="border-none" alt="Transport" width={100} height={100} />
                     </a>

@@ -98,7 +98,7 @@ const Landing = ({ admin = false }: { admin: boolean }) => {
                 </div>
                 <div className="lg:flex-[0.6] flex items-center">
                   <div className="w-full px-5 lg:px-10 flex flex-col lg:gap-10 text-white py-10 lg:py-0">
-                    <h4 className="mb-2 lg:mb-0 uppercase text-[20px] text-white lg:text-[28px] lg:[word-spacing:5px] font-meduim">taxi strasbourg</h4>
+                    <p className="mb-2 lg:mb-0 uppercase text-[20px] text-white lg:text-[28px] lg:[word-spacing:5px] font-meduim">taxi strasbourg</p>
                     <p className="text-white/[80%] italic text-sm lg:text-base">{pageData.home.paragraph}</p>
                     <div className="lg:flex hidden justify-end">
                       <Call bounce={true} />
