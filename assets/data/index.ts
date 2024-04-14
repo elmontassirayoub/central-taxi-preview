@@ -32,11 +32,17 @@ export type Home_section1 = {
     description: string
 }
 
+export type ServiceFeaturesType = {
+    title: string,
+    description: string,
+    space?: string,
+    vsl?: boolean
+}
 
 type Home_Services = {
     title: string,
     description: string,
-    features: Home_section1[]
+    features: ServiceFeaturesType[]
 }
 
 export type Vehicule_Type = {
@@ -340,6 +346,7 @@ const Data: DataType = {
                     { title: "Taxi pour professionnels", description: "Faites appel au meilleur chauffeur de taxis à Strasbourg pour assurer vos déplacements lors de réunions ou rendez-vous d'affaires en centre-ville ou en périphérie." },
                     { title: "Taxi pour particuliers", description: "Profitez d’un service de transport personnalisé et sécurisé pour vos courses en ville, soirées entre amis ou sorties en famille." },
                     { title: "Course longue distance", description: "Vous voyagez pour affaires ou pour le plaisir ? Notre service de taxi strasbourgeois vous garantit un voyage agréable partout en Alsace." },
+                    { title: "Taxi conventionné VSL", description: "Pour les consultations, examens médicaux, traitements, sorties d’hôpital, etc.", space: "Agréé par la CPAM, conforme aux normes et réglementations en vigueur", vsl: true }
                 ]
             },
             vehicules: {
@@ -347,7 +354,6 @@ const Data: DataType = {
                 types: [
                     { title: "Monospaces", capacity: "1 à 5 passagers", space: "4 petits bagages ou 2 grands bagages", vsl: false },
                     { title: "Van", capacity: "7 à 8 passagers", space: "7 bagages", vsl: false },
-                    { title: "Taxi conventionné VSL", capacity: "Pour les consultations, examens médicaux, traitements, sorties d’hôpital, etc.", space: "Agréé par la CPAM, conforme aux normes et réglementations en vigueur", vsl: true }
                 ]
             },
             values: {
@@ -712,6 +718,7 @@ const Data: DataType = {
                     { title: "Taxi for professionals", description: "Call the best taxi driver in Strasbourg to ensure your travel during meetings or business appointments in the city center or the outskirts." },
                     { title: "Taxi for individuals", description: "Take advantage of a personalized and secure transport service for your shopping in town, evenings with friends or family outings." },
                     { title: "Long distance running", description: "Are you traveling for business or pleasure? Our Strasbourg taxi service guarantees you a pleasant trip throughout Alsace." },
+                    { title: "Taxi conventionné VSL", description: "Pour les consultations, examens médicaux, traitements, sorties d’hôpital, etc.", space: "Agréé par la CPAM, conforme aux normes et réglementations en vigueur", vsl: true }
                 ]
             },
             vehicules: {
@@ -719,7 +726,6 @@ const Data: DataType = {
                 types: [
                     { title: "Minivans", capacity: "1 to 5 passengers", space: "4 small bags or 2 large bags", vsl: false },
                     { title: "Van", capacity: "7 to 8 passengers", space: "7 bags", vsl: false },
-                    { title: "VSL approved taxi", capacity: "For consultations, medical examinations, treatments, hospital discharges, etc.", space: "Approved by the CPAM, compliant with current standards and regulations", vsl: true }
                 ]
             },
             values: {
