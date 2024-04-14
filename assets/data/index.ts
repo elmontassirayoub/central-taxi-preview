@@ -307,7 +307,7 @@ const Data: DataType = {
         },
         home: {
             headerBeforeCards: "Réservez un taxi facilement",
-            news: "ACTUALITÉS",
+            news: "contact",
             contact: "NOUS CONTACTER",
             paragraph: "TAXI STRASBOURG vous propose un large choix de taxis pour toutes les situations, que vous ayez besoin d'un taxi pour l'Aéroport de Strasbourg ou la gare de strasbourg etc",
             cardData: [
@@ -572,24 +572,28 @@ const Data: DataType = {
                 {
                     title: "Des tarifs taxi sans surprise pour vos trajets à Strasbourg et en Alsace",
                     feautures: [
+                        "Course de jour avec retour en charge a la station",
                         "Tarif A au km : 0,97€"
                     ]
                 },
                 {
                     title: "Course effectuée pendant la journée et en semaine avec retour en charge à la station ",
                     feautures: [
+                        "Course de nuit avec retour en charge a la station",
                         "Tarif B au km : 1,38€"
                     ]
                 },
                 {
                     title: "Course effectuée de nuit avec retour en charge à la station",
                     feautures: [
+                        "Course de jour avec retour a vide a la station",
                         "Tarif C au km : 1,94€"
                     ]
                 },
                 {
                     title: "Déplacement diurne et en semaine avec retour à vide à la station",
                     feautures: [
+                        "Course de nuit avec retour a vide a la station",
                         "Tarif D au km : 2,76€",
                         "Les dimanches",
                         "Les jours fériés",

@@ -23,17 +23,17 @@ const Data: DataType = {
         options: [
             {
                 title: "Transfert aéroport Strasbourg",
-                description: "Un vol à prendre ? Fiez-vous à nos services de transfert aéroport rapide et fiableà Strasbourg. On met à votre disposition un van ou un monospace pour vous accueillir ou vous ramener à l’aéroport. Pas de panique, notre chauffeur vous aide avec vos valises. Appelez-nous si votre famille a besoin d’un chauffeur pour un :",
+                description: "Un vol à prendre ? Fiez-vous à nos services de transfert aéroport rapide et fiable à Strasbourg. On met à votre disposition un van ou un monospace pour vous accueillir ou vous ramener à l’aéroport. Pas de panique, notre chauffeur vous aide avec vos valises. Appelez-nous si votre famille a besoin d’un chauffeur pour un :",
                 options: [
                     "Transfert Strasbourg – Aéroport Entzheim",
                     "Transfert Strasbourg – Aéroport de Baden Baden",
-                    "Transfert Strasbourg – Aéroport Bâle Mulho,use",
+                    "Transfert Strasbourg – Aéroport Bâle Mulhouse",
                     "Transfert Strasbourg – Aéroport Stuttgart",
                 ],
             },
             {
                 title: "Transfert gare Strasbourg",
-                description: "Rejoignez les principales gares d’Alsace avec nos services de transfert en taxi dans l’Euro métropole. Notre prestation de transport destinée aux particuliers est adaptée pour les personnes voyageant seules, en couple ou en famille. Votre trajet se fera sous le signe du confort jusqu’au quai ou à la destination de votre choix, partout dans la région.",
+                description: "Rejoignez les principales gares d’Alsace avec nos services de transfert en taxi dans l’Euro métropole. Notre prestation de transport destinée aux particuliers est adaptée pour les personnes voyageant seule, en couple ou en famille. Votre trajet se fera sous le signe du confort jusqu’au quai ou à la destination de votre choix, partout dans la région.",
                 options: [
                     "Transfert vers et depuis la Gare de Strasbourg ",
                     "Transfert vers la Gare de Offenburg ",

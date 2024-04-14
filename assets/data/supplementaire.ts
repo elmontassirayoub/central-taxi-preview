@@ -1,6 +1,7 @@
 export type SupplementaireOptionType = {
     title: string,
-    description: string
+    description: string,
+    description2?: string
 }
 
 export type SupplementaireType = {
@@ -34,7 +35,7 @@ const Data: DataType = {
             },
             {
                 title: "Wifi illimitée",
-                description: "A bord de l’un de nos monospaces ou van, surfez sur internet grâce à notre connexion wifi illimitée, parfait pour travailler, regarder des vidéos ou rester en contact avec vos proches."
+                description: "À bord de l’un de nos monospaces ou van, surfez sur internet grâce à notre connexion wifi illimitée, parfait pour travailler, regarder des vidéos ou rester en contact avec vos proches."
             },
             {
                 title: "Divertissement interactif",
@@ -66,7 +67,8 @@ const Data: DataType = {
             },
             {
                 title: "Service de livraison express à Strasbourg ",
-                description: "Besoin de faire livrer un colis en toute hâte en Alsace ? Confiez cette tâche à Central Taxi 67 et bénéficiez d'une livraison rapide et fiable avec nos chauffeurs de taxi professionnels."
+                description: "Besoin de faire livrer un colis en toute hâte en Alsace ?",
+                description2: "Confiez cette tâche à Central Taxi 67 et bénéficiez d'une livraison rapide et fiable avec nos chauffeurs de taxi professionnels."
             }
         ]
     },
@@ -120,7 +122,8 @@ const Data: DataType = {
             },
             {
                 title: "Express delivery service in Strasbourg",
-                description: "Need to have a parcel delivered quickly to Alsace? Entrust this task to Central Taxi 67 and benefit from fast and reliable delivery with our professional taxi drivers."
+                description: "Need to have a parcel delivered quickly to Alsace?",
+                description2: "Entrust this task to Central Taxi 67 and benefit from fast and reliable delivery with our professional taxi drivers."
             }
         ]
     }

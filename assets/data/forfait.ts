@@ -52,7 +52,7 @@ const data: DataType = {
         title1: "Forfait de mise à disposition",
         description1: "Vous faut-il le service d’un chauffeur privé pour quelques jours, une journée entière, une demi-journée ou pour seulement quelques heures dans l’Eurométropole, en Alsace ? Demandez notre service de mise à disposition. Planifiez vos trajets avec votre chauffeur et profitez de l’usage de votre limousine taxi comme si c’était la vôtre. Votre chauffeur respectera vos envies et votre programme. Plus besoin de chercher un taxi à chaque arrêt !",
         title2: "Forfait sur mesure pour les trajets à Strasbourg - Alsace",
-        description2: "Vous organisez un événement d'entreprise, un mariage, ou une visite touristique à Strasbourg ? Contactez notre compagnie de taxi strasbourgeoise, car on est ouverte à toutes les propositions. Vous pouvez demander un véhicule haut de gamme, doté d’une capacité de 1 à 8 personnes pour la durée qui vous convient et selon les besoins de vos événements. Contactez-nous pour discuter de vos besoins en transport"
+        description2: "Vous organisez un événement d'entreprise, un mariage, ou une visite touristique à Strasbourg ? Contactez notre compagnie de taxi strasbourgeoise, car nous sommes ouverts à toute propositions. Vous pouvez demander un véhicule haut de gamme, doté d’une capacité de 1 à 8 personnes pour la durée qui vous convient et selon les besoins de vos événements. Contactez-nous pour discuter de vos besoins en transport"
     },
     en: {
         h1: "Airport taxi packages – Provision – Specific route",

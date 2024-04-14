@@ -36,6 +36,9 @@ const SupplementaireLayout = () => {
                     {pageData?.options?.map((op: SupplementaireOptionType, idx: number) => <li className="p-3 rounded-[8px] border-[1px] border-[#000]/[50%] flex flex-col gap-2" key={idx}>
                         <p className="text-base font-semibold">{op?.title}</p>
                         <span className="text-xs text-[#000]/[50%]">{op?.description}</span>
+                        {
+                            op?.description2 && <span className="text-xs text-[#000]/[50%]">{op?.description2}</span>
+                        }
                     </li>)}
                 </ul>
             </div>

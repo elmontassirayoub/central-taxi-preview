@@ -35,7 +35,7 @@ const ContactLayout = () => {
         <div className="flex flex-col gap-3">
           <p className="text-center lg:text-[24px] text-[18px] font-medium">{pageData.contact.subHeader}</p>
           <p className="text-center text-[#000]/[80%]">{pageData.contact.h2}</p>
-          <ul className="pl-5 lg:pl-0 grid lg:grid-cols-2 text-sm text-[#000]/[90%] py-3">
+          <ul className="pl-5 lg:pl-0 grid lg:grid-cols-2 lg:gap-8 text-sm text-[#000]/[90%] py-3">
             {
               pageData.contact.list?.map((item: string, idx: number) => <li className="list-disc" key={idx}>{item}</li>)
             }
