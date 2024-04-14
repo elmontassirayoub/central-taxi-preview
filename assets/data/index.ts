@@ -251,36 +251,11 @@ const Data: DataType = {
             tabList: [
                 { name: "accueil", url: "/" },
                 {
-                    name: "services", url: "/services",
-                    items: [
-                        {
-                            name: "tarifs",
-                            url: "/services/tarifs"
-                        },
-                        {
-                            name: "forfait",
-                            url: "/services/forfait"
-                        },
-                        {
-                            name: "plan",
-                            url: "/services/plan"
-                        },
-                        {
-                            name: "supplementaire",
-                            url: "/services/supplementaire"
-                        },
-                        {
-                            name: "tourisme",
-                            url: "/services/tourisme"
-                        },
-                        {
-                            name: "avis",
-                            url: "/services/avis"
-                        }
-                    ]
+                    name: "plan",
+                    url: "/services/plan"
                 },
                 {
-                    name: "réserver", url: "/book",
+                    name: "services", url: "/services",
                     items: [
                         {
                             name: "particulier",
@@ -293,7 +268,32 @@ const Data: DataType = {
                         {
                             name: "conventionné",
                             url: "/services/conventionne"
+                        },
+                        {
+                            name: "tourisme",
+                            url: "/services/tourisme"
+                        },
+                        {
+                            name: "supplementaire",
+                            url: "/services/supplementaire"
+                        },
+                        {
+                            name: "avis",
+                            url: "/services/avis"
                         }
+                    ]
+                },
+                {
+                    name: "réserver", url: "/book",
+                    items: [
+                        {
+                            name: "tarifs",
+                            url: "/services/tarifs"
+                        },
+                        {
+                            name: "forfait",
+                            url: "/services/forfait"
+                        },
                     ]
                 },
                 { name: "contact", url: "/contact" }
@@ -628,27 +628,31 @@ const Data: DataType = {
             tabList: [
                 { name: "home", url: "/" },
                 {
+                    name: "plan",
+                    url: "/services/plan"
+                },
+                {
                     name: "services", url: "/services",
                     items: [
                         {
-                            name: "prices",
-                            url: "/services/tarifs"
+                            name: "particular",
+                            url: "/services/particuliers"
                         },
                         {
-                            name: "package",
-                            url: "/services/forfait"
+                            name: "business",
+                            url: "/services/entreprise"
                         },
                         {
-                            name: "plan",
-                            url: "/services/plan"
-                        },
-                        {
-                            name: "additional",
-                            url: "/services/supplementaire"
+                            name: "conventionné",
+                            url: "/services/conventionne"
                         },
                         {
                             name: "tourism",
                             url: "/services/tourisme"
+                        },
+                        {
+                            name: "additional",
+                            url: "/services/supplementaire"
                         },
                         {
                             name: "feedback",
@@ -660,20 +664,17 @@ const Data: DataType = {
                     name: "book", url: "/book",
                     items: [
                         {
-                            name: "particulier",
-                            url: "/services/particuliers"
+                            name: "prices",
+                            url: "/services/tarifs"
                         },
                         {
-                            name: "business",
-                            url: "/services/entreprise"
+                            name: "package",
+                            url: "/services/forfait"
                         },
-                        {
-                            name: "conventionné",
-                            url: "/services/conventionne"
-                        }
                     ]
                 },
-                { name: "contact", url: "/contact" }],
+                { name: "contact", url: "/contact" }
+            ],
             rightSideTabList: [{ functionlity: "register", text: "Register" }, { functionlity: "login", text: "Login" }],
             logout: "Log out",
             edit: "Edit your profile",

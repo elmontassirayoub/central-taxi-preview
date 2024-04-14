@@ -17,7 +17,7 @@ const NavBarMobileItem: React.FC<NavBarMobileItemType> = ({ page, item, admin })
     if (item?.url === "/book" && admin) return
     return (
         <div className="w-full py-4 px-2">
-            <Link prefetch={false} className={`uppercase italic py-1 w-full text-sm ${page === item.url ? "bg-primary-100 text-white" : "text-secondary-100"}`} href={item?.url} >
+            <Link prefetch={false} className={`uppercase italic py-1 w-full text-sm underline ${page === item.url ? "bg-primary-100 text-white" : "text-secondary-100"}`} href={item?.url} >
                 {item?.name}
             </Link>
             {
@@ -30,7 +30,7 @@ const NavBarMobileItem: React.FC<NavBarMobileItemType> = ({ page, item, admin })
                     <ul className="p-2 mt-2 left-0 bg-secondary-100 text-white rounded-[8px]">
                         {
                             item?.items?.map((item, idx) => <li key={idx} className="py-2">
-                                <Link prefetch={false} className={`uppercase italic py-1 w-full text-sm ${page === item.url ? "text-white" : "text-black"}`} href={item?.url} >
+                                <Link prefetch={false} className={`uppercase italic py-1 w-full text-sm underline ${page === item.url ? "text-white" : "text-black"}`} href={item?.url} >
                                     {item?.name}
                                 </Link>
                             </li>)
