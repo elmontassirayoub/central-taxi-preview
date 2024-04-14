@@ -570,28 +570,28 @@ const Data: DataType = {
                 {
                     title: "Course effectuée pendant la journée et en semaine avec retour en charge à la station",
                     feautures: [
-                        "Course de jour avec retour en charge a la station",
+                        "Course de jour avec retour en charge à la station",
                         "Tarif A au km : 0,97€"
                     ]
                 },
                 {
-                    title: "Course effectuée de nuit avec retour en charge à la station",
+                    title: "Déplacement de nuit avec retour en charge à la station",
                     feautures: [
-                        "Course de nuit avec retour en charge a la station",
+                        "Course de nuit avec retour en charge à la station",
                         "Tarif B au km : 1,38€"
                     ]
                 },
                 {
                     title: "Déplacement diurne et en semaine avec retour à vide à la station",
                     feautures: [
-                        "Course de jour avec retour a vide a la station",
+                        "Course de jour avec retour à vide à la station",
                         "Tarif C au km : 1,94€"
                     ]
                 },
                 {
-                    title: "Déplacement de nuit avec retour en charge à la station",
+                    title: "Déplacement de nuit avec retour à vide à la station",
                     feautures: [
-                        "Course de nuit avec retour a vide a la station",
+                        "Course de nuit avec retour à vide à la station",
                         "Tarif D au km : 2,76€",
                         "Les dimanches",
                         "Les jours fériés",
@@ -958,7 +958,7 @@ const Data: DataType = {
                     ]
                 },
                 {
-                    title: "Race carried out at night with return to the station",
+                    title: "Night travel with return to the station",
                     feautures: [
                         "Day race with empty return to the station",
                         "Rate B per km: €1.38"
@@ -972,7 +972,7 @@ const Data: DataType = {
                     ]
                 },
                 {
-                    title: "Night travel with return to the station",
+                    title: "Night trip with empty return to the station",
                     feautures: [
                         "Night race with empty return to the station",
                         "Rate D per km: €2.76",
