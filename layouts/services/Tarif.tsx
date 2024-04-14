@@ -46,7 +46,6 @@ const Tarif = () => {
                         </div>)
                     }
                 </div>
-                <p className="text-center lg:text-[24px] text-[18px] font-medium">{pageData.tarif.h2}</p>
                 <p className="text-center text-[#000]/[80%]">{pageData.tarif.h3}</p>
                 <p className="text-center text-xs text-[#000]/[80%]">{pageData.tarif.p1}</p>
                 <p className="text-center text-sm text-[#000]/[80%]">{pageData.tarif.p2}</p>

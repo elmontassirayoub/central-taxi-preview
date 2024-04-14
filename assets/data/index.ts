@@ -213,7 +213,6 @@ export type TarifOptions = {
 
 type Tarif = {
     h1: string,
-    h2: string,
     h3: string,
     p1: string,
     p2: string,
@@ -563,35 +562,34 @@ const Data: DataType = {
         },
         tarif: {
             h1: "Tarif Taxis Strasbourg Service avec Central Taxi 67",
-            h2: "Déplacement de nuit avec retour en charge à la station",
             h3: "Les tarifs de nuit B et D sont en vigueur pour les trajets réalisés :",
             p1: "entre 19h et 7h du matin, Voulez-vous commander un taxi et vous voulez connaître le prix d’une course de jour ou de nuit avec notre compagnie de taxi ? Retrouvez ici tous nos tarifs.",
             p2: "Notez qu’ils n’incluent pas le tarif d’approche. Celui-ci est défini selon la distance entre le lieu de prise en charge et le lieu de départ du chauffeur.",
             h4: "La prise en charge = 3€",
             options: [
                 {
-                    title: "Des tarifs taxi sans surprise pour vos trajets à Strasbourg et en Alsace",
+                    title: "Course effectuée pendant la journée et en semaine avec retour en charge à la station",
                     feautures: [
                         "Course de jour avec retour en charge a la station",
                         "Tarif A au km : 0,97€"
                     ]
                 },
                 {
-                    title: "Course effectuée pendant la journée et en semaine avec retour en charge à la station ",
+                    title: "Course effectuée de nuit avec retour en charge à la station",
                     feautures: [
                         "Course de nuit avec retour en charge a la station",
                         "Tarif B au km : 1,38€"
                     ]
                 },
                 {
-                    title: "Course effectuée de nuit avec retour en charge à la station",
+                    title: "Déplacement diurne et en semaine avec retour à vide à la station",
                     feautures: [
                         "Course de jour avec retour a vide a la station",
                         "Tarif C au km : 1,94€"
                     ]
                 },
                 {
-                    title: "Déplacement diurne et en semaine avec retour à vide à la station",
+                    title: "Déplacement de nuit avec retour en charge à la station",
                     feautures: [
                         "Course de nuit avec retour a vide a la station",
                         "Tarif D au km : 2,76€",
@@ -947,33 +945,36 @@ const Data: DataType = {
         },
         tarif: {
             h1: "Strasbourg Taxi Rates Service with Central Taxi 67",
-            h2: "Night travel with return to the station",
             h3: "Night rates B and D are in effect for journeys made:",
             p1: "between 7 p.m. and 7 a.m., Do you want to order a taxi and want to know the price of a day or night trip with our taxi company? Find all our prices here.",
             p2: "Note that they do not include the approach price. This is defined according to the distance between the pick-up location and the driver's departure location.",
             h4: "Support = 3€",
             options: [
                 {
-                    title: "Taxi prices with no surprises for your trips to Strasbourg and Alsace",
-                    feautures: [
-                        "Rate A per km: €0.97"
-                    ]
-                },
-                {
                     title: "Race carried out during the day and on weekdays with return to the station",
                     feautures: [
-                        "Rate B per km: €1.38"
+                        "Day trip with return to the station",
+                        "Rate A per km: €0.97"
                     ]
                 },
                 {
                     title: "Race carried out at night with return to the station",
                     feautures: [
-                        "Rate C per km: €1.94"
+                        "Day race with empty return to the station",
+                        "Rate B per km: €1.38"
                     ]
                 },
                 {
                     title: "Daytime and weekday travel with empty return to the station",
                     feautures: [
+                        "Day race with empty return to the station",
+                        "Rate C per km: €1.94"
+                    ]
+                },
+                {
+                    title: "Night travel with return to the station",
+                    feautures: [
+                        "Night race with empty return to the station",
                         "Rate D per km: €2.76",
                         "Sundays",
                         "Holidays",
