@@ -72,7 +72,7 @@ export default function BookLayout() {
     }
 
     const handleEstimation = async () => {
-        if (!departPlaceId || !arrivePlaceId || !date || !time) {
+        if (!departPlaceId || !arrivePlaceId || !day || !time) {
             toast.error(pageData.signup.fillAllFields, {
                 position: "top-right",
                 autoClose: 3000,
@@ -132,7 +132,7 @@ export default function BookLayout() {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ ...reservationData, from: departAddress, to: arriveAddress, date, time, price: reservationDetails?.price })
+                body: JSON.stringify({ ...reservationData, from: departAddress, to: arriveAddress, date: day, time, price: reservationDetails?.price })
             })
             if (response.status === 201) {
                 toast.success(pageData.book.form.success, {
