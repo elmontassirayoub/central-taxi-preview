@@ -12,9 +12,14 @@ export const getServerSideProps = checkAuthentication(async (context: any, admin
 })
 
 const Conventionne = ({ admin }: { admin: boolean }) => {
+    const canonical = "https://www.central-taxi67.fr/services/conventionne"
     return (
         <PageLayout page="/services/conventionne" admin={admin}>
-            <SEO title="Taxi conventionné  à Schiltigheim – Central Taxi 67" description=": Avez-vous besoin d’un taxi conventionné ou d’un VSL à Schiltigheim ? Profitez de nos services professionnels agréés par la CPAM pour voyager sereinement." />
+            <SEO 
+                title="Taxi conventionné  à Schiltigheim – Central Taxi 67" 
+                description=": Avez-vous besoin d’un taxi conventionné ou d’un VSL à Schiltigheim ? Profitez de nos services professionnels agréés par la CPAM pour voyager sereinement."
+                canonical={canonical}
+            />
             <ConventionneLayout />
         </PageLayout>
     )

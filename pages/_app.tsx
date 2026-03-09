@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }: { Component: any, pageProps: any }) {
         <meta name="theme-color" content="#ffffff" />
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXEWRHUlGgKQtuKiep7JyxhfV3a65Rxss&libraries=places"></script>
       </Head>
-      <main className={inter.className}>
+      <main className={`${inter.className} w-full`}>
         <Component {...pageProps} />
       </main>
       <ToastContainer />

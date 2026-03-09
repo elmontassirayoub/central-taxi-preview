@@ -1,19 +1,4 @@
-# Block all crawlers for /accounts
 User-agent: *
 Disallow: /admin
 
-# Allow all crawlers
-User-agent: *
-Allow: /
-
-# Allow all crawlers
-User-agent: *
-Allow: /contact
-
-# Allow all crawlers
-User-agent: *
-Allow: /book
-
-# Allow all crawlers
-User-agent: *
-Allow: /services
+Sitemap: https://www.central-taxi67.fr/sitemap.xml

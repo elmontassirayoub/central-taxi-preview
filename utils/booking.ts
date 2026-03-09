@@ -1,4 +1,5 @@
 const joursFeries = [
+    // 2023
     '2023-01-01',
     '2023-04-09',
     '2023-04-10',
@@ -11,7 +12,31 @@ const joursFeries = [
     '2023-11-01',
     '2023-11-11',
     '2023-12-25',
-  ];
+    // 2025 (jours fériés nationaux)
+    '2025-01-01',
+    '2025-04-21',
+    '2025-05-01',
+    '2025-05-08',
+    '2025-05-29',
+    '2025-06-09',
+    '2025-07-14',
+    '2025-08-15',
+    '2025-11-01',
+    '2025-11-11',
+    '2025-12-25',
+    // 2026 (jours fériés nationaux)
+    '2026-01-01',
+    '2026-04-06',
+    '2026-05-01',
+    '2026-05-08',
+    '2026-05-14',
+    '2026-05-25',
+    '2026-07-14',
+    '2026-08-15',
+    '2026-11-01',
+    '2026-11-11',
+    '2026-12-25',
+];
 
 export const getHour = (str: string): number => {
     let res = '';
@@ -34,13 +59,29 @@ export const getMinu = (str: string): number => {
     }
     return 0;
 };
-export const getPrice = (dis:{value: number}, day: string, time: string): string => {
-    if (joursFeries.some((jour) => jour === day))
-        return ((dis.value / 1000) * 2.48).toFixed(2);
-    if (getHour(time) === 18) {
-        if (getMinu(time) >= 55) return ((dis.value / 1000) * 2.48).toFixed(2);
-        else return ((dis.value / 1000) * 1.74).toFixed(2);
-    } else if (getHour(time) >= 19 || getHour(time) < 7)
-        return ((dis.value / 1000) * 2.48).toFixed(2);
-    else return ((dis.value / 1000) * 1.74).toFixed(2);
+export const getPrice = (dis: { value: number }, day: string, time: string): string => {
+    const distanceKm = dis.value / 1000;
+
+    // Determine date characteristics
+    const dateObj = new Date(day);
+    const dayOfWeek = dateObj.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+    const isSunday = dayOfWeek === 0;
+    const isHoliday = joursFeries.some((jour) => jour === day);
+
+    const hour = getHour(time);
+
+    // Night / weekend / holiday tariff condition
+    const isNightOrWeekendOrHoliday =
+        isHoliday ||
+        isSunday ||
+        hour < 7 ||
+        hour >= 19;
+
+    const ratePerKm = isNightOrWeekendOrHoliday ? 2.84 : 2.0;
+
+    const baseFee = 8; // €8 fixed
+    const variablePart = distanceKm * ratePerKm;
+    const total = baseFee + variablePart;
+
+    return total.toFixed(2);
 };

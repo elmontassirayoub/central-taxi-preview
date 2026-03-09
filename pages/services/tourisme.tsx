@@ -12,9 +12,14 @@ export const getServerSideProps = checkAuthentication(async (context: any, admin
 })
 
 const Tourisme = ({ admin }: { admin: boolean }) => {
+    const canonical = "https://www.central-taxi67.fr/services/tourisme"
     return (
         <PageLayout page="/services/tourisme" admin={admin}>
-            <SEO title="Taxi Tourisme Strasbourg et Alsace avec Central Taxi 67" description="Voulez-vous passer un séjour de rêve en Alsace ? Comptez sur notre Service de Taxi Strasbourg pour découvrir les plus beaux sites touristiques de la région." />
+            <SEO 
+                title="Taxi Tourisme Strasbourg et Alsace avec Central Taxi 67" 
+                description="Voulez-vous passer un séjour de rêve en Alsace ? Comptez sur notre Service de Taxi Strasbourg pour découvrir les plus beaux sites touristiques de la région."
+                canonical={canonical}
+            />
             <TourismeLayout />
         </PageLayout>
     )

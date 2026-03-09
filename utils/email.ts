@@ -10,9 +10,53 @@ export default async function sendMail({to, admin, confirmation, status , reserv
         }
     });
 
-    const subject = admin ? "Nouvelle Reservation" : status === "confirmed" ? "Confirmation de réservation Taxi" : status === "cancelled" ? "Annulation de réservation Taxi" : "Votre réservation a été reçue"
+    const subject = admin
+        ? "Nouvelle réservation – Taxis Strasbourg – Central Taxi 67"
+        : status === "confirmed"
+            ? "Votre demande de réservation – Taxis Strasbourg – Central Taxi 67"
+            : status === "cancelled"
+                ? "Votre demande de réservation – Taxis Strasbourg – Central Taxi 67"
+                : "Votre demande de réservation a bien été reçue – Taxis Strasbourg – Central Taxi 67"
 
-    const text = admin ? "Reservation" : status === "pending" ? "Madame, Monsieur, \n\nPar la présente, je me permets de vous informer qu'on a bien reçu la réservation de votre taxi" : status === "confirmed" ? "Cher(e) client(e),\n\nNous vous remercions chaleureusement pour votre réservation de taxi sur notre site internet.\n\nNous sommes ravis de vous confirmer que votre réservation a bien été prise en compte.\n\nVotre taxi sera prêt et à votre disposition à l'heure convenue.\n\nNotre équipe s'assurera de vous offrir un service de qualité et sécurisé pour vous conduire à votre destination.\n\nN'hésitez pas à nous contacter si vous avez besoin de plus d'informations ou si vous souhaitez apporter des modifications à votre réservation.\n\nNous sommes impatients de vous accueillir à bord de l'un de nos taxis.\n\nCordialement\n\nResponsable chargé du service clientèle Central Taxi 67" : "Cher client,Nous avons bien reçu votre demande de réservation de taxi via notre site internet. Malheureusement, nous sommes au regret de vous informer que nous ne pourrons pas honorer votre demande pour le moment. En raison d'une disponibilité limitée ou d'une surcharge de demandes, nous ne sommes pas en mesure de garantir votre réservation. Nous vous prions de nous excuser pour tout désagrément que cela pourrait causer. Nous vous encourageons à explorer d'autres options de transport ou à nous contacter pour voir s'il est possible de vous assister d'une autre manière.\n\nCordialement\n\nResponsable chargé du service clientèle Central Taxi 67"
+    const text = admin
+        ? "Nouvelle réservation reçue. Consultez le détail dans l’espace administrateur."
+        : status === "pending"
+            ? `Bonjour,
+
+Merci pour votre demande auprès de Taxis Strasbourg – Central Taxi 67.
+
+Votre réservation a bien été reçue et est actuellement en cours de vérification.
+Nous vous confirmerons rapidement par SMS ou par email avec tous les détails de votre prise en charge.
+
+Pour toute demande urgente, vous pouvez nous contacter directement au +33 (0)6 47 60 01 71.
+
+À très bientôt,
+Taxis Strasbourg – Central Taxi 67 – Aéroports & Gares`
+            : status === "confirmed"
+                ? `Bonjour,
+
+Nous avons le plaisir de vous confirmer que votre réservation auprès de Taxis Strasbourg – Central Taxi 67 est bien acceptée.
+
+Votre trajet est désormais planifié. Notre chauffeur se présentera au point de rendez-vous convenu à l’heure indiquée. Pour les transferts aéroport, le suivi du vol est effectué en temps réel afin d’adapter la prise en charge en cas de retard.
+
+Pour toute modification ou information complémentaire, vous pouvez nous joindre directement au +33 (0)6 47 60 01 71.
+
+Merci pour votre confiance et à très bientôt à bord.
+
+Taxis Strasbourg – Central Taxi 67 – Aéroports & Gares`
+                : `Bonjour,
+
+Nous vous remercions pour votre demande auprès de Taxis Strasbourg – Central Taxi 67.
+
+Malheureusement, nous ne sommes pas disponibles à l’horaire souhaité et ne pouvons pas confirmer cette réservation.
+Nous restons néanmoins à votre disposition pour toute autre date ou demande de transport.
+
+Si besoin, nous pouvons également vous orienter vers un chauffeur partenaire indépendant selon les disponibilités.
+
+Merci pour votre compréhension.
+
+Taxis Strasbourg – Central Taxi 67 – Aéroports & Gares
++33 (0)6 47 60 01 71`
 
     const html = (confirmation || !admin) ? "" : `<h3>Nouvelle reservation confirmer or annuler <a style='text-decoration: underline; color: blue;' href='${process.env.NEXTAUTH_URL}/admin/${reservation?._id}'>Cliquer Ici</a></h3>`
 

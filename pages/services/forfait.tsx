@@ -12,8 +12,13 @@ export const getServerSideProps = checkAuthentication(async (context: any, admin
 })
 
 export default function Frofait({ admin }: { admin: boolean }) {
+    const canonical = "https://www.central-taxi67.fr/services/forfait"
     return <PageLayout page="/services/forfait" admin={admin}>
-        <SEO title="Forfait – Central Taxi 67" description="Découvrez nos forfaits taxi du moment pour les transferts aéroportuaires, mise à disposition et voyage sur mesure avec nos chauffeurs professionnels à Strasbourg – Alsace." />
+        <SEO 
+            title="Forfait – Central Taxi 67" 
+            description="Découvrez nos forfaits taxi du moment pour les transferts aéroportuaires, mise à disposition et voyage sur mesure avec nos chauffeurs professionnels à Strasbourg – Alsace."
+            canonical={canonical}
+        />
         <ForfaitLayout /> 
     </PageLayout>
 }

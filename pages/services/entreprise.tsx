@@ -12,9 +12,14 @@ export const getServerSideProps = checkAuthentication(async (context: any, admin
 })
 
 const Entreprise = ({ admin }: { admin: boolean }) => {
+    const canonical = "https://www.central-taxi67.fr/services/entreprise"
     return (
         <PageLayout page="/services/entreprise" admin={admin}>
-            <SEO title="Taxi Strasbourg entreprises et professionnels – Central Taxi 67" description="Services de taxi premium pour les professionnels à Strasbourg. Réservez votre course, vos transferts aéroport et gare, déplacements événementiels, transport VIP, et plus. " />
+            <SEO 
+                title="Taxi Strasbourg entreprises et professionnels – Central Taxi 67" 
+                description="Services de taxi premium pour les professionnels à Strasbourg. Réservez votre course, vos transferts aéroport et gare, déplacements événementiels, transport VIP, et plus. "
+                canonical={canonical}
+            />
             <EntrepriseLayout />
         </PageLayout>
     )

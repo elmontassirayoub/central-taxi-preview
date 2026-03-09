@@ -92,7 +92,7 @@ export default function BookLayout() {
                 body: JSON.stringify({ depart: departPlaceId, arrive: arrivePlaceId })
             })
             const result = await response.json()
-            const price = parseFloat(getPrice(result.distance, day, time)) + 6.5
+            const price = parseFloat(getPrice(result.distance, day, time))
             setReservationDetails({ price: price, distance: result.distance, duration: result.duration })
         } catch (e) {
             console.log("Error: ", e)
