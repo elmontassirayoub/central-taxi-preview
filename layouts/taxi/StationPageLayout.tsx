@@ -11,17 +11,17 @@ const StationPageLayout: React.FC = () => {
     const [activeTab, setActiveTab] = useState(0)
 
     const tabs = [
-        { id: 0, label: lang === "fr" ? "Nos Services" : "Our Services" },
-        { id: 1, label: lang === "fr" ? "Gares & Attractions" : "Stations & Attractions" },
-        { id: 2, label: lang === "fr" ? "Tarifs" : "Pricing" },
-        { id: 3, label: lang === "fr" ? "Avantages" : "Benefits" },
+        { id: 0, label: lang === "fr" ? "Avantages" : "Benefits" },
+        { id: 1, label: lang === "fr" ? "Nos Services" : "Our Services" },
+        { id: 2, label: lang === "fr" ? "Gares & Attractions" : "Stations & Attractions" },
+        { id: 3, label: lang === "fr" ? "Tarifs" : "Pricing" },
         { id: 4, label: "FAQ" }
     ]
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">
-            {/* Hero Section */}
-            <section className="relative overflow-hidden bg-gradient-to-r from-green-900 via-emerald-800 to-teal-900 text-white">
+        <div className="min-h-screen bg-gradient-to-br from-red-50 to-rose-100">
+            {/* Hero — rouge */}
+            <section className="relative overflow-hidden bg-gradient-to-r from-red-900 via-red-800 to-rose-900 text-white">
                 <div className="absolute inset-0 bg-black/20"></div>
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
                     <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -30,11 +30,11 @@ const StationPageLayout: React.FC = () => {
                                 <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight">
                                     {pageData.heroTitle}
                                 </h1>
-                                <p className="text-lg sm:text-xl lg:text-2xl text-green-100 font-light">
+                                <p className="text-lg sm:text-xl lg:text-2xl text-red-100 font-light">
                                     {pageData.heroSubtitle}
                                 </p>
                             </div>
-                            <p className="text-base sm:text-lg text-green-50 leading-relaxed">
+                            <p className="text-base sm:text-lg text-rose-100 leading-relaxed">
                                 {pageData.intro}
                             </p>
                             <HeroTaxiCTA />
@@ -50,7 +50,7 @@ const StationPageLayout: React.FC = () => {
                                     <h3 className="text-xl sm:text-2xl font-bold">
                                         {lang === "fr" ? "Service Porte-à-Porte" : "Door-to-Door Service"}
                                     </h3>
-                                    <p className="text-sm sm:text-base text-green-100">
+                                    <p className="text-sm sm:text-base text-red-100">
                                         {lang === "fr" ? "Depuis toutes les gares" : "From all stations"}
                                     </p>
                                 </div>
@@ -71,7 +71,7 @@ const StationPageLayout: React.FC = () => {
                                     onClick={() => setActiveTab(tab.id)}
                                     className={`px-3 sm:px-6 py-2 sm:py-3 rounded-md font-medium text-xs sm:text-sm whitespace-nowrap transition-all duration-200 ${
                                         activeTab === tab.id
-                                            ? 'bg-green-600 text-white shadow-md transform scale-105'
+                                            ? 'bg-red-700 text-white shadow-md transform scale-105'
                                             : 'text-gray-600 hover:text-gray-800 hover:bg-gray-200'
                                     }`}
                                 >
@@ -87,7 +87,7 @@ const StationPageLayout: React.FC = () => {
             <section className="py-8 sm:py-12 lg:py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Services Tab */}
-                    {activeTab === 0 && (
+                    {activeTab === 1 && (
                         <div className="space-y-8 sm:space-y-12">
                             <div className="text-center space-y-3 sm:space-y-4">
                                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
@@ -112,18 +112,18 @@ const StationPageLayout: React.FC = () => {
                     )}
 
                     {/* Stations & Attractions Tab */}
-                    {activeTab === 1 && (
+                    {activeTab === 2 && (
                         <div className="space-y-8 sm:space-y-12">
                             {/* Stations */}
-                            <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-4 sm:p-6 lg:p-8">
+                            <div className="bg-gradient-to-r from-red-50 to-rose-50 rounded-2xl p-4 sm:p-6 lg:p-8">
                                 <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 text-center">
                                     {pageData.sections[1]?.title}
                                 </h3>
                                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
                                     {pageData.sections[1]?.items.map((station, idx) => (
                                         <div key={idx} className="bg-white rounded-lg p-3 sm:p-4 text-center shadow-sm hover:shadow-md transition-shadow">
-                                            <div className="w-6 h-6 sm:w-8 sm:h-8 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                                                <svg className="w-3 h-3 sm:w-4 sm:h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <div className="w-6 h-6 sm:w-8 sm:h-8 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                                <svg className="w-3 h-3 sm:w-4 sm:h-4 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                                                 </svg>
                                             </div>
@@ -134,15 +134,15 @@ const StationPageLayout: React.FC = () => {
                             </div>
 
                             {/* Tourist Attractions */}
-                            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-4 sm:p-6 lg:p-8">
+                            <div className="bg-gradient-to-r from-rose-50 to-red-50 rounded-2xl p-4 sm:p-6 lg:p-8">
                                 <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 text-center">
                                     {pageData.sections[2]?.title}
                                 </h3>
                                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
                                     {pageData.sections[2]?.items.map((attraction, idx) => (
                                         <div key={idx} className="bg-white rounded-lg p-3 sm:p-4 text-center shadow-sm hover:shadow-md transition-shadow">
-                                            <div className="w-6 h-6 sm:w-8 sm:h-8 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                                                <svg className="w-3 h-3 sm:w-4 sm:h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <div className="w-6 h-6 sm:w-8 sm:h-8 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                                <svg className="w-3 h-3 sm:w-4 sm:h-4 text-rose-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                                 </svg>
@@ -156,7 +156,7 @@ const StationPageLayout: React.FC = () => {
                     )}
 
                     {/* Pricing Tab */}
-                    {activeTab === 2 && (
+                    {activeTab === 3 && (
                         <div className="space-y-6 sm:space-y-8">
                             <div className="text-center space-y-3 sm:space-y-4">
                                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
@@ -186,11 +186,11 @@ const StationPageLayout: React.FC = () => {
                                             </div>
                                             <div className="flex justify-between text-xs">
                                                 <span className="text-gray-500">{lang === "fr" ? "Tarif Jour" : "Day Rate"}</span>
-                                                <span className="font-semibold text-green-600">{dayRate}</span>
+                                                <span className="font-semibold text-red-700">{dayRate}</span>
                                             </div>
                                             <div className="flex justify-between text-xs">
                                                 <span className="text-gray-500">{lang === "fr" ? "Tarif Nuit" : "Night Rate"}</span>
-                                                <span className="font-semibold text-blue-600">{nightRate}</span>
+                                                <span className="font-semibold text-rose-700">{nightRate}</span>
                                             </div>
                                         </div>
                                     )
@@ -229,8 +229,8 @@ const StationPageLayout: React.FC = () => {
                                                 <tr key={idx} className="hover:bg-gray-50">
                                                     <td className="px-6 py-4 text-sm font-medium text-gray-900">{route.title}</td>
                                                     <td className="px-6 py-4 text-sm text-gray-500">{duration}</td>
-                                                    <td className="px-6 py-4 text-sm text-green-600 font-semibold">{dayRate}</td>
-                                                    <td className="px-6 py-4 text-sm text-blue-600 font-semibold">{nightRate}</td>
+                                                    <td className="px-6 py-4 text-sm text-red-700 font-semibold">{dayRate}</td>
+                                                    <td className="px-6 py-4 text-sm text-rose-700 font-semibold">{nightRate}</td>
                                                 </tr>
                                             )
                                         })}
@@ -247,7 +247,7 @@ const StationPageLayout: React.FC = () => {
                     )}
 
                     {/* Benefits Tab */}
-                    {activeTab === 3 && (
+                    {activeTab === 0 && (
                         <div className="space-y-8 sm:space-y-12">
                             <div className="text-center space-y-3 sm:space-y-4">
                                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
@@ -262,8 +262,8 @@ const StationPageLayout: React.FC = () => {
                                 {pageData.sections[4]?.items.map((benefit, idx) => (
                                     <div key={idx} className="bg-white rounded-xl shadow-lg p-5 sm:p-7 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                                         <div className="space-y-3 sm:space-y-4">
-                                            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                                                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                                                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                                 </svg>
                                             </div>
@@ -304,12 +304,12 @@ const StationPageLayout: React.FC = () => {
             </section>
 
             {/* CTA Section */}
-            <section className="bg-gradient-to-r from-green-900 to-emerald-900 text-white py-12 sm:py-16">
+            <section className="bg-gradient-to-r from-red-900 to-rose-900 text-white py-12 sm:py-16">
                 <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">
                         {lang === "fr" ? "Montez à bord de notre Taxi Strasbourg Gare" : "Get on board our Strasbourg Station Taxi"}
                     </h2>
-                    <p className="text-lg sm:text-xl text-green-100 mb-6 sm:mb-8">
+                    <p className="text-lg sm:text-xl text-red-100 mb-6 sm:mb-8">
                         {lang === "fr" ? "Si vous aimez le confort sans compromis et la ponctualité suisse, vous êtes au bon endroit. Réservez facilement votre chauffeur via notre formulaire en ligne ou par téléphone et commencez votre aventure strasbourgeoise sur les chapeaux de roues !" : "If you like uncompromising comfort and Swiss punctuality, you're in the right place. Easily book your driver via our online form or by phone and start your Strasbourg adventure on the right foot!"}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">

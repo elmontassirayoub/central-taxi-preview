@@ -28,6 +28,8 @@ const TaxiStrasbourgAeroport = ({ admin }: { admin: boolean }) => {
                 subtitle="Notre compagnie de taxi vous emmène partout, avec style et ponctualité. Que vous partiez ou arriviez à l'aéroport d'Entzheim, vous pouvez vous fier à nos chauffeurs qui connaissent l'Alsace comme leur poche"
                 pricingSubtitle="Central Taxi 67 vous garantit un trajet sécurisé, rapide et confortable à bord de ses véhicules haut de gamme. Voici un aperçu des durées de course les plus courantes :"
                 benefitsSubtitle="Votre chauffeur ne regarde pas sa montre avec impatience. Vous bénéficiez de 30 minutes d'attente gratuites lors de votre prise en charge à l'aéroport."
+                heroCardImageSrc="/images/hero/taxi-aeroport-entzheim-hero.png"
+                heroCardImageAlt="Taxis devant l'aéroport de Strasbourg Entzheim"
             />
         </PageLayout>
     )

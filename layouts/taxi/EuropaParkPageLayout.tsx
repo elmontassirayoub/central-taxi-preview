@@ -9,9 +9,9 @@ const EuropaParkPageLayout: React.FC = () => {
     const [activeTab, setActiveTab] = useState(0)
 
     const tabs = [
-        { id: 0, label: lang === "fr" ? "Nos Services" : "Our Services" },
-        { id: 1, label: lang === "fr" ? "Tarifs" : "Pricing" },
-        { id: 2, label: lang === "fr" ? "Avantages" : "Benefits" },
+        { id: 0, label: lang === "fr" ? "Avantages" : "Benefits" },
+        { id: 1, label: lang === "fr" ? "Nos Services" : "Our Services" },
+        { id: 2, label: lang === "fr" ? "Tarifs" : "Pricing" },
         { id: 3, label: "FAQ" }
     ]
 
@@ -84,7 +84,7 @@ const EuropaParkPageLayout: React.FC = () => {
             <section className="py-8 sm:py-12 lg:py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Services Tab */}
-                    {activeTab === 0 && (
+                    {activeTab === 1 && (
                         <div className="space-y-8 sm:space-y-12">
                             <div className="text-center space-y-3 sm:space-y-4">
                                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
@@ -148,7 +148,7 @@ const EuropaParkPageLayout: React.FC = () => {
                     )}
 
                     {/* Pricing Tab */}
-                    {activeTab === 1 && (
+                    {activeTab === 2 && (
                         <div className="space-y-6 sm:space-y-8">
                             <div className="text-center space-y-3 sm:space-y-4">
                                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
@@ -220,7 +220,7 @@ const EuropaParkPageLayout: React.FC = () => {
                     )}
 
                     {/* Benefits Tab */}
-                    {activeTab === 2 && (
+                    {activeTab === 0 && (
                         <div className="space-y-8 sm:space-y-12">
                             <div className="text-center space-y-3 sm:space-y-4">
                                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">

@@ -24,7 +24,10 @@ const TaxiCircuitAlsace = ({ admin }: { admin: boolean }) => {
                 serviceDescription="Circuits touristiques en taxi en Alsace : Route des Vins, châteaux médiévaux, villages pittoresques. Itinéraires personnalisés avec chauffeur guide local."
                 serviceUrl={canonical}
             />
-            <CircuitPageLayout />
+            <CircuitPageLayout
+                heroCardImageSrc="/images/hero/taxi-circuit-alsace-hero.png"
+                heroCardImageAlt="Taxi à Strasbourg, de nuit, devant la Cathédrale"
+            />
         </PageLayout>
     )
 }

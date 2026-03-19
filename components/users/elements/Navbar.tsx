@@ -336,38 +336,58 @@ export default function Navbar({ page, admin }: { page: string, admin: boolean }
                     }
                 </div>
             </section>
-            <section className="lg:hidden flex h-15 bg-[#33475A] justify-evenly items-center px-2">
-                <p className="text-white uppercase font-medium italic flex-1 text-sm">Taxi Strasbourg</p>
-                <div className="flex items-center gap-5 flex-1">
+            <section className="lg:hidden flex h-15 bg-gradient-to-r from-[#263445] via-[#33475A] to-[#263445] justify-between items-center px-4 shadow-md">
+                <p className="text-white font-semibold tracking-wide flex-1 text-sm">
+                    Central Taxi 67
+                </p>
+                <div className="flex items-center gap-3">
                     <Image draggable={false} alt="UK" onClick={() => changeLanguage("en")} className={`cursor-pointer border-b-[1px]  pb-1 box-border box-content w-6 h-6 ${lang === "en" ? "" : "border-transparent"}`} src={UK} />
                     <Image draggable={false} alt="France" onClick={() => changeLanguage("fr")} className={`cursor-pointer border-b-[1px]  pb-1 box-border box-content w-6 h-6 ${lang === "fr" ? "" : "border-transparent"}`} src={France} />
                 </div>
-                <div className="">
-                    {
-                        toggleMenu ? <CloseIcon onClick={() => setToggleMenu(!toggleMenu)} sx={{ fontSize: 35 }} className={`rounded-[50%] bg-[#fff] text-[#000] p-2 my-2 cursor-pointer`} /> : <MenuIcon onClick={() => setToggleMenu(!toggleMenu)} sx={{ fontSize: 35 }} className={`rounded-[50%] bg-[#fff] text-[#000] p-2 my-2 cursor-pointer`} />
-                    }
+                <div className="ml-2">
+                    {toggleMenu ? (
+                        <CloseIcon
+                            onClick={() => setToggleMenu(!toggleMenu)}
+                            sx={{ fontSize: 30 }}
+                            className="rounded-full bg-white text-[#33475A] p-1.5 cursor-pointer shadow"
+                        />
+                    ) : (
+                        <MenuIcon
+                            onClick={() => setToggleMenu(!toggleMenu)}
+                            sx={{ fontSize: 30 }}
+                            className="rounded-full bg-white text-[#33475A] p-1.5 cursor-pointer shadow"
+                        />
+                    )}
                 </div>
             </section>
         </section>
-        <div className={`${!toggleMenu ? "hidden" : "flex"} absolute left-0 font-semibold mobile-navtab pb-10 top-[100%] z-[5] bg-[#33475A] w-full flex-col`}>
-            <div className="h-full flex flex-col justify-center items-center w-full border-b-[1px] pb-4 border-[#000] text-[18px]">
+        <div className={`${!toggleMenu ? "hidden" : "flex"} absolute left-0 font-semibold mobile-navtab pb-6 top-[100%] z-[5] w-full flex-col bg-[#1f2933]/95 backdrop-blur-sm`}>
+            <div className="h-full flex flex-col justify-center items-stretch w-full px-4 pt-4 pb-2 text-[16px] space-y-1">
                 {
                     compData.navbar.tabList?.map((item: TabListType, key: number) => <NavBarMobileItem key={key} item={item} page={page} admin={admin} />)
                 }
             </div>
-            <div className="flex flex-col justify-center items-center gap-5 py-4">
+            <div className="flex flex-col justify-center items-center gap-3 py-3 border-t border-white/10 px-4">
                 {
                     status === "loading" ? <></> : !session?.user?.email ?
-                        compData.navbar.rightSideTabList?.map((item: RightSideTabListType, idx: number) => <p onClick={() => { modalClose(true); setOption(item) }} key={idx} className="border-[1px] border-secondary-100 rounded-xl w-[90%] h-10 flex items-center px-2 justify-center hover:underline cursor-pointer">{item?.text}</p>) : <>
-                            <p className="">{session?.user?.email}</p>
+                        compData.navbar.rightSideTabList?.map((item: RightSideTabListType, idx: number) => (
+                            <p
+                                key={idx}
+                                onClick={() => { modalClose(true); setOption(item) }}
+                                className="w-full max-w-xs rounded-full bg-yellow-400 text-[#33475A] h-10 flex items-center justify-center text-sm font-semibold shadow cursor-pointer hover:bg-yellow-300 transition-colors"
+                            >
+                                {item?.text}
+                            </p>
+                        )) : <>
+                            <p className="text-sm text-white/90 mb-1">{session?.user?.email}</p>
                             {
-                                admin ? <Link prefetch={false} href="/admin" className="border-[1px] border-secondary-100 rounded-xl w-[90%] h-10 flex items-center justify-center hover:underline cursor-pointer">Dashboard</Link> : <>
-                                    <p onClick={() => setUserEditModal(true)} className="border-[1px] border-secondary-100 rounded-xl w-[90%] h-10 flex items-center justify-center hover:underline cursor-pointer underline" >{compData.navbar.edit}</p>
-                                    <p onClick={() => setUserEditPassword(true)} className="underline border-[1px] border-secondary-100 rounded-xl w-[90%] h-10 flex items-center justify-center hover:underline cursor-pointer" >{compData.navbar.editPassword}</p>
+                                admin ? <Link prefetch={false} href="/admin" className="w-full max-w-xs rounded-full bg-yellow-400 text-[#33475A] h-10 flex items-center justify-center text-sm font-semibold shadow cursor-pointer hover:bg-yellow-300 transition-colors">Dashboard</Link> : <>
+                                    <p onClick={() => setUserEditModal(true)} className="w-full max-w-xs rounded-full border border-yellow-400 text-yellow-400 h-10 flex items-center justify-center text-sm font-semibold cursor-pointer hover:bg-yellow-400 hover:text-[#33475A] transition-colors" >{compData.navbar.edit}</p>
+                                    <p onClick={() => setUserEditPassword(true)} className="w-full max-w-xs rounded-full border border-yellow-400 text-yellow-400 h-10 flex items-center justify-center text-sm font-semibold cursor-pointer hover:bg-yellow-400 hover:text-[#33475A] transition-colors" >{compData.navbar.editPassword}</p>
                                 </>
                             }
 
-                            <p className="underline border-[1px] border-secondary-100 rounded-xl w-[90%] h-10 flex items-center justify-center hover:underline cursor-pointer" onClick={() => signOut()}>{compData.navbar.logout}</p>
+                            <p className="w-full max-w-xs rounded-full border border-white/40 text-white h-10 flex items-center justify-center text-sm font-semibold cursor-pointer hover:bg-white/10 transition-colors" onClick={() => signOut()}>{compData.navbar.logout}</p>
                         </>
                 }
             </div>

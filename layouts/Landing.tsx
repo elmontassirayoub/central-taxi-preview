@@ -56,6 +56,31 @@ const Landing = ({ admin = false }: { admin: boolean }) => {
             </div>
           </div>
         </div>
+
+        {/* Featured photo (home) */}
+        <div className="px-5 lg:px-20 -mt-10">
+          <div className="max-w-6xl mx-auto">
+            <div className="relative overflow-hidden rounded-2xl border border-black/10 bg-white shadow-lg">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent z-[1]" />
+              <Image
+                src="/images/home/acceuil-taxis-cathedrale.png"
+                alt="Taxis devant la Cathédrale de Strasbourg"
+                width={1600}
+                height={900}
+                className="w-full h-[220px] sm:h-[320px] lg:h-[380px] object-cover"
+                priority={true}
+              />
+              <div className="absolute inset-x-0 bottom-0 z-[2] p-4 sm:p-6">
+                <p className="text-white font-semibold text-base sm:text-xl drop-shadow">
+                  Taxi Strasbourg – Central Taxi 67
+                </p>
+                <p className="text-white/90 text-xs sm:text-sm drop-shadow">
+                  Chauffeurs professionnels • Véhicules confortables • Disponible 24/7
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
         {
           !admin && <div className="px-[10%]">
             <p className="font-bold title">{pageData.home.headerBeforeCards}</p>

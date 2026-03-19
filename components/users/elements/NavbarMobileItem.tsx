@@ -16,28 +16,49 @@ const NavBarMobileItem: React.FC<NavBarMobileItemType> = ({ page, item, admin })
 
     if (item?.url === "/book" && admin) return
     return (
-        <div className="w-full py-4 px-2">
-            <Link prefetch={false} className={`uppercase italic py-1 w-full text-sm underline ${page === item.url ? "bg-primary-100 text-white" : "text-secondary-100"}`} href={item?.url} >
-                {item?.name}
-            </Link>
-            {
-                item?.items && (
-                    !expand ? <ExpandMoreIcon onClick={() => setExpand(prev => !prev)} className="cursor-pointer ml-4" /> : <ExpandLessIcon onClick={() => setExpand(prev => !prev)} className="cursor-pointer ml-4" />
-                )
-            }
-            {
-                expand && (
-                    <ul className="p-2 mt-2 left-0 bg-secondary-100 text-white rounded-[8px]">
-                        {
-                            item?.items?.map((item, idx) => <li key={idx} className="py-2">
-                                <Link prefetch={false} className={`italic py-1 w-full text-sm underline capitalize ${page === item.url ? "text-white" : "text-black"}`} href={item?.url} >
-                                    {item?.name}
-                                </Link>
-                            </li>)
-                        }
-                    </ul>
-                )
-            }
+        <div className="w-full">
+            <button
+                type="button"
+                onClick={() => item?.items && setExpand(prev => !prev)}
+                className={`flex w-full items-center justify-between rounded-xl px-4 py-3 mb-2 transition-colors ${
+                    page === item.url
+                        ? "bg-white text-[#33475A] shadow-md"
+                        : "bg-[#2b3b4a] text-white hover:bg-[#3d5268]"
+                }`}
+            >
+                <Link
+                    prefetch={false}
+                    href={item?.url}
+                    className="flex-1 text-left text-sm font-semibold tracking-wide"
+                >
+                    {item?.name}
+                </Link>
+                {item?.items && (
+                    !expand
+                        ? <ExpandMoreIcon className="cursor-pointer text-white ml-2" />
+                        : <ExpandLessIcon className="cursor-pointer text-white ml-2" />
+                )}
+            </button>
+
+            {expand && item?.items && (
+                <ul className="mb-3 ml-4 space-y-1 rounded-xl bg-[#243240]/90 px-3 py-2">
+                    {item.items.map((child, idx) => (
+                        <li key={idx}>
+                            <Link
+                                prefetch={false}
+                                href={child.url}
+                                className={`block rounded-lg px-2 py-1.5 text-xs font-medium capitalize transition-colors ${
+                                    page === child.url
+                                        ? "bg-white text-[#33475A]"
+                                        : "text-gray-100 hover:bg-white/10"
+                                }`}
+                            >
+                                {child.name}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     )
 }

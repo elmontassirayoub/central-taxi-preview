@@ -9,18 +9,18 @@ const MedicalPageLayout: React.FC = () => {
     const [activeTab, setActiveTab] = useState(0)
 
     const tabs = [
-        { id: 0, label: lang === "fr" ? "Nos Services" : "Our Services" },
-        { id: 1, label: lang === "fr" ? "Tarifs" : "Pricing" },
-        { id: 2, label: lang === "fr" ? "Avantages" : "Benefits" },
+        { id: 0, label: lang === "fr" ? "Avantages" : "Benefits" },
+        { id: 1, label: lang === "fr" ? "Nos Services" : "Our Services" },
+        { id: 2, label: lang === "fr" ? "Tarifs" : "Pricing" },
         { id: 3, label: "FAQ" }
     ]
 
 
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-green-100">
-            {/* Hero Section */}
-            <section className="relative overflow-hidden bg-gradient-to-r from-emerald-900 via-emerald-800 to-emerald-900 text-white">
+        <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">
+            {/* Hero — vert (taxi conventionné) */}
+            <section className="relative overflow-hidden bg-gradient-to-r from-green-800 via-green-700 to-emerald-800 text-white">
                 <div className="absolute inset-0 bg-black/20"></div>
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
                     <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -30,7 +30,7 @@ const MedicalPageLayout: React.FC = () => {
                                     Taxi médical à Strasbourg et dans le Grand Est
                                 </h1>
                             </div>
-                            <p className="text-base sm:text-lg text-emerald-50 leading-relaxed">
+                            <p className="text-base sm:text-lg text-green-50 leading-relaxed">
                                 Besoin d'un taxi médical à Strasbourg pour une consultation, une hospitalisation ou rendez-vous réguliers ? Faites confiance à Central Taxi 67 ! Notre équipe de chauffeurs de taxi conventionné, toujours ponctuels et sérieux, sillonne le Grand Est pour vous conduire en toute sécurité vers votre établissement de santé. Vous venez de Mulhouse, Colmar, Sélestat, Sarreguemines, Sarrebourg ou Sarre-Union ? Nos taxis médicaux Strasbourg vous assurent un trajet confortable, fiable… et sans stress.
                             </p>
                             <HeroTaxiCTA />
@@ -46,7 +46,7 @@ const MedicalPageLayout: React.FC = () => {
                                     <h3 className="text-xl sm:text-2xl font-bold">
                                         {lang === "fr" ? "Service Conventionné" : "Conventioned Service"}
                                     </h3>
-                                    <p className="text-sm sm:text-base text-rose-100">
+                                    <p className="text-sm sm:text-base text-green-100">
                                         {lang === "fr" ? "Pris en charge par la CPAM" : "Covered by CPAM"}
                                     </p>
                                 </div>
@@ -67,7 +67,7 @@ const MedicalPageLayout: React.FC = () => {
                                     onClick={() => setActiveTab(tab.id)}
                                     className={`px-3 sm:px-6 py-2 sm:py-3 rounded-md font-medium text-xs sm:text-sm whitespace-nowrap transition-all duration-200 ${
                                         activeTab === tab.id
-                                            ? 'bg-red-600 text-white shadow-md transform scale-105'
+                                            ? 'bg-green-700 text-white shadow-md transform scale-105'
                                             : 'text-gray-600 hover:text-gray-800 hover:bg-gray-200'
                                     }`}
                                 >
@@ -83,7 +83,7 @@ const MedicalPageLayout: React.FC = () => {
             <section className="py-8 sm:py-12 lg:py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Services Tab */}
-                    {activeTab === 0 && (
+                    {activeTab === 1 && (
                         <div className="space-y-8 sm:space-y-12">
                             <div className="text-center space-y-3 sm:space-y-4">
                                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
@@ -98,7 +98,7 @@ const MedicalPageLayout: React.FC = () => {
                             </div>
 
                             {/* Hospitals */}
-                            <div className="bg-gradient-to-r from-emerald-50 to-green-50 rounded-2xl p-4 sm:p-6 lg:p-8">
+                            <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-4 sm:p-6 lg:p-8">
                                 <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 text-center">
                                     Liste non exhaustive des hôpitaux desservis par nos taxis strasbourgeois
                                 </h3>
@@ -113,8 +113,8 @@ const MedicalPageLayout: React.FC = () => {
                                         "Hôpital de Jour Abrapa Germaine Bord"
                                     ].map((hospital, idx) => (
                                         <div key={idx} className="bg-white rounded-lg p-4 sm:p-5 text-center shadow-sm hover:shadow-md transition-shadow">
-                                            <div className="w-6 h-6 sm:w-8 sm:h-8 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                                                <svg className="w-3 h-3 sm:w-4 sm:h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <div className="w-6 h-6 sm:w-8 sm:h-8 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                                <svg className="w-3 h-3 sm:w-4 sm:h-4 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                                                 </svg>
                                             </div>
@@ -263,7 +263,7 @@ const MedicalPageLayout: React.FC = () => {
                     )}
 
                     {/* Pricing Tab */}
-                    {activeTab === 1 && (
+                    {activeTab === 2 && (
                         <div className="space-y-6 sm:space-y-8">
                             <div className="text-center space-y-3 sm:space-y-4">
                                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
@@ -297,7 +297,7 @@ const MedicalPageLayout: React.FC = () => {
                                         </div>
                                         <div className="flex justify-between text-xs">
                                             <span className="text-gray-500">Tarif nuit</span>
-                                            <span className="font-semibold text-emerald-800">{row.nuit} €</span>
+                                            <span className="font-semibold text-emerald-900">{row.nuit} €</span>
                                         </div>
                                     </div>
                                 ))}
@@ -339,7 +339,7 @@ const MedicalPageLayout: React.FC = () => {
                                                 <td className="px-6 py-4 text-sm text-gray-500">{row.distance}</td>
                                                 <td className="px-6 py-4 text-sm text-gray-500">{row.duree}</td>
                                                 <td className="px-6 py-4 text-sm text-green-600 font-semibold">{row.jour}</td>
-                                                <td className="px-6 py-4 text-sm text-emerald-800 font-semibold">{row.nuit}</td>
+                                                <td className="px-6 py-4 text-sm text-emerald-900 font-semibold">{row.nuit}</td>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -349,7 +349,7 @@ const MedicalPageLayout: React.FC = () => {
                     )}
 
                     {/* Benefits Tab */}
-                    {activeTab === 2 && (
+                    {activeTab === 0 && (
                         <div className="space-y-8 sm:space-y-12">
                             <div className="text-center space-y-3 sm:space-y-4">
                                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
@@ -406,12 +406,12 @@ const MedicalPageLayout: React.FC = () => {
             </section>
 
             {/* CTA Section */}
-            <section className="bg-gradient-to-r from-emerald-900 to-green-900 text-white py-12 sm:py-16">
+            <section className="bg-gradient-to-r from-green-800 to-emerald-900 text-white py-12 sm:py-16">
                 <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">
                         {lang === "fr" ? "Besoin d'un taxi médical ?" : "Need a medical taxi?"}
                     </h2>
-                    <p className="text-lg sm:text-xl text-emerald-100 mb-6 sm:mb-8">
+                    <p className="text-lg sm:text-xl text-green-100 mb-6 sm:mb-8">
                         {lang === "fr" ? "Réservez facilement votre transport médical conventionné" : "Easily book your conventioned medical transport"}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
