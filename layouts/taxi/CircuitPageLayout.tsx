@@ -13,8 +13,8 @@ const CircuitPageLayout: React.FC<{ heroCardImageSrc?: string; heroCardImageAlt?
     const [activeTab, setActiveTab] = useState(0)
 
     const tabs = [
-        { id: 0, label: lang === "fr" ? "Avantages" : "Benefits" },
-        { id: 1, label: lang === "fr" ? "Nos Circuits" : "Our Tours" },
+        { id: 0, label: lang === "fr" ? "Nos Circuits" : "Our Tours" },
+        { id: 1, label: lang === "fr" ? "Avantages" : "Benefits" },
         { id: 2, label: lang === "fr" ? "Tarifs" : "Pricing" },
         { id: 3, label: "FAQ" }
     ]
@@ -45,31 +45,32 @@ const CircuitPageLayout: React.FC<{ heroCardImageSrc?: string; heroCardImageAlt?
                         <div className="relative order-1 lg:order-2">
                             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-white/20">
                                 {heroCardImageSrc ? (
-                                    <div className="relative w-full overflow-hidden rounded-2xl border border-white/15 bg-white/5">
-                                        <Image
-                                            src={heroCardImageSrc}
-                                            alt={heroCardImageAlt || (lang === "fr" ? "Taxi circuit touristique Alsace" : "Alsace sightseeing taxi")}
-                                            width={900}
-                                            height={600}
-                                            className="w-full h-[220px] sm:h-[260px] object-cover"
-                                            priority={true}
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/10" />
-                                        <div className="absolute inset-0 flex flex-col items-center justify-end text-center px-4 pb-4 sm:pb-5">
-                                            <div className="w-11 h-11 sm:w-14 sm:h-14 bg-white/15 backdrop-blur-sm rounded-full flex items-center justify-center mb-2">
+                                    <>
+                                        <div className="relative w-full overflow-hidden rounded-2xl border border-white/15 bg-white/5">
+                                            <Image
+                                                src={heroCardImageSrc}
+                                                alt={heroCardImageAlt || (lang === "fr" ? "Taxi circuit touristique Alsace" : "Alsace sightseeing taxi")}
+                                                width={900}
+                                                height={600}
+                                                className="w-full h-[220px] sm:h-[260px] object-cover"
+                                                priority={true}
+                                            />
+                                        </div>
+                                        <div className="mt-4 sm:mt-5 text-center space-y-2 sm:space-y-3">
+                                            <div className="w-11 h-11 sm:w-14 sm:h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto">
                                                 <svg className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                                 </svg>
                                             </div>
-                                            <h3 className="text-lg sm:text-2xl font-bold text-white drop-shadow">
+                                            <h3 className="text-lg sm:text-xl font-bold text-white">
                                                 {lang === "fr" ? "Circuits Sur-Mesure" : "Custom Tours"}
                                             </h3>
-                                            <p className="text-xs sm:text-base text-white/90 drop-shadow">
+                                            <p className="text-sm sm:text-base text-violet-100">
                                                 {lang === "fr" ? "Découvrez l'Alsace à votre rythme" : "Discover Alsace at your pace"}
                                             </p>
                                         </div>
-                                    </div>
+                                    </>
                                 ) : (
                                     <div className="text-center space-y-3 sm:space-y-4">
                                         <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto">
@@ -119,7 +120,7 @@ const CircuitPageLayout: React.FC<{ heroCardImageSrc?: string; heroCardImageAlt?
             <section className="py-8 sm:py-12 lg:py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Circuits Tab */}
-                    {activeTab === 1 && (
+                    {activeTab === 0 && (
                         <div className="space-y-8 sm:space-y-12">
                             <div className="text-center space-y-3 sm:space-y-4">
                                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
@@ -281,7 +282,7 @@ const CircuitPageLayout: React.FC<{ heroCardImageSrc?: string; heroCardImageAlt?
                     )}
 
                     {/* Benefits Tab */}
-                    {activeTab === 0 && (
+                    {activeTab === 1 && (
                         <div className="space-y-8 sm:space-y-12">
                             <div className="text-center space-y-3 sm:space-y-4">
                                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">

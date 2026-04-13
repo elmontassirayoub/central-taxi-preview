@@ -2,15 +2,22 @@ import Book from "@/components/common/Buttons/Book"
 import Call from "@/components/common/Buttons/Call"
 import HeroTaxiCTA from "@/components/common/Buttons/HeroTaxiCTA"
 import { useAppContext } from "@/context/appContext"
+import Image from "next/image"
+import Link from "next/link"
 import { useState } from "react"
 
-const MedicalPageLayout: React.FC = () => {
+type MedicalPageLayoutProps = {
+    heroCardImageSrc?: string
+    heroCardImageAlt?: string
+}
+
+const MedicalPageLayout: React.FC<MedicalPageLayoutProps> = ({ heroCardImageSrc, heroCardImageAlt }) => {
     const { lang } = useAppContext()
     const [activeTab, setActiveTab] = useState(0)
 
     const tabs = [
-        { id: 0, label: lang === "fr" ? "Avantages" : "Benefits" },
-        { id: 1, label: lang === "fr" ? "Nos Services" : "Our Services" },
+        { id: 0, label: lang === "fr" ? "Nos Services" : "Our Services" },
+        { id: 1, label: lang === "fr" ? "Avantages" : "Benefits" },
         { id: 2, label: lang === "fr" ? "Tarifs" : "Pricing" },
         { id: 3, label: "FAQ" }
     ]
@@ -37,19 +44,52 @@ const MedicalPageLayout: React.FC = () => {
                         </div>
                         <div className="relative order-1 lg:order-2">
                             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-white/20">
-                                <div className="text-center space-y-3 sm:space-y-4">
-                                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto">
-                                        <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                        </svg>
+                                {heroCardImageSrc ? (
+                                    <>
+                                        <div className="relative w-full overflow-hidden rounded-2xl border border-white/15 bg-white/5">
+                                            <Image
+                                                src={heroCardImageSrc}
+                                                alt={
+                                                    heroCardImageAlt ||
+                                                    (lang === "fr"
+                                                        ? "Taxi conventionné à Strasbourg — transport médical"
+                                                        : "Conventioned taxi in Strasbourg — medical transport")
+                                                }
+                                                width={900}
+                                                height={600}
+                                                className="w-full h-[220px] sm:h-[260px] object-cover"
+                                                priority={true}
+                                            />
+                                        </div>
+                                        <div className="mt-4 sm:mt-5 text-center space-y-2 sm:space-y-3">
+                                            <div className="w-11 h-11 sm:w-14 sm:h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto">
+                                                <svg className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                                </svg>
+                                            </div>
+                                            <h3 className="text-lg sm:text-xl font-bold text-white">
+                                                {lang === "fr" ? "Service Conventionné" : "Conventioned Service"}
+                                            </h3>
+                                            <p className="text-sm sm:text-base text-green-100">
+                                                {lang === "fr" ? "Pris en charge par la CPAM" : "Covered by CPAM"}
+                                            </p>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div className="text-center space-y-3 sm:space-y-4">
+                                        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto">
+                                            <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                            </svg>
+                                        </div>
+                                        <h3 className="text-xl sm:text-2xl font-bold">
+                                            {lang === "fr" ? "Service Conventionné" : "Conventioned Service"}
+                                        </h3>
+                                        <p className="text-sm sm:text-base text-green-100">
+                                            {lang === "fr" ? "Pris en charge par la CPAM" : "Covered by CPAM"}
+                                        </p>
                                     </div>
-                                    <h3 className="text-xl sm:text-2xl font-bold">
-                                        {lang === "fr" ? "Service Conventionné" : "Conventioned Service"}
-                                    </h3>
-                                    <p className="text-sm sm:text-base text-green-100">
-                                        {lang === "fr" ? "Pris en charge par la CPAM" : "Covered by CPAM"}
-                                    </p>
-                                </div>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -83,7 +123,7 @@ const MedicalPageLayout: React.FC = () => {
             <section className="py-8 sm:py-12 lg:py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Services Tab */}
-                    {activeTab === 1 && (
+                    {activeTab === 0 && (
                         <div className="space-y-8 sm:space-y-12">
                             <div className="text-center space-y-3 sm:space-y-4">
                                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
@@ -349,7 +389,7 @@ const MedicalPageLayout: React.FC = () => {
                     )}
 
                     {/* Benefits Tab */}
-                    {activeTab === 0 && (
+                    {activeTab === 1 && (
                         <div className="space-y-8 sm:space-y-12">
                             <div className="text-center space-y-3 sm:space-y-4">
                                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
@@ -411,8 +451,34 @@ const MedicalPageLayout: React.FC = () => {
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">
                         {lang === "fr" ? "Besoin d'un taxi médical ?" : "Need a medical taxi?"}
                     </h2>
-                    <p className="text-lg sm:text-xl text-green-100 mb-6 sm:mb-8">
-                        {lang === "fr" ? "Réservez facilement votre transport médical conventionné" : "Easily book your conventioned medical transport"}
+                    <p className="text-lg sm:text-xl text-green-100 mb-6 sm:mb-8 leading-relaxed max-w-3xl mx-auto">
+                        {lang === "fr" ? (
+                            <>
+                                Nos <strong className="font-semibold text-white">véhicules médicaux</strong> sont disponibles 7j/7 et
+                                assurons toutes distances : du court trajet dans Strasbourg jusqu&apos;au{" "}
+                                <strong className="font-semibold text-white">transfert longue distance</strong> vers la capitale
+                                alsacienne. Pour <strong className="font-semibold text-white">réserver une course médicale</strong>,
+                                rien de plus simple. Un appel, quelques clics sur notre{" "}
+                                <Link href="/book" className="font-medium text-white underline underline-offset-2 hover:text-green-50">
+                                    formulaire de réservation taxi
+                                </Link>
+                                , et tout est organisé. Derrière le volant, ce n&apos;est pas seulement un chauffeur que vous trouvez,
+                                mais un partenaire fiable et humain pour les familles et accompagnants.
+                            </>
+                        ) : (
+                            <>
+                                Our <strong className="font-semibold text-white">medical vehicles</strong> are available 7 days a week
+                                and cover all distances: from short trips in Strasbourg to{" "}
+                                <strong className="font-semibold text-white">long-distance transfers</strong> to the Alsatian capital.
+                                To <strong className="font-semibold text-white">book a medical ride</strong>, nothing could be simpler.
+                                A call, a few clicks on our{" "}
+                                <Link href="/book" className="font-medium text-white underline underline-offset-2 hover:text-green-50">
+                                    taxi booking form
+                                </Link>
+                                , and everything is arranged. Behind the wheel, you find not only a driver, but a reliable, human partner
+                                for families and companions.
+                            </>
+                        )}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                         <Book bounce={false} btn={lang === "fr" ? "Réserver en ligne" : "Book Online"} primary={true} />

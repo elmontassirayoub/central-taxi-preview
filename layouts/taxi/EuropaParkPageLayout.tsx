@@ -2,15 +2,21 @@ import Book from "@/components/common/Buttons/Book"
 import Call from "@/components/common/Buttons/Call"
 import HeroTaxiCTA from "@/components/common/Buttons/HeroTaxiCTA"
 import { useAppContext } from "@/context/appContext"
+import Image from "next/image"
 import { useState } from "react"
 
-const EuropaParkPageLayout: React.FC = () => {
+type EuropaParkPageLayoutProps = {
+    heroCardImageSrc?: string
+    heroCardImageAlt?: string
+}
+
+const EuropaParkPageLayout: React.FC<EuropaParkPageLayoutProps> = ({ heroCardImageSrc, heroCardImageAlt }) => {
     const { lang } = useAppContext()
     const [activeTab, setActiveTab] = useState(0)
 
     const tabs = [
-        { id: 0, label: lang === "fr" ? "Avantages" : "Benefits" },
-        { id: 1, label: lang === "fr" ? "Nos Services" : "Our Services" },
+        { id: 0, label: lang === "fr" ? "Nos Services" : "Our Services" },
+        { id: 1, label: lang === "fr" ? "Avantages" : "Benefits" },
         { id: 2, label: lang === "fr" ? "Tarifs" : "Pricing" },
         { id: 3, label: "FAQ" }
     ]
@@ -38,19 +44,52 @@ const EuropaParkPageLayout: React.FC = () => {
                         </div>
                         <div className="relative order-1 lg:order-2">
                             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-white/20">
-                                <div className="text-center space-y-3 sm:space-y-4">
-                                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto">
-                                        <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                        </svg>
+                                {heroCardImageSrc ? (
+                                    <>
+                                        <div className="relative w-full overflow-hidden rounded-2xl border border-white/15 bg-white/5">
+                                            <Image
+                                                src={heroCardImageSrc}
+                                                alt={
+                                                    heroCardImageAlt ||
+                                                    (lang === "fr"
+                                                        ? "Taxi Strasbourg Europa-Park — transfert direct"
+                                                        : "Strasbourg Europa-Park taxi — direct transfer")
+                                                }
+                                                width={900}
+                                                height={600}
+                                                className="w-full h-[220px] sm:h-[260px] object-cover"
+                                                priority={true}
+                                            />
+                                        </div>
+                                        <div className="mt-4 sm:mt-5 text-center space-y-2 sm:space-y-3">
+                                            <div className="w-11 h-11 sm:w-14 sm:h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto">
+                                                <svg className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                            </div>
+                                            <h3 className="text-lg sm:text-xl font-bold text-white">
+                                                {lang === "fr" ? "Service 24/7" : "24/7 Service"}
+                                            </h3>
+                                            <p className="text-sm sm:text-base text-orange-100">
+                                                {lang === "fr" ? "Disponible tous les jours" : "Available every day"}
+                                            </p>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div className="text-center space-y-3 sm:space-y-4">
+                                        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto">
+                                            <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                        </div>
+                                        <h3 className="text-xl sm:text-2xl font-bold">
+                                            {lang === "fr" ? "Service 24/7" : "24/7 Service"}
+                                        </h3>
+                                        <p className="text-sm sm:text-base text-orange-100">
+                                            {lang === "fr" ? "Disponible tous les jours" : "Available every day"}
+                                        </p>
                                     </div>
-                                    <h3 className="text-xl sm:text-2xl font-bold">
-                                        {lang === "fr" ? "Service 24/7" : "24/7 Service"}
-                                    </h3>
-                                    <p className="text-sm sm:text-base text-orange-100">
-                                        {lang === "fr" ? "Disponible tous les jours" : "Available every day"}
-                                    </p>
-                                </div>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -84,7 +123,7 @@ const EuropaParkPageLayout: React.FC = () => {
             <section className="py-8 sm:py-12 lg:py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Services Tab */}
-                    {activeTab === 1 && (
+                    {activeTab === 0 && (
                         <div className="space-y-8 sm:space-y-12">
                             <div className="text-center space-y-3 sm:space-y-4">
                                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
@@ -220,7 +259,7 @@ const EuropaParkPageLayout: React.FC = () => {
                     )}
 
                     {/* Benefits Tab */}
-                    {activeTab === 0 && (
+                    {activeTab === 1 && (
                         <div className="space-y-8 sm:space-y-12">
                             <div className="text-center space-y-3 sm:space-y-4">
                                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">

@@ -24,7 +24,10 @@ const TaxiMedicalStrasbourg = ({ admin }: { admin: boolean }) => {
                 serviceDescription="Service de taxi médical conventionné à Strasbourg et dans le Grand Est. Transport médicalisé agréé CPAM pour rendez-vous médicaux et hospitalisations."
                 serviceUrl={canonical}
             />
-            <MedicalPageLayout />
+            <MedicalPageLayout
+                heroCardImageSrc="/images/hero/taxi-medical-strasbourg-hero.png"
+                heroCardImageAlt="Taxi conventionné à Strasbourg devant un hôpital avec la cathédrale Notre-Dame en arrière-plan au coucher du soleil — transport médical Central Taxi 67."
+            />
         </PageLayout>
     )
 }
