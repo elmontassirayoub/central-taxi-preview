@@ -24,7 +24,10 @@ const TaxiStrasbourgEuropaPark = ({ admin }: { admin: boolean }) => {
                 serviceDescription="Transfert taxi direct vers Europa Park depuis Strasbourg. Véhicules adaptés aux familles et groupes. Service premium avec Wi-Fi et sièges auto."
                 serviceUrl={canonical}
             />
-            <EuropaParkPageLayout />
+            <EuropaParkPageLayout
+                heroCardImageSrc="/images/hero/taxi-strasbourg-europapark-hero.png"
+                heroCardImageAlt="Entrée Europa-Park à Rust (Allemagne) : portique Eingang, signalétique parking réservé aux hôtes — transfert taxi depuis Strasbourg avec Central Taxi 67."
+            />
         </PageLayout>
     )
 }

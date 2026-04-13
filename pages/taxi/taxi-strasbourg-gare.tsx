@@ -24,7 +24,10 @@ const TaxiStrasbourgGare = ({ admin }: { admin: boolean }) => {
                 serviceDescription="Service de taxi à la gare de Strasbourg. Transferts porte-à-porte, aide aux bagages, chauffeurs ponctuels. Service 24/7."
                 serviceUrl={canonical}
             />
-            <StationPageLayout />
+            <StationPageLayout
+                heroCardImageSrc="/images/hero/taxi-strasbourg-gare-hero.png"
+                heroCardImageAlt="Vue nocturne de la Gare de Strasbourg : verrière en verre, façade historique illuminée et entrée principale SNCF — taxi à la gare et transfert avec Central Taxi 67."
+            />
         </PageLayout>
     )
 }

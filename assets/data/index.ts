@@ -256,12 +256,12 @@ const Data: DataType = {
                 {
                     name: "taxi", url: "/taxi/taxi-strasbourg",
                     items: [
+                        { name: "⁠Taxi médical Strasbourg", url: "/taxi/taxi-medical-strasbourg" },
                         { name: "Taxi Strasbourg", url: "/taxi/taxi-strasbourg" },
                         { name: "⁠Taxi Strasbourg Aéroport Entzheim", url: "/taxi/taxi-strasbourg-aeroport-Entzheim" },
                         { name: "⁠Taxi Strasbourg Gare", url: "/taxi/taxi-strasbourg-gare" },
                         { name: "⁠Taxi Strasbourg Europapark", url: "/taxi/taxi-strasbourg-europapark" },
                         { name: "⁠Taxi Strasbourg Circuit Touristique", url: "/taxi/taxi-circuit-touristique-alsace" },
-                        { name: "⁠Taxi médical Strasbourg", url: "/taxi/taxi-medical-strasbourg" },
                     ]
                 },
                 {
@@ -643,12 +643,12 @@ const Data: DataType = {
                 {
                     name: "taxi", url: "/taxi/taxi-strasbourg",
                     items: [
+                        { name: "Medical Taxi Strasbourg", url: "/taxi/taxi-medical-strasbourg" },
                         { name: "Taxi Strasbourg", url: "/taxi/taxi-strasbourg" },
                         { name: "Taxi Strasbourg Airport Entzheim", url: "/taxi/taxi-strasbourg-aeroport-Entzheim" },
                         { name: "Taxi Strasbourg train station", url: "/taxi/taxi-strasbourg-gare" },
                         { name: "Taxi Strasbourg Europapark", url: "/taxi/taxi-strasbourg-europapark" },
                         { name: "Taxi Strasbourg Tourist Tour", url: "/taxi/taxi-circuit-touristique-alsace" },
-                        { name: "Medical Taxi Strasbourg", url: "/taxi/taxi-medical-strasbourg" },
                     ]
                 },
                 {
