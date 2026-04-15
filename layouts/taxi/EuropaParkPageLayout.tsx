@@ -3,6 +3,7 @@ import Call from "@/components/common/Buttons/Call"
 import HeroTaxiCTA from "@/components/common/Buttons/HeroTaxiCTA"
 import { useAppContext } from "@/context/appContext"
 import Image from "next/image"
+import Link from "next/link"
 import { useState } from "react"
 
 type EuropaParkPageLayoutProps = {
@@ -305,8 +306,17 @@ const EuropaParkPageLayout: React.FC<EuropaParkPageLayoutProps> = ({ heroCardIma
                             </div>
 
                             <div className="bg-orange-50 rounded-xl p-6 text-center">
-                                <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
-                                    Avec notre service de transport en taxi Strasbourg Europa Park, chaque transfert devient un moment agréable. Réservez votre chauffeur privé en ligne ou via notre central d'appel. Nos tarifs sont les meilleurs.
+                                <p className="text-gray-700 text-sm sm:text-base leading-relaxed italic">
+                                    Avec notre service de transport en{" "}
+                                    <strong className="font-semibold text-gray-900">taxi Strasbourg Europa Park</strong>, chaque
+                                    transfert devient <strong className="font-semibold text-gray-900">un moment agréable</strong>.{" "}
+                                    <Link
+                                        href="/book"
+                                        className="font-medium text-orange-900 underline underline-offset-2 hover:text-orange-950"
+                                    >
+                                        Réservez votre chauffeur privé
+                                    </Link>{" "}
+                                    en ligne ou via notre central d&apos;appel. Nos tarifs sont les meilleurs.
                                 </p>
                             </div>
                         </div>
@@ -359,8 +369,34 @@ const EuropaParkPageLayout: React.FC<EuropaParkPageLayoutProps> = ({ heroCardIma
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">
                         Prêt pour Europa Park ?
                     </h2>
-                    <p className="text-lg sm:text-xl text-orange-100 mb-6 sm:mb-8">
-                        Si vous aimez le confort sans compromis et la ponctualité suisse, vous êtes au bon endroit. Réservez facilement votre chauffeur via notre formulaire en ligne ou par téléphone et commencez votre aventure strasbourgeoise sur les chapeaux de roues !
+                    <p className="text-lg sm:text-xl text-orange-100 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed italic">
+                        {lang === "fr" ? (
+                            <>
+                                Avec notre service de transport en{" "}
+                                <strong className="font-semibold text-white">taxi Strasbourg Europa Park</strong>, chaque transfert
+                                devient <strong className="font-semibold text-white">un moment agréable</strong>.{" "}
+                                <Link
+                                    href="/book"
+                                    className="font-medium text-orange-50 underline underline-offset-2 hover:text-white"
+                                >
+                                    Réservez votre chauffeur privé
+                                </Link>{" "}
+                                en ligne ou via notre central d&apos;appel. Nos tarifs sont les meilleurs.
+                            </>
+                        ) : (
+                            <>
+                                With our{" "}
+                                <strong className="font-semibold text-white">Strasbourg Europa Park taxi</strong> transport service,
+                                every transfer becomes <strong className="font-semibold text-white">a pleasant moment</strong>.{" "}
+                                <Link
+                                    href="/book"
+                                    className="font-medium text-orange-50 underline underline-offset-2 hover:text-white"
+                                >
+                                    Book your private driver
+                                </Link>{" "}
+                                online or via our call center. Our fares are the best.
+                            </>
+                        )}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                         <Book bounce={false} btn={lang === "fr" ? "Réserver en ligne" : "Book Online"} primary={true} />

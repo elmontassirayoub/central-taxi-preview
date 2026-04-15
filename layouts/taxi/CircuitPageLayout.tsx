@@ -3,6 +3,7 @@ import Call from "@/components/common/Buttons/Call"
 import HeroTaxiCTA from "@/components/common/Buttons/HeroTaxiCTA"
 import { useAppContext } from "@/context/appContext"
 import Image from "next/image"
+import Link from "next/link"
 import { useState } from "react"
 
 const CircuitPageLayout: React.FC<{ heroCardImageSrc?: string; heroCardImageAlt?: string }> = ({
@@ -342,7 +343,12 @@ const CircuitPageLayout: React.FC<{ heroCardImageSrc?: string; heroCardImageAlt?
                                         </div>
                                         <h3 className="text-base sm:text-lg font-semibold text-gray-900">Taxi pas cher</h3>
                                         <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
-                                            Profitez d'un service de transport haut de gamme sans vous ruiner. Nos taxis pas chers pour circuits touristiques en Alsace vous permettent de découvrir la région à des tarifs transparents et compétitifs, sans frais cachés ni surprise. Vous pouvez ainsi savourer chaque instant de votre circuit en toute tranquillité. Faites votre réservation en ligne ou par téléphone.
+                                            Profitez d&apos;un service de transport haut de gamme sans vous ruiner. Nos
+                                            taxis pas chers pour circuits touristiques en Alsace vous permettent de
+                                            découvrir la région à des tarifs transparents et compétitifs, sans frais
+                                            cachés ni surprise. Vous pouvez ainsi savourer chaque instant de votre
+                                            circuit en toute tranquillité. Faites votre réservation en ligne ou par
+                                            téléphone.
                                         </p>
                                     </div>
                                 </div>
@@ -401,8 +407,43 @@ const CircuitPageLayout: React.FC<{ heroCardImageSrc?: string; heroCardImageAlt?
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">
                         {lang === "fr" ? "Prêt à découvrir l'Alsace ?" : "Ready to discover Alsace?"}
                     </h2>
-                    <p className="text-lg sm:text-xl text-violet-100 mb-6 sm:mb-8">
-                        {lang === "fr" ? "Réservez votre circuit touristique et profitez d'une expérience inoubliable" : "Book your tour and enjoy an unforgettable experience"}
+                    <p className="text-base sm:text-lg text-violet-100 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed italic">
+                        {lang === "fr" ? (
+                            <>
+                                Profitez d&apos;un{" "}
+                                <strong className="font-semibold text-white">service de transport haut de gamme</strong>{" "}
+                                sans vous ruiner. Nos{" "}
+                                <strong className="font-semibold text-white">
+                                    taxis pas chers pour circuits touristiques en Alsace
+                                </strong>{" "}
+                                vous permettent de découvrir la région à des tarifs transparents et compétitifs,{" "}
+                                <strong className="font-semibold text-white">sans frais cachés ni surprise.</strong> Vous
+                                pouvez ainsi savourer chaque instant de votre circuit en toute tranquillité. Faites votre{" "}
+                                <Link
+                                    href="/book"
+                                    className="font-medium text-violet-50 underline underline-offset-2 hover:text-white"
+                                >
+                                    réservation en ligne
+                                </Link>{" "}
+                                ou par téléphone.
+                            </>
+                        ) : (
+                            <>
+                                Enjoy a <strong className="font-semibold text-white">premium transport service</strong>{" "}
+                                without breaking the bank. Our{" "}
+                                <strong className="font-semibold text-white">affordable Alsace sightseeing tour taxis</strong>{" "}
+                                let you discover the region at transparent, competitive rates,{" "}
+                                <strong className="font-semibold text-white">with no hidden fees or surprises.</strong>{" "}
+                                Savor every moment of your tour in complete peace of mind.{" "}
+                                <Link
+                                    href="/book"
+                                    className="font-medium text-violet-50 underline underline-offset-2 hover:text-white"
+                                >
+                                    Book online
+                                </Link>{" "}
+                                or by phone.
+                            </>
+                        )}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                         <Book bounce={false} btn={lang === "fr" ? "Réserver en ligne" : "Book Online"} primary={true} />
