@@ -4,6 +4,7 @@ import Call from "@/components/common/Buttons/Call"
 import HeroTaxiCTA from "@/components/common/Buttons/HeroTaxiCTA"
 import { useAppContext } from "@/context/appContext"
 import Image from "next/image"
+import Link from "next/link"
 import { useState } from "react"
 
 type StationPageLayoutProps = {
@@ -292,9 +293,31 @@ const StationPageLayout: React.FC<StationPageLayoutProps> = ({ heroCardImageSrc,
                                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
                                     {pageData.sections[4]?.title}
                                 </h2>
-                                <p className="text-base sm:text-lg text-gray-600 px-4">
-                                    {lang === "fr" ? "Pourquoi choisir Central Taxi 67 ?" : "Why choose Central Taxi 67?"}
-                                </p>
+                                {lang === "fr" ? (
+                                    <p className="text-base sm:text-lg text-gray-600 px-4 max-w-3xl mx-auto leading-relaxed">
+                                        Voici ce qui vous attend en choisissant d&apos;
+                                        <strong className="font-semibold text-gray-800">appeler un</strong>{" "}
+                                        <Link
+                                            href="/taxi/taxi-strasbourg"
+                                            className="font-medium text-red-800 underline underline-offset-2 hover:text-red-900"
+                                        >
+                                            taxi Strasbourg
+                                        </Link>{" "}
+                                        chez nous pour vos transferts gare :
+                                    </p>
+                                ) : (
+                                    <p className="text-base sm:text-lg text-gray-600 px-4 max-w-3xl mx-auto leading-relaxed">
+                                        Here&apos;s what awaits you when you choose to{" "}
+                                        <strong className="font-semibold text-gray-800">call a</strong>{" "}
+                                        <Link
+                                            href="/taxi/taxi-strasbourg"
+                                            className="font-medium text-red-800 underline underline-offset-2 hover:text-red-900"
+                                        >
+                                            Strasbourg taxi
+                                        </Link>{" "}
+                                        with us for your station transfers:
+                                    </p>
+                                )}
                             </div>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">

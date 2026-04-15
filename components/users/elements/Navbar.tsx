@@ -337,9 +337,11 @@ export default function Navbar({ page, admin }: { page: string, admin: boolean }
                 </div>
             </section>
             <section className="lg:hidden flex h-15 bg-gradient-to-r from-[#263445] via-[#33475A] to-[#263445] justify-between items-center px-4 shadow-md">
-                <p className="text-white font-semibold tracking-wide flex-1 text-sm">
-                    Central Taxi 67
-                </p>
+                {!toggleMenu ? (
+                    <p className="flex-1 text-sm font-semibold tracking-wide text-white">Central Taxi 67</p>
+                ) : (
+                    <span className="flex-1" aria-hidden />
+                )}
                 <div className="flex items-center gap-3">
                     <Image draggable={false} alt="UK" onClick={() => changeLanguage("en")} className={`cursor-pointer border-b-[1px]  pb-1 box-border box-content w-6 h-6 ${lang === "en" ? "" : "border-transparent"}`} src={UK} />
                     <Image draggable={false} alt="France" onClick={() => changeLanguage("fr")} className={`cursor-pointer border-b-[1px]  pb-1 box-border box-content w-6 h-6 ${lang === "fr" ? "" : "border-transparent"}`} src={France} />
@@ -361,35 +363,78 @@ export default function Navbar({ page, admin }: { page: string, admin: boolean }
                 </div>
             </section>
         </section>
-        <div className={`${!toggleMenu ? "hidden" : "flex"} absolute left-0 font-semibold mobile-navtab pb-6 top-[100%] z-[5] w-full flex-col bg-[#1f2933]/95 backdrop-blur-sm`}>
-            <div className="h-full flex flex-col justify-center items-stretch w-full px-4 pt-4 pb-2 text-[16px] space-y-1">
-                {
-                    compData.navbar.tabList?.map((item: TabListType, key: number) => <NavBarMobileItem key={key} item={item} page={page} admin={admin} />)
-                }
+        <div
+            className={`${
+                !toggleMenu ? "hidden" : "flex"
+            } absolute left-0 mobile-navtab top-[100%] z-[50] w-full flex-col border-t border-white/10 bg-[#161d27] shadow-[0_12px_40px_rgba(0,0,0,0.45)]`}
+        >
+            <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
+                <span className="text-base font-semibold tracking-wide text-white">Central Taxi 67</span>
+                <button
+                    type="button"
+                    onClick={() => setToggleMenu(false)}
+                    className="flex h-10 w-10 items-center justify-center rounded-full text-white transition hover:bg-white/10"
+                    aria-label="Fermer le menu"
+                >
+                    <CloseIcon sx={{ fontSize: 28 }} />
+                </button>
             </div>
-            <div className="flex flex-col justify-center items-center gap-3 py-3 border-t border-white/10 px-4">
-                {
-                    status === "loading" ? <></> : !session?.user?.email ?
-                        compData.navbar.rightSideTabList?.map((item: RightSideTabListType, idx: number) => (
-                            <p
-                                key={idx}
-                                onClick={() => { modalClose(true); setOption(item) }}
-                                className="w-full max-w-xs rounded-full bg-yellow-400 text-[#33475A] h-10 flex items-center justify-center text-sm font-semibold shadow cursor-pointer hover:bg-yellow-300 transition-colors"
+            <div className="max-h-[min(70vh,520px)] overflow-y-auto overscroll-contain px-2 pb-2 pt-1">
+                {compData.navbar.tabList?.map((item: TabListType, key: number) => (
+                    <NavBarMobileItem key={key} item={item} page={page} admin={admin} />
+                ))}
+            </div>
+            <div className="flex flex-row gap-2 border-t border-white/10 px-4 py-4">
+                {status === "loading" ? (
+                    <></>
+                ) : !session?.user?.email ? (
+                    compData.navbar.rightSideTabList?.map((item: RightSideTabListType, idx: number) => (
+                        <p
+                            key={idx}
+                            onClick={() => {
+                                modalClose(true)
+                                setOption(item)
+                            }}
+                            className="flex h-12 flex-1 cursor-pointer items-center justify-center rounded-xl bg-[#FFDC00] text-sm font-bold text-[#1a2330] shadow-md transition hover:bg-[#f5d000]"
+                        >
+                            {item?.text}
+                        </p>
+                    ))
+                ) : (
+                    <div className="flex w-full flex-col gap-2">
+                        <p className="mb-1 text-center text-sm text-white/90">{session?.user?.email}</p>
+                        {admin ? (
+                            <Link
+                                prefetch={false}
+                                href="/admin"
+                                className="flex h-10 w-full items-center justify-center rounded-xl bg-[#FFDC00] text-sm font-semibold text-[#1a2330] shadow hover:bg-[#f5d000]"
                             >
-                                {item?.text}
-                            </p>
-                        )) : <>
-                            <p className="text-sm text-white/90 mb-1">{session?.user?.email}</p>
-                            {
-                                admin ? <Link prefetch={false} href="/admin" className="w-full max-w-xs rounded-full bg-yellow-400 text-[#33475A] h-10 flex items-center justify-center text-sm font-semibold shadow cursor-pointer hover:bg-yellow-300 transition-colors">Dashboard</Link> : <>
-                                    <p onClick={() => setUserEditModal(true)} className="w-full max-w-xs rounded-full border border-yellow-400 text-yellow-400 h-10 flex items-center justify-center text-sm font-semibold cursor-pointer hover:bg-yellow-400 hover:text-[#33475A] transition-colors" >{compData.navbar.edit}</p>
-                                    <p onClick={() => setUserEditPassword(true)} className="w-full max-w-xs rounded-full border border-yellow-400 text-yellow-400 h-10 flex items-center justify-center text-sm font-semibold cursor-pointer hover:bg-yellow-400 hover:text-[#33475A] transition-colors" >{compData.navbar.editPassword}</p>
-                                </>
-                            }
-
-                            <p className="w-full max-w-xs rounded-full border border-white/40 text-white h-10 flex items-center justify-center text-sm font-semibold cursor-pointer hover:bg-white/10 transition-colors" onClick={() => signOut()}>{compData.navbar.logout}</p>
-                        </>
-                }
+                                Dashboard
+                            </Link>
+                        ) : (
+                            <>
+                                <p
+                                    onClick={() => setUserEditModal(true)}
+                                    className="flex h-10 w-full cursor-pointer items-center justify-center rounded-xl border border-[#FFDC00] text-sm font-semibold text-[#FFDC00] transition hover:bg-[#FFDC00] hover:text-[#1a2330]"
+                                >
+                                    {compData.navbar.edit}
+                                </p>
+                                <p
+                                    onClick={() => setUserEditPassword(true)}
+                                    className="flex h-10 w-full cursor-pointer items-center justify-center rounded-xl border border-[#FFDC00] text-sm font-semibold text-[#FFDC00] transition hover:bg-[#FFDC00] hover:text-[#1a2330]"
+                                >
+                                    {compData.navbar.editPassword}
+                                </p>
+                            </>
+                        )}
+                        <p
+                            className="flex h-10 w-full cursor-pointer items-center justify-center rounded-xl border border-white/30 text-sm font-semibold text-white transition hover:bg-white/10"
+                            onClick={() => signOut()}
+                        >
+                            {compData.navbar.logout}
+                        </p>
+                    </div>
+                )}
             </div>
         </div>
         {

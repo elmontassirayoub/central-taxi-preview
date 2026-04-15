@@ -3,9 +3,9 @@ import Call from "@/components/common/Buttons/Call"
 import HeroTaxiCTA from "@/components/common/Buttons/HeroTaxiCTA"
 import { useAppContext } from "@/context/appContext"
 import Image from "next/image"
-import { useState } from "react"
+import { type ReactNode, useState } from "react"
 
-type ContentSectionItem = { title: string; description: string }
+type ContentSectionItem = { title: string; description: string | ReactNode }
 
 type CityPageContent = {
     heroTitle: string
@@ -16,13 +16,13 @@ type CityPageContent = {
     services: { title: string; subtitle?: string; items: ContentSectionItem[] }
     benefits: { title: string; subtitle?: string; items: ContentSectionItem[] }
     availability: { title: string; description: string }
-    station: { title: string; description: string }
-    airport: { title: string; description: string }
-    business: { title: string; description: string }
-    night: { title: string; description: string }
+    station: { title: string; description: string | ReactNode }
+    airport: { title: string; description: string | ReactNode }
+    business: { title: string; description: string | ReactNode }
+    night: { title: string; description: string | ReactNode }
     events: { title: string; description: string }
-    tourism: { title: string; description: string }
-    longDistance: { title: string; description: string }
+    tourism: { title: string; description: string | ReactNode }
+    longDistance: { title: string; description: string | ReactNode }
     pricing: { title: string; table: { route: string; duration: string; day?: string; night?: string }[]; note: string }
     cta: { title: string; description: string }
     faq: { title: string; items: ContentSectionItem[] }

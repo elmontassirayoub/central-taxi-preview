@@ -2,6 +2,7 @@ import SEO from "@/components/SEO"
 import PageLayout from "@/components/common/PageLayout"
 import checkAuthentication from "@/lib/middlewares/checkAuthenticated"
 import CityPageLayout from "@/layouts/taxi/CityPageLayout"
+import Link from "next/link"
 
 export const getServerSideProps = checkAuthentication(async (context: any, admin: boolean) => {
     return {
@@ -11,8 +12,79 @@ export const getServerSideProps = checkAuthentication(async (context: any, admin
     }
 })
 
+const linkInlineClass = "font-medium text-blue-700 underline underline-offset-2 hover:text-blue-900"
+
 const TaxiStrasbourg = ({ admin }: { admin: boolean }) => {
     const canonical = "https://www.central-taxi67.fr/taxi/taxi-strasbourg"
+
+    const visiteTouristiqueDescription = (
+        <>
+            La Petite France, ses châteaux et sa Cathédrale impressionnante… Strasbourg est un vrai trésor. Ses musées et
+            ses ruelles pittoresques donnent envie de se perdre. Avec un taxi privé à Strasbourg, vous découvrez la ville
+            sans vous fatiguer. Plus besoin de chercher un parking ou de tourner en rond. Vous pouvez même opter pour un{" "}
+            <Link href="/taxi/taxi-circuit-touristique-alsace" className={linkInlineClass}>
+                taxi circuit touristique Alsace
+            </Link>
+            . Votre chauffeur vous guide à travers la région. Confort, liberté et découverte garantis !
+        </>
+    )
+
+    const longuesDistancesDescription = (
+        <>
+            Notre terrain de jeu ne s&apos;arrête pas aux frontières de l&apos;Eurométropole strasbourgeoise ! Nous
+            pouvons aussi vous accompagner pour vos déplacements interurbains vers Colmar, Mulhouse, Haguenau,{" "}
+            <Link href="/taxi/taxi-strasbourg-europapark" className={linkInlineClass}>
+                Europa Park
+            </Link>
+            … Choisissez un véhicule adapté à votre groupe et à vos bagages.
+        </>
+    )
+
+    const serviceGareDescription = (
+        <>
+            Vous avez un TGV à ne pas rater ? Ou un TER pour une escapade improvisée ? Avec un taxi privé, vous êtes
+            pris en charge à votre porte et déposés directement devant la{" "}
+            <Link href="/taxi/taxi-strasbourg-gare" className={linkInlineClass}>
+                gare de Strasbourg
+            </Link>
+            . Nos chauffeurs connaissent Strasbourg comme leur poche et savent éviter les embouteillages.
+        </>
+    )
+
+    const serviceAeroportDescription = (
+        <>
+            Les vols ne vous attendront pas, mais notre{" "}
+            <Link href="/taxi/taxi-strasbourg-aeroport-Entzheim" className={linkInlineClass}>
+                taxi aéroport Strasbourg
+            </Link>
+            , si ! Avec nous, votre trajet vers l&apos;aéroport d&apos;Entzheim se transforme en balade zen. Nos
+            chauffeurs anticipent la circulation, utilisent les voies rapides quand il le faut et vous déposent à
+            l&apos;heure. Et ce, même si vous réservez à la dernière minute.
+        </>
+    )
+
+    const serviceBusinessDescription = (
+        <>
+            Rendez-vous d&apos;affaires ou conférences stressantes ? Respirez : un{" "}
+            <Link href="/book" className={`${linkInlineClass} font-semibold`}>
+                taxi privé à Strasbourg
+            </Link>{" "}
+            vous garantit ponctualité, confort et discrétion. Pendant que nous conduisons, vous pouvez relire vos notes,
+            passer un coup de fil ou… simplement savourer un moment de détente.
+        </>
+    )
+
+    const serviceNightDescription = (
+        <>
+            Après un dîner en amoureux ou professionnel, un concert ou une soirée entre amis, rentrer en toute sécurité
+            n&apos;a jamais été aussi simple. Nos{" "}
+            <Link href="/book" className={linkInlineClass}>
+                taxis de nuit à Strasbourg
+            </Link>{" "}
+            vous ramènent sans prise de tête, loin des transports en commun limités et du stress de la conduite. Vous
+            profitez de Strasbourg et nous gérons le reste… même à 2h du matin.
+        </>
+    )
 
     const content = {
         heroTitle: "Taxi Strasbourg",
@@ -60,23 +132,19 @@ const TaxiStrasbourg = ({ admin }: { admin: boolean }) => {
             items: [
                 {
                     title: "Trajets vers la gare de Strasbourg",
-                    description:
-                        "Vous avez un TGV à ne pas rater ? Ou un TER pour une escapade improvisée ? Avec un taxi privé, vous êtes pris en charge à votre porte et déposés directement devant la gare de Strasbourg. Nos chauffeurs connaissent Strasbourg comme leur poche et savent éviter les embouteillages.",
+                    description: serviceGareDescription,
                 },
                 {
                     title: "Transferts aéroport Strasbourg Entzheim en toute sérénité",
-                    description:
-                        "Les vols ne vous attendront pas, mais notre taxi Strasbourg aéroport, si ! Avec nous, votre trajet vers l'aéroport d'Entzheim se transforme en balade zen. Nos chauffeurs anticipent la circulation, utilisent les voies rapides quand il le faut et vous déposent à l'heure. Et ce, même si vous réservez à la dernière minute.",
+                    description: serviceAeroportDescription,
                 },
                 {
                     title: "Déplacements professionnels et conférences",
-                    description:
-                        "Rendez-vous d'affaires ou conférences stressantes ? Respirez : un taxi privé à Strasbourg vous garantit ponctualité, confort et discrétion. Pendant que nous conduisons, vous pouvez relire vos notes, passer un coup de fil ou… simplement savourer un moment de détente.",
+                    description: serviceBusinessDescription,
                 },
                 {
                     title: "Sorties nocturnes et retours en toute sécurité",
-                    description:
-                        "Après un dîner en amoureux ou professionnel, un concert ou une soirée entre amis, rentrer en toute sécurité n'a jamais été aussi simple. Nos taxis de nuit à Strasbourg vous ramènent sans prise de tête, loin des transports en commun limités et du stress de la conduite. Vous profitez de Strasbourg et nous gérons le reste… même à 2h du matin.",
+                    description: serviceNightDescription,
                 },
                 {
                     title: "Mariages, événements et occasions spéciales",
@@ -85,13 +153,11 @@ const TaxiStrasbourg = ({ admin }: { admin: boolean }) => {
                 },
                 {
                     title: "Visites touristiques",
-                    description:
-                        "La Petite France, ses châteaux et sa Cathédrale impressionnante… Strasbourg est un vrai trésor. Ses musées et ses ruelles pittoresques donnent envie de se perdre. Avec un taxi privé à Strasbourg, vous découvrez la ville sans vous fatiguer. Plus besoin de chercher un parking ou de tourner en rond. Vous pouvez même opter pour un taxi circuit touristique Alsace. Votre chauffeur vous guide à travers la région. Confort, liberté et découverte garantis !",
+                    description: visiteTouristiqueDescription,
                 },
                 {
                     title: "Longues distances vers Colmar, Mulhouse ou Haguenau",
-                    description:
-                        "Notre terrain de jeu ne s'arrête pas aux frontières de l'Eurométropole strasbourgeoise ! Nous pouvons aussi vous accompagner pour vos déplacements interurbains vers Colmar, Mulhouse, Haguenau, Europa Park…. Choisissez un véhicule adapté à votre groupe et à vos bagages.",
+                    description: longuesDistancesDescription,
                 },
             ],
         },
@@ -102,23 +168,19 @@ const TaxiStrasbourg = ({ admin }: { admin: boolean }) => {
         },
         station: {
             title: "Trajets vers la gare de Strasbourg",
-            description:
-                "Vous avez un TGV à ne pas rater ? Ou un TER pour une escapade improvisée ? Avec un taxi privé, vous êtes pris en charge à votre porte et déposés directement devant la gare de Strasbourg. Nos chauffeurs connaissent Strasbourg comme leur poche et savent éviter les embouteillages.",
+            description: serviceGareDescription,
         },
         airport: {
             title: "Transferts aéroport Strasbourg Entzheim en toute sérénité",
-            description:
-                "Les vols ne vous attendront pas, mais notre taxi Strasbourg aéroport, si ! Avec nous, votre trajet vers l'aéroport d'Entzheim se transforme en balade zen. Nos chauffeurs anticipent la circulation, utilisent les voies rapides quand il le faut et vous déposent à l'heure. Et ce, même si vous réservez à la dernière minute.",
+            description: serviceAeroportDescription,
         },
         business: {
             title: "Déplacements professionnels et conférences",
-            description:
-                "Rendez-vous d'affaires ou conférences stressantes ? Respirez : un taxi privé à Strasbourg vous garantit ponctualité, confort et discrétion. Pendant que nous conduisons, vous pouvez relire vos notes, passer un coup de fil ou… simplement savourer un moment de détente.",
+            description: serviceBusinessDescription,
         },
         night: {
             title: "Sorties nocturnes et retours en toute sécurité",
-            description:
-                "Après un dîner en amoureux ou professionnel, un concert ou une soirée entre amis, rentrer en toute sécurité n'a jamais été aussi simple. Nos taxis de nuit à Strasbourg vous ramènent sans prise de tête, loin des transports en commun limités et du stress de la conduite. Vous profitez de Strasbourg et nous gérons le reste… même à 2h du matin.",
+            description: serviceNightDescription,
         },
         events: {
             title: "Mariages, événements et occasions spéciales",
@@ -127,13 +189,11 @@ const TaxiStrasbourg = ({ admin }: { admin: boolean }) => {
         },
         tourism: {
             title: "Visites touristiques",
-            description:
-                "La Petite France, ses châteaux et sa Cathédrale impressionnante… Strasbourg est un vrai trésor. Ses musées et ses ruelles pittoresques donnent envie de se perdre. Avec un taxi privé à Strasbourg, vous découvrez la ville sans vous fatiguer. Plus besoin de chercher un parking ou de tourner en rond. Vous pouvez même opter pour un taxi circuit touristique Alsace. Votre chauffeur vous guide à travers la région. Confort, liberté et découverte garantis !",
+            description: visiteTouristiqueDescription,
         },
         longDistance: {
             title: "Longues distances vers Colmar, Mulhouse ou Haguenau",
-            description:
-                "Notre terrain de jeu ne s'arrête pas aux frontières de l'Eurométropole strasbourgeoise ! Nous pouvons aussi vous accompagner pour vos déplacements interurbains vers Colmar, Mulhouse, Haguenau, Europa Park…. Choisissez un véhicule adapté à votre groupe et à vos bagages.",
+            description: longuesDistancesDescription,
         },
         pricing: {
             title: "Estimations de durée et tarif pour les trajets les plus demandés depuis Strasbourg",
@@ -171,8 +231,18 @@ const TaxiStrasbourg = ({ admin }: { admin: boolean }) => {
                 },
                 {
                     title: "Peut-on bénéficier de services supplémentaires à bord ?",
-                    description:
-                        "Oui ! Nos taxis offrent le Wi-Fi gratuit, des bouteilles d'eau, des sièges auto pour enfants sur demande, et un accueil personnalisé pour les transferts aéroport. Pour les occasions spéciales, vous pouvez également réserver des véhicules élégants comme des limousines ou vans confortables. Retrouvez ici les détails sur nos services supplémentaires.",
+                    description: (
+                        <>
+                            Oui ! Nos taxis offrent le Wi-Fi gratuit, des bouteilles d&apos;eau, des sièges auto pour
+                            enfants sur demande, et un accueil personnalisé pour les transferts aéroport. Pour les
+                            occasions spéciales, vous pouvez également réserver des véhicules élégants comme des
+                            limousines ou vans confortables. Retrouvez ici les détails sur nos{" "}
+                            <Link href="/services/supplementaire" className={linkInlineClass}>
+                                (services supplémentaires)
+                            </Link>
+                            .
+                        </>
+                    ),
                 },
             ],
         },

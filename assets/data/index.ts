@@ -4,15 +4,17 @@ import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import MapIcon from '@mui/icons-material/Map';
 import LocalTaxiIcon from '@mui/icons-material/LocalTaxi';
 
-type TabType = {
-    name: string,
+/** Nav item; optional nested items (e.g. Entreprise → Forfait) */
+export type TabNavItem = {
+    name: string
     url: string
+    items?: TabNavItem[]
 }
 
 export type TabListType = {
     name: string,
     url: string,
-    items?: TabType[]
+    items?: TabNavItem[]
 }
 export type RightSideTabListType = { functionlity: string, text: string }
 export type CardDataType = { icon: string, title: string, text: string }
@@ -273,7 +275,8 @@ const Data: DataType = {
                         },
                         {
                             name: "entreprise",
-                            url: "/services/entreprise"
+                            url: "/services/entreprise",
+                            items: [{ name: "forfait", url: "/services/forfait" }]
                         },
                         {
                             name: "conventionné",
@@ -299,11 +302,7 @@ const Data: DataType = {
                         {
                             name: "tarifs",
                             url: "/services/tarifs"
-                        },
-                        {
-                            name: "forfait",
-                            url: "/services/forfait"
-                        },
+                        }
                     ]
                 },
                 { name: "contact", url: "/contact" }
@@ -660,7 +659,8 @@ const Data: DataType = {
                         },
                         {
                             name: "business",
-                            url: "/services/entreprise"
+                            url: "/services/entreprise",
+                            items: [{ name: "package", url: "/services/forfait" }]
                         },
                         {
                             name: "conventionné",
@@ -686,11 +686,7 @@ const Data: DataType = {
                         {
                             name: "prices",
                             url: "/services/tarifs"
-                        },
-                        {
-                            name: "package",
-                            url: "/services/forfait"
-                        },
+                        }
                     ]
                 },
                 { name: "contact", url: "/contact" }

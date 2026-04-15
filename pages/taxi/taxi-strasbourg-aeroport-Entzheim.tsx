@@ -30,6 +30,8 @@ const TaxiStrasbourgAeroport = ({ admin }: { admin: boolean }) => {
                 benefitsSubtitle="Votre chauffeur ne regarde pas sa montre avec impatience. Vous bénéficiez de 30 minutes d'attente gratuites lors de votre prise en charge à l'aéroport."
                 heroCardImageSrc="/images/hero/taxi-aeroport-entzheim-hero.png"
                 heroCardImageAlt="Taxis devant l'aéroport de Strasbourg Entzheim"
+                ctaBannerBodyFr="Entrepreneur pressé, voyageur solitaire ou groupe d'amis ? Notre taxi Strasbourg aéroport Entzheim peut s'occuper de votre transport avec le sourire et le professionnalisme qui font notre réputation. Complétez notre formulaire de réservation en ligne si vous voulez voyager sans le moindre stress."
+                ctaBannerBodyEn="Busy entrepreneur, solo traveler or group of friends? Our Strasbourg Entzheim airport taxi can handle your transport with the smile and professionalism we're known for. Complete our online booking form if you want to travel without the slightest stress."
             />
         </PageLayout>
     )

@@ -137,8 +137,7 @@ const Data: DataType = {
                         { title: "Sécurité des enfants assurée", description: "Sièges auto et réhausseurs disponibles sur demande. Les plus petits voyagent en toute sécurité, et vous, en toute sérénité." },
                         { title: "Navettes Strasbourg Aéroport Entzheim vers hôtels et hébergements touristiques", description: "Explorez l'Alsace sans souci : nous vous conduisons directement à votre hôtel ou hébergement." },
                         { title: "Mise à disposition pour vos rendez-vous", description: "Professionnels ou touristes, bénéficiez de notre service à l'heure pour vos réunions, visites guidées ou circuits touristiques. Votre timing est respecté, vos déplacements optimisés." },
-                        { title: "Options premium à bord", description: "A bord de nos véhicules disponibles, vous pouvez avoir le Wi-Fi pour rester connecté. Vous avez aussi droit à des bouteilles d'eau offertes pour vous rafraîchir." },
-                        { title: "Service adapté à tous", description: "Entrepreneur pressé, voyageur solitaire ou groupe d'amis ? Notre taxi Strasbourg aéroport Entzheim peut s'occuper de votre transport avec le sourire et le professionnalisme qui font notre réputation. Complétez notre formulaire de réservation en ligne si vous voulez voyager sans le moindre stress." }
+                        { title: "Options premium à bord", description: "A bord de nos véhicules disponibles, vous pouvez avoir le Wi-Fi pour rester connecté. Vous avez aussi droit à des bouteilles d'eau offertes pour vous rafraîchir." }
                     ]
                 },
                 {

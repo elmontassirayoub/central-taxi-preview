@@ -12,7 +12,10 @@ const AirportPageLayout: React.FC<{
     benefitsSubtitle?: string
     heroCardImageSrc?: string
     heroCardImageAlt?: string
-}> = ({ subtitle, pricingSubtitle, benefitsSubtitle, heroCardImageSrc, heroCardImageAlt }) => {
+    /** Blue CTA banner: paragraph under the main title */
+    ctaBannerBodyFr?: string
+    ctaBannerBodyEn?: string
+}> = ({ subtitle, pricingSubtitle, benefitsSubtitle, heroCardImageSrc, heroCardImageAlt, ctaBannerBodyFr, ctaBannerBodyEn }) => {
     const { lang } = useAppContext()
     const pageData: TaxiPageContent = Data[lang]["aeroport"]
     const [activeTab, setActiveTab] = useState(0)
@@ -318,8 +321,11 @@ const AirportPageLayout: React.FC<{
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">
                         {lang === "fr" ? "Prêt à réserver votre transfert ?" : "Ready to book your transfer?"}
                     </h2>
-                    <p className="text-lg sm:text-xl text-sky-50 mb-6 sm:mb-8">
-                        {lang === "fr" ? "Réservez maintenant et voyagez en toute sérénité" : "Book now and travel with complete peace of mind"}
+                    <p className="text-base sm:text-lg text-sky-50 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed">
+                        {lang === "fr"
+                            ? (ctaBannerBodyFr ??
+                              "Réservez maintenant et voyagez en toute sérénité")
+                            : (ctaBannerBodyEn ?? "Book now and travel with complete peace of mind")}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                         <Book bounce={false} btn={lang === "fr" ? "Réserver en ligne" : "Book Online"} primary={true} />
