@@ -314,12 +314,12 @@ const MedicalPageLayout: React.FC<MedicalPageLayoutProps> = ({ heroCardImageSrc,
                             {/* Mobile: card layout */}
                             <div className="sm:hidden space-y-4">
                                 {[
-                                    { ville: "Mulhouse", distance: "115", duree: "1h30", jour: "180 - 220", nuit: "220 - 260" },
-                                    { ville: "Colmar", distance: "75", duree: "1h00", jour: "120 - 150", nuit: "150 - 180" },
-                                    { ville: "Sélestat", distance: "50", duree: "0h45", jour: "90 - 110", nuit: "110 - 130" },
-                                    { ville: "Sarreguemines", distance: "140", duree: "1h50", jour: "200 - 250", nuit: "240 - 290" },
-                                    { ville: "Sarrebourg", distance: "90", duree: "1h20", jour: "140 - 170", nuit: "170 - 200" },
-                                    { ville: "Sarre-Union", distance: "85", duree: "1h15", jour: "130 - 160", nuit: "160 - 190" }
+                                    { ville: "Mulhouse", distance: "115", duree: "1h30" },
+                                    { ville: "Colmar", distance: "75", duree: "1h00" },
+                                    { ville: "Sélestat", distance: "50", duree: "0h45" },
+                                    { ville: "Sarreguemines", distance: "140", duree: "1h50" },
+                                    { ville: "Sarrebourg", distance: "90", duree: "1h20" },
+                                    { ville: "Sarre-Union", distance: "85", duree: "1h15" }
                                 ].map((row, idx) => (
                                     <div key={idx} className="bg-white rounded-xl shadow-lg p-4 space-y-2">
                                         <p className="text-sm font-semibold text-gray-900">{row.ville}</p>
@@ -330,14 +330,6 @@ const MedicalPageLayout: React.FC<MedicalPageLayoutProps> = ({ heroCardImageSrc,
                                         <div className="flex justify-between text-xs text-gray-500">
                                             <span>Durée</span>
                                             <span className="font-medium text-gray-700">{row.duree}</span>
-                                        </div>
-                                        <div className="flex justify-between text-xs">
-                                            <span className="text-gray-500">Tarif jour</span>
-                                            <span className="font-semibold text-green-600">{row.jour} €</span>
-                                        </div>
-                                        <div className="flex justify-between text-xs">
-                                            <span className="text-gray-500">Tarif nuit</span>
-                                            <span className="font-semibold text-emerald-900">{row.nuit} €</span>
                                         </div>
                                     </div>
                                 ))}
@@ -357,29 +349,21 @@ const MedicalPageLayout: React.FC<MedicalPageLayoutProps> = ({ heroCardImageSrc,
                                             <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Durée moyenne
                                             </th>
-                                            <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Tarif jour estimé (€)
-                                            </th>
-                                            <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Tarif nuit estimé (€)
-                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
                                         {[
-                                            { ville: "Mulhouse", distance: "115", duree: "1h30", jour: "180 - 220", nuit: "220 - 260" },
-                                            { ville: "Colmar", distance: "75", duree: "1h00", jour: "120 - 150", nuit: "150 - 180" },
-                                            { ville: "Sélestat", distance: "50", duree: "0h45", jour: "90 - 110", nuit: "110 - 130" },
-                                            { ville: "Sarreguemines", distance: "140", duree: "1h50", jour: "200 - 250", nuit: "240 - 290" },
-                                            { ville: "Sarrebourg", distance: "90", duree: "1h20", jour: "140 - 170", nuit: "170 - 200" },
-                                            { ville: "Sarre-Union", distance: "85", duree: "1h15", jour: "130 - 160", nuit: "160 - 190" }
+                                            { ville: "Mulhouse", distance: "115", duree: "1h30" },
+                                            { ville: "Colmar", distance: "75", duree: "1h00" },
+                                            { ville: "Sélestat", distance: "50", duree: "0h45" },
+                                            { ville: "Sarreguemines", distance: "140", duree: "1h50" },
+                                            { ville: "Sarrebourg", distance: "90", duree: "1h20" },
+                                            { ville: "Sarre-Union", distance: "85", duree: "1h15" }
                                         ].map((row, idx) => (
                                             <tr key={idx} className="hover:bg-gray-50">
                                                 <td className="px-6 py-4 text-sm font-medium text-gray-900">{row.ville}</td>
                                                 <td className="px-6 py-4 text-sm text-gray-500">{row.distance}</td>
                                                 <td className="px-6 py-4 text-sm text-gray-500">{row.duree}</td>
-                                                <td className="px-6 py-4 text-sm text-green-600 font-semibold">{row.jour}</td>
-                                                <td className="px-6 py-4 text-sm text-emerald-900 font-semibold">{row.nuit}</td>
                                             </tr>
                                         ))}
                                     </tbody>

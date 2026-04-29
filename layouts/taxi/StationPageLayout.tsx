@@ -24,6 +24,48 @@ const StationPageLayout: React.FC<StationPageLayoutProps> = ({ heroCardImageSrc,
         { id: 3, label: lang === "fr" ? "Tarifs" : "Pricing" },
         { id: 4, label: "FAQ" }
     ]
+    const renderStationServiceDescription = (description: string) => {
+        let content: string | JSX.Element = description
+
+        const taxiServiceText = "service taxi"
+        if (description.includes(taxiServiceText)) {
+            const [before, after = ""] = description.split(taxiServiceText)
+            content = (
+                <>
+                    {before}
+                    <Link href="/" className="font-medium text-red-800 underline underline-offset-2 hover:text-red-900">
+                        {taxiServiceText}
+                    </Link>
+                    {after}
+                </>
+            )
+        }
+
+        const airportText = "service de taxi Strasbourg aéroport"
+        if (typeof content === "string") return content
+
+        const tail = description.includes(taxiServiceText) ? description.split(taxiServiceText)[1] ?? "" : description
+        if (!tail.includes(airportText)) return content
+
+        const [beforeAirport, afterAirport = ""] = tail.split(airportText)
+        const prefix = description.includes(taxiServiceText) ? description.split(taxiServiceText)[0] : ""
+
+        return (
+            <>
+                {prefix}
+                {description.includes(taxiServiceText) && (
+                    <Link href="/" className="font-medium text-red-800 underline underline-offset-2 hover:text-red-900">
+                        {taxiServiceText}
+                    </Link>
+                )}
+                {beforeAirport}
+                <Link href="/taxi/taxi-strasbourg-aeroport-Entzheim" className="font-medium text-red-800 underline underline-offset-2 hover:text-red-900">
+                    {airportText}
+                </Link>
+                {afterAirport}
+            </>
+        )
+    }
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-red-50 to-rose-100">
@@ -143,7 +185,7 @@ const StationPageLayout: React.FC<StationPageLayoutProps> = ({ heroCardImageSrc,
                                     <div key={idx} className="bg-white rounded-xl shadow-lg p-5 sm:p-7 hover:shadow-xl transition-shadow">
                                         <div className="space-y-2 sm:space-y-3">
                                             <h3 className="text-base sm:text-lg font-semibold text-gray-900">{item.title}</h3>
-                                            <p className="text-gray-700 text-sm sm:text-base leading-relaxed">{item.description}</p>
+                                            <p className="text-gray-700 text-sm sm:text-base leading-relaxed">{renderStationServiceDescription(item.description)}</p>
                                         </div>
                                     </div>
                                 ))}
@@ -298,7 +340,7 @@ const StationPageLayout: React.FC<StationPageLayoutProps> = ({ heroCardImageSrc,
                                         Voici ce qui vous attend en choisissant d&apos;
                                         <strong className="font-semibold text-gray-800">appeler un</strong>{" "}
                                         <Link
-                                            href="/taxi/taxi-strasbourg"
+                                            href="/book"
                                             className="font-medium text-red-800 underline underline-offset-2 hover:text-red-900"
                                         >
                                             taxi Strasbourg
@@ -310,7 +352,7 @@ const StationPageLayout: React.FC<StationPageLayoutProps> = ({ heroCardImageSrc,
                                         Here&apos;s what awaits you when you choose to{" "}
                                         <strong className="font-semibold text-gray-800">call a</strong>{" "}
                                         <Link
-                                            href="/taxi/taxi-strasbourg"
+                                            href="/book"
                                             className="font-medium text-red-800 underline underline-offset-2 hover:text-red-900"
                                         >
                                             Strasbourg taxi
@@ -372,7 +414,15 @@ const StationPageLayout: React.FC<StationPageLayoutProps> = ({ heroCardImageSrc,
                         {lang === "fr" ? "Montez à bord de notre Taxi Strasbourg Gare" : "Get on board our Strasbourg Station Taxi"}
                     </h2>
                     <p className="text-lg sm:text-xl text-red-100 mb-6 sm:mb-8">
-                        {lang === "fr" ? "Si vous aimez le confort sans compromis et la ponctualité suisse, vous êtes au bon endroit. Réservez facilement votre chauffeur via notre formulaire en ligne ou par téléphone et commencez votre aventure strasbourgeoise sur les chapeaux de roues !" : "If you like uncompromising comfort and Swiss punctuality, you're in the right place. Easily book your driver via our online form or by phone and start your Strasbourg adventure on the right foot!"}
+                        {lang === "fr" ? (
+                            <>
+                                Si vous aimez le confort sans compromis et la ponctualité suisse, vous êtes au bon endroit.{" "}
+                                <Link href="/book" className="font-medium text-white underline underline-offset-2 hover:text-red-200">
+                                    Réservez facilement
+                                </Link>{" "}
+                                votre chauffeur via notre formulaire en ligne ou par téléphone et commencez votre aventure strasbourgeoise sur les chapeaux de roues !
+                            </>
+                        ) : "If you like uncompromising comfort and Swiss punctuality, you're in the right place. Easily book your driver via our online form or by phone and start your Strasbourg adventure on the right foot!"}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                         <Book bounce={false} btn={lang === "fr" ? "Réserver en ligne" : "Book Online"} primary={true} />

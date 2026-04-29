@@ -23,7 +23,7 @@ type CityPageContent = {
     events: { title: string; description: string }
     tourism: { title: string; description: string | ReactNode }
     longDistance: { title: string; description: string | ReactNode }
-    pricing: { title: string; table: { route: string; duration: string; day?: string; night?: string }[]; note: string }
+    pricing: { title: string; table: { route: string | ReactNode; duration: string; day?: string; night?: string }[]; note: string }
     cta: { title: string; description: string }
     faq: { title: string; items: ContentSectionItem[] }
 }

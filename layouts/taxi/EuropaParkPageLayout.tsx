@@ -175,7 +175,13 @@ const EuropaParkPageLayout: React.FC<EuropaParkPageLayoutProps> = ({ heroCardIma
                                 <div className="bg-white rounded-xl shadow-lg p-5 sm:p-7 hover:shadow-xl transition-shadow">
                                     <div className="space-y-2 sm:space-y-3">
                                         <h3 className="text-base sm:text-lg font-semibold text-gray-900">Des trajets rapides et directs</h3>
-                                        <p className="text-gray-700 text-sm sm:text-base leading-relaxed">Pas de correspondance, pas de stress, pas de détour inutile. Votre taxi circuit touristique Alsace vous emmène directement aux portes d'Europa Park. Côté timing, comptez en moyenne :</p>
+                                        <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+                                            Pas de correspondance, pas de stress, pas de détour inutile.{" "}
+                                            <Link href="/taxi/taxi-circuit-touristique-alsace" className="font-medium text-orange-700 underline underline-offset-2 hover:text-orange-900">
+                                                Votre taxi circuit touristique Alsace
+                                            </Link>{" "}
+                                            vous emmène directement aux portes d&apos;Europa Park. Côté timing, comptez en moyenne :
+                                        </p>
                                         <ul className="text-gray-700 text-sm sm:text-base leading-relaxed list-disc list-inside space-y-1 mt-2">
                                             <li>1h15 à 1h30 depuis Strasbourg</li>
                                             <li>45 minutes depuis Colmar.</li>

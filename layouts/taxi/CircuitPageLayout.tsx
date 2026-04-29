@@ -197,7 +197,11 @@ const CircuitPageLayout: React.FC<{ heroCardImageSrc?: string; heroCardImageAlt?
                                     <div className="space-y-2 sm:space-y-3">
                                         <h3 className="text-base sm:text-lg font-semibold text-gray-900">Circuits famille et loisirs</h3>
                                         <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
-                                            Amusez-vous en famille en réservant un taxi Strasbourg Europa Park, Parc du Petit Prince, ou pour une balade à vélo ou en bateau sur les canaux alsaciens. Les activités sont pensées pour petits et grands, avec des paysages et attractions variés. Un bon taxi privé pour circuits touristiques Alsace assure un trajet détendu pour toute la famille.
+                                            Amusez-vous en famille en réservant un{" "}
+                                            <Link href="/taxi/taxi-strasbourg-europapark" className="font-medium text-violet-700 underline underline-offset-2 hover:text-violet-900">
+                                                taxi Strasbourg Europa Park
+                                            </Link>
+                                            , Parc du Petit Prince, ou pour une balade à vélo ou en bateau sur les canaux alsaciens. Les activités sont pensées pour petits et grands, avec des paysages et attractions variés. Un bon taxi privé pour circuits touristiques Alsace assure un trajet détendu pour toute la famille.
                                         </p>
                                     </div>
                                 </div>
@@ -347,7 +351,11 @@ const CircuitPageLayout: React.FC<{ heroCardImageSrc?: string; heroCardImageAlt?
                                             taxis pas chers pour circuits touristiques en Alsace vous permettent de
                                             découvrir la région à des tarifs transparents et compétitifs, sans frais
                                             cachés ni surprise. Vous pouvez ainsi savourer chaque instant de votre
-                                            circuit en toute tranquillité. Faites votre réservation en ligne ou par
+                                            circuit en toute tranquillité. Faites votre{" "}
+                                            <Link href="/book" className="font-medium text-violet-700 underline underline-offset-2 hover:text-violet-900">
+                                                réservation en ligne
+                                            </Link>{" "}
+                                            ou par
                                             téléphone.
                                         </p>
                                     </div>

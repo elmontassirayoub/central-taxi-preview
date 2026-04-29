@@ -37,6 +37,7 @@ export type Home_section1 = {
 export type ServiceFeaturesType = {
     title: string,
     description: string,
+    url?: string,
     space?: string,
     vsl?: boolean
 }
@@ -256,10 +257,9 @@ const Data: DataType = {
                     url: "/services/plan"
                 },
                 {
-                    name: "taxi", url: "/taxi/taxi-strasbourg",
+                    name: "taxi", url: "/taxi/taxi-medical-strasbourg",
                     items: [
                         { name: "⁠Taxi médical Strasbourg", url: "/taxi/taxi-medical-strasbourg" },
-                        { name: "Taxi Strasbourg", url: "/taxi/taxi-strasbourg" },
                         { name: "⁠Taxi Strasbourg Aéroport Entzheim", url: "/taxi/taxi-strasbourg-aeroport-Entzheim" },
                         { name: "⁠Taxi Strasbourg Gare", url: "/taxi/taxi-strasbourg-gare" },
                         { name: "⁠Taxi Strasbourg Europapark", url: "/taxi/taxi-strasbourg-europapark" },
@@ -275,23 +275,18 @@ const Data: DataType = {
                         },
                         {
                             name: "entreprise",
-                            url: "/services/entreprise",
-                            items: [{ name: "forfait", url: "/services/forfait" }]
+                            url: "/services/entreprise"
                         },
                         {
-                            name: "conventionné",
-                            url: "/services/conventionne"
+                            name: "Forfaits Taxi Aéroport",
+                            url: "/services/forfait"
                         },
                         {
-                            name: "tourisme",
-                            url: "/services/tourisme"
-                        },
-                        {
-                            name: "supplementaire",
+                            name: "Confort & Services Taxi Strasbourg",
                             url: "/services/supplementaire"
                         },
                         {
-                            name: "avis",
+                            name: "⁠Avis clients Taxi Strasbourg",
                             url: "/services/avis"
                         }
                     ]
@@ -349,13 +344,13 @@ const Data: DataType = {
                 title: "NOS SERVICES",
                 description: "Déplacez-vous sans stress et au meilleur prix avec notre flotte de taxis à Strasbourg et dans toute l'Alsace.",
                 features: [
-                    { title: "Transferts aéroport Strasbourg", description: "Simplifiez vos déplacements vers et depuis les aéroports d’Alsace grâce à l'un des meilleurs services de transfert-aéroport en taxi de la région." },
-                    { title: "Transferts Gare Strasbourg", description: "Notre chauffeur privé vous attend dès votre descente du train ou TGV pour vous emmener où vous le souhaitez dans la région d’Alsace." },
-                    { title: "Taxi tourisme", description: "Programmez une excursion à Strasbourg avec un chauffeur de taxi professionnel, explorez tous les sites touristiques et monuments historiques en bonne compagnie." },
-                    { title: "Taxi pour professionnels", description: "Faites appel au meilleur chauffeur de taxis à Strasbourg pour assurer vos déplacements lors de réunions ou rendez-vous d'affaires en centre-ville ou en périphérie." },
-                    { title: "Taxi pour particuliers", description: "Profitez d’un service de transport personnalisé et sécurisé pour vos courses en ville, soirées entre amis ou sorties en famille." },
-                    { title: "Course longue distance", description: "Vous voyagez pour affaires ou pour le plaisir ? Notre service de taxi strasbourgeois vous garantit un voyage agréable partout en Alsace." },
-                    { title: "Taxi conventionné VSL", description: "Pour les consultations, examens médicaux, traitements, sorties d’hôpital, etc.", space: "Agréé par la CPAM, conforme aux normes et réglementations en vigueur", vsl: true }
+                    { title: "Transferts aéroport Strasbourg", description: "Simplifiez vos déplacements vers et depuis les aéroports d’Alsace grâce à l'un des meilleurs services de transfert-aéroport en taxi de la région.", url: "/taxi/taxi-strasbourg-aeroport-Entzheim" },
+                    { title: "Transferts Gare Strasbourg", description: "Notre chauffeur privé vous attend dès votre descente du train ou TGV pour vous emmener où vous le souhaitez dans la région d’Alsace.", url: "/taxi/taxi-strasbourg-gare" },
+                    { title: "Taxi tourisme", description: "Programmez une excursion à Strasbourg avec un chauffeur de taxi professionnel, explorez tous les sites touristiques et monuments historiques en bonne compagnie.", url: "/taxi/taxi-circuit-touristique-alsace" },
+                    { title: "Taxi pour professionnels", description: "Faites appel au meilleur chauffeur de taxis à Strasbourg pour assurer vos déplacements lors de réunions ou rendez-vous d'affaires en centre-ville ou en périphérie.", url: "/services/entreprise" },
+                    { title: "Taxi pour particuliers", description: "Profitez d’un service de transport personnalisé et sécurisé pour vos courses en ville, soirées entre amis ou sorties en famille.", url: "/services/particuliers" },
+                    { title: "Course longue distance", description: "Vous voyagez pour affaires ou pour le plaisir ? Notre service de taxi strasbourgeois vous garantit un voyage agréable partout en Alsace.", url: "/book" },
+                    { title: "Taxi conventionné VSL", description: "Pour les consultations, examens médicaux, traitements, sorties d’hôpital, etc.", url: "/services/conventionne", space: "Agréé par la CPAM, conforme aux normes et réglementations en vigueur", vsl: true }
                 ]
             },
             vehicules: {
@@ -575,34 +570,34 @@ const Data: DataType = {
             h3: "Les tarifs de nuit B et D sont en vigueur pour les trajets réalisés :",
             p1: "entre 19h et 7h du matin, Voulez-vous commander un taxi et vous voulez connaître le prix d’une course de jour ou de nuit avec notre compagnie de taxi ? Retrouvez ici tous nos tarifs.",
             p2: "Notez qu’ils n’incluent pas le tarif d’approche. Celui-ci est défini selon la distance entre le lieu de prise en charge et le lieu de départ du chauffeur.",
-            h4: "La prise en charge = 3€",
+            h4: "La prise en charge = 3,10€",
             options: [
                 {
                     title: "Course effectuée pendant la journée et en semaine avec retour en charge à la station",
                     feautures: [
                         "Course de jour avec retour en charge à la station",
-                        "Tarif A au km : 0,97€"
+                        "Tarif A au km : 1,01€"
                     ]
                 },
                 {
                     title: "Déplacement de nuit avec retour en charge à la station",
                     feautures: [
                         "Course de nuit avec retour en charge à la station",
-                        "Tarif B au km : 1,38€"
+                        "Tarif B au km : 1,43€"
                     ]
                 },
                 {
                     title: "Déplacement diurne et en semaine avec retour à vide à la station",
                     feautures: [
                         "Course de jour avec retour à vide à la station",
-                        "Tarif C au km : 1,94€"
+                        "Tarif C au km : 2,02€"
                     ]
                 },
                 {
                     title: "Déplacement de nuit avec retour à vide à la station",
                     feautures: [
                         "Course de nuit avec retour à vide à la station",
-                        "Tarif D au km : 2,76€",
+                        "Tarif D au km : 2,86€",
                         "Les dimanches",
                         "Les jours fériés",
                         "Sur les routes rendues difficiles par la neige ou le verglas, avec un véhicule muni d'équipements spéciaux ou de pneus hiver."
@@ -614,7 +609,7 @@ const Data: DataType = {
                 title: "Des frais supplémentaires sont facturés pour :",
                 feautures: [
                     "Excès de bagages au-delà de trois bagages par passager 2€",
-                    "À partir du  cinquième passager 3€"
+                    "À partir du  cinquième passager 4€"
                 ]
             },
             h6: "Comment calculer les tarifs des courses en taxi à Strasbourg avec Central Taxi 67 ?",
@@ -640,10 +635,9 @@ const Data: DataType = {
                     url: "/services/plan"
                 },
                 {
-                    name: "taxi", url: "/taxi/taxi-strasbourg",
+                    name: "taxi", url: "/taxi/taxi-medical-strasbourg",
                     items: [
                         { name: "Medical Taxi Strasbourg", url: "/taxi/taxi-medical-strasbourg" },
-                        { name: "Taxi Strasbourg", url: "/taxi/taxi-strasbourg" },
                         { name: "Taxi Strasbourg Airport Entzheim", url: "/taxi/taxi-strasbourg-aeroport-Entzheim" },
                         { name: "Taxi Strasbourg train station", url: "/taxi/taxi-strasbourg-gare" },
                         { name: "Taxi Strasbourg Europapark", url: "/taxi/taxi-strasbourg-europapark" },
@@ -659,16 +653,11 @@ const Data: DataType = {
                         },
                         {
                             name: "business",
-                            url: "/services/entreprise",
-                            items: [{ name: "package", url: "/services/forfait" }]
+                            url: "/services/entreprise"
                         },
                         {
-                            name: "conventionné",
-                            url: "/services/conventionne"
-                        },
-                        {
-                            name: "tourism",
-                            url: "/services/tourisme"
+                            name: "package",
+                            url: "/services/forfait"
                         },
                         {
                             name: "additional",
@@ -733,13 +722,13 @@ const Data: DataType = {
                 title: "Our Services",
                 description: "Travel stress-free and at the best price with our fleet of taxis in Strasbourg and throughout Alsace.",
                 features: [
-                    { title: "Strasbourg airport transfers", description: "Simplify your travel to and from Alsace airports with one of the best airport taxi transfer services in the region." },
-                    { title: "Strasbourg Train Station Transfers", description: "Our private driver is waiting for you as soon as you get off the train or TGV to take you wherever you want in the Alsace region." },
-                    { title: "Tourist taxi", description: "Schedule an excursion to Strasbourg with a professional taxi driver, explore all the tourist sites and historical monuments in good company." },
-                    { title: "Taxi for professionals", description: "Call the best taxi driver in Strasbourg to ensure your travel during meetings or business appointments in the city center or the outskirts." },
-                    { title: "Taxi for individuals", description: "Take advantage of a personalized and secure transport service for your shopping in town, evenings with friends or family outings." },
-                    { title: "Long distance running", description: "Are you traveling for business or pleasure? Our Strasbourg taxi service guarantees you a pleasant trip throughout Alsace." },
-                    { title: "Taxi conventionné VSL", description: "Pour les consultations, examens médicaux, traitements, sorties d’hôpital, etc.", space: "Agréé par la CPAM, conforme aux normes et réglementations en vigueur", vsl: true }
+                    { title: "Strasbourg airport transfers", description: "Simplify your travel to and from Alsace airports with one of the best airport taxi transfer services in the region.", url: "/taxi/taxi-strasbourg-aeroport-Entzheim" },
+                    { title: "Strasbourg Train Station Transfers", description: "Our private driver is waiting for you as soon as you get off the train or TGV to take you wherever you want in the Alsace region.", url: "/taxi/taxi-strasbourg-gare" },
+                    { title: "Tourist taxi", description: "Schedule an excursion to Strasbourg with a professional taxi driver, explore all the tourist sites and historical monuments in good company.", url: "/taxi/taxi-circuit-touristique-alsace" },
+                    { title: "Taxi for professionals", description: "Call the best taxi driver in Strasbourg to ensure your travel during meetings or business appointments in the city center or the outskirts.", url: "/services/entreprise" },
+                    { title: "Taxi for individuals", description: "Take advantage of a personalized and secure transport service for your shopping in town, evenings with friends or family outings.", url: "/services/particuliers" },
+                    { title: "Long distance running", description: "Are you traveling for business or pleasure? Our Strasbourg taxi service guarantees you a pleasant trip throughout Alsace.", url: "/book" },
+                    { title: "Taxi conventionné VSL", description: "Pour les consultations, examens médicaux, traitements, sorties d’hôpital, etc.", url: "/services/conventionne", space: "Agréé par la CPAM, conforme aux normes et réglementations en vigueur", vsl: true }
                 ]
             },
             vehicules: {

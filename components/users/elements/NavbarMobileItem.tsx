@@ -20,7 +20,7 @@ function MobileTopIcon({ url }: { url: string }) {
             return <HomeOutlinedIcon sx={iconSize} className={iconClass} />
         case "/services/plan":
             return <MapOutlinedIcon sx={iconSize} className={iconClass} />
-        case "/taxi/taxi-strasbourg":
+        case "/taxi/taxi-medical-strasbourg":
             return <LocalTaxiIcon sx={iconSize} className={iconClass} />
         case "/services":
             return <BusinessCenterOutlinedIcon sx={iconSize} className={iconClass} />

@@ -4,6 +4,7 @@ import Call from "@/components/common/Buttons/Call"
 import HeroTaxiCTA from "@/components/common/Buttons/HeroTaxiCTA"
 import { useAppContext } from "@/context/appContext"
 import Image from "next/image"
+import Link from "next/link"
 import { useState } from "react"
 
 const AirportPageLayout: React.FC<{
@@ -26,6 +27,36 @@ const AirportPageLayout: React.FC<{
         { id: 2, label: lang === "fr" ? "Tarifs" : "Pricing" },
         { id: 3, label: "FAQ" }
     ]
+    const renderServiceDescription = (description: string) => {
+        const linkText = "taxi Strasbourg gare"
+        if (!description.includes(linkText)) return description
+
+        const [before, after = ""] = description.split(linkText)
+        return (
+            <>
+                {before}
+                <Link href="/taxi/taxi-strasbourg-gare" className="font-medium text-sky-700 underline underline-offset-2 hover:text-sky-900">
+                    {linkText}
+                </Link>
+                {after}
+            </>
+        )
+    }
+    const renderCtaBody = (text: string) => {
+        const linkText = "réservation en ligne"
+        if (!text.includes(linkText)) return text
+
+        const [before, after = ""] = text.split(linkText)
+        return (
+            <>
+                {before}
+                <Link href="/book" className="font-medium text-white underline underline-offset-2 hover:text-sky-100">
+                    {linkText}
+                </Link>
+                {after}
+            </>
+        )
+    }
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-sky-50 to-cyan-100">
@@ -140,7 +171,7 @@ const AirportPageLayout: React.FC<{
                                     <div key={idx} className="bg-white rounded-xl shadow-lg p-5 sm:p-7 hover:shadow-xl transition-shadow">
                                         <div className="space-y-2 sm:space-y-3">
                                             <h3 className="text-base sm:text-lg font-semibold text-gray-900">{item.title}</h3>
-                                            <p className="text-gray-700 text-sm sm:text-base leading-relaxed">{item.description}</p>
+                                            <p className="text-gray-700 text-sm sm:text-base leading-relaxed">{renderServiceDescription(item.description)}</p>
                                         </div>
                                     </div>
                                 ))}
@@ -323,7 +354,7 @@ const AirportPageLayout: React.FC<{
                     </h2>
                     <p className="text-base sm:text-lg text-sky-50 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed">
                         {lang === "fr"
-                            ? (ctaBannerBodyFr ??
+                            ? renderCtaBody(ctaBannerBodyFr ??
                               "Réservez maintenant et voyagez en toute sérénité")
                             : (ctaBannerBodyEn ?? "Book now and travel with complete peace of mind")}
                     </p>

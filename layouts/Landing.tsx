@@ -8,10 +8,14 @@ import EuroIcon from '@mui/icons-material/Euro';
 import ReviewCard from "@/components/users/elements/ReviewCard"
 import Review from "@/components/common/Buttons/Review"
 import BookLayout from "./book"
+import Link from "next/link"
+import { ReactNode, useState } from "react"
 
 const Landing = ({ admin = false }: { admin: boolean }) => {
 
   const { lang } = useAppContext()
+  const [activeInfoTab, setActiveInfoTab] = useState(0)
+  const linkInlineClass = "font-medium text-blue-700 underline underline-offset-2 hover:text-blue-900"
 
   const reviews = [
     {
@@ -35,6 +39,83 @@ const Landing = ({ admin = false }: { admin: boolean }) => {
   ]
 
   const pageData = Data[lang]
+  const pricingRows: { route: string | ReactNode; duration: string; day?: string; night?: string }[] = [
+    {
+      route: (
+        <Link href="/taxi/taxi-strasbourg-aeroport-Entzheim" className={linkInlineClass}>
+          Strasbourg → Aéroport d&apos;Entzheim
+        </Link>
+      ),
+      duration: "20 min",
+      day: "35 – 40 €",
+      night: "45 – 60 €"
+    },
+    {
+      route: (
+        <Link href="/taxi/taxi-circuit-touristique-alsace" className={linkInlineClass}>
+          Strasbourg → Circuit touristique Alsace (ex. Route des Vins)
+        </Link>
+      ),
+      duration: "4 à 6 h",
+      day: "150 – 220 €"
+    },
+    {
+      route: (
+        <Link href="/taxi/taxi-strasbourg-gare" className={linkInlineClass}>
+          Strasbourg → Gare (SNCF ou centre-ville)
+        </Link>
+      ),
+      duration: "5 à 15 min selon gare",
+      day: "10 – 20 €",
+      night: "15 – 25 €"
+    },
+    {
+      route: (
+        <Link href="/taxi/taxi-strasbourg-europapark" className={linkInlineClass}>
+          Strasbourg → Europa Park
+        </Link>
+      ),
+      duration: "1h à 1h15",
+      day: "100 – 120 €",
+      night: "150 – 180 €"
+    },
+  ]
+
+  const faqItems: { title: string; description: string | ReactNode }[] = [
+    {
+      title: "Quels types de trajets pouvez-vous réserver avec un taxi à Strasbourg ?",
+      description:
+        "Nos taxis à Strasbourg couvrent tous vos besoins : transferts vers l'aéroport d'Entzheim, trajets vers la gare, déplacements professionnels, visites touristiques, sorties nocturnes et même circuits touristiques en Alsace. Nous proposons aussi des trajets interurbains vers Colmar, Mulhouse, Haguenau ou Europa Park.",
+    },
+    {
+      title: "Quels types de véhicules proposez-vous ?",
+      description:
+        "Nous mettons à disposition des berlines, monospaces et vans spacieux. Tous nos véhicules sont haut de gamme et parfaitement entretenus. Ils sont adaptés à votre nombre de passagers",
+    },
+    {
+      title: "Comment sont calculés les tarifs des trajets ?",
+      description:
+        "Nos tarifs sont précis et transparents : ils se basent sur la durée et la distance, ajustés si nécessaire selon le véhicule ou le trafic. Le taximètre reste la référence ultime. Nous proposons également des tarifs compétitifs pour les trajets longue distance et les circuits touristiques.",
+    },
+    {
+      title: "Peut-on bénéficier de services supplémentaires à bord ?",
+      description: (
+        <>
+          Oui ! Nos taxis offrent le Wi-Fi gratuit, des bouteilles d&apos;eau, des sièges auto pour enfants sur demande, et un accueil personnalisé pour les transferts aéroport. Pour les occasions spéciales, vous pouvez également réserver des véhicules élégants comme des limousines ou vans confortables. Retrouvez ici les détails sur nos{" "}
+          <Link href="/services/supplementaire" className={linkInlineClass}>
+            services supplémentaires
+          </Link>
+          .
+        </>
+      ),
+    },
+  ]
+
+  const infoTabs = [
+    { id: 0, label: lang === "fr" ? "Tarifs" : "Pricing" },
+    { id: 1, label: "FAQ" }
+  ]
+
   return (
     <>
       <section className="flex-1 section z-1 flex flex-col gap-20">
@@ -81,6 +162,128 @@ const Landing = ({ admin = false }: { admin: boolean }) => {
             </div>
           </div>
         </div>
+        <section className="py-8 sm:py-12 lg:py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-center mb-8">
+              <div className="flex flex-wrap justify-center gap-1 bg-gray-100 rounded-lg p-1 max-w-full overflow-x-auto">
+                {infoTabs.map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveInfoTab(tab.id)}
+                    className={`px-3 sm:px-6 py-2 sm:py-3 rounded-md font-medium text-xs sm:text-sm whitespace-nowrap transition-all duration-200 ${activeInfoTab === tab.id
+                      ? "bg-slate-800 text-white shadow-md transform scale-105 ring-1 ring-blue-700/50"
+                      : "text-gray-600 hover:text-gray-800 hover:bg-gray-200"
+                      }`}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {activeInfoTab === 0 && (
+              <div className="space-y-6 sm:space-y-8">
+                <div className="text-center space-y-3 sm:space-y-4">
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
+                    Estimations de durée et tarif pour les trajets les plus demandés depuis Strasbourg
+                  </h2>
+                  <p className="text-base sm:text-lg text-gray-600 px-4">
+                    {lang === "fr" ? "Tarifs transparents et compétitifs" : "Transparent and competitive pricing"}
+                  </p>
+                </div>
+
+                <div className="sm:hidden space-y-4">
+                  {pricingRows.map((row, idx) => (
+                    <div key={idx} className="bg-white rounded-xl shadow-lg p-4 space-y-2">
+                      <p className="text-sm font-semibold text-gray-900">{row.route}</p>
+                      <div className="flex justify-between text-xs text-gray-500">
+                        <span>{lang === "fr" ? "Durée" : "Duration"}</span>
+                        <span className="font-medium text-gray-700">{row.duration}</span>
+                      </div>
+                      <div className="flex justify-between text-xs">
+                        <span className="text-gray-500">{lang === "fr" ? "Tarif Jour" : "Day Rate"}</span>
+                        <span className="font-semibold text-green-600">{row.day ?? "-"}</span>
+                      </div>
+                      <div className="flex justify-between text-xs">
+                        <span className="text-gray-500">{lang === "fr" ? "Tarif Nuit" : "Night Rate"}</span>
+                        <span className="font-semibold text-blue-600">{row.night ?? "-"}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="hidden sm:block bg-white rounded-2xl shadow-xl overflow-hidden">
+                  <table className="w-full">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          {lang === "fr" ? "Trajet" : "Route"}
+                        </th>
+                        <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          {lang === "fr" ? "Durée" : "Duration"}
+                        </th>
+                        <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          {lang === "fr" ? "Tarif Jour" : "Day Rate"}
+                        </th>
+                        <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          {lang === "fr" ? "Tarif Nuit" : "Night Rate"}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                      {pricingRows.map((row, idx) => (
+                        <tr key={idx} className="hover:bg-gray-50">
+                          <td className="px-6 py-4 text-sm font-medium text-gray-900">
+                            {row.route}
+                          </td>
+                          <td className="px-6 py-4 text-sm text-gray-500">
+                            {row.duration}
+                          </td>
+                          <td className="px-6 py-4 text-sm text-green-600 font-semibold">
+                            {row.day ?? "-"}
+                          </td>
+                          <td className="px-6 py-4 text-sm text-blue-600 font-semibold">
+                            {row.night ?? "-"}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 sm:p-4">
+                  <p className="text-xs sm:text-sm text-yellow-800 text-center">
+                    Les prix et temps de trajet indiqués restent des estimations et peuvent évoluer en fonction du type de véhicule, des conditions de circulation ou des arrêts effectués. Seul le montant indiqué par le taximètre fait référence.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {activeInfoTab === 1 && (
+              <div className="space-y-6 sm:space-y-8">
+                <div className="text-center space-y-3 sm:space-y-4">
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
+                    FAQ taxi à Strasbourg
+                  </h2>
+                  <p className="text-base sm:text-lg text-gray-600 px-4">
+                    {lang === "fr" ? "Questions fréquemment posées" : "Frequently asked questions"}
+                  </p>
+                </div>
+
+                <div className="space-y-3 sm:space-y-4">
+                  {faqItems.map((faq, idx) => (
+                    <div key={idx} className="bg-white rounded-xl shadow-lg p-4 sm:p-6 space-y-2">
+                      <h3 className="text-base sm:text-lg font-semibold text-gray-900">
+                        {faq.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{faq.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
         {
           !admin && <div className="px-[10%]">
             <p className="font-bold title">{pageData.home.headerBeforeCards}</p>
@@ -105,7 +308,15 @@ const Landing = ({ admin = false }: { admin: boolean }) => {
           <div className="lg:grid grid-cols-1 lg:grid-cols-3 gap-5 mt-5">
             {
               pageData.home.services.features.map((feature: ServiceFeaturesType, index: number) => <div className="text-left border-[1px] !p-4 rounded-[16px] flex flex-col gap-4 my-5 lg:my-0" key={index}>
-                <p className="font-semibold">{feature.title}</p>
+                <p className="font-semibold">
+                  {
+                    feature?.url ? (
+                      <Link href={feature.url} className="hover:underline">
+                        {feature.title}
+                      </Link>
+                    ) : feature.title
+                  }
+                </p>
                 <span className="text-sm">{feature.description}</span>
                 {
                   feature?.space && <>

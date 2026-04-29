@@ -6,9 +6,7 @@ import Link from "next/link"
 
 export const getServerSideProps = checkAuthentication(async (context: any, admin: boolean) => {
     return {
-        props: {
-            admin
-        }
+        notFound: true
     }
 })
 
@@ -198,10 +196,45 @@ const TaxiStrasbourg = ({ admin }: { admin: boolean }) => {
         pricing: {
             title: "Estimations de durée et tarif pour les trajets les plus demandés depuis Strasbourg",
             table: [
-                { route: "Strasbourg → Aéroport d'Entzheim", duration: "20 min", day: "35 – 40 €", night: "45 – 60 €" },
-                { route: "Strasbourg → Circuit touristique Alsace (ex. Route des Vins)", duration: "4 à 6 h", day: "150 – 220 €" },
-                { route: "Strasbourg → Gare (SNCF ou centre-ville)", duration: "5 à 15 min selon gare", day: "10 – 20 €", night: "15 – 25 €" },
-                { route: "Strasbourg → Europa Park", duration: "1h à 1h15", day: "100 – 120 €", night: "150– 180 €" },
+                {
+                    route: (
+                        <Link href="/taxi/taxi-strasbourg-aeroport-Entzheim" className={linkInlineClass}>
+                            Strasbourg → Aéroport d&apos;Entzheim
+                        </Link>
+                    ),
+                    duration: "20 min",
+                    day: "35 – 40 €",
+                    night: "45 – 60 €"
+                },
+                {
+                    route: (
+                        <Link href="/taxi/taxi-circuit-touristique-alsace" className={linkInlineClass}>
+                            Strasbourg → Circuit touristique Alsace (ex. Route des Vins)
+                        </Link>
+                    ),
+                    duration: "4 à 6 h",
+                    day: "150 – 220 €"
+                },
+                {
+                    route: (
+                        <Link href="/taxi/taxi-strasbourg-gare" className={linkInlineClass}>
+                            Strasbourg → Gare (SNCF ou centre-ville)
+                        </Link>
+                    ),
+                    duration: "5 à 15 min selon gare",
+                    day: "10 – 20 €",
+                    night: "15 – 25 €"
+                },
+                {
+                    route: (
+                        <Link href="/taxi/taxi-strasbourg-europapark" className={linkInlineClass}>
+                            Strasbourg → Europa Park
+                        </Link>
+                    ),
+                    duration: "1h à 1h15",
+                    day: "100 – 120 €",
+                    night: "150– 180 €"
+                },
             ],
             note:
                 "Les prix et temps de trajet indiqués restent des estimations et peuvent évoluer en fonction du type de véhicule, des conditions de circulation ou des arrêts effectués. Seul le montant indiqué par le taximètre fait référence.",
